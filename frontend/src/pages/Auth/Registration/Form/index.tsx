@@ -5,13 +5,24 @@ import ProvidersAuth from 'pages/Auth/components/ProvidersAuth';
 
 import { H1, HR } from 'components';
 import { APP_ROUTES } from 'features';
+import CheckEmail from './CheckEmail';
+import { FormEvent, useState } from 'react';
 
 const RegisterForm = () => {
   const { t } = useTranslation(['auth', 'common']);
 
+  const [isCheckOpen, setIsCheckOpen] = useState<boolean>(false);
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsCheckOpen((v) => !v);
+  };
+
+  if (isCheckOpen) return <CheckEmail handleClose={() => setIsCheckOpen((v) => !v)} />;
+
   return (
     <div className="auth-container--form flex-center flex-col">
-      <form>
+      <form onSubmit={handleSubmit}>
         <header className="text-center">
           <H1>{t('auth:signUp.header')}</H1>
           <p>{t('auth:signUp.title')}</p>
