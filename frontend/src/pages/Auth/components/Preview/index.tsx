@@ -1,6 +1,6 @@
 import { H2 } from 'components';
 
-import previewImage from 'assets/img/image.webp';
+import previewImage from 'assets/img/preview.webp';
 import SVGStar from 'assets/svg/SVGStar';
 import { useTranslation } from 'react-i18next';
 

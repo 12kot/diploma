@@ -35,7 +35,12 @@ input {
   font-weight: 500;
 }
 
-button {
+p {
+  font-family: 'Exo', sans-serif;
+}
+
+button,
+.btn {
   background-color: var(--main-color);
   border: 1px solid var(--border-colot-main);
 
@@ -50,6 +55,7 @@ button {
   box-shadow: 0px 2px 1px 0px #ffffff33 inset;
   box-shadow: 0px -2px 1px 0px #00000033 inset;
 
+  font-family: 'Exo', sans-serif;
   font-weight: 600;
   font-size: 14px;
 
@@ -131,7 +137,7 @@ hr {
 
 .hr-container {
   position: relative;
-  
+
   p {
     background-color: var(--bg-color);
     padding: 0 8px;
@@ -184,7 +190,7 @@ li {
   &-14 {
     font-size: 14px;
   }
-  
+
   &-16 {
     font-size: 16px;
   }
@@ -197,11 +203,19 @@ li {
     display: flex;
     flex-direction: column;
   }
- 
+
   &-between {
     display: flex;
     justify-content: space-between;
   }
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
 }
 
 .items-center {
@@ -224,7 +238,7 @@ li {
   &-big {
     gap: 40px;
   }
-  
+
   &-mid {
     gap: 24px;
   }
@@ -250,10 +264,46 @@ li {
   background-color: var(--main-color);
 }
 
+.top {
+  &-0 {
+    top: 0;
+  }
+
+  &-16 {
+    top: 16px;
+  }
+
+  &-32 {
+    top: 32px;
+  }
+}
+
+.left {
+  &-0 {
+    left: 0;
+  }
+
+  &-16 {
+    left: 16px;
+  }
+  
+  &-32 {
+    left: 32px;
+  }
+}
+
 .w {
   &-4 {
     width: 4px;
     height: 4px;
+  }
+
+  &-m {
+    width: 50%;
+  }
+  
+  &-content {
+    width: fit-content!important;
   }
 }
 
@@ -272,7 +322,7 @@ li {
   height: 70px;
   width: 100vw;
   top: 0;
-  z-index: 4000;
+  z-index: 20;
   border-bottom: 1px solid var(--border-color);
 
   padding-right: 0;
