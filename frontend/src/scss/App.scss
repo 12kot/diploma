@@ -1,0 +1,22 @@
+@import 'common';
+@import 'auth';
+
+:root {
+  --bg-color: #ffffff;
+
+  --main-color: #137547;
+  --main-color-second: #e2edea;
+
+  --border-color: #eaeaea;
+  --border-color-main: #0f5e39;
+
+  --font-color: #12121c;
+  --font-color-second: #5f6078;
+  --font-color-negative: #ffffff;
+
+  --box-shadow: 0px 1px 2px 0px #0000000D;
+
+  --red: #E42717;
+
+  --transition: 0.5s;
+}
