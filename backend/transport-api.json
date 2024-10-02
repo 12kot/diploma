@@ -1,0 +1,3279 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Some custom description of API.",
+    "version": "1.0",
+    "title": "My REST API",
+    "termsOfService": "Terms of service",
+    "contact": {
+      "name": "Anna Kisel",
+      "url": "http://localhost:8080/",
+      "email": "annakisel524013@gmail.com"
+    },
+    "license": {
+      "name": "License of API",
+      "url": "API license URL"
+    }
+  },
+  "host": "localhost:8080",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "address-controller",
+      "description": "Address Controller"
+    },
+    {
+      "name": "basic-error-controller",
+      "description": "Basic Error Controller"
+    },
+    {
+      "name": "cargo-controller",
+      "description": "Cargo Controller"
+    },
+    {
+      "name": "delivery-controller",
+      "description": "Delivery Controller"
+    },
+    {
+      "name": "email-controller",
+      "description": "Email Controller"
+    },
+    {
+      "name": "home-controller",
+      "description": "Home Controller"
+    },
+    {
+      "name": "payment-controller",
+      "description": "Payment Controller"
+    },
+    {
+      "name": "transportation-controller",
+      "description": "Transportation Controller"
+    },
+    {
+      "name": "user-controller",
+      "description": "User Controller"
+    }
+  ],
+  "paths": {
+    "/api/addresses": {
+      "get": {
+        "tags": [
+          "address-controller"
+        ],
+        "summary": "getAllAddresses",
+        "operationId": "getAllAddressesUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "pageNo",
+            "in": "query",
+            "description": "pageNo",
+            "required": false,
+            "type": "integer",
+            "default": 0,
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "pageSize",
+            "required": false,
+            "type": "integer",
+            "default": 10,
+            "format": "int32"
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "sortBy",
+            "required": false,
+            "type": "string",
+            "default": "id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AddressDto"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "address-controller"
+        ],
+        "summary": "createAddress",
+        "operationId": "createAddressUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "addressDto",
+            "description": "addressDto",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddressDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/addresses/find/city": {
+      "get": {
+        "tags": [
+          "address-controller"
+        ],
+        "summary": "getAddressesByCity",
+        "operationId": "getAddressesByCityUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "pageNo",
+            "in": "query",
+            "description": "pageNo",
+            "required": false,
+            "type": "integer",
+            "default": 0,
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "pageSize",
+            "required": false,
+            "type": "integer",
+            "default": 10,
+            "format": "int32"
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "sortBy",
+            "required": false,
+            "type": "string",
+            "default": "id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AddressDto"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/addresses/find/country": {
+      "get": {
+        "tags": [
+          "address-controller"
+        ],
+        "summary": "getAddressesByCountry",
+        "operationId": "getAddressesByCountryUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "pageNo",
+            "in": "query",
+            "description": "pageNo",
+            "required": false,
+            "type": "integer",
+            "default": 0,
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "pageSize",
+            "required": false,
+            "type": "integer",
+            "default": 10,
+            "format": "int32"
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "sortBy",
+            "required": false,
+            "type": "string",
+            "default": "id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AddressDto"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/addresses/{id}": {
+      "get": {
+        "tags": [
+          "address-controller"
+        ],
+        "summary": "findById",
+        "operationId": "findByIdUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/AddressDto"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "address-controller"
+        ],
+        "summary": "updateAddress",
+        "operationId": "updateAddressUsingPUT",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "newAddress",
+            "description": "newAddress",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddressDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/AddressDto"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "address-controller"
+        ],
+        "summary": "deleteAddress",
+        "operationId": "deleteAddressUsingDELETE",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/cargos": {
+      "get": {
+        "tags": [
+          "cargo-controller"
+        ],
+        "summary": "getAllCargos",
+        "operationId": "getAllCargosUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "pageNo",
+            "in": "query",
+            "description": "pageNo",
+            "required": false,
+            "type": "integer",
+            "default": 0,
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "pageSize",
+            "required": false,
+            "type": "integer",
+            "default": 10,
+            "format": "int32"
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "sortBy",
+            "required": false,
+            "type": "string",
+            "default": "id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/CargoDto"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "cargo-controller"
+        ],
+        "summary": "createCargo",
+        "operationId": "createCargoUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "cargo",
+            "description": "cargo",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CargoDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/cargos/find": {
+      "get": {
+        "tags": [
+          "cargo-controller"
+        ],
+        "summary": "getCargosByName",
+        "operationId": "getCargosByNameUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "pageNo",
+            "in": "query",
+            "description": "pageNo",
+            "required": false,
+            "type": "integer",
+            "default": 0,
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "pageSize",
+            "required": false,
+            "type": "integer",
+            "default": 10,
+            "format": "int32"
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "sortBy",
+            "required": false,
+            "type": "string",
+            "default": "id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/CargoDto"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/cargos/{id}": {
+      "get": {
+        "tags": [
+          "cargo-controller"
+        ],
+        "summary": "getCargo",
+        "operationId": "getCargoUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CargoDto"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "cargo-controller"
+        ],
+        "summary": "updateCargo",
+        "operationId": "updateCargoUsingPUT",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "newCargo",
+            "description": "newCargo",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CargoDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CargoDto"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "cargo-controller"
+        ],
+        "summary": "deleteCargo",
+        "operationId": "deleteCargoUsingDELETE",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/deliveries": {
+      "get": {
+        "tags": [
+          "delivery-controller"
+        ],
+        "summary": "getAllDeliveries",
+        "operationId": "getAllDeliveriesUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "pageNo",
+            "in": "query",
+            "description": "pageNo",
+            "required": false,
+            "type": "integer",
+            "default": 0,
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "pageSize",
+            "required": false,
+            "type": "integer",
+            "default": 10,
+            "format": "int32"
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "sortBy",
+            "required": false,
+            "type": "string",
+            "default": "id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/DeliveryDto"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "delivery-controller"
+        ],
+        "summary": "createDelivery",
+        "operationId": "createDeliveryUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "delivery",
+            "description": "delivery",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DeliveryDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/deliveries/find": {
+      "get": {
+        "tags": [
+          "delivery-controller"
+        ],
+        "summary": "getDeliveriesByDate",
+        "operationId": "getDeliveriesByDateUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "date",
+            "in": "query",
+            "description": "date",
+            "required": false,
+            "type": "string",
+            "default": "Date.valueOf(LocalDate.now())",
+            "format": "date"
+          },
+          {
+            "name": "pageNo",
+            "in": "query",
+            "description": "pageNo",
+            "required": false,
+            "type": "integer",
+            "default": 0,
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "pageSize",
+            "required": false,
+            "type": "integer",
+            "default": 10,
+            "format": "int32"
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "sortBy",
+            "required": false,
+            "type": "string",
+            "default": "id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/DeliveryDto"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/deliveries/{id}": {
+      "get": {
+        "tags": [
+          "delivery-controller"
+        ],
+        "summary": "getDelivery",
+        "operationId": "getDeliveryUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/DeliveryDto"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "delivery-controller"
+        ],
+        "summary": "updateDelivery",
+        "operationId": "updateDeliveryUsingPUT",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "newDelivery",
+            "description": "newDelivery",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DeliveryDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/DeliveryDto"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "delivery-controller"
+        ],
+        "summary": "deleteDelivery",
+        "operationId": "deleteDeliveryUsingDELETE",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/emails/send": {
+      "post": {
+        "tags": [
+          "email-controller"
+        ],
+        "summary": "sendMail",
+        "operationId": "sendMailUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "details",
+            "description": "details",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Email"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/emails/sendCustomerReminder": {
+      "post": {
+        "tags": [
+          "email-controller"
+        ],
+        "summary": "sendReminder",
+        "operationId": "sendReminderUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/emails/sendReport": {
+      "post": {
+        "tags": [
+          "email-controller"
+        ],
+        "summary": "sendReport",
+        "operationId": "sendReportUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/emails/sendWithAttachment": {
+      "post": {
+        "tags": [
+          "email-controller"
+        ],
+        "summary": "sendMailWithAttachment",
+        "operationId": "sendMailWithAttachmentUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "details",
+            "description": "details",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Email"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/payments": {
+      "get": {
+        "tags": [
+          "payment-controller"
+        ],
+        "summary": "getAllPayments",
+        "operationId": "getAllPaymentsUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "pageNo",
+            "in": "query",
+            "description": "pageNo",
+            "required": false,
+            "type": "integer",
+            "default": 0,
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "pageSize",
+            "required": false,
+            "type": "integer",
+            "default": 10,
+            "format": "int32"
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "sortBy",
+            "required": false,
+            "type": "string",
+            "default": "id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PaymentDto"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/payments/current": {
+      "get": {
+        "tags": [
+          "payment-controller"
+        ],
+        "summary": "getForCurrentUser",
+        "operationId": "getForCurrentUserUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "pageNo",
+            "in": "query",
+            "description": "pageNo",
+            "required": false,
+            "type": "integer",
+            "default": 0,
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "pageSize",
+            "required": false,
+            "type": "integer",
+            "default": 10,
+            "format": "int32"
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "sortBy",
+            "required": false,
+            "type": "string",
+            "default": "id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PaymentDto"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/payments/find": {
+      "get": {
+        "tags": [
+          "payment-controller"
+        ],
+        "summary": "getPaymentByPrice",
+        "operationId": "getPaymentByPriceUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "pageNo",
+            "in": "query",
+            "description": "pageNo",
+            "required": false,
+            "type": "integer",
+            "default": 0,
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "pageSize",
+            "required": false,
+            "type": "integer",
+            "default": 10,
+            "format": "int32"
+          },
+          {
+            "name": "price",
+            "in": "query",
+            "description": "price",
+            "required": false,
+            "type": "number",
+            "default": 100
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "sortBy",
+            "required": false,
+            "type": "string",
+            "default": "id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PaymentDto"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/payments/{id}": {
+      "put": {
+        "tags": [
+          "payment-controller"
+        ],
+        "summary": "updatePayment",
+        "operationId": "updatePaymentUsingPUT",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "newPayment",
+            "description": "newPayment",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PaymentDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/PaymentDto"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/transportations": {
+      "get": {
+        "tags": [
+          "transportation-controller"
+        ],
+        "summary": "getAllTransportations",
+        "operationId": "getAllTransportationsUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "pageNo",
+            "in": "query",
+            "description": "pageNo",
+            "required": false,
+            "type": "integer",
+            "default": 0,
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "pageSize",
+            "required": false,
+            "type": "integer",
+            "default": 10,
+            "format": "int32"
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "sortBy",
+            "required": false,
+            "type": "string",
+            "default": "id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TransportationDto"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "transportation-controller"
+        ],
+        "summary": "createTransportation",
+        "operationId": "createTransportationUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "transportationDto",
+            "description": "transportationDto",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TransportationDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/transportations/current": {
+      "get": {
+        "tags": [
+          "transportation-controller"
+        ],
+        "summary": "getTransportationsForCurrentUser",
+        "operationId": "getTransportationsForCurrentUserUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "pageNo",
+            "in": "query",
+            "description": "pageNo",
+            "required": false,
+            "type": "integer",
+            "default": 0,
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "pageSize",
+            "required": false,
+            "type": "integer",
+            "default": 10,
+            "format": "int32"
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "sortBy",
+            "required": false,
+            "type": "string",
+            "default": "id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TransportationDto"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/transportations/distance": {
+      "get": {
+        "tags": [
+          "transportation-controller"
+        ],
+        "summary": "getDistanceForPeriodForCurrentUser",
+        "operationId": "getDistanceForPeriodForCurrentUserUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "endDate",
+            "in": "query",
+            "description": "endDate",
+            "required": true,
+            "type": "string",
+            "format": "date"
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "description": "startDate",
+            "required": true,
+            "type": "string",
+            "format": "date"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/transportations/fuelConsumption": {
+      "get": {
+        "tags": [
+          "transportation-controller"
+        ],
+        "summary": "getFuelConsumptionForPeriodForCurrentUser",
+        "operationId": "getFuelConsumptionForPeriodForCurrentUserUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "endDate",
+            "in": "query",
+            "description": "endDate",
+            "required": true,
+            "type": "string",
+            "format": "date"
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "description": "startDate",
+            "required": true,
+            "type": "string",
+            "format": "date"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/transportations/fuelCost": {
+      "get": {
+        "tags": [
+          "transportation-controller"
+        ],
+        "summary": "getFuelCostForPeriodForCurrentUser",
+        "operationId": "getFuelCostForPeriodForCurrentUserUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "endDate",
+            "in": "query",
+            "description": "endDate",
+            "required": true,
+            "type": "string",
+            "format": "date"
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "description": "startDate",
+            "required": true,
+            "type": "string",
+            "format": "date"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/transportations/income": {
+      "get": {
+        "tags": [
+          "transportation-controller"
+        ],
+        "summary": "getIncomeForPeriodForCurrentUser",
+        "operationId": "getIncomeForPeriodForCurrentUserUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "endDate",
+            "in": "query",
+            "description": "endDate",
+            "required": true,
+            "type": "string",
+            "format": "date"
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "description": "startDate",
+            "required": true,
+            "type": "string",
+            "format": "date"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/transportations/period": {
+      "get": {
+        "tags": [
+          "transportation-controller"
+        ],
+        "summary": "getTransportationsByPeriodForCurrentUser",
+        "operationId": "getTransportationsByPeriodForCurrentUserUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "endDate",
+            "in": "query",
+            "description": "endDate",
+            "required": true,
+            "type": "string",
+            "format": "date"
+          },
+          {
+            "name": "pageNo",
+            "in": "query",
+            "description": "pageNo",
+            "required": false,
+            "type": "integer",
+            "default": 0,
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "pageSize",
+            "required": false,
+            "type": "integer",
+            "default": 10,
+            "format": "int32"
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "sortBy",
+            "required": false,
+            "type": "string",
+            "default": "id"
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "description": "startDate",
+            "required": true,
+            "type": "string",
+            "format": "date"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TransportationDto"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/transportations/{id}": {
+      "put": {
+        "tags": [
+          "transportation-controller"
+        ],
+        "summary": "updateTransportation",
+        "operationId": "updateTransportationUsingPUT",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "newTransportation",
+            "description": "newTransportation",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TransportationDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/TransportationDto"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/transportations/{transportationId}": {
+      "get": {
+        "tags": [
+          "transportation-controller"
+        ],
+        "summary": "getTransportationsById",
+        "operationId": "getTransportationsByIdUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "transportationId",
+            "in": "path",
+            "description": "transportationId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/TransportationDto"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "transportation-controller"
+        ],
+        "summary": "deleteTransportation",
+        "operationId": "deleteTransportationUsingDELETE",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "transportationId",
+            "in": "path",
+            "description": "transportationId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/users": {
+      "get": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "findByName",
+        "operationId": "findByNameUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/UserDto"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/users/register": {
+      "post": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "signUp",
+        "operationId": "signUpUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "user",
+            "description": "user",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/users/{id}": {
+      "get": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "findById",
+        "operationId": "findByIdUsingGET_1",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/UserDto"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "updateUser",
+        "operationId": "updateUserUsingPUT",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "newUser",
+            "description": "newUser",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/UserDto"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "deleteUser",
+        "operationId": "deleteUserUsingDELETE",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      }
+    },
+    "/error": {
+      "get": {
+        "tags": [
+          "basic-error-controller"
+        ],
+        "summary": "error",
+        "operationId": "errorUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      },
+      "head": {
+        "tags": [
+          "basic-error-controller"
+        ],
+        "summary": "error",
+        "operationId": "errorUsingHEAD",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "basic-error-controller"
+        ],
+        "summary": "error",
+        "operationId": "errorUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "basic-error-controller"
+        ],
+        "summary": "error",
+        "operationId": "errorUsingPUT",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "basic-error-controller"
+        ],
+        "summary": "error",
+        "operationId": "errorUsingDELETE",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      },
+      "options": {
+        "tags": [
+          "basic-error-controller"
+        ],
+        "summary": "error",
+        "operationId": "errorUsingOPTIONS",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "basic-error-controller"
+        ],
+        "summary": "error",
+        "operationId": "errorUsingPATCH",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      }
+    },
+    "/home": {
+      "get": {
+        "tags": [
+          "home-controller"
+        ],
+        "summary": "home",
+        "operationId": "homeUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      }
+    },
+    "/login": {
+      "post": {
+        "tags": [
+          "home-controller"
+        ],
+        "summary": "signIn",
+        "operationId": "signInUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "authenticationRequest",
+            "description": "authenticationRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AuthenticationDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": [
+              "global"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "securityDefinitions": {
+    "JWT": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "AddressDto": {
+      "type": "object",
+      "required": [
+        "street"
+      ],
+      "properties": {
+        "apartment": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "city": {
+          "$ref": "#/definitions/CityDto"
+        },
+        "house": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "phoneNumber": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        }
+      },
+      "title": "AddressDto"
+    },
+    "AuthenticationDto": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "title": "AuthenticationDto"
+    },
+    "CargoDto": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "loadApproach": {
+          "type": "string",
+          "enum": [
+            "FTL",
+            "LTL"
+          ]
+        },
+        "loadMethod": {
+          "type": "string",
+          "enum": [
+            "ABOVE",
+            "BEHIND",
+            "SIDE"
+          ]
+        },
+        "name": {
+          "type": "string"
+        },
+        "packaging": {
+          "type": "string",
+          "enum": [
+            "BAG",
+            "BOX",
+            "PALLET",
+            "TAPE"
+          ]
+        },
+        "size": {
+          "$ref": "#/definitions/SizeDto"
+        }
+      },
+      "title": "CargoDto"
+    },
+    "CityDto": {
+      "type": "object",
+      "properties": {
+        "country": {
+          "$ref": "#/definitions/CountryDto"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "title": "CityDto"
+    },
+    "CountryDto": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "title": "CountryDto"
+    },
+    "DeliveryDto": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "$ref": "#/definitions/AddressDto"
+        },
+        "date": {
+          "type": "string",
+          "format": "date"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "loadType": {
+          "type": "string",
+          "enum": [
+            "AUTOMATED",
+            "MANUAL"
+          ]
+        }
+      },
+      "title": "DeliveryDto"
+    },
+    "Email": {
+      "type": "object",
+      "properties": {
+        "attachment": {
+          "type": "string"
+        },
+        "msgBody": {
+          "type": "string"
+        },
+        "recipients": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "sender": {
+          "type": "string"
+        },
+        "subject": {
+          "type": "string"
+        }
+      },
+      "title": "Email"
+    },
+    "ModelAndView": {
+      "type": "object",
+      "properties": {
+        "empty": {
+          "type": "boolean"
+        },
+        "model": {
+          "type": "object"
+        },
+        "modelMap": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object"
+          }
+        },
+        "reference": {
+          "type": "boolean"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "ACCEPTED",
+            "ALREADY_REPORTED",
+            "BAD_GATEWAY",
+            "BAD_REQUEST",
+            "BANDWIDTH_LIMIT_EXCEEDED",
+            "CHECKPOINT",
+            "CONFLICT",
+            "CONTINUE",
+            "CREATED",
+            "DESTINATION_LOCKED",
+            "EXPECTATION_FAILED",
+            "FAILED_DEPENDENCY",
+            "FORBIDDEN",
+            "FOUND",
+            "GATEWAY_TIMEOUT",
+            "GONE",
+            "HTTP_VERSION_NOT_SUPPORTED",
+            "IM_USED",
+            "INSUFFICIENT_SPACE_ON_RESOURCE",
+            "INSUFFICIENT_STORAGE",
+            "INTERNAL_SERVER_ERROR",
+            "I_AM_A_TEAPOT",
+            "LENGTH_REQUIRED",
+            "LOCKED",
+            "LOOP_DETECTED",
+            "METHOD_FAILURE",
+            "METHOD_NOT_ALLOWED",
+            "MOVED_PERMANENTLY",
+            "MOVED_TEMPORARILY",
+            "MULTIPLE_CHOICES",
+            "MULTI_STATUS",
+            "NETWORK_AUTHENTICATION_REQUIRED",
+            "NON_AUTHORITATIVE_INFORMATION",
+            "NOT_ACCEPTABLE",
+            "NOT_EXTENDED",
+            "NOT_FOUND",
+            "NOT_IMPLEMENTED",
+            "NOT_MODIFIED",
+            "NO_CONTENT",
+            "OK",
+            "PARTIAL_CONTENT",
+            "PAYLOAD_TOO_LARGE",
+            "PAYMENT_REQUIRED",
+            "PERMANENT_REDIRECT",
+            "PRECONDITION_FAILED",
+            "PRECONDITION_REQUIRED",
+            "PROCESSING",
+            "PROXY_AUTHENTICATION_REQUIRED",
+            "REQUESTED_RANGE_NOT_SATISFIABLE",
+            "REQUEST_ENTITY_TOO_LARGE",
+            "REQUEST_HEADER_FIELDS_TOO_LARGE",
+            "REQUEST_TIMEOUT",
+            "REQUEST_URI_TOO_LONG",
+            "RESET_CONTENT",
+            "SEE_OTHER",
+            "SERVICE_UNAVAILABLE",
+            "SWITCHING_PROTOCOLS",
+            "TEMPORARY_REDIRECT",
+            "TOO_EARLY",
+            "TOO_MANY_REQUESTS",
+            "UNAUTHORIZED",
+            "UNAVAILABLE_FOR_LEGAL_REASONS",
+            "UNPROCESSABLE_ENTITY",
+            "UNSUPPORTED_MEDIA_TYPE",
+            "UPGRADE_REQUIRED",
+            "URI_TOO_LONG",
+            "USE_PROXY",
+            "VARIANT_ALSO_NEGOTIATES"
+          ]
+        },
+        "view": {
+          "$ref": "#/definitions/View"
+        },
+        "viewName": {
+          "type": "string"
+        }
+      },
+      "title": "ModelAndView"
+    },
+    "PaymentDto": {
+      "type": "object",
+      "properties": {
+        "date": {
+          "type": "string",
+          "format": "date"
+        },
+        "deadline": {
+          "type": "string",
+          "format": "date"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "paymentStatus": {
+          "type": "string",
+          "enum": [
+            "LATE",
+            "ON_TIME",
+            "OWE"
+          ]
+        },
+        "price": {
+          "type": "number"
+        },
+        "transportation": {
+          "$ref": "#/definitions/TransportationDto"
+        },
+        "user": {
+          "$ref": "#/definitions/SecureUserDto"
+        }
+      },
+      "title": "PaymentDto"
+    },
+    "RoleDto": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "role": {
+          "type": "string"
+        }
+      },
+      "title": "RoleDto"
+    },
+    "SecureUserDto": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "rating": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "SecureUserDto"
+    },
+    "SizeDto": {
+      "type": "object",
+      "properties": {
+        "depth": {
+          "type": "number"
+        },
+        "height": {
+          "type": "number"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "weight": {
+          "type": "number"
+        },
+        "width": {
+          "type": "number"
+        }
+      },
+      "title": "SizeDto"
+    },
+    "TransportationDto": {
+      "type": "object",
+      "properties": {
+        "cargo": {
+          "$ref": "#/definitions/CargoDto"
+        },
+        "distance": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "landing": {
+          "$ref": "#/definitions/DeliveryDto"
+        },
+        "loading": {
+          "$ref": "#/definitions/DeliveryDto"
+        },
+        "payment": {
+          "$ref": "#/definitions/PaymentDto"
+        },
+        "user": {
+          "$ref": "#/definitions/SecureUserDto"
+        }
+      },
+      "title": "TransportationDto"
+    },
+    "UserDto": {
+      "type": "object",
+      "required": [
+        "email",
+        "name"
+      ],
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "payments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PaymentDto"
+          }
+        },
+        "rating": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "roles": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/RoleDto"
+          }
+        },
+        "transportations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TransportationDto"
+          }
+        }
+      },
+      "title": "UserDto"
+    },
+    "View": {
+      "type": "object",
+      "properties": {
+        "contentType": {
+          "type": "string"
+        }
+      },
+      "title": "View"
+    }
+  }
+}
