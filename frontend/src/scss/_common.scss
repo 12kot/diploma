@@ -22,6 +22,20 @@ body {
   outline: none;
   appearance: none;
   -webkit-appearance: none;
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    border-radius: 16px;
+    background: var(--main-color-second);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 16px;
+    background: var(--main-color);
+  }
 }
 
 input {
@@ -113,7 +127,6 @@ a {
 b {
   font-size: 16px;
   font-weight: 700;
-  line-height: 20px;
 
   &.--big {
     font-size: 20px;
@@ -133,6 +146,34 @@ hr {
   border: 0;
   border-top: 1px solid var(--border-color);
   padding: 0;
+}
+
+.indicator {
+  background-color: var(--main-color-second);
+  padding: 2px 8px;
+  border-radius: 40px;
+  min-width: 23px;
+  width: fit-content;
+  font-weight: 600;
+  color: var(--main-color);
+  font-size: 12px;
+
+  svg {
+    width: 15px;
+    height: 15px;
+    fill: var(--main-color);
+  }
+
+  &.-red {
+    background-color: var(--red-second);
+    color: var(--red);
+
+    svg {
+      fill: var(--red);
+    }
+  }
+
+  @extend .flex-center;
 }
 
 .hr-container {
@@ -200,7 +241,11 @@ li {
   &-16 {
     font-size: 16px;
   }
-  
+
+  &-h1 {
+    font-size: 32px;
+  }
+
   &-secondary {
     color: var(--font-color-second);
   }
@@ -304,9 +349,15 @@ li {
   &-16 {
     left: 16px;
   }
-  
+
   &-32 {
     left: 32px;
+  }
+}
+
+.h {
+  &-full {
+    height: 100%;
   }
 }
 
@@ -319,18 +370,22 @@ li {
   &-m {
     width: 50%;
   }
-  
+
   &-full {
     width: 100%;
   }
-  
+
   &-content {
-    width: fit-content!important;
+    width: fit-content !important;
   }
 }
 
 .rounded {
   border-radius: 50%;
+
+  &-16 {
+    border-radius: 16px;
+  }
 }
 
 .main-color {
