@@ -97,7 +97,15 @@ button,
     background-color: #ffffff;
     color: var(--font-color);
 
+    svg {
+      fill: var(--font-color-second);
+    }
+
     box-shadow: none;
+  }
+  
+  &.--border {
+    border: 1px solid var(--border-color);
   }
 
   &.--filter {
@@ -216,6 +224,14 @@ hr {
   @extend .flex-center;
 }
 
+.grow {
+  flex-grow: 1;
+
+  &-2 {
+    flex-grow: 2;
+  }
+}
+
 .hr-container {
   position: relative;
 
@@ -261,6 +277,12 @@ h2 {
 
 li {
   list-style-type: none;
+}
+
+.p {
+  &-0 {
+    padding: 0;
+  }
 }
 
 .mt {
@@ -367,6 +389,18 @@ li {
   background-color: var(--main-color);
 }
 
+.z {
+  &--1 {
+    z-index: -1;
+  }
+  &-0 {
+    z-index: 0;
+  }
+
+  &-10 {
+    z-index: 10;
+  }
+}
 .top {
   &-0 {
     top: 0;
@@ -426,6 +460,11 @@ li {
   &-16 {
     border-radius: 16px;
   }
+}
+
+.square {
+  width: 32px;
+  height: 32px;
 }
 
 .main-color {

@@ -33,7 +33,7 @@ const filters = [
 
 const CompaniesFilters = () => {
   return (
-    <div className="account-container--companies -filters flex gap-mini">
+    <div className="account-container--companies -filters flex gap-mini w-full">
       {filters.map((item) => (
         <button className={`--filter ${item.id === 1 && `--active`}`} key={item.id}>
           <p>{item.name}</p>

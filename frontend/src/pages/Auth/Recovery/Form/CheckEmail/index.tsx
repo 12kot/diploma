@@ -1,7 +1,9 @@
-import { H1 } from 'components';
-import { useTranslation } from 'react-i18next';
-import mailImage from 'assets/img/image.png';
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+
+import { H1 } from 'components';
+
+import mailImage from 'assets/img/mail.png';
 import SVGBack from 'assets/svg/SVGBack';
 
 interface Props {

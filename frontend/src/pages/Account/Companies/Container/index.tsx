@@ -1,5 +1,31 @@
+import { useState } from 'react';
+
+import CompaniesFilters from '../components/Filters';
+import ActiveCompany from '../components/ActiveCompany';
+import CompaniesList from '../components/Company/List';
+
 import SVGEarth from 'assets/svg/SVGEarth';
 import SVGTrendingUp from 'assets/svg/SVGTrendingUp';
+
+const CompaniesContainer = () => {
+  const [openCompany, setOpenCompany] = useState<number>();
+
+  const handleOpenCompany = (id: number) => {
+    setOpenCompany(id);
+  }
+
+  return (
+    <div className={`account-container--companies ${openCompany && '--company-grid'}`}>
+      <div className="flex-col w-full --company-grid -first">
+        <CompaniesFilters />
+        <CompaniesList companies={companies} activeCompanyId={openCompany} setOpenCompane={handleOpenCompany} />
+      </div>
+      {openCompany && <ActiveCompany company={companies[openCompany - 1]} />}
+    </div>
+  );
+};
+
+export default CompaniesContainer;
 
 const companies = [
   {
@@ -73,27 +99,3 @@ const companies = [
     ],
   },
 ];
-
-const CompaniesList = () => {
-  return (
-    <section className="account-container--companies -list flex-col">
-      {companies.map((item) => (
-        <button className="--default item w-full flex-col gap-mini" key={item.id}>
-          <p>
-            <b>{item.name}</b>
-          </p>
-          <div className="flex gap-mini">
-            {item.labels.map((label) => (
-              <div className="flex gap-mini indicator -border" key={label.id}>
-                {label.icon}
-                <p>{label.name}</p>
-              </div>
-            ))}
-          </div>
-        </button>
-      ))}
-    </section>
-  );
-};
-
-export default CompaniesList;

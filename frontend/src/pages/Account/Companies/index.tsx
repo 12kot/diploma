@@ -1,12 +1,12 @@
-import { useAuth } from 'features';
-
 import AccountHolder from '../Holder';
-import CompaniesAdmin from './Admin';
+import CompaniesContainer from './Container';
 
 const Companies = () => {
-  const { user } = useAuth();
-
-  return <AccountHolder>{user?.role === 'admin' && <CompaniesAdmin />}</AccountHolder>;
+  return (
+    <AccountHolder>
+      <CompaniesContainer />
+    </AccountHolder>
+  );
 };
 
 export default Companies;

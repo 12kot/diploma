@@ -149,6 +149,10 @@
       border-bottom: 1px solid var(--border-color);
     }
 
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
     &.-list {
       overflow-y: auto;
 
@@ -163,11 +167,45 @@
         &:hover {
           background-color: var(--bg-color-second);
         }
-       
+
         &:active {
           scale: 1;
         }
       }
+
+      .active {
+        background-color: var(--bg-color-second);
+        border-right: 3px solid var(--main-color);
+      }
+    }
+
+    &.-company {
+      overflow-y: auto;
+      padding: 32px;
+      border-left: 1px solid var(--border-color);
+
+      .info {
+        img {
+          object-fit: cover;
+          width: 80px;
+          height: 80px;
+        }
+      }
+    }
+    
+    &.--company-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: repeat(5, 1fr);
+  
+      &.-first {
+        grid-area: 1 / 1 / 6 / 3;
+      }
+  
+      &.-company {
+        grid-area: 1 / 3 / 6 / 6;
+      }
     }
   }
+
 }
