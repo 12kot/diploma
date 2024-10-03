@@ -1,12 +1,14 @@
 import { useAuth } from 'features';
+
 import DashboardHolder from './Holder';
+import DashboardAdmin from './Admin/Dashboard';
 
 const Dashboard = () => {
   const { user } = useAuth();
 
   return (
     <DashboardHolder>
-      <div className='dashboard-container--form'>Dashboard</div>
+      {user?.role === 'admin' && <DashboardAdmin />}
     </DashboardHolder>
   );
 };

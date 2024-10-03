@@ -30,21 +30,27 @@
     ul {
       li {
         position: relative;
-        display: flex;
-        gap: var(--gap);
-
         padding: 16px 32px;
+        display: flex;
         align-items: center;
+        justify-content: space-between;
 
         transition: var(--transition);
-
 
         .active-indicator {
           display: none;
         }
 
-        a,
-        p {
+        .count-indicator {
+          background-color: var(--main-color-second);
+          padding: 2px 8px;
+          border-radius: 40px;
+          min-width: 23px;
+          font-weight: 600;
+          color: var(--main-color);
+        }
+
+        a {
           color: var(--font-color-second);
           font-size: 16px;
           font-weight: 500;

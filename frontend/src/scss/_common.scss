@@ -242,6 +242,10 @@ li {
   justify-content: center;
 }
 
+.align-center {
+  align-items: center;
+}
+
 .gap {
   gap: 16px;
 
@@ -251,6 +255,10 @@ li {
 
   &-mid {
     gap: 24px;
+  }
+
+  &-8 {
+    gap: 8px;
   }
 
   &-mini {
