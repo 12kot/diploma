@@ -28,7 +28,7 @@
     }
 
     ul {
-      li {
+      li a {
         position: relative;
         padding: 16px 32px;
         display: flex;
@@ -41,13 +41,10 @@
           display: none;
         }
 
-        a {
-          color: var(--font-color-second);
-          font-size: 16px;
-          font-weight: 500;
-
-          text-decoration: none;
-        }
+        color: var(--font-color-second);
+        font-size: 16px;
+        font-weight: 500;
+        text-decoration: none;
 
         &:hover {
           background-color: var(--main-color-second);
@@ -139,6 +136,37 @@
       canvas {
         width: 100% !important;
         height: auto !important;
+      }
+    }
+  }
+
+  &--companies {
+    grid-area: 1 / 2 / 6 / 7;
+
+    &.-filters {
+      overflow-x: auto;
+      padding: 16px 32px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    &.-list {
+      overflow-y: auto;
+
+      .item {
+        padding: 16px 32px;
+        justify-content: flex-start;
+        align-items: flex-start;
+        border-radius: 0;
+        border-bottom: 1px solid var(--border-color);
+        transition: var(--transition);
+
+        &:hover {
+          background-color: var(--bg-color-second);
+        }
+       
+        &:active {
+          scale: 1;
+        }
       }
     }
   }

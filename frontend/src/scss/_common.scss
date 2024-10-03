@@ -25,6 +25,7 @@ body {
 
   ::-webkit-scrollbar {
     width: 6px;
+    height: 6px;
   }
 
   ::-webkit-scrollbar-track {
@@ -86,7 +87,7 @@ button,
 
   &.--transparent {
     background-color: #ffffff;
-    border: 1px solid #eaeaea;
+    border: 1px solid var(--border-color);
     color: var(--font-color);
 
     box-shadow: var(--box-shadow);
@@ -99,9 +100,29 @@ button,
     box-shadow: none;
   }
 
+  &.--filter {
+    background-color: #ffffff;
+    color: var(--font-color-second);
+    box-shadow: none;
+    border: 1px solid var(--border-color);
+    font-weight: 500;
+
+    text-wrap: nowrap;
+
+    gap: 4px;
+
+    padding: 6px 10px;
+
+    &.--active {
+      background-color: var(--main-color);
+      border: 1px solid var(--border-colot-main);
+      color: var(--font-color-negative);
+    }
+  }
+
   &.--red {
     background-color: var(--red);
-    border: 1px solid #eaeaea;
+    border: 1px solid var(--border-color);
     color: var(--font-color-negative);
 
     box-shadow: 0px 2px 1px 0px #ffffff33 inset;
@@ -170,6 +191,25 @@ hr {
 
     svg {
       fill: var(--red);
+    }
+  }
+
+  &.-filter {
+    background-color: var(--bg-color-second);
+
+    &.-active {
+      background-color: var(--border-color-main);
+      color: var(--font-color-negative);
+    }
+  }
+
+  &.-border {
+    background-color: var(--bg-color-second);
+    border: 1px solid var(--border-color);
+    color: var(--font-color-second);
+
+    svg {
+      fill: var(--font-color-second);
     }
   }
 

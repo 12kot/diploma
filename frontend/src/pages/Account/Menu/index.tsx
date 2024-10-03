@@ -1,6 +1,6 @@
 import { useAuth } from 'features';
 
-import AdminMenu from '../Dashboard/Admin/Menu';
+import AdminMenu from './Admin';
 
 import SVGLogout from 'assets/svg/SVGLogout';
 

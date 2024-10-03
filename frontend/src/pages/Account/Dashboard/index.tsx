@@ -1,7 +1,7 @@
 import { useAuth } from 'features';
 
 import AccountHolder from '../Holder';
-import DashboardAdmin from './Admin/Dashboard';
+import DashboardAdmin from './Admin';
 
 const Dashboard = () => {
   const { user } = useAuth();

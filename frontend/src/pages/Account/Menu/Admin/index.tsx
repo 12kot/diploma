@@ -11,7 +11,7 @@ const navItems = [
   {
     id: 1,
     name: 'Dashboard',
-    path: '/',
+    path: '/dashboard',
     icon: <SVGDashboard />,
   },
   {
@@ -53,13 +53,15 @@ const AdminMenu = () => {
   return (
     <ul>
       {navItems.map((item) => (
-        <li className={`${item.id === 1 && 'active'}`} key={item.id}>
-          <div className="active-indicator" />
-          <div className="flex gap-8 align-center">
-            {item.icon}
-            <NavLink to="/">{item.name}</NavLink>
-          </div>
-          {item.count && <p className="indicator text-12 flex-center">{item.count}</p>}
+        <li key={item.id}>
+          <NavLink to={item.path}>
+            <div className="active-indicator" />
+            <div className="flex gap-8 align-center">
+              {item.icon}
+              <p>{item.name}</p>
+            </div>
+            {item.count && <p className="indicator text-12 flex-center">{item.count}</p>}
+          </NavLink>
         </li>
       ))}
     </ul>

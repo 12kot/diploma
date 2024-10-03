@@ -8,6 +8,7 @@ export const APP_ROUTES = {
     RECOVERY: '/recovery',
   },
   DASHBOARD: {
-    INDEX: '/dashboard'
+    INDEX: '/dashboard',
+    COMPANIES: '/companies'
   }
 };
