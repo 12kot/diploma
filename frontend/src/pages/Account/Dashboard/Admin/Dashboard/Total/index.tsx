@@ -12,7 +12,7 @@ const totalInfo = [
 
 const TotalInfo = () => {
   return (
-    <section className="dashboard-container--dashboard -total flex-between rounded-16">
+    <section className="account-container--dashboard -total flex-between rounded-16">
       {totalInfo.map((item) => (
         <div className="flex-col gap-mini" key={item.id}>
           <p className="text-12 text-secondary">{item.name}</p>

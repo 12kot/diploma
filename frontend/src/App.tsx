@@ -8,7 +8,7 @@ import { PublicRoutes, PrivateRoutes } from 'components';
 const Login = lazy(() => import('pages/Auth/Login'));
 const Registration = lazy(() => import('pages/Auth/Registration'));
 const Recovery = lazy(() => import('pages/Auth/Recovery'));
-const Dashboard = lazy(() => import('pages/Dashboard'));
+const Dashboard = lazy(() => import('pages/Account/Dashboard'));
 
 import './scss/App.scss';
 import i18n from './locales/config';

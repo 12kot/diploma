@@ -49,7 +49,7 @@ const navItems = [
   },
 ];
 
-const DashboardAdminMenu = () => {
+const AdminMenu = () => {
   return (
     <ul>
       {navItems.map((item) => (
@@ -66,4 +66,4 @@ const DashboardAdminMenu = () => {
   );
 };
 
-export default DashboardAdminMenu;
+export default AdminMenu;

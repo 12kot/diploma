@@ -5,7 +5,7 @@ import EarnedChart from './Earned';
 
 const DashboardCharts = () => {
   return (
-    <section className="dashboard-container--dashboard -charts">
+    <section className="account-container--dashboard -charts">
       <UsersChart />
       <OrdersChart />
       <LoaderChart />
