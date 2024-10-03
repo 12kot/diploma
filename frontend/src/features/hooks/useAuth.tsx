@@ -5,6 +5,7 @@ import { useUserAuthMutation } from 'store/api/authApi';
 
 interface IUser {
   token: string;
+  role: 'admin';
 }
 
 interface AuthContextType {
@@ -21,6 +22,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   useEffect(() => {
     //авторизация
+    setUser({ token: '', role: 'admin' });
   }, [authUser]);
 
   useEffect(() => {

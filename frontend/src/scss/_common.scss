@@ -182,6 +182,12 @@ li {
   list-style-type: none;
 }
 
+.mt {
+  &-8 {
+    margin-top: 8px;
+  }
+}
+
 .text {
   &-12 {
     font-size: 12px;
@@ -193,6 +199,10 @@ li {
 
   &-16 {
     font-size: 16px;
+  }
+  
+  &-secondary {
+    color: var(--font-color-second);
   }
 }
 
@@ -300,6 +310,10 @@ li {
 
   &-m {
     width: 50%;
+  }
+  
+  &-full {
+    width: 100%;
   }
   
   &-content {

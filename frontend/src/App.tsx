@@ -8,6 +8,7 @@ import { PublicRoutes, PrivateRoutes } from 'components';
 const Login = lazy(() => import('pages/Auth/Login'));
 const Registration = lazy(() => import('pages/Auth/Registration'));
 const Recovery = lazy(() => import('pages/Auth/Recovery'));
+const Dashboard = lazy(() => import('pages/Dashboard'));
 
 import './scss/App.scss';
 import i18n from './locales/config';
@@ -22,7 +23,9 @@ const App = () => {
           <Route path={APP_ROUTES.AUTH.REGISTRATION} element={<Registration />} />
           <Route path={APP_ROUTES.AUTH.RECOVERY} element={<Recovery />} />
         </Route>
-        <Route element={<PrivateRoutes />}></Route>
+        <Route element={<PrivateRoutes />}>
+          <Route path={APP_ROUTES.DASHBOARD.INDEX} element={<Dashboard />} />
+        </Route>
       </Routes>
     </AuthProvider>
   );

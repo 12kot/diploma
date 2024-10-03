@@ -1,8 +1,10 @@
 @import 'common';
 @import 'auth';
+@import 'dashboard';
 
 :root {
   --bg-color: #ffffff;
+  --bg-color-second: #F9FAFC;
 
   --main-color: #137547;
   --main-color-second: #e2edea;
@@ -19,4 +21,5 @@
   --red: #E42717;
 
   --transition: 0.5s;
+  --gap: 8px;
 }
