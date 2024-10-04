@@ -53,13 +53,13 @@
         .active-indicator {
           display: flex;
           position: absolute;
-          
+
           left: 0;
           top: 50%;
           transform: translate(0, -50%);
-          
+
           border-radius: 0 4px 4px 0;
-          
+
           width: 4px;
           height: 60%;
           background-color: var(--main-color);
@@ -68,7 +68,7 @@
         svg {
           fill: var(--main-color);
         }
-        
+
         a,
         p {
           color: var(--main-color);
@@ -104,6 +104,10 @@
 
       &:hover {
         background-color: var(--main-color-second);
+      }
+
+      &:active {
+        scale: 1;
       }
     }
   }
@@ -156,26 +160,38 @@
       overflow-y: auto;
 
       .item {
-        padding: 16px 32px;
-        justify-content: flex-start;
-        align-items: flex-start;
-        border-radius: 0;
-        border-bottom: 1px solid var(--border-color);
+        padding-right: 32px;
         transition: var(--transition);
+        border-bottom: 1px solid var(--border-color);
 
-        &:hover {
-          background-color: var(--bg-color-second);
+        &-link {
+          padding: 16px 0;
+          padding-left: 32px;
+          justify-content: flex-start;
+          align-items: flex-start;
+          border-radius: 0;
+          &:active {
+            scale: 1;
+          }
         }
 
-        &:active {
-          scale: 1;
+        &:hover {
+          button {
+            background-color: var(--bg-color-second);
+          }
+          
+          background-color: var(--bg-color-second);
         }
       }
 
       .active {
+        button {
+          background-color: var(--bg-color-second);
+          color: var(--main-color);
+        }
+        
         background-color: var(--bg-color-second);
         border-right: 3px solid var(--main-color);
-        color: var(--main-color);
       }
     }
 
@@ -270,7 +286,7 @@
             height: 100%;
             overflow-y: auto;
           }
-          
+
           &-actions {
             margin-left: auto;
           }

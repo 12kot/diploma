@@ -1,8 +1,13 @@
-import SVGEarth from 'assets/svg/SVGEarth';
-import SVGTrendingUp from 'assets/svg/SVGTrendingUp';
+import { useTranslation } from 'react-i18next';
+
 import { Labels } from 'components';
 
+import SVGEarth from 'assets/svg/SVGEarth';
+import SVGTrendingUp from 'assets/svg/SVGTrendingUp';
+
 const About = () => {
+  const { t } = useTranslation(['dashboard']);
+
   return (
     <div className="mt-16 pages-about flex-col gap">
       <section className="flex gap-mini">
@@ -16,20 +21,20 @@ const About = () => {
       <section className="flex gap pages-about-labels">
         <div className="flex-col gap-mini">
           <p>
-            <b>Carrier</b>
+            <b>{t('supervisores.active.about.carrier')}</b>
           </p>
           <Labels labels={labels} wrap />
         </div>
         <div className="flex-col gap-mini">
           <p>
-            <b>Personal</b>
+            <b>{t('supervisores.active.about.personal')}</b>
           </p>
           <Labels labels={labels2} wrap />
         </div>
       </section>
       <section className="flex-col gap-mini pages-about-info">
         <p>
-          <b>About</b>
+          <b>{t('supervisores.active.about.about')}</b>
         </p>
         <div className="pages-about-info">
           <p className="text-14">
@@ -52,8 +57,8 @@ const About = () => {
         </div>
       </section>
       <div className="flex gap-mini pages-about-actions">
-        {/* <button>Continue the supervisor's activity</button> */}
-        <button className="--red">Suspend the supervisor's activity</button>
+        {/* <button>{t('supervisores.active.about.continue')}</button> */}
+        <button className="--red">{t('supervisores.active.about.suspend')}</button>
       </div>
     </div>
   );

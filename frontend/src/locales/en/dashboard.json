@@ -1,0 +1,40 @@
+{
+  "greeting": {
+    "hello": "Welcome Back, {{name}}",
+    "traffic": "Measure your advertising ROI and track and report website traffic",
+    "generateReport": "Generate Report"
+  },
+  "total": {
+    "totalSupervisores": "Total supervisores",
+    "activeSupervisores": "Active supervisores",
+    "totalOrders": "Total orders",
+    "LastMonthOrders": "Last month orders",
+    "earned": "Earned",
+    "paidOut": "Paid out"
+  },
+
+  "charts": {
+    "dailyActiveUsers": "Daily Active Users",
+    "dailyOrders": "Daily orders",
+    "loaderPreview": "Loader Preview",
+    "earned": "Earned"
+  },
+
+  "supervisores": {
+    "active": {
+      "pages": {
+        "chat": "Chat",
+        "about": "About",
+        "analitics": "Analitics"
+      },
+
+      "about": {
+        "carrier": "Carrier",
+        "personal": "Personal",
+        "about": "About",
+        "suspend": "Suspend the supervisor's activity",
+        "continue": "Continue the supervisor's activity"
+      }
+    }
+  }
+}

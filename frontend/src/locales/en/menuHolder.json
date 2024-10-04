@@ -1,0 +1,16 @@
+{
+  "links": {
+    "dashboard": "Dashboard",
+    "supervisores": "Supervisores",
+    "savedSupervisores": "Saved supervisores",
+    "profile": "Profile",
+    "settings": "Settings",
+    "applications": "Applications"
+  },
+  "logOut": "Log Out",
+  "support": {
+    "customerSupport": "Customer Support",
+    "troubles": "Have any troubles wile using our system",
+    "contactUs": "Contact Us"
+  }
+}

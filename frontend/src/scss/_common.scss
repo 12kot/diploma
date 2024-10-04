@@ -54,6 +54,21 @@ p {
   font-family: 'Exo', sans-serif;
 }
 
+.clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  &-2 {
+    -webkit-line-clamp: 2;
+  }
+  
+  &-3 {
+    -webkit-line-clamp: 3;
+  }
+}
+
 button,
 .btn {
   background-color: var(--main-color);
@@ -290,6 +305,9 @@ li {
 }
 
 .weight {
+  &-400 {
+    font-weight: 400;
+  }
   &-500 {
     font-weight: 500;
   }
@@ -297,6 +315,16 @@ li {
 
 .nowrap {
   text-wrap: nowrap;
+}
+
+.mb {
+  &-8 {
+    margin-bottom: 8px;
+  }
+
+  &-16 {
+    margin-bottom: 16px;
+  }
 }
 
 .mt {
@@ -485,7 +513,7 @@ li {
   &-16 {
     border-radius: 16px;
   }
-  
+
   &-8 {
     border-radius: 8px;
   }

@@ -1,4 +1,5 @@
-import { Labels } from "components";
+import SVGFavorite from 'assets/svg/SVGFavorite';
+import { Labels } from 'components';
 
 interface Props {
   supervisores: {
@@ -19,15 +20,19 @@ const SupervisoresList = ({ supervisores, activeCompanyId, setOpenCompane }: Pro
   return (
     <section className="account-container--companies -list flex-col w-full">
       {supervisores.map((item) => (
-        <button
-          className={`--default item w-full flex-col gap-mini ${activeCompanyId === item.id && 'active'}`}
-          onClick={() => setOpenCompane(item.id)}
-          key={item.id}>
-          <p>
-            <b>{item.name}</b>
-          </p>
-          <Labels labels={item.labels} />
-        </button>
+        <div className={`flex-between item w-full align-center ${activeCompanyId === item.id && 'active'}`} key={item.id}>
+          <button
+            className="--default flex-col gap-mini w-full item-link h-full"
+            onClick={() => setOpenCompane(item.id)}>
+            <p>
+              <b>{item.name}</b>
+            </p>
+            <Labels labels={item.labels} />
+          </button>
+          <button className="--default --border square rounded p-0">
+            <SVGFavorite />
+          </button>
+        </div>
       ))}
     </section>
   );

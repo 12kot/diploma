@@ -1,31 +1,36 @@
 import { useState } from 'react';
+import { TFunction } from 'i18next';
+import { useTranslation } from 'react-i18next';
+
 import { useAuth } from 'features';
 
 import Chat from './components/Chat';
 import About from './components/About';
+import Analitics from './components/Analitics';
 
 import SVGAnalitics from 'assets/svg/SVGAnalitics';
 import SVGChat from 'assets/svg/SVGChat';
 import SVGInfo from 'assets/svg/SVGInfo';
-import Analitics from './components/Analitics';
 
-const pages: {
+interface IPage {
   name: string;
   icon: JSX.Element;
   value: 'chat' | 'about' | 'analitics';
-}[] = [
+}
+
+const pages = (t: TFunction<['dashboard'], undefined>): IPage[] => [
   {
-    name: 'Chat',
+    name: t('supervisores.active.pages.chat'),
     icon: <SVGChat />,
     value: 'chat',
   },
   {
-    name: 'About',
+    name: t('supervisores.active.pages.about'),
     icon: <SVGInfo />,
     value: 'about',
   },
   {
-    name: 'Analitics',
+    name: t('supervisores.active.pages.analitics'),
     icon: <SVGAnalitics />,
     value: 'analitics',
   },
@@ -33,6 +38,8 @@ const pages: {
 
 const Pages = () => {
   const { user } = useAuth();
+  const { t } = useTranslation(['dashboard']);
+
   const [activePage, setActivePage] = useState<'chat' | 'about' | 'analitics'>(
     user?.role === 'admin' ? 'chat' : 'about',
   );
@@ -40,7 +47,7 @@ const Pages = () => {
   return (
     <section className="flex-col pages">
       <div className="flex pages-header">
-        {pages.map((page, i) => (
+        {pages(t).map((page, i) => (
           <button
             key={i}
             className={`--default gap-mini w-full ${activePage === page.value && 'active'}`}

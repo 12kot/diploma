@@ -1,6 +1,10 @@
+import { useTranslation } from 'react-i18next';
+
 import { H2, LineChart } from 'components';
 
 const UsersChart = () => {
+  const { t } = useTranslation(['dashboard']);
+
   const data = {
     labels: ['Sep', '5', '9', '13', '17', '21', '25', '29', 'Oct'],
     datasets: [
@@ -12,7 +16,7 @@ const UsersChart = () => {
 
   return (
     <div className="chart flex-col gap-mini">
-      <H2>Daily Active Users</H2>
+      <H2>{t('charts.dailyActiveUsers')}</H2>
       <LineChart data={data} />
     </div>
   );
