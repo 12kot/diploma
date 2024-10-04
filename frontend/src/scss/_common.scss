@@ -103,7 +103,7 @@ button,
 
     box-shadow: none;
   }
-  
+
   &.--border {
     border: 1px solid var(--border-color);
   }
@@ -135,6 +135,10 @@ button,
 
     box-shadow: 0px 2px 1px 0px #ffffff33 inset;
     box-shadow: 0px -2px 1px 0px #00000033 inset;
+  }
+
+  &:disabled {
+    background-color: var(--main-color-second);
   }
 
   &:active {
@@ -282,6 +286,12 @@ li {
 .p {
   &-0 {
     padding: 0;
+  }
+}
+
+.weight {
+  &-500 {
+    font-weight: 500;
   }
 }
 
@@ -459,6 +469,10 @@ li {
 
   &-16 {
     border-radius: 16px;
+  }
+  
+  &-8 {
+    border-radius: 8px;
   }
 }
 

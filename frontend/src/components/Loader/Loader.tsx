@@ -1,5 +1,9 @@
 import styles from './styles.module.scss';
 
-export const Loader = () => {
-  return <div className={styles.loader}></div>;
+interface Props {
+  negative?: boolean;
+}
+
+export const Loader = ({ negative }: Props) => {
+  return <div className={`${styles.loader} ${negative && styles.negative}`}></div>;
 };

@@ -28,3 +28,8 @@
     transform: rotate(360deg);
   }
 }
+
+.negative {
+  border: 4px solid var(--font-color-negative)!important;
+  border-left-color: var(--main-color)!important;
+}
