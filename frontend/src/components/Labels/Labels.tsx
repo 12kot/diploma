@@ -1,4 +1,5 @@
 interface Props {
+  wrap?: boolean;
   labels: {
     id: number;
     icon: JSX.Element;
@@ -6,11 +7,11 @@ interface Props {
   }[];
 }
 
-const CompanyLabels = ({ labels }: Props) => {
+export const Labels = ({ labels, wrap }: Props) => {
   return (
-    <div className="flex gap-mini">
+    <div className={`flex gap-mini ${wrap && 'wrap'}`}>
       {labels.map((label) => (
-        <div className="flex gap-mini indicator -border" key={label.id}>
+        <div className="flex gap-mini indicator -border nowrap h-content" key={label.id}>
           {label.icon}
           <p>{label.name}</p>
         </div>
@@ -18,5 +19,3 @@ const CompanyLabels = ({ labels }: Props) => {
     </div>
   );
 };
-
-export default CompanyLabels;

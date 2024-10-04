@@ -1,7 +1,7 @@
-import CompanyLabels from '../Labels';
+import { Labels } from "components";
 
 interface Props {
-  companies: {
+  supervisores: {
     id: number;
     name: string;
     labels: {
@@ -15,10 +15,10 @@ interface Props {
   setOpenCompane: (id: number) => void;
 }
 
-const CompaniesList = ({ companies, activeCompanyId, setOpenCompane }: Props) => {
+const SupervisoresList = ({ supervisores, activeCompanyId, setOpenCompane }: Props) => {
   return (
     <section className="account-container--companies -list flex-col w-full">
-      {companies.map((item) => (
+      {supervisores.map((item) => (
         <button
           className={`--default item w-full flex-col gap-mini ${activeCompanyId === item.id && 'active'}`}
           onClick={() => setOpenCompane(item.id)}
@@ -26,11 +26,11 @@ const CompaniesList = ({ companies, activeCompanyId, setOpenCompane }: Props) =>
           <p>
             <b>{item.name}</b>
           </p>
-          <CompanyLabels labels={item.labels} />
+          <Labels labels={item.labels} />
         </button>
       ))}
     </section>
   );
 };
 
-export default CompaniesList;
+export default SupervisoresList;

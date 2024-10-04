@@ -53,13 +53,13 @@
         .active-indicator {
           display: flex;
           position: absolute;
-
+          
           left: 0;
           top: 50%;
           transform: translate(0, -50%);
-
+          
           border-radius: 0 4px 4px 0;
-
+          
           width: 4px;
           height: 60%;
           background-color: var(--main-color);
@@ -68,7 +68,7 @@
         svg {
           fill: var(--main-color);
         }
-
+        
         a,
         p {
           color: var(--main-color);
@@ -147,10 +147,10 @@
       border-bottom: 1px solid var(--border-color);
     }
 
-     ::-webkit-scrollbar {
-       width: 0;
-       height: 0;
-     }
+    ::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+    }
 
     &.-list {
       overflow-y: auto;
@@ -175,6 +175,7 @@
       .active {
         background-color: var(--bg-color-second);
         border-right: 3px solid var(--main-color);
+        color: var(--main-color);
       }
     }
 
@@ -196,6 +197,11 @@
       .pages {
         height: 100%;
         overflow: hidden;
+
+        ::-webkit-scrollbar {
+          width: 6px;
+          height: 6px;
+        }
 
         &-header {
           border-top: 1px solid var(--border-color);
@@ -227,11 +233,6 @@
           height: 100%;
           overflow: auto;
 
-          ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
-          }
-
           &-messages {
             flex: 1;
             overflow-y: auto;
@@ -243,10 +244,10 @@
             max-width: 55%;
             margin-left: auto;
             border-radius: 8px;
-            
+
             &-read {
               margin-left: auto;
-              color: #BCBDCD; 
+              color: #bcbdcd;
             }
 
             &.-he {
@@ -254,7 +255,36 @@
               margin-right: auto;
             }
           }
+        }
 
+        &-about {
+          height: 100%;
+          overflow-y: auto;
+
+          &-labels {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+          }
+
+          &-info {
+            height: 100%;
+            overflow-y: auto;
+          }
+          
+          &-actions {
+            margin-left: auto;
+          }
+        }
+
+        &-analitics {
+          padding-right: 16px;
+
+          overflow-y: auto;
+          overflow-x: hidden;
+
+          display: grid;
+          grid-template-columns: repeat(2, minmax(100px, 1fr));
+          grid-gap: calc(var(--gap) * 2);
         }
       }
     }

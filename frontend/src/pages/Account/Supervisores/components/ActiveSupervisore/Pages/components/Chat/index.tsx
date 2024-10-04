@@ -24,7 +24,7 @@ const Chat = () => {
   };
 
   return (
-    <div className="mt-8 flex-col flex-between gap pages-chat">
+    <div className="mt-16 flex-col flex-between gap pages-chat">
       <div className="flex-col gap-mini pages-chat-messages">
         <p className="flex-center text-secondary text-14 weight-500">Today</p>
         {messages.map((message) => (

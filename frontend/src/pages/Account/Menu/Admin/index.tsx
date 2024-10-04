@@ -6,24 +6,25 @@ import SVGFavorite from 'assets/svg/SVGFavorite';
 import SVGUser from 'assets/svg/SVGUser';
 import SVGSettings from 'assets/svg/SVGSettings';
 import SVGInbox from 'assets/svg/SVGInbox';
+import { APP_ROUTES } from 'features';
 
 const navItems = [
   {
     id: 1,
     name: 'Dashboard',
-    path: '/dashboard',
+    path: APP_ROUTES.DASHBOARD.INDEX,
     icon: <SVGDashboard />,
   },
   {
     id: 2,
-    name: 'Companies',
-    path: '/companies',
+    name: 'Supervisores',
+    path: APP_ROUTES.DASHBOARD.SUPERVISORES,
     icon: <SVGCompany />,
     count: 255,
   },
   {
     id: 3,
-    name: 'Saved companies',
+    name: 'Saved superviso',
     path: '/favorite',
     icon: <SVGFavorite />,
     count: 8,

@@ -1,13 +1,13 @@
 import { useState } from 'react';
 
-import CompaniesFilters from '../components/Filters';
-import ActiveCompany from '../components/ActiveCompany';
-import CompaniesList from '../components/Company/List';
+import SupervisoresFilters from '../components/Filters';
+import ActiveSupervisore from '../components/ActiveSupervisore';
+import SupervisoresList from '../components/Supervisore/List';
 
 import SVGEarth from 'assets/svg/SVGEarth';
 import SVGTrendingUp from 'assets/svg/SVGTrendingUp';
 
-const CompaniesContainer = () => {
+const SupervisoresContainer = () => {
   const [openCompany, setOpenCompany] = useState<number>();
 
   const handleOpenCompany = (id: number) => {
@@ -17,17 +17,17 @@ const CompaniesContainer = () => {
   return (
     <div className={`account-container--companies ${openCompany && '--company-grid'}`}>
       <div className="flex-col w-full --company-grid -first">
-        <CompaniesFilters />
-        <CompaniesList companies={companies} activeCompanyId={openCompany} setOpenCompane={handleOpenCompany} />
+        <SupervisoresFilters />
+        <SupervisoresList supervisores={supervisores} activeCompanyId={openCompany} setOpenCompane={handleOpenCompany} />
       </div>
-      {openCompany && <ActiveCompany company={companies[openCompany - 1]} />}
+      {openCompany && <ActiveSupervisore supervisore={supervisores[openCompany - 1]} />}
     </div>
   );
 };
 
-export default CompaniesContainer;
+export default SupervisoresContainer;
 
-const companies = [
+const supervisores = [
   {
     id: 1,
     name: 'Hanna Cargo Limited',

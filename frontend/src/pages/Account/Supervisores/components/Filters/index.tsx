@@ -31,7 +31,7 @@ const filters = [
   },
 ];
 
-const CompaniesFilters = () => {
+const SupervisoresFilters = () => {
   return (
     <div className="account-container--companies -filters flex gap-mini w-full">
       {filters.map((item) => (
@@ -44,4 +44,4 @@ const CompaniesFilters = () => {
   );
 };
 
-export default CompaniesFilters;
+export default SupervisoresFilters;

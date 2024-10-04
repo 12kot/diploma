@@ -7,7 +7,7 @@ const totalInfo = [
   { id: 3, name: 'Total orders', value: '3945' },
   { id: 4, name: 'Last month orders', value: '1203', percentage: -10 },
   { id: 5, name: 'Earned', value: '1.3M', percentage: 25 },
-  { id: 5, name: 'Paid out', value: '4.6M', percentage: 13 },
+  { id: 6, name: 'Paid out', value: '4.6M', percentage: 13 },
 ];
 
 const TotalInfo = () => {

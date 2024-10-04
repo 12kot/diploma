@@ -295,9 +295,17 @@ li {
   }
 }
 
+.nowrap {
+  text-wrap: nowrap;
+}
+
 .mt {
   &-8 {
     margin-top: 8px;
+  }
+
+  &-16 {
+    margin-top: 16px;
   }
 }
 
@@ -425,6 +433,10 @@ li {
   }
 }
 
+.wrap {
+  flex-wrap: wrap;
+}
+
 .left {
   &-0 {
     left: 0;
@@ -442,6 +454,9 @@ li {
 .h {
   &-full {
     height: 100%;
+  }
+  &-content {
+    height: fit-content;
   }
 }
 

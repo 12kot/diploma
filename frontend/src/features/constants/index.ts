@@ -9,6 +9,6 @@ export const APP_ROUTES = {
   },
   DASHBOARD: {
     INDEX: '/dashboard',
-    COMPANIES: '/companies'
+    SUPERVISORES: '/supervisores'
   }
 };

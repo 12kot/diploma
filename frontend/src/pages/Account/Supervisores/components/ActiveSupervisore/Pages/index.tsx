@@ -2,10 +2,12 @@ import { useState } from 'react';
 import { useAuth } from 'features';
 
 import Chat from './components/Chat';
+import About from './components/About';
 
 import SVGAnalitics from 'assets/svg/SVGAnalitics';
 import SVGChat from 'assets/svg/SVGChat';
 import SVGInfo from 'assets/svg/SVGInfo';
+import Analitics from './components/Analitics';
 
 const pages: {
   name: string;
@@ -50,7 +52,9 @@ const Pages = () => {
           </button>
         ))}
       </div>
-      <Chat />
+      {activePage === 'chat' && <Chat />}
+      {activePage === 'about' && <About />}
+      {activePage === 'analitics' && <Analitics />}
     </section>
   );
 };
