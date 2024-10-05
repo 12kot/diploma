@@ -4,6 +4,7 @@ import { ActiveUser, UsersList, UsersFilters } from 'components/DashboardUsers';
 
 import SVGEarth from 'assets/svg/SVGEarth';
 import SVGTrendingUp from 'assets/svg/SVGTrendingUp';
+import { IUser } from 'features';
 
 const ForwardersContainer = () => {
   const [openCompany, setOpenCompany] = useState<number>();
@@ -25,7 +26,7 @@ const ForwardersContainer = () => {
 
 export default ForwardersContainer;
 
-const supervisores = [
+const supervisores: IUser[] = [
   {
     id: 1,
     name: 'Hanna Cargo Limited',

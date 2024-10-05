@@ -1,16 +1,10 @@
-import SVGFavorite from 'assets/svg/SVGFavorite';
+import { IUser } from 'features';
 import { Labels } from 'components';
 
+import SVGFavorite from 'assets/svg/SVGFavorite';
+
 interface Props {
-  forwarders: {
-    id: number;
-    name: string;
-    labels: {
-      id: number;
-      icon: JSX.Element;
-      name: string;
-    }[];
-  }[];
+  forwarders: IUser[];
 
   activeCompanyId?: number;
   setOpenCompane: (id: number) => void;

@@ -1,10 +1,8 @@
+import { ILabel } from "features";
+
 interface Props {
   wrap?: boolean;
-  labels: {
-    id: number;
-    icon: JSX.Element;
-    name: string;
-  }[];
+  labels: ILabel[];
 }
 
 export const Labels = ({ labels, wrap }: Props) => {

@@ -27,8 +27,8 @@ const navItems = (t: TFunction<['menuHolder'], undefined>) => [
   },
   {
     id: 3,
-    name: t('menuHolder:links.savedForwarders'),
-    path: '/favorite',
+    name: t('menuHolder:links.drivers'),
+    path: APP_ROUTES.DASHBOARD.DRIVERS,
     icon: <SVGFavorite />,
     count: 8,
   },

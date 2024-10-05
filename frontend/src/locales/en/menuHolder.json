@@ -2,6 +2,7 @@
   "links": {
     "dashboard": "Dashboard",
     "forwarders": "Forwarders",
+    "drivers": "Drivers",
     "savedForwarders": "Saved forwarders",
     "profile": "Profile",
     "settings": "Settings",

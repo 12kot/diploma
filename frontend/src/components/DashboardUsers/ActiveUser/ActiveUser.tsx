@@ -1,19 +1,13 @@
-import tilesImage from 'assets/img/tiles.png';
+import { IUser } from 'features';
 
 import { ActiveUserPages } from './Pages';
 import { UserName } from './Name/UserName';
 import { UserLabels } from './UserLabels/UserLabels';
 
+import tilesImage from 'assets/img/tiles.png';
+
 interface Props {
-  forwarder: {
-    id: number;
-    name: string;
-    labels: {
-      id: number;
-      icon: JSX.Element;
-      name: string;
-    }[];
-  };
+  forwarder: IUser;
 }
 
 export const ActiveUser = ({ forwarder }: Props) => {

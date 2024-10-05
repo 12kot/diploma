@@ -1,8 +1,8 @@
-import SVGLink from "assets/svg/SVGLink";
-import { H1 } from "components";
+import SVGLink from 'assets/svg/SVGLink';
+import { H1 } from 'components';
 
 interface Props {
-    name: string
+  name: string;
 }
 
 export const UserName = ({ name }: Props) => {

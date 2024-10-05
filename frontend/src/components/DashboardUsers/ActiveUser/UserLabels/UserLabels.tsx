@@ -1,14 +1,11 @@
 import { Labels } from 'components';
+import { ILabel } from 'features';
 
 import SVGShare from 'assets/svg/SVGShare';
 import SVGFavorite from 'assets/svg/SVGFavorite';
 
 interface Props {
-  labels: {
-    id: number;
-    icon: JSX.Element;
-    name: string;
-  }[];
+  labels: ILabel[]
 }
 
 export const UserLabels = ({ labels }: Props) => {
