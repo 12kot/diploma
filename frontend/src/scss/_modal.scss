@@ -10,6 +10,9 @@
   transition: 0.3s;
   
   &__content {
+    max-width: 70vw;
+    max-height: 70vh;
+
     transition: 0.3s;
     background-color: var(--bg-color);
     padding: 16px 32px;

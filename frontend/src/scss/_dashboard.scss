@@ -143,6 +143,18 @@
   }
 }
 
+.contact-us__modal {
+  min-width: 280px;
+  width: fit-content;
+
+  &__send {
+    max-width: 448px;
+    img {
+      width: 100px;
+    }
+  }
+}
+
 .users-container {
   grid-area: 1 / 2 / 6 / 7;
 

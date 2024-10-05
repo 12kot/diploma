@@ -1,3 +1,9 @@
 {
-  "or": "OR"
+  "or": "OR",
+  "buttons": {
+    "cancel": "Cancel",
+    "send": "Send",
+    "sendAnotherRequest": "Send another request",
+    "continueWorking": "Continue working"
+  }
 }

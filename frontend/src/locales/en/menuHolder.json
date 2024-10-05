@@ -12,6 +12,12 @@
   "support": {
     "customerSupport": "Customer Support",
     "troubles": "Have any troubles wile using our system",
-    "contactUs": "Contact Us"
+    "contactUs": "Contact Us",
+
+    "modal": {
+      "whatHappened": "What happened",
+      "describeProblem": "Describe your problem in detail here",
+      "sendSuccessText": "Your request has been successfully sent. Our manager will process it in the near future and will return to you with an answer"
+    }
   }
 }
