@@ -141,7 +141,6 @@
       }
     }
   }
-
 }
 
 .users-container {
@@ -181,7 +180,7 @@
         button {
           background-color: var(--bg-color-second);
         }
-        
+
         background-color: var(--bg-color-second);
       }
     }
@@ -189,9 +188,11 @@
     .active {
       button {
         background-color: var(--bg-color-second);
-        color: var(--main-color);
+        b {
+          color: var(--main-color);
+        }
       }
-      
+
       background-color: var(--bg-color-second);
       border-right: 3px solid var(--main-color);
     }

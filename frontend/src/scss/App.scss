@@ -1,10 +1,12 @@
 @import 'common';
 @import 'auth';
 @import 'dashboard';
+@import 'modal';
 
 :root {
   --bg-color: #ffffff;
   --bg-color-second: #F9FAFC;
+  --bg-color-modal: #12121c80;
 
   --main-color: #137547;
   --main-color-second: #e2edea;
