@@ -20,17 +20,17 @@ interface IPage {
 
 const pages = (t: TFunction<['dashboard'], undefined>): IPage[] => [
   {
-    name: t('supervisores.active.pages.chat'),
+    name: t('forwarders.active.pages.chat'),
     icon: <SVGChat />,
     value: 'chat',
   },
   {
-    name: t('supervisores.active.pages.about'),
+    name: t('forwarders.active.pages.about'),
     icon: <SVGInfo />,
     value: 'about',
   },
   {
-    name: t('supervisores.active.pages.analitics'),
+    name: t('forwarders.active.pages.analitics'),
     icon: <SVGAnalitics />,
     value: 'analitics',
   },

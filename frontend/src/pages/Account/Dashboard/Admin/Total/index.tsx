@@ -5,8 +5,8 @@ import SVGArrowUp from 'assets/svg/SVGArrowUp';
 import SVGArrowDown from 'assets/svg/SVGArrowDown';
 
 const totalInfo = (t: TFunction<["dashboard"], undefined>) => [
-  { id: 1, name: t('dashboard:total.totalSupervisores'), value: '255', percentage: 100 },
-  { id: 2, name: t('dashboard:total.activeSupervisores'), value: '240', percentage: 30 },
+  { id: 1, name: t('dashboard:total.totalForwarders'), value: '255', percentage: 100 },
+  { id: 2, name: t('dashboard:total.activeForwarders'), value: '240', percentage: 30 },
   { id: 3, name: t('dashboard:total.totalOrders'), value: '3945' },
   { id: 4, name: t('dashboard:total.LastMonthOrders'), value: '1203', percentage: -10 },
   { id: 5, name: t('dashboard:total.earned'), value: '4.6M', percentage: 25 },

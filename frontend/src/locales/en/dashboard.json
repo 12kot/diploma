@@ -5,8 +5,8 @@
     "generateReport": "Generate Report"
   },
   "total": {
-    "totalSupervisores": "Total supervisores",
-    "activeSupervisores": "Active supervisores",
+    "totalForwarders": "Total forwarders",
+    "activeForwarders": "Active forwarders",
     "totalOrders": "Total orders",
     "LastMonthOrders": "Last month orders",
     "earned": "Earned",
@@ -20,7 +20,7 @@
     "earned": "Earned"
   },
 
-  "supervisores": {
+  "forwarders": {
     "active": {
       "pages": {
         "chat": "Chat",
@@ -32,8 +32,8 @@
         "carrier": "Carrier",
         "personal": "Personal",
         "about": "About",
-        "suspend": "Suspend the supervisor's activity",
-        "continue": "Continue the supervisor's activity"
+        "suspend": "Suspend the forwarder's activity",
+        "continue": "Continue the forwarder's activity"
       }
     }
   }

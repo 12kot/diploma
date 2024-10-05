@@ -2,7 +2,7 @@ import SVGFavorite from 'assets/svg/SVGFavorite';
 import { Labels } from 'components';
 
 interface Props {
-  supervisores: {
+  forwarders: {
     id: number;
     name: string;
     labels: {
@@ -16,10 +16,10 @@ interface Props {
   setOpenCompane: (id: number) => void;
 }
 
-export const UsersList = ({ supervisores, activeCompanyId, setOpenCompane }: Props) => {
+export const UsersList = ({ forwarders, activeCompanyId, setOpenCompane }: Props) => {
   return (
     <section className="users-container-list flex-col w-full">
-      {supervisores.map((item) => (
+      {forwarders.map((item) => (
         <div className={`flex-between item w-full align-center ${activeCompanyId === item.id && 'active'}`} key={item.id}>
           <button
             className="--default flex-col gap-mini w-full item-link h-full"

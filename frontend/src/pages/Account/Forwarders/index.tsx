@@ -1,10 +1,10 @@
 import AccountHolder from '../Holder';
-import SupervisoresContainer from './Container';
+import ForwardersContainer from './Container';
 
 const Companies = () => {
   return (
     <AccountHolder>
-      <SupervisoresContainer />
+      <ForwardersContainer />
     </AccountHolder>
   );
 };

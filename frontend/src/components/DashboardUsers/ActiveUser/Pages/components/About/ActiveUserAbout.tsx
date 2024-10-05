@@ -21,20 +21,20 @@ export const ActiveUserAbout = () => {
       <section className="flex gap pages-about-labels">
         <div className="flex-col gap-mini">
           <p>
-            <b>{t('supervisores.active.about.carrier')}</b>
+            <b>{t('forwarders.active.about.carrier')}</b>
           </p>
           <Labels labels={labels} wrap />
         </div>
         <div className="flex-col gap-mini">
           <p>
-            <b>{t('supervisores.active.about.personal')}</b>
+            <b>{t('forwarders.active.about.personal')}</b>
           </p>
           <Labels labels={labels2} wrap />
         </div>
       </section>
       <section className="flex-col gap-mini pages-about-info">
         <p>
-          <b>{t('supervisores.active.about.about')}</b>
+          <b>{t('forwarders.active.about.about')}</b>
         </p>
         <div className="pages-about-info">
           <p className="text-14">
@@ -57,8 +57,8 @@ export const ActiveUserAbout = () => {
         </div>
       </section>
       <div className="flex gap-mini pages-about-actions">
-        {/* <button>{t('supervisores.active.about.continue')}</button> */}
-        <button className="--red">{t('supervisores.active.about.suspend')}</button>
+        {/* <button>{t('forwarders.active.about.continue')}</button> */}
+        <button className="--red">{t('forwarders.active.about.suspend')}</button>
       </div>
     </div>
   );

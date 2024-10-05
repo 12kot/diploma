@@ -20,14 +20,14 @@ const navItems = (t: TFunction<['menuHolder'], undefined>) => [
   },
   {
     id: 2,
-    name: t('menuHolder:links.supervisores'),
-    path: APP_ROUTES.DASHBOARD.SUPERVISORES,
+    name: t('menuHolder:links.forwarders'),
+    path: APP_ROUTES.DASHBOARD.FORWARDERS,
     icon: <SVGCompany />,
     count: 255,
   },
   {
     id: 3,
-    name: t('menuHolder:links.savedSupervisores'),
+    name: t('menuHolder:links.savedForwarders'),
     path: '/favorite',
     icon: <SVGFavorite />,
     count: 8,

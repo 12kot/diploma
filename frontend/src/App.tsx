@@ -9,7 +9,7 @@ const Login = lazy(() => import('pages/Auth/Login'));
 const Registration = lazy(() => import('pages/Auth/Registration'));
 const Recovery = lazy(() => import('pages/Auth/Recovery'));
 const Dashboard = lazy(() => import('pages/Account/Dashboard'));
-const Supervisores = lazy(() => import('pages/Account/Supervisores'));
+const Forwarders = lazy(() => import('pages/Account/Forwarders'));
 
 import './scss/App.scss';
 import i18n from './locales/config';
@@ -26,7 +26,7 @@ const App = () => {
         </Route>
         <Route element={<PrivateRoutes />}>
           <Route path={APP_ROUTES.DASHBOARD.INDEX} element={<Dashboard />} />
-          <Route path={APP_ROUTES.DASHBOARD.SUPERVISORES} element={<Supervisores />} />
+          <Route path={APP_ROUTES.DASHBOARD.FORWARDERS} element={<Forwarders />} />
         </Route>
       </Routes>
     </AuthProvider>

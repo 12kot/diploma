@@ -5,7 +5,7 @@ import { ActiveUser, UsersList, UsersFilters } from 'components/DashboardUsers';
 import SVGEarth from 'assets/svg/SVGEarth';
 import SVGTrendingUp from 'assets/svg/SVGTrendingUp';
 
-const SupervisoresContainer = () => {
+const ForwardersContainer = () => {
   const [openCompany, setOpenCompany] = useState<number>();
 
   const handleOpenCompany = (id: number) => {
@@ -16,14 +16,14 @@ const SupervisoresContainer = () => {
     <div className={`users-container ${openCompany && '--users-grid'}`}>
       <div className="flex-col w-full --users-grid -first">
         <UsersFilters />
-        <UsersList supervisores={supervisores} activeCompanyId={openCompany} setOpenCompane={handleOpenCompany} />
+        <UsersList forwarders={supervisores} activeCompanyId={openCompany} setOpenCompane={handleOpenCompany} />
       </div>
-      {openCompany && <ActiveUser supervisore={supervisores[openCompany - 1]} />}
+      {openCompany && <ActiveUser forwarder={supervisores[openCompany - 1]} />}
     </div>
   );
 };
 
-export default SupervisoresContainer;
+export default ForwardersContainer;
 
 const supervisores = [
   {

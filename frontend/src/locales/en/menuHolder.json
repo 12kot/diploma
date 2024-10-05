@@ -1,8 +1,8 @@
 {
   "links": {
     "dashboard": "Dashboard",
-    "supervisores": "Supervisores",
-    "savedSupervisores": "Saved supervisores",
+    "forwarders": "Forwarders",
+    "savedForwarders": "Saved forwarders",
     "profile": "Profile",
     "settings": "Settings",
     "applications": "Applications"
