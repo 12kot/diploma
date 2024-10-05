@@ -29,7 +29,8 @@
       "pages": {
         "chat": "Chat",
         "about": "About",
-        "analitics": "Analitics"
+        "analitics": "Analitics",
+        "orders": "Orders"
       },
 
       "about": {

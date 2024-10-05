@@ -16,7 +16,7 @@ export const ActiveUser = ({ user }: Props) => {
       <div className="flex-col gap-mid h-full">
         <UserLabels labels={user.labels} />
         <UserName name={user.name} isBanned={user.isBanned} role={user.role} />
-        <ActiveUserPages />
+        <ActiveUserPages activeUser={user} />
       </div>
       <img src={tilesImage} loading="lazy" className="top-0 left-0 absolute w-full z--1" />
     </div>

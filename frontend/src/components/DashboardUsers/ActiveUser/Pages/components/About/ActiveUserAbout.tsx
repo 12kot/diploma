@@ -1,16 +1,18 @@
 import { useTranslation } from 'react-i18next';
 
 import { Labels } from 'components';
-import { IUserRole } from 'features';
+import { IUserRole, useAuth } from 'features';
 
 import SVGEarth from 'assets/svg/SVGEarth';
 import SVGTrendingUp from 'assets/svg/SVGTrendingUp';
 
 interface Props {
   role: IUserRole;
+  isBanned: boolean;
 }
 
-export const ActiveUserAbout = ({ role }: Props) => {
+export const ActiveUserAbout = ({ role, isBanned }: Props) => {
+  const { user } = useAuth();
   const { t } = useTranslation(['dashboard']);
 
   return (
@@ -61,12 +63,17 @@ export const ActiveUserAbout = ({ role }: Props) => {
           </p>
         </div>
       </section>
-      <div className="flex gap-mini pages-about-actions">
-        {/* <button>{t(role === 'forwarder' ? 'actions.forwarders.continue' : 'actions.drivers.continue')}</button> */}
-        <button className="--red">
-          {t(role === 'forwarder' ? 'actions.forwarders.suspend' : 'actions.drivers.suspend')}
-        </button>
-      </div>
+      {user?.role === 'admin' && (
+        <div className="flex gap-mini pages-about-actions">
+          {isBanned ? (
+            <button>{t(role === 'forwarder' ? 'actions.forwarders.continue' : 'actions.drivers.continue')}</button>
+          ) : (
+            <button className="--red">
+              {t(role === 'forwarder' ? 'actions.forwarders.suspend' : 'actions.drivers.suspend')}
+            </button>
+          )}
+        </div>
+      )}
     </div>
   );
 };

@@ -1,11 +1,12 @@
 import React, { createContext, useContext, useMemo, ReactNode, useEffect, useCallback } from 'react';
+import { IUserRole } from 'features/types';
 
 import { useLocalStorage } from './useLocalStorage';
 import { useUserAuthMutation } from 'store/api/authApi';
 
 interface IUser {
   token: string;
-  role: 'admin';
+  role: IUserRole;
 }
 
 interface AuthContextType {
