@@ -1,7 +1,7 @@
 import AccountHolder from '../Holder';
 import ForwardersContainer from './Container';
 
-const Companies = () => {
+const Forwarders = () => {
   return (
     <AccountHolder>
       <ForwardersContainer />
@@ -9,4 +9,4 @@ const Companies = () => {
   );
 };
 
-export default Companies;
+export default Forwarders;

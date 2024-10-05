@@ -6,10 +6,10 @@ import { APP_ROUTES } from 'features';
 
 import SVGDashboard from 'assets/svg/SVGDashboard';
 import SVGCompany from 'assets/svg/SVGCompany';
-import SVGFavorite from 'assets/svg/SVGFavorite';
 import SVGUser from 'assets/svg/SVGUser';
 import SVGSettings from 'assets/svg/SVGSettings';
 import SVGInbox from 'assets/svg/SVGInbox';
+import SVGCar from 'assets/svg/SVGCar';
 
 const navItems = (t: TFunction<['menuHolder'], undefined>) => [
   {
@@ -29,7 +29,7 @@ const navItems = (t: TFunction<['menuHolder'], undefined>) => [
     id: 3,
     name: t('menuHolder:links.drivers'),
     path: APP_ROUTES.DASHBOARD.DRIVERS,
-    icon: <SVGFavorite />,
+    icon: <SVGCar />,
     count: 8,
   },
   {

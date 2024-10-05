@@ -1,11 +1,16 @@
 import { useTranslation } from 'react-i18next';
 
 import { Labels } from 'components';
+import { IUserRole } from 'features';
 
 import SVGEarth from 'assets/svg/SVGEarth';
 import SVGTrendingUp from 'assets/svg/SVGTrendingUp';
 
-export const ActiveUserAbout = () => {
+interface Props {
+  role: IUserRole;
+}
+
+export const ActiveUserAbout = ({ role }: Props) => {
   const { t } = useTranslation(['dashboard']);
 
   return (
@@ -57,8 +62,10 @@ export const ActiveUserAbout = () => {
         </div>
       </section>
       <div className="flex gap-mini pages-about-actions">
-        {/* <button>{t('forwarders.active.about.continue')}</button> */}
-        <button className="--red">{t('forwarders.active.about.suspend')}</button>
+        {/* <button>{t(role === 'forwarder' ? 'actions.forwarders.continue' : 'actions.drivers.continue')}</button> */}
+        <button className="--red">
+          {t(role === 'forwarder' ? 'actions.forwarders.suspend' : 'actions.drivers.suspend')}
+        </button>
       </div>
     </div>
   );

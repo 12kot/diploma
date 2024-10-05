@@ -2,32 +2,45 @@ import { IUser } from 'features';
 import { Labels } from 'components';
 
 import SVGFavorite from 'assets/svg/SVGFavorite';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
-  forwarders: IUser[];
+  users: IUser[];
 
-  activeCompanyId?: number;
-  setOpenCompane: (id: number) => void;
+  activeUserId?: number;
+  setOpenUser: (id: number) => void;
 }
 
-export const UsersList = ({ forwarders, activeCompanyId, setOpenCompane }: Props) => {
+export const UsersList = ({ users, activeUserId, setOpenUser }: Props) => {
   return (
     <section className="users-container-list flex-col w-full">
-      {forwarders.map((item) => (
-        <div className={`flex-between item w-full align-center ${activeCompanyId === item.id && 'active'}`} key={item.id}>
-          <button
-            className="--default flex-col gap-mini w-full item-link h-full"
-            onClick={() => setOpenCompane(item.id)}>
-            <p>
-              <b>{item.name}</b>
-            </p>
-            <Labels labels={item.labels} />
-          </button>
-          <button className="--default --border square rounded p-0">
-            <SVGFavorite />
-          </button>
-        </div>
+      {users.map((user) => (
+        <User key={user.id} activeUserId={activeUserId} setOpenUser={setOpenUser} {...user} />
       ))}
     </section>
+  );
+};
+
+interface UserProps extends IUser {
+  activeUserId?: number;
+  setOpenUser: (id: number) => void;
+}
+
+const User = ({ activeUserId, id, setOpenUser, name, labels, isBanned }: UserProps) => {
+  const { t } = useTranslation('dashboard');
+
+  return (
+    <div className={`flex-between item w-full align-center ${activeUserId === id && 'active'}`}>
+      <button className="--default flex-col gap-mini w-full item-link h-full" onClick={() => setOpenUser(id)}>
+        <span className="flex gap-mini align-center">
+          <b>{name}</b>
+          {isBanned && <p className="indicator -red">{t('common.banned', { date: '23.09.2024' })}</p>}
+        </span>
+        <Labels labels={labels} />
+      </button>
+      <button className="--default --border square rounded p-0">
+        <SVGFavorite />
+      </button>
+    </div>
   );
 };

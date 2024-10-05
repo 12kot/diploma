@@ -1,12 +1,12 @@
 import { useState } from 'react';
 
 import { ActiveUser, UsersList, UsersFilters } from 'components/DashboardUsers';
-import { IUser } from 'features';
 
 import SVGEarth from 'assets/svg/SVGEarth';
 import SVGTrendingUp from 'assets/svg/SVGTrendingUp';
+import { IUser } from 'features';
 
-const ForwardersContainer = () => {
+const DriversContainer = () => {
   const [openUser, setOpenUser] = useState<number>();
 
   const handleOpenUser = (id: number) => {
@@ -24,14 +24,14 @@ const ForwardersContainer = () => {
   );
 };
 
-export default ForwardersContainer;
+export default DriversContainer;
 
 const supervisores: IUser[] = [
   {
     id: 1,
     isBanned: false,
-    name: 'Hanna Cargo Limited',
-    role: 'forwarder',
+    name: 'Hanna Driver Limited',
+    role: 'driver',
     labels: [
       {
         id: 1,
@@ -48,8 +48,8 @@ const supervisores: IUser[] = [
   {
     id: 2,
     isBanned: false,
-    name: 'Nikitoshas LCD',
-    role: 'forwarder',
+    name: 'Nikitoshas LCD Driver',
+    role: 'driver',
     labels: [
       {
         id: 1,
@@ -71,8 +71,8 @@ const supervisores: IUser[] = [
   {
     id: 3,
     isBanned: true,
-    name: 'Company name 1',
-    role: 'forwarder',
+    name: 'Driver name 1',
+    role: 'driver',
     labels: [
       {
         id: 1,
@@ -83,9 +83,9 @@ const supervisores: IUser[] = [
   },
   {
     id: 4,
-    isBanned: true,
-    name: 'Company name 2',
-    role: 'forwarder',
+    isBanned: false,
+    name: 'Driver name 2',
+    role: 'driver',
     labels: [
       {
         id: 1,
@@ -97,8 +97,8 @@ const supervisores: IUser[] = [
   {
     id: 5,
     isBanned: true,
-    name: 'Company name 3',
-    role: 'forwarder',
+    name: 'Driver name 3',
+    role: 'driver',
     labels: [
       {
         id: 1,

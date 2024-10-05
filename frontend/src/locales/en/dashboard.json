@@ -1,4 +1,8 @@
 {
+  "common": {
+    "banned": "Banned: {{date}}"
+  },
+
   "greeting": {
     "hello": "Welcome Back, {{name}}",
     "traffic": "Measure your advertising ROI and track and report website traffic",
@@ -31,10 +35,19 @@
       "about": {
         "carrier": "Carrier",
         "personal": "Personal",
-        "about": "About",
-        "suspend": "Suspend the forwarder's activity",
-        "continue": "Continue the forwarder's activity"
+        "about": "About"
       }
+    }
+  },
+
+  "actions": {
+    "forwarders": {
+      "suspend": "Suspend the forwarder's activity",
+      "continue": "Continue the forwarder's activity"
+    },
+    "drivers": {
+      "suspend": "Suspend the driver's activity",
+      "continue": "Continue the driver's activity"
     }
   }
 }
