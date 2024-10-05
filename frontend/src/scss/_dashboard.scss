@@ -308,7 +308,7 @@
       }
 
       &-analitics {
-        padding-right: 16px;
+        padding-right: 4px;
 
         overflow-y: auto;
         overflow-x: hidden;
@@ -316,6 +316,13 @@
         display: grid;
         grid-template-columns: repeat(2, minmax(100px, 1fr));
         grid-gap: calc(var(--gap) * 2);
+      }
+      
+      &-active-order {
+        padding-right: 4px;
+
+        overflow-y: auto;
+        overflow-x: hidden;
       }
     }
   }

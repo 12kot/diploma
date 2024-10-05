@@ -32,10 +32,10 @@ const User = ({ activeUserId, id, setOpenUser, name, labels, isBanned }: UserPro
   return (
     <div className={`flex-between item w-full align-center ${activeUserId === id && 'active'}`}>
       <button className="--default flex-col gap-mini w-full item-link h-full" onClick={() => setOpenUser(id)}>
-        <span className="flex gap-mini align-center">
+        <div className="flex gap-mini align-center">
           <b>{name}</b>
           {isBanned && <p className="indicator -red">{t('common.banned', { date: '23.09.2024' })}</p>}
-        </span>
+        </div>
         <Labels labels={labels} />
       </button>
       <button className="--default --border square rounded p-0">

@@ -8,7 +8,9 @@
     "settings": "Settings",
     "applications": "Applications"
   },
+  
   "logOut": "Log Out",
+
   "support": {
     "customerSupport": "Customer Support",
     "troubles": "Have any troubles wile using our system",

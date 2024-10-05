@@ -8,6 +8,7 @@
     "traffic": "Measure your advertising ROI and track and report website traffic",
     "generateReport": "Generate Report"
   },
+
   "total": {
     "totalForwarders": "Total forwarders",
     "activeForwarders": "Active forwarders",
@@ -24,19 +25,37 @@
     "earned": "Earned"
   },
 
-  "forwarders": {
-    "active": {
-      "pages": {
-        "chat": "Chat",
-        "about": "About",
-        "analitics": "Analitics",
-        "orders": "Orders"
-      },
+  "pages": {
+    "list": {
+      "chat": "Chat",
+      "about": "About",
+      "analitics": "Analitics",
+      "orders": "Orders"
+    },
 
-      "about": {
-        "carrier": "Carrier",
-        "personal": "Personal",
-        "about": "About"
+    "about": {
+      "carrier": "Carrier",
+      "personal": "Personal",
+      "about": "About"
+    },
+
+    "orders": {
+      "userInfo": "User Info",
+      "cargoInfo": "Cargo Info",
+      "id": "Id",
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "status": "Status",
+      "typeOfPackaging": "Type of packaging",
+      "receivingAddress": "Receiving address",
+      "unloadingAddress": "Unloading address",
+      "price": "Price",
+
+      "indicator": {
+        "loading": "Loading",
+        "closed": "Closed",
+        "way": "In the way"
       }
     }
   },

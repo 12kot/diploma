@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 import { IUser, IUserRole, useAuth } from 'features';
 
+import { Orders } from './components/Orders';
 import { ActiveUserChat } from './components/Chat';
 import { ActiveUserAbout } from './components/About';
 import { AcriveUserAnalitics } from './components/Analitics';
@@ -25,28 +26,28 @@ interface IPage {
 
 const pages = (t: TFunction<['dashboard'], undefined>): IPage[] => [
   {
-    name: t('forwarders.active.pages.chat'),
+    name: t('pages.list.chat'),
     icon: <SVGChat />,
     value: 'chat',
     sees: ['admin', 'forwarder', 'driver'],
     has: ['admin', 'forwarder', 'driver'],
   },
   {
-    name: t('forwarders.active.pages.about'),
+    name: t('pages.list.about'),
     icon: <SVGInfo />,
     value: 'about',
     sees: ['admin', 'forwarder', 'driver'],
     has: ['admin', 'forwarder', 'driver'],
   },
   {
-    name: t('forwarders.active.pages.analitics'),
+    name: t('pages.list.analitics'),
     icon: <SVGAnalitics />,
     value: 'analitics',
     sees: ['admin'],
     has: ['forwarder', 'driver'],
   },
   {
-    name: t('forwarders.active.pages.orders'),
+    name: t('pages.list.orders'),
     icon: <SVGCar />,
     value: 'orders',
     sees: ['admin', 'forwarder'],
@@ -77,6 +78,7 @@ export const ActiveUserPages = ({ activeUser }: Props) => {
       {activePage === 'chat' && <ActiveUserChat />}
       {activePage === 'about' && <ActiveUserAbout role={activeUser.role} isBanned={activeUser.isBanned} />}
       {activePage === 'analitics' && <AcriveUserAnalitics />}
+      {activePage === 'orders' && <Orders />}
     </section>
   );
 };

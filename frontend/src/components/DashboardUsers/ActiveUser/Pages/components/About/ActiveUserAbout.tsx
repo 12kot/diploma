@@ -28,20 +28,20 @@ export const ActiveUserAbout = ({ role, isBanned }: Props) => {
       <section className="flex gap pages-about-labels">
         <div className="flex-col gap-mini">
           <p>
-            <b>{t('forwarders.active.about.carrier')}</b>
+            <b>{t('pages.about.carrier')}</b>
           </p>
           <Labels labels={labels} wrap />
         </div>
         <div className="flex-col gap-mini">
           <p>
-            <b>{t('forwarders.active.about.personal')}</b>
+            <b>{t('pages.about.personal')}</b>
           </p>
           <Labels labels={labels2} wrap />
         </div>
       </section>
       <section className="flex-col gap-mini pages-about-info">
         <p>
-          <b>{t('forwarders.active.about.about')}</b>
+          <b>{t('pages.about.about')}</b>
         </p>
         <div className="pages-about-info">
           <p className="text-14">
