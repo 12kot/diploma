@@ -4,9 +4,9 @@ import { useTranslation } from 'react-i18next';
 
 import { useAuth } from 'features';
 
-import Chat from './components/Chat';
-import About from './components/About';
-import Analitics from './components/Analitics';
+import { ActiveUserChat } from './components/Chat';
+import { ActiveUserAbout } from './components/About';
+import { AcriveUserAnalitics } from './components/Analitics';
 
 import SVGAnalitics from 'assets/svg/SVGAnalitics';
 import SVGChat from 'assets/svg/SVGChat';
@@ -36,7 +36,7 @@ const pages = (t: TFunction<['dashboard'], undefined>): IPage[] => [
   },
 ];
 
-const Pages = () => {
+export const ActiveUserPages = () => {
   const { user } = useAuth();
   const { t } = useTranslation(['dashboard']);
 
@@ -59,11 +59,9 @@ const Pages = () => {
           </button>
         ))}
       </div>
-      {activePage === 'chat' && <Chat />}
-      {activePage === 'about' && <About />}
-      {activePage === 'analitics' && <Analitics />}
+      {activePage === 'chat' && <ActiveUserChat />}
+      {activePage === 'about' && <ActiveUserAbout />}
+      {activePage === 'analitics' && <AcriveUserAnalitics />}
     </section>
   );
 };
-
-export default Pages;

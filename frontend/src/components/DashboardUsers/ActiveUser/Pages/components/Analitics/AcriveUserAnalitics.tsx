@@ -1,6 +1,6 @@
 import EarnedChart from 'pages/Account/Dashboard/Admin/Charts/Earned';
 
-const Analitics = () => {
+export const AcriveUserAnalitics = () => {
   return (
     <div className="mt-16 pages-analitics flex-col gap">
       <EarnedChart />
@@ -11,5 +11,3 @@ const Analitics = () => {
     </div>
   );
 };
-
-export default Analitics;

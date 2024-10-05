@@ -16,9 +16,9 @@ interface Props {
   setOpenCompane: (id: number) => void;
 }
 
-const SupervisoresList = ({ supervisores, activeCompanyId, setOpenCompane }: Props) => {
+export const UsersList = ({ supervisores, activeCompanyId, setOpenCompane }: Props) => {
   return (
-    <section className="account-container--companies -list flex-col w-full">
+    <section className="users-container-list flex-col w-full">
       {supervisores.map((item) => (
         <div className={`flex-between item w-full align-center ${activeCompanyId === item.id && 'active'}`} key={item.id}>
           <button
@@ -37,5 +37,3 @@ const SupervisoresList = ({ supervisores, activeCompanyId, setOpenCompane }: Pro
     </section>
   );
 };
-
-export default SupervisoresList;

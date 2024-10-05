@@ -5,7 +5,7 @@ import { Labels } from 'components';
 import SVGEarth from 'assets/svg/SVGEarth';
 import SVGTrendingUp from 'assets/svg/SVGTrendingUp';
 
-const About = () => {
+export const ActiveUserAbout = () => {
   const { t } = useTranslation(['dashboard']);
 
   return (
@@ -63,8 +63,6 @@ const About = () => {
     </div>
   );
 };
-
-export default About;
 
 const labels = [
   {

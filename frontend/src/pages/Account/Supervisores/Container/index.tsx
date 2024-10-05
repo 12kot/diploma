@@ -1,8 +1,6 @@
 import { useState } from 'react';
 
-import SupervisoresFilters from '../components/Filters';
-import ActiveSupervisore from '../components/ActiveSupervisore';
-import SupervisoresList from '../components/Supervisore/List';
+import { ActiveUser, UsersList, UsersFilters } from 'components/DashboardUsers';
 
 import SVGEarth from 'assets/svg/SVGEarth';
 import SVGTrendingUp from 'assets/svg/SVGTrendingUp';
@@ -15,12 +13,12 @@ const SupervisoresContainer = () => {
   }
 
   return (
-    <div className={`account-container--companies ${openCompany && '--company-grid'}`}>
-      <div className="flex-col w-full --company-grid -first">
-        <SupervisoresFilters />
-        <SupervisoresList supervisores={supervisores} activeCompanyId={openCompany} setOpenCompane={handleOpenCompany} />
+    <div className={`users-container ${openCompany && '--users-grid'}`}>
+      <div className="flex-col w-full --users-grid -first">
+        <UsersFilters />
+        <UsersList supervisores={supervisores} activeCompanyId={openCompany} setOpenCompane={handleOpenCompany} />
       </div>
-      {openCompany && <ActiveSupervisore supervisore={supervisores[openCompany - 1]} />}
+      {openCompany && <ActiveUser supervisore={supervisores[openCompany - 1]} />}
     </div>
   );
 };

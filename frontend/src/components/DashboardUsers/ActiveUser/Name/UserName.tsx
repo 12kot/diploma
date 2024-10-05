@@ -5,7 +5,7 @@ interface Props {
     name: string
 }
 
-const CompanyName = ({ name }: Props) => {
+export const UserName = ({ name }: Props) => {
   return (
     <section className="flex-between gap align-center">
       <div className="flex gap info align-center">
@@ -18,5 +18,3 @@ const CompanyName = ({ name }: Props) => {
     </section>
   );
 };
-
-export default CompanyName;

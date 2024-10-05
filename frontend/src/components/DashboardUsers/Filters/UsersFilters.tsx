@@ -31,9 +31,9 @@ const filters = [
   },
 ];
 
-const SupervisoresFilters = () => {
+export const UsersFilters = () => {
   return (
-    <div className="account-container--companies -filters flex gap-mini w-full">
+    <div className="users-container-filters flex gap-mini w-full">
       {filters.map((item) => (
         <button className={`--filter ${item.id === 1 && `--active`}`} key={item.id}>
           <p>{item.name}</p>
@@ -43,5 +43,3 @@ const SupervisoresFilters = () => {
     </div>
   );
 };
-
-export default SupervisoresFilters;

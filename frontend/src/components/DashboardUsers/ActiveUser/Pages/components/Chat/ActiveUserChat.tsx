@@ -14,7 +14,7 @@ const messages = [
   { id: 2, text: 'Thanks for the order! It was a pleasure to work with you too!', type: 'he', time: '12:38' },
 ];
 
-const Chat = () => {
+export const ActiveUserChat = () => {
   const [value, setValue] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -46,5 +46,3 @@ const Chat = () => {
     </div>
   );
 };
-
-export default Chat;

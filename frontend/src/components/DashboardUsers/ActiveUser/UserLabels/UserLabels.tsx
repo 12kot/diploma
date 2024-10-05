@@ -11,7 +11,7 @@ interface Props {
   }[];
 }
 
-const SupervisoresLabels = ({ labels }: Props) => {
+export const UserLabels = ({ labels }: Props) => {
   return (
     <section className="flex-between align-center">
       <Labels labels={labels} />
@@ -26,5 +26,3 @@ const SupervisoresLabels = ({ labels }: Props) => {
     </section>
   );
 };
-
-export default SupervisoresLabels;

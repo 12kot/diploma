@@ -142,181 +142,182 @@
     }
   }
 
-  &--companies {
-    grid-area: 1 / 2 / 6 / 7;
+}
 
-    &.-filters {
-      overflow-x: auto;
-      padding: 16px 32px;
+.users-container {
+  grid-area: 1 / 2 / 6 / 7;
+
+  &-filters {
+    overflow-x: auto;
+    padding: 16px 32px;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+
+  &-list {
+    overflow-y: auto;
+
+    .item {
+      padding-right: 32px;
+      transition: var(--transition);
       border-bottom: 1px solid var(--border-color);
+
+      &-link {
+        padding: 16px 0;
+        padding-left: 32px;
+        justify-content: flex-start;
+        align-items: flex-start;
+        border-radius: 0;
+        &:active {
+          scale: 1;
+        }
+      }
+
+      &:hover {
+        button {
+          background-color: var(--bg-color-second);
+        }
+        
+        background-color: var(--bg-color-second);
+      }
     }
 
-    ::-webkit-scrollbar {
-      width: 0;
-      height: 0;
+    .active {
+      button {
+        background-color: var(--bg-color-second);
+        color: var(--main-color);
+      }
+      
+      background-color: var(--bg-color-second);
+      border-right: 3px solid var(--main-color);
+    }
+  }
+
+  &.-user {
+    padding: 32px;
+    border-left: 1px solid var(--border-color);
+
+    max-height: 100%;
+    overflow: hidden;
+
+    .info {
+      img {
+        object-fit: cover;
+        width: 80px;
+        height: 80px;
+      }
     }
 
-    &.-list {
-      overflow-y: auto;
+    .pages {
+      height: 100%;
+      overflow: hidden;
 
-      .item {
-        padding-right: 32px;
-        transition: var(--transition);
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+
+      &-header {
+        border-top: 1px solid var(--border-color);
         border-bottom: 1px solid var(--border-color);
 
-        &-link {
-          padding: 16px 0;
-          padding-left: 32px;
-          justify-content: flex-start;
-          align-items: flex-start;
+        button {
+          color: var(--font-color-second);
           border-radius: 0;
+
+          svg {
+            width: 20px;
+          }
+
           &:active {
             scale: 1;
           }
         }
 
-        &:hover {
-          button {
-            background-color: var(--bg-color-second);
-          }
-          
-          background-color: var(--bg-color-second);
-        }
-      }
-
-      .active {
-        button {
-          background-color: var(--bg-color-second);
+        .active {
+          background-color: var(--main-color-second);
           color: var(--main-color);
-        }
-        
-        background-color: var(--bg-color-second);
-        border-right: 3px solid var(--main-color);
-      }
-    }
-
-    &.-company {
-      padding: 32px;
-      border-left: 1px solid var(--border-color);
-
-      max-height: 100%;
-      overflow: hidden;
-
-      .info {
-        img {
-          object-fit: cover;
-          width: 80px;
-          height: 80px;
+          svg {
+            fill: var(--main-color);
+          }
         }
       }
 
-      .pages {
+      &-chat {
         height: 100%;
-        overflow: hidden;
+        overflow: auto;
 
-        ::-webkit-scrollbar {
-          width: 6px;
-          height: 6px;
-        }
-
-        &-header {
-          border-top: 1px solid var(--border-color);
-          border-bottom: 1px solid var(--border-color);
-
-          button {
-            color: var(--font-color-second);
-            border-radius: 0;
-
-            svg {
-              width: 20px;
-            }
-
-            &:active {
-              scale: 1;
-            }
-          }
-
-          .active {
-            background-color: var(--main-color-second);
-            color: var(--main-color);
-            svg {
-              fill: var(--main-color);
-            }
-          }
-        }
-
-        &-chat {
-          height: 100%;
-          overflow: auto;
-
-          &-messages {
-            flex: 1;
-            overflow-y: auto;
-          }
-
-          &-message {
-            padding: 8px 12px;
-            background-color: var(--bg-color-second);
-            max-width: 55%;
-            margin-left: auto;
-            border-radius: 8px;
-
-            &-read {
-              margin-left: auto;
-              color: #bcbdcd;
-            }
-
-            &.-he {
-              margin-left: 0;
-              margin-right: auto;
-            }
-          }
-        }
-
-        &-about {
-          height: 100%;
+        &-messages {
+          flex: 1;
           overflow-y: auto;
-
-          &-labels {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-          }
-
-          &-info {
-            height: 100%;
-            overflow-y: auto;
-          }
-
-          &-actions {
-            margin-left: auto;
-          }
         }
 
-        &-analitics {
-          padding-right: 16px;
+        &-message {
+          padding: 8px 12px;
+          background-color: var(--bg-color-second);
+          max-width: 55%;
+          margin-left: auto;
+          border-radius: 8px;
 
-          overflow-y: auto;
-          overflow-x: hidden;
+          &-read {
+            margin-left: auto;
+            color: #bcbdcd;
+          }
 
+          &.-he {
+            margin-left: 0;
+            margin-right: auto;
+          }
+        }
+      }
+
+      &-about {
+        height: 100%;
+        overflow-y: auto;
+
+        &-labels {
           display: grid;
-          grid-template-columns: repeat(2, minmax(100px, 1fr));
-          grid-gap: calc(var(--gap) * 2);
+          grid-template-columns: repeat(2, 1fr);
         }
+
+        &-info {
+          height: 100%;
+          overflow-y: auto;
+        }
+
+        &-actions {
+          margin-left: auto;
+        }
+      }
+
+      &-analitics {
+        padding-right: 16px;
+
+        overflow-y: auto;
+        overflow-x: hidden;
+
+        display: grid;
+        grid-template-columns: repeat(2, minmax(100px, 1fr));
+        grid-gap: calc(var(--gap) * 2);
       }
     }
+  }
 
-    &.--company-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      grid-template-rows: repeat(5, 1fr);
+  &.--users-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
 
-      &.-first {
-        grid-area: 1 / 1 / 6 / 3;
-      }
+    &.-first {
+      grid-area: 1 / 1 / 6 / 3;
+    }
 
-      &.-company {
-        grid-area: 1 / 3 / 6 / 6;
-      }
+    &.-user {
+      grid-area: 1 / 3 / 6 / 6;
     }
   }
 }
