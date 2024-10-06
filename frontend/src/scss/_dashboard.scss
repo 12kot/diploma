@@ -476,15 +476,26 @@
 
     max-height: 220px;
   }
-  
+
   &-modal {
-    max-width: 420px!important;
+    max-width: 420px !important;
     overflow: hidden;
-    
+
     &-content {
       padding-right: 16px;
       overflow-y: auto;
-      max-width: 420px!important;
+      max-width: 420px !important;
     }
   }
+}
+
+.user-edit-modal {
+  width: 420px;
+  overflow: hidden;
+
+  form {
+    height: 100%;
+    overflow: auto;
+  }
+
 }
