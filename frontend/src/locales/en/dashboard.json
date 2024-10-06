@@ -75,7 +75,8 @@
   },
 
   "editProfile": {
-    "edit": "Edit {{name}} Profile"
+    "edit": "Edit {{name}} Profile",
+    "create": "Create User"
   },
 
   "actions": {

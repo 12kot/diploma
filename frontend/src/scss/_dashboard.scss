@@ -26,7 +26,9 @@
     }
 
     ul {
-      li a {
+      li a,
+      li button {
+        border-radius: 0;
         position: relative;
         padding: 16px 32px;
         display: flex;
@@ -44,7 +46,7 @@
         font-weight: 500;
         text-decoration: none;
 
-        &:hover  {
+        &:hover {
           background-color: var(--main-color-second);
         }
       }
@@ -490,8 +492,13 @@
 }
 
 .user-edit-modal {
-  width: 420px;
+  width: 440px;
   overflow: hidden;
+
+  ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
 
   form {
     height: 100%;
@@ -512,9 +519,8 @@
     }
 
     &-active {
-      background-color: var(--main-color-second)!important;
-      color: var(--main-color)!important;
+      background-color: var(--main-color-second) !important;
+      color: var(--main-color) !important;
     }
   }
-
 }

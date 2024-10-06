@@ -1,15 +1,12 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { useAuth } from 'features';
-
-import AdminMenu from './Admin';
+import { MenuHandler } from './Container';
 import ContactUsModal from './ContactUs';
 
 import SVGLogout from 'assets/svg/SVGLogout';
 
 const AccountMenu = () => {
-  const { user } = useAuth();
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const { t } = useTranslation(['menuHolder']);
 
@@ -20,7 +17,7 @@ const AccountMenu = () => {
   return (
     <nav className="account-container--menu">
       <ContactUsModal isOpen={isModalOpen} setIsOpen={handleOpenModal} />
-      {user?.role === 'admin' && <AdminMenu />}
+      <MenuHandler />
 
       <section className="account-container--menu__end">
         <div className="account-container--menu__support flex-center">
