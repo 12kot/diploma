@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { getOrderStatusText } from 'features/utils/orderStatus';
+import { useEscapeKey, getOrderStatusText } from 'features';
 
 import SVGBack from 'assets/svg/SVGBack';
 
@@ -10,6 +10,8 @@ interface Props {
 
 export const ActiveOrder = ({ setActiveOrder }: Props) => {
   const { t } = useTranslation('dashboard');
+
+  useEscapeKey(() => setActiveOrder(null));
 
   return (
     <div className="flex-col gap wrap">
