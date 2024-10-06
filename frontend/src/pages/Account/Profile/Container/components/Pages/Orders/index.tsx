@@ -1,8 +1,28 @@
 import { useState } from 'react';
 
 import { IOrder } from 'features';
-import { ActiveOrder, Order } from 'components/Order';
+import { ActiveOrder, Order } from 'components';
 
+const ProfileOrders = () => {
+  const [activeOrder, setActiveOrder] = useState<number | null>();
+
+  if (activeOrder)
+    return (
+      <div className='profile-orders-active'>
+        <ActiveOrder setActiveOrder={setActiveOrder} />;
+      </div>
+    );
+
+  return (
+    <div className="profile-padding profile-orders gap">
+      {orders.map((order) => (
+        <Order {...order} key={order.id} setActiveOrder={(v) => setActiveOrder(v)} />
+      ))}
+    </div>
+  );
+};
+
+export default ProfileOrders;
 
 const orders: IOrder[] = [
   {
@@ -56,17 +76,3 @@ const orders: IOrder[] = [
     type: 'closed',
   },
 ];
-
-export const Orders = () => {
-  const [activeOrder, setActiveOrder] = useState<number | null>();
-
-  if (activeOrder) return <div className='mt-16'><ActiveOrder setActiveOrder={setActiveOrder} /></div>
-
-  return (
-    <div className="mt-16 pages-analitics flex-col gap wrap">
-      {orders.map((order) => (
-        <Order {...order} key={order.id} setActiveOrder={(v) => setActiveOrder(v)} />
-      ))}
-    </div>
-  );
-};

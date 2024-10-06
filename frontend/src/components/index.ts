@@ -7,3 +7,5 @@ export * from './HR';
 export * from './Charts';
 export * from './Labels';
 export * from './Loader';
+export * from './Dashboard';
+export * from './Order';

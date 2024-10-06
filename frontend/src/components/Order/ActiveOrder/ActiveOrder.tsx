@@ -12,7 +12,7 @@ export const ActiveOrder = ({ setActiveOrder }: Props) => {
   const { t } = useTranslation('dashboard');
 
   return (
-    <div className="mt-16 flex-col gap wrap">
+    <div className="flex-col gap wrap">
       <section className="flex align-center realtive">
         <button className="--default --border square rounded p-0 absolute l-0 t-0" onClick={() => setActiveOrder(null)}>
           <SVGBack />
