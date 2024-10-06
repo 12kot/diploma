@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { ActiveUser, UsersList, UsersFilters } from 'components/DashboardUsers';
+import { ActiveUser, UsersList, Filters } from 'components/DashboardUsers';
 import { IUser } from 'features';
 
 import SVGEarth from 'assets/svg/SVGEarth';
@@ -16,7 +16,7 @@ const ForwardersContainer = () => {
   return (
     <div className={`users-container ${openUser && '--users-grid'}`}>
       <div className="flex-col w-full --users-grid -first">
-        <UsersFilters />
+        <Filters />
         <UsersList users={supervisores} activeUserId={openUser} setOpenUser={handleOpenUser} />
       </div>
       {openUser && <ActiveUser user={supervisores[openUser - 1]} />}

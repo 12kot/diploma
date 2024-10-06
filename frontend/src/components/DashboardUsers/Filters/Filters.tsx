@@ -31,7 +31,7 @@ const filters = [
   },
 ];
 
-export const UsersFilters = () => {
+export const Filters = () => {
   return (
     <div className="users-container-filters flex gap-mini w-full">
       {filters.map((item) => (

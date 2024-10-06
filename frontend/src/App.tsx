@@ -13,6 +13,8 @@ const Forwarders = lazy(() => import('pages/Account/Forwarders'));
 const Drivers = lazy(() => import('pages/Account/Drivers'));
 const Owners = lazy(() => import('pages/Account/Owners'));
 const Profile = lazy(() => import('pages/Account/Profile'));
+const Settings = lazy(() => import('pages/Account/Settings'));
+const Applications = lazy(() => import('pages/Account/Applications'));
 
 import './scss/App.scss';
 import i18n from './locales/config';
@@ -33,6 +35,8 @@ const App = () => {
           <Route path={APP_ROUTES.DASHBOARD.DRIVERS} element={<Drivers />} />
           <Route path={APP_ROUTES.DASHBOARD.OWNERS} element={<Owners />} />
           <Route path={APP_ROUTES.DASHBOARD.PROFILE} element={<Profile />} />
+          <Route path={APP_ROUTES.DASHBOARD.SETTINGS} element={<Settings />} />
+          <Route path={APP_ROUTES.DASHBOARD.APPLICATIONS} element={<Applications />} />
         </Route>
       </Routes>
     </AuthProvider>

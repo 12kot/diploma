@@ -29,8 +29,8 @@ const pages = (t: TFunction<['dashboard'], undefined>): IPage[] => [
     name: t('pages.list.chat'),
     icon: <SVGChat />,
     value: 'chat',
-    sees: ['admin', 'forwarder', 'driver', 'owner'],
-    has: ['admin', 'forwarder', 'driver', 'owner'],
+    sees: [],
+    has: [],
   },
   {
     name: t('pages.list.about'),
@@ -62,7 +62,7 @@ interface Props {
 export const ActiveUserPages = ({ activeUser }: Props) => {
   const { user } = useAuth();
   const { t } = useTranslation(['dashboard']);
-  const [activePage, setActivePage] = useState<IPageTypes>(user?.role === 'admin' ? 'chat' : 'about');
+  const [activePage, setActivePage] = useState<IPageTypes>('about');
 
   const getAvaliablePages = () => {
     return pages(t).filter((page) => page.has.includes(activeUser.role) && page.sees.includes(user?.role || 'driver'));

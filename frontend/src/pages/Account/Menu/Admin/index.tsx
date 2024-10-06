@@ -49,13 +49,13 @@ const navItems = (t: TFunction<['menuHolder'], undefined>) => [
   {
     id: 5,
     name: t('menuHolder:links.settings'),
-    path: '/settings',
+    path: APP_ROUTES.DASHBOARD.SETTINGS,
     icon: <SVGSettings />,
   },
   {
     id: 6,
     name: t('menuHolder:links.applications'),
-    path: '/applications',
+    path: APP_ROUTES.DASHBOARD.APPLICATIONS,
     icon: <SVGInbox />,
     count: 31,
   },

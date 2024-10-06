@@ -12,6 +12,8 @@ export const APP_ROUTES = {
     FORWARDERS: '/forwarders',
     DRIVERS: '/drivers',
     OWNERS: '/owners',
-    PROFILE: '/profile'
+    PROFILE: '/profile',
+    SETTINGS: '/settings',
+    APPLICATIONS: '/applications',
   }
 };
