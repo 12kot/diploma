@@ -5,6 +5,7 @@ import { TotalInfo } from 'components';
 import ProfileCharts from './Charts';
 
 import SVGProfileInfo from 'assets/svg/SVGProfileInfo';
+import { useTranslation } from 'react-i18next';
 
 const totalInfo = (t: TFunction<['dashboard'], undefined>) => [
   { id: 1, name: t('dashboard:total.totalForwarders'), value: '255', percentage: 100 },
@@ -14,13 +15,15 @@ const totalInfo = (t: TFunction<['dashboard'], undefined>) => [
 ];
 
 const GeneralProfilePage = () => {
+  const { t } = useTranslation('dashboard');
+
   return (
     <div className="profile-grid">
       <section className="flex-col gap profile-padding profile-grid-first">
         <div className="flex gap-mini align-center">
           <SVGProfileInfo />
           <p>
-            <b className="text-14">Personal Information</b>
+            <b className="text-14">{t('profile.personalInfo')}</b>
           </p>
         </div>
         <form className="flex-col gap profile-grid-first-overflow">
@@ -41,7 +44,7 @@ const GeneralProfilePage = () => {
         <div className="flex gap-mini align-center">
           <SVGProfileInfo />
           <p>
-            <b className="text-14">Professional Information</b>
+            <b className="text-14">{t('profile.professionalInfo')}</b>
           </p>
         </div>
         <TotalInfo totalInfo={totalInfo} />

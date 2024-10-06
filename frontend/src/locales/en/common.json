@@ -3,7 +3,16 @@
   "buttons": {
     "cancel": "Cancel",
     "send": "Send",
+    "save": "Save",
+    "saveChanges": "Save Changes",
+    "updatePassword": "Update Password",
     "sendAnotherRequest": "Send another request",
     "continueWorking": "Continue working"
+  },
+  "roles": {
+    "admin": "Admin",
+    "forwarder": "Forwarder",
+    "driver": "Driver",
+    "cargoOwner": "Cargo Owner"
   }
 }

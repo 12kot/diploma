@@ -498,4 +498,23 @@
     overflow: auto;
   }
 
+  &-roles {
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+
+    button {
+      flex-grow: 1;
+      border-radius: 0;
+
+      &:active {
+        scale: 1;
+      }
+    }
+
+    &-active {
+      background-color: var(--main-color-second)!important;
+      color: var(--main-color)!important;
+    }
+  }
+
 }

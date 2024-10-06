@@ -9,6 +9,20 @@
     "generateReport": "Generate Report"
   },
 
+  "profile": {
+    "pages": {
+      "general": "General Information",
+      "orders": "My orders"
+    },
+    "personalInfo": "Personal Information",
+    "professionalInfo": "Professional Information"
+  },
+
+  "settings": {
+    "changePassword": "Change Password",
+    "note": "Please enter your current password to change your password"
+  },
+
   "total": {
     "totalForwarders": "Total forwarders",
     "activeForwarders": "Active forwarders",
@@ -58,6 +72,10 @@
         "way": "In the way"
       }
     }
+  },
+
+  "editProfile": {
+    "edit": "Edit {{name}} Profile"
   },
 
   "actions": {
