@@ -10,6 +10,7 @@ import SVGUser from 'assets/svg/SVGUser';
 import SVGSettings from 'assets/svg/SVGSettings';
 import SVGInbox from 'assets/svg/SVGInbox';
 import SVGCar from 'assets/svg/SVGCar';
+import SVGCargoOwner from 'assets/svg/SVGCargoOwner';
 
 const navItems = (t: TFunction<['menuHolder'], undefined>) => [
   {
@@ -33,9 +34,16 @@ const navItems = (t: TFunction<['menuHolder'], undefined>) => [
     count: 8,
   },
   {
+    id: 7,
+    name: t('menuHolder:links.cargoOwners'),
+    path: APP_ROUTES.DASHBOARD.OWNERS,
+    icon: <SVGCargoOwner />,
+    count: 31,
+  },
+  {
     id: 4,
     name: t('menuHolder:links.profile'),
-    path: '/profile',
+    path: APP_ROUTES.DASHBOARD.PROFILE,
     icon: <SVGUser />,
   },
   {

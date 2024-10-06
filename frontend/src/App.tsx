@@ -11,6 +11,7 @@ const Recovery = lazy(() => import('pages/Auth/Recovery'));
 const Dashboard = lazy(() => import('pages/Account/Dashboard'));
 const Forwarders = lazy(() => import('pages/Account/Forwarders'));
 const Drivers = lazy(() => import('pages/Account/Drivers'));
+const Owners = lazy(() => import('pages/Account/Owners'));
 
 import './scss/App.scss';
 import i18n from './locales/config';
@@ -29,6 +30,7 @@ const App = () => {
           <Route path={APP_ROUTES.DASHBOARD.INDEX} element={<Dashboard />} />
           <Route path={APP_ROUTES.DASHBOARD.FORWARDERS} element={<Forwarders />} />
           <Route path={APP_ROUTES.DASHBOARD.DRIVERS} element={<Drivers />} />
+          <Route path={APP_ROUTES.DASHBOARD.OWNERS} element={<Owners />} />
         </Route>
       </Routes>
     </AuthProvider>

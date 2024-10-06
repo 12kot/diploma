@@ -25,7 +25,7 @@ export const ActiveOrder = ({ setActiveOrder }: Props) => {
 
       <section className="flex-between gap pages-active-order">
         <div className="btn --transparent w-m flex-start flex-col h-content">
-          <b>{t('pages.orders.userInfo')}</b>
+          <b>{t('pages.orders.cargoOwner')}</b>
           <div className="flex-col">
             <p className="text-12 text-secondary">{t('pages.orders.id')}</p>
             <p className="text-14">10219939113</p>

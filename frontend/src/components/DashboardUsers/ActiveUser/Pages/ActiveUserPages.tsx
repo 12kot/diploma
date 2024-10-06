@@ -29,15 +29,15 @@ const pages = (t: TFunction<['dashboard'], undefined>): IPage[] => [
     name: t('pages.list.chat'),
     icon: <SVGChat />,
     value: 'chat',
-    sees: ['admin', 'forwarder', 'driver'],
-    has: ['admin', 'forwarder', 'driver'],
+    sees: ['admin', 'forwarder', 'driver', 'owner'],
+    has: ['admin', 'forwarder', 'driver', 'owner'],
   },
   {
     name: t('pages.list.about'),
     icon: <SVGInfo />,
     value: 'about',
-    sees: ['admin', 'forwarder', 'driver'],
-    has: ['admin', 'forwarder', 'driver'],
+    sees: ['admin', 'forwarder'],
+    has: ['forwarder', 'driver', 'owner'],
   },
   {
     name: t('pages.list.analitics'),
@@ -51,7 +51,7 @@ const pages = (t: TFunction<['dashboard'], undefined>): IPage[] => [
     icon: <SVGCar />,
     value: 'orders',
     sees: ['admin', 'forwarder'],
-    has: ['driver'],
+    has: ['driver', 'owner'],
   },
 ];
 

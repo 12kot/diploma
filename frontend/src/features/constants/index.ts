@@ -10,6 +10,8 @@ export const APP_ROUTES = {
   DASHBOARD: {
     INDEX: '/dashboard',
     FORWARDERS: '/forwarders',
-    DRIVERS: '/drivers'
+    DRIVERS: '/drivers',
+    OWNERS: '/owners',
+    PROFILE: '/profile'
   }
 };

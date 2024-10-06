@@ -8,4 +8,4 @@ export interface IUser {
   labels: ILabel[];
 }
 
-export type IUserRole = 'admin' | 'forwarder' | 'driver';
+export type IUserRole = 'admin' | 'forwarder' | 'driver' | 'owner';

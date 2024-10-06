@@ -40,7 +40,7 @@
     },
 
     "orders": {
-      "userInfo": "User Info",
+      "cargoOwner": "Cargo Owner",
       "cargoInfo": "Cargo Info",
       "id": "Id",
       "name": "Name",
