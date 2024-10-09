@@ -3,6 +3,7 @@ import { Labels } from 'components';
 
 import SVGFavorite from 'assets/svg/SVGFavorite';
 import { useTranslation } from 'react-i18next';
+import { useMemo } from 'react';
 
 interface Props {
   users: IUser[];
@@ -12,13 +13,11 @@ interface Props {
 }
 
 export const UsersList = ({ users, activeUserId, setOpenUser }: Props) => {
-  return (
-    <section className="users-container-list flex-col w-full">
-      {users.map((user) => (
-        <User key={user.id} activeUserId={activeUserId} setOpenUser={setOpenUser} {...user} />
-      ))}
-    </section>
-  );
+  const memoUsers = useMemo(() => {
+    return users.map((user) => <User key={user.id} activeUserId={activeUserId} setOpenUser={setOpenUser} {...user} />);
+  }, [users, activeUserId, setOpenUser]);
+
+  return <section className="users-container-list flex-col w-full">{memoUsers}</section>;
 };
 
 interface UserProps extends IUser {
