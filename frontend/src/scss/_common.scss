@@ -67,6 +67,14 @@ p {
   font-family: 'Exo', sans-serif;
 }
 
+iframe {
+  border: 0;
+}
+
+.none {
+  display: none!important;
+}
+
 .clamp {
   display: -webkit-box;
   -webkit-line-clamp: 1;
@@ -165,7 +173,7 @@ button,
     box-shadow: 0px 2px 1px 0px #ffffff33 inset;
     box-shadow: 0px -2px 1px 0px #00000033 inset;
   }
-  
+
   &:disabled {
     background-color: var(--main-color-second);
   }
@@ -182,7 +190,7 @@ a {
   font-weight: 600;
 
   &:focus {
-    background-color: var(--bg-color-second)!important;
+    background-color: var(--bg-color-second) !important;
   }
 }
 
@@ -360,6 +368,8 @@ li {
 }
 
 .mt {
+  margin-top: auto;
+
   &-8 {
     margin-top: 8px;
   }
@@ -367,6 +377,10 @@ li {
   &-16 {
     margin-top: 16px;
   }
+}
+
+.ml {
+  margin-left: auto;
 }
 
 .text {
@@ -389,6 +403,10 @@ li {
   &-secondary {
     color: var(--font-color-second);
   }
+}
+
+.overflow {
+  overflow: hidden;
 }
 
 .flex {

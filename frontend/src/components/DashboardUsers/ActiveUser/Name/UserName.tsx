@@ -23,7 +23,7 @@ export const UserName = ({ name, isBanned, role }: Props) => {
     <section className="flex-between gap align-center">
       <EditUserModal isOpen={isModalOpen} setIsOpen={() => setIsOpenModal((v) => !v)} />
       <div className="flex gap info align-center">
-        <img src="https://cdn3.pixelcut.app/1/3/profile_picture_1728ecf2bd.jpg" className="rounded" />
+        <img src="https://cdn3.pixelcut.app/1/3/profile_picture_1728ecf2bd.jpg" className="rounded" loading="lazy" />
         <div className="flex-col gap-mini">
           <H1>{name}</H1>
           <div className="flex gap-mini">

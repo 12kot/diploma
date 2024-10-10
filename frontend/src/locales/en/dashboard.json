@@ -56,6 +56,7 @@
     "orders": {
       "cargoOwner": "Cargo Owner",
       "cargoInfo": "Cargo Info",
+      "driverInfo": "Driver Info",
       "id": "Id",
       "name": "Name",
       "email": "Email",
@@ -67,7 +68,7 @@
       "price": "Price",
 
       "indicator": {
-        "loading": "Loading",
+        "waiting": "Waiting",
         "closed": "Closed",
         "way": "In the way"
       }
@@ -88,5 +89,9 @@
       "suspend": "Suspend the driver's activity",
       "continue": "Continue the driver's activity"
     }
+  },
+
+  "order": {
+    "addDriverToOrder": "Add Driver To Order"
   }
 }

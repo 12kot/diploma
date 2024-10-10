@@ -13,6 +13,7 @@ const Users = lazy(() => import('pages/Account/Users'));
 const Profile = lazy(() => import('pages/Account/Profile'));
 const Settings = lazy(() => import('pages/Account/Settings'));
 const Applications = lazy(() => import('pages/Account/Applications'));
+const Orders = lazy(() => import('pages/Account/Orders'));
 
 import './scss/App.scss';
 import i18n from './locales/config';
@@ -32,6 +33,7 @@ const App = () => {
           <Route element={<PrivateRoutes />}>
             <Route path={APP_ROUTES.DASHBOARD.INDEX} element={<Dashboard />} />
             <Route path={APP_ROUTES.DASHBOARD.USER_TYPE} element={<Users />} />
+            <Route path={APP_ROUTES.DASHBOARD.ORDERS} element={<Orders />} />
             <Route path={APP_ROUTES.DASHBOARD.PROFILE} element={<Profile />} />
             <Route path={APP_ROUTES.DASHBOARD.SETTINGS} element={<Settings />} />
             <Route path={APP_ROUTES.DASHBOARD.APPLICATIONS} element={<Applications />} />

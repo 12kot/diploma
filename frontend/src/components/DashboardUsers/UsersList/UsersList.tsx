@@ -1,9 +1,10 @@
+import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
+
 import { IUser } from 'features';
 import { Labels } from 'components';
 
 import SVGFavorite from 'assets/svg/SVGFavorite';
-import { useTranslation } from 'react-i18next';
-import { useMemo } from 'react';
 
 interface Props {
   users: IUser[];

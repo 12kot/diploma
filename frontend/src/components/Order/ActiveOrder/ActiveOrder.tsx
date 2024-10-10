@@ -53,7 +53,7 @@ export const ActiveOrder = ({ setActiveOrder }: Props) => {
           <b>{t('pages.orders.cargoInfo')}</b>
           <div className="flex-col">
             <p className="text-12 text-secondary">{t('pages.orders.status')}</p>
-            <p className="text-14">{getOrderStatusText('loading', t)}</p>
+            <p className="text-14">{getOrderStatusText('waiting', t)}</p>
           </div>
           <div className="flex-col">
             <p className="text-12 text-secondary">{t('pages.orders.id')}</p>

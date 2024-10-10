@@ -3,12 +3,17 @@
   "buttons": {
     "cancel": "Cancel",
     "send": "Send",
+    "confirm": "Confirm",
     "save": "Save",
     "saveChanges": "Save Changes",
     "updatePassword": "Update Password",
     "sendAnotherRequest": "Send another request",
     "continueWorking": "Continue working",
-    "createUser": "Create User"
+    "createUser": "Create User",
+    "addDriver": "Add Driver"
+  },
+  "placeholders": {
+    "findDriver": "Find Driver"
   },
   "roles": {
     "admin": "Admin",

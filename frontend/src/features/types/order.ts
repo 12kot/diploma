@@ -6,5 +6,7 @@ export interface IOrder {
   unloadedDate: string;
   cost: number;
   weight: string;
-  type: 'loading' | 'closed' | 'way';
+  type: IOrderType;
 }
+
+export type IOrderType = 'waiting' | 'closed' | 'way'

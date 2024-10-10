@@ -7,7 +7,8 @@
     "profile": "Profile",
     "settings": "Settings",
     "applications": "Applications",
-    "cargoOwners": "Cargo owners"
+    "cargoOwners": "Cargo owners",
+    "orders": "Orders"
   },
   
   "logOut": "Log Out",

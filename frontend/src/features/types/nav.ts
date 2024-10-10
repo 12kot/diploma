@@ -10,6 +10,7 @@ import SVGDashboard from 'assets/svg/SVGDashboard';
 import SVGInbox from 'assets/svg/SVGInbox';
 import SVGSettings from 'assets/svg/SVGSettings';
 import SVGUser from 'assets/svg/SVGUser';
+import SVGReceipt from 'assets/svg/SVGReceipt';
 
 export interface INavItem {
   id: number;
@@ -25,11 +26,19 @@ export const NavItems = (t: TFunction<['menuHolder'], undefined>): INavItem[] =>
     id: 1,
     name: t('menuHolder:links.dashboard'),
     path: APP_ROUTES.DASHBOARD.INDEX,
-    sees: ['admin'],
+    sees: ['admin', 'forwarder'],
     icon: SVGDashboard,
   },
   {
     id: 2,
+    name: t('menuHolder:links.orders'),
+    path: APP_ROUTES.DASHBOARD.ORDERS,
+    icon: SVGReceipt,
+    sees: ['admin', 'forwarder'],
+    count: 31,
+  },
+  {
+    id: 3,
     name: t('menuHolder:links.forwarders'),
     path: APP_ROUTES.DASHBOARD.FORWARDERS,
     icon: SVGCompany,
@@ -37,37 +46,37 @@ export const NavItems = (t: TFunction<['menuHolder'], undefined>): INavItem[] =>
     count: 255,
   },
   {
-    id: 3,
+    id: 4,
     name: t('menuHolder:links.drivers'),
     path: APP_ROUTES.DASHBOARD.DRIVERS,
     icon: SVGCar,
-    sees: ['admin'],
+    sees: ['admin', 'forwarder'],
     count: 8,
   },
   {
-    id: 7,
+    id: 5,
     name: t('menuHolder:links.cargoOwners'),
     path: APP_ROUTES.DASHBOARD.OWNERS,
     icon: SVGCargoOwner,
-    sees: ['admin'],
+    sees: ['admin', 'forwarder'],
     count: 31,
   },
   {
-    id: 4,
+    id: 6,
     name: t('menuHolder:links.profile'),
     path: APP_ROUTES.DASHBOARD.PROFILE,
     icon: SVGUser,
-    sees: ['admin'],
+    sees: ['admin', 'forwarder'],
   },
   {
-    id: 5,
+    id: 7,
     name: t('menuHolder:links.settings'),
     path: APP_ROUTES.DASHBOARD.SETTINGS,
     icon: SVGSettings,
-    sees: ['admin'],
+    sees: ['admin', 'forwarder'],
   },
   {
-    id: 6,
+    id: 8,
     name: t('menuHolder:links.applications'),
     path: APP_ROUTES.DASHBOARD.APPLICATIONS,
     icon: SVGInbox,

@@ -19,21 +19,21 @@ export const Order = ({ id, cityFrom, cityTo, loadedDate, unloadedDate, cost, we
       </p>
       <div className="flex gap-mini wrap">
         <p className={`indicator ${getOrderIndicatorClass(type)}`}>{getOrderStatusText(type, t)}</p>
-        <div className="iflex gap-mini indicator -border nowrap">
+        <div className="flex gap-mini indicator -border nowrap">
           <SVGDollar />
           <p>{cost}</p>
         </div>
-        <div className="iflex gap-mini indicator -border nowrap">
+        <div className="flex gap-mini indicator -border nowrap">
           <SVGTag />
           <p>{id}</p>
         </div>
-        <div className="iflex gap-mini indicator -border nowrap">
+        <div className="flex gap-mini indicator -border nowrap">
           <SVGTime />
           <p>
             {loadedDate} - {unloadedDate}
           </p>
         </div>
-        <div className="iflex gap-mini indicator -border nowrap">
+        <div className="flex gap-mini indicator -border nowrap">
           <SVGWeight />
           <p>{weight}</p>
         </div>

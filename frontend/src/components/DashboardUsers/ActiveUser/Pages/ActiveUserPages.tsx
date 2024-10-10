@@ -44,7 +44,7 @@ const pages = (t: TFunction<['dashboard'], undefined>): IPage[] => [
     icon: <SVGAnalitics />,
     value: 'analitics',
     sees: ['admin'],
-    has: ['forwarder', 'driver'],
+    has: ['driver', 'owner'],
   },
   {
     name: t('pages.list.orders'),

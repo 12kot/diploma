@@ -16,5 +16,6 @@ export const APP_ROUTES = {
     PROFILE: '/profile',
     SETTINGS: '/settings',
     APPLICATIONS: '/applications',
+    ORDERS: '/orders',
   }
 };

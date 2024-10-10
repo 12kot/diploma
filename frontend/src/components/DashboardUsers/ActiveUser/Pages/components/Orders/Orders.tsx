@@ -13,7 +13,7 @@ const orders: IOrder[] = [
     unloadedDate: '01.12.2024',
     cost: 25000,
     weight: '25T',
-    type: 'loading',
+    type: 'waiting',
   },
   {
     id: 10028931283,
