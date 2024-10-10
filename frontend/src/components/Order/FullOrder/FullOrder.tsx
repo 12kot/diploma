@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { AddDriverToOrder } from './Modal';
-import { useEscapeKey, getOrderStatusText } from 'features';
+import { useEscapeKey, getOrderStatusText, useAuth } from 'features';
 
 import SVGBack from 'assets/svg/SVGBack';
 import tilesImage from 'assets/img/tiles.png';
@@ -11,7 +11,8 @@ interface Props {
   setActiveOrder: (v: number | null) => void;
 }
 
-const ActiveOrder = ({ setActiveOrder }: Props) => {
+export const FullOrder = ({ setActiveOrder }: Props) => {
+  const { user } = useAuth();
   const { t } = useTranslation(['dashboard', 'common']);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -19,7 +20,7 @@ const ActiveOrder = ({ setActiveOrder }: Props) => {
 
   return (
     <div className="flex-col gap relative order-container -order h-full nowrap">
-      <AddDriverToOrder isOpen={isOpen} setIsOpen={() => setIsOpen((v) => !v)} />
+      {user?.role === 'forwarder' && <AddDriverToOrder isOpen={isOpen} setIsOpen={() => setIsOpen((v) => !v)} />}
       <section className="flex align-center realtive">
         <button className="--default --border square rounded p-0 absolute l-0 t-0" onClick={() => setActiveOrder(null)}>
           <SVGBack />
@@ -29,8 +30,9 @@ const ActiveOrder = ({ setActiveOrder }: Props) => {
         </p>
       </section>
       <hr />
-
-      <button onClick={() => setIsOpen((v) => !v)}>{t('common:buttons.addDriver')}</button>
+      {user?.role === 'forwarder' && (
+        <button onClick={() => setIsOpen((v) => !v)}>{t('common:buttons.addDriver')}</button>
+      )}
 
       <div className="flex order-container-info h-full">
         <div className="flex-between gap order-container__active-order w-full h-full">
@@ -114,5 +116,3 @@ const ActiveOrder = ({ setActiveOrder }: Props) => {
     </div>
   );
 };
-
-export default ActiveOrder;

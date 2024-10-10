@@ -1,9 +1,10 @@
-import { getOrderIndicatorClass, getOrderStatusText, ILabel, IOrder } from 'features';
+import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
+
 import { Labels } from 'components';
+import { getOrderIndicatorClass, getOrderStatusText, ILabel, IOrder } from 'features';
 
 import SVGFavorite from 'assets/svg/SVGFavorite';
-import { useTranslation } from 'react-i18next';
-import { useMemo } from 'react';
 import SVGDollar from 'assets/svg/SVGDollar';
 import SVGTag from 'assets/svg/SVGTag';
 import SVGTime from 'assets/svg/SVGTime';

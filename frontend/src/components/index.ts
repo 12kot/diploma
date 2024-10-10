@@ -9,3 +9,4 @@ export * from './Labels';
 export * from './Loader';
 export * from './Dashboard';
 export * from './Order';
+export * from './Filters';

@@ -1,20 +1,6 @@
-import { TFunction } from 'i18next';
 import { useTranslation } from 'react-i18next';
 
-import { IProfilePage, IProfilePageType } from 'features';
-
-const profilePages = (t: TFunction<'dashboard', undefined>): IProfilePage[] => [
-  {
-    id: 1,
-    name: t('profile.pages.general'),
-    type: 'general',
-  },
-  {
-    id: 3,
-    name: t('profile.pages.orders'),
-    type: 'orders',
-  },
-];
+import { getProfilePagesByUserRole, IProfilePage, IProfilePageType, useAuth } from 'features';
 
 interface Props {
   activePage: IProfilePageType;
@@ -22,11 +8,14 @@ interface Props {
 }
 
 const ProfilePages = ({ activePage, setActivePage }: Props) => {
+  const { user } = useAuth();
   const { t } = useTranslation('dashboard');
+
+  if (!user?.role) return <></>;
 
   return (
     <section className="profile-pages flex">
-      {profilePages(t).map((page) => (
+      {getProfilePagesByUserRole(user?.role, t).map((page) => (
         <Page key={page.id} {...page} activePage={activePage} setActivePage={setActivePage} />
       ))}
     </section>

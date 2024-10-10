@@ -1,18 +1,10 @@
-import { TFunction } from 'i18next';
-
-import { TotalInfo } from 'components';
-
-import ProfileCharts from './Charts';
-
-import SVGProfileInfo from 'assets/svg/SVGProfileInfo';
 import { useTranslation } from 'react-i18next';
 
-const totalInfo = (t: TFunction<['dashboard'], undefined>) => [
-  { id: 1, name: t('dashboard:total.totalForwarders'), value: '255', percentage: 100 },
-  { id: 4, name: t('dashboard:total.LastMonthOrders'), value: '1203', percentage: -10 },
-  { id: 5, name: t('dashboard:total.earned'), value: '4.6M', percentage: 25 },
-  { id: 6, name: t('dashboard:total.paidOut'), value: '1.3M', percentage: 13 },
-];
+import { H2 } from 'components';
+
+import SVGProfileInfo from 'assets/svg/SVGProfileInfo';
+import SVGImportant from 'assets/svg/SVGImportant';
+import tilesImage from 'assets/img/tiles.png';
 
 const GeneralProfilePage = () => {
   const { t } = useTranslation('dashboard');
@@ -40,15 +32,11 @@ const GeneralProfilePage = () => {
           <textarea rows={10} placeholder="Self-description" />
         </form>
       </section>
-      <section className="flex-col gap profile-padding profile-grid-second">
-        <div className="flex gap-mini align-center">
-          <SVGProfileInfo />
-          <p>
-            <b className="text-14">{t('profile.professionalInfo')}</b>
-          </p>
-        </div>
-        <TotalInfo totalInfo={totalInfo} />
-        <ProfileCharts />
+      <section className="flex-col gap align-center text-center profile-grid-second profile-padding relative">
+        <SVGImportant />
+        <H2>Why is it important to fill out information about yourself</H2>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem neque nihil sapiente corrupti exercitationem officia, tenetur sequi ut. Accusantium incidunt corrupti totam facilis eveniet perferendis, iusto iste ducimus quos facere.</p>
+        <img src={tilesImage} loading="lazy" className="top-0 left-0 absolute w-full z--1" />
       </section>
     </div>
   );

@@ -1,4 +1,4 @@
-import EarnedChart from 'pages/Account/Dashboard/Admin/Charts/Earned';
+import EarnedChart from 'pages/Account/Dashboard/Charts/Earned';
 
 export const AcriveUserAnalitics = () => {
   return (
