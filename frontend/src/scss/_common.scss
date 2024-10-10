@@ -188,10 +188,6 @@ a {
   text-decoration: underline;
   text-decoration-color: var(--main-color);
   font-weight: 600;
-
-  &:focus {
-    background-color: var(--bg-color-second) !important;
-  }
 }
 
 .decoration-none {
@@ -400,6 +396,10 @@ li {
     font-size: 32px;
   }
 
+  &-main {
+    color: var(--font-color);
+  }
+
   &-secondary {
     color: var(--font-color-second);
   }
@@ -518,6 +518,20 @@ li {
 
   &-32 {
     top: 32px;
+  }
+}
+
+.bottom {
+  &-0 {
+    bottom: 0;
+  }
+
+  &-16 {
+    bottom: 16px;
+  }
+
+  &-32 {
+    bottom: 32px;
   }
 }
 

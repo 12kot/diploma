@@ -10,6 +10,7 @@
     "sendAnotherRequest": "Send another request",
     "continueWorking": "Continue working",
     "createUser": "Create User",
+    "createOrder": "Create Order",
     "addDriver": "Add Driver"
   },
   "placeholders": {

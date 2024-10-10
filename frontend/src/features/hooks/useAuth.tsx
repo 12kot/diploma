@@ -23,7 +23,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   useEffect(() => {
     //авторизация
-    setUser({ token: '', role: 'forwarder' });
+    setUser({ token: '', role: 'admin' });
   }, [authUser]);
 
   useEffect(() => {

@@ -26,7 +26,7 @@ export const NavItems = (t: TFunction<['menuHolder'], undefined>): INavItem[] =>
     id: 1,
     name: t('menuHolder:links.dashboard'),
     path: APP_ROUTES.DASHBOARD.INDEX,
-    sees: ['admin', 'forwarder'],
+    sees: ['admin', 'forwarder', 'driver', 'owner'],
     icon: SVGDashboard,
   },
   {
@@ -34,7 +34,7 @@ export const NavItems = (t: TFunction<['menuHolder'], undefined>): INavItem[] =>
     name: t('menuHolder:links.orders'),
     path: APP_ROUTES.DASHBOARD.ORDERS,
     icon: SVGReceipt,
-    sees: ['admin', 'forwarder'],
+    sees: ['admin', 'forwarder', 'driver', 'owner'],
     count: 31,
   },
   {
@@ -66,14 +66,14 @@ export const NavItems = (t: TFunction<['menuHolder'], undefined>): INavItem[] =>
     name: t('menuHolder:links.profile'),
     path: APP_ROUTES.DASHBOARD.PROFILE,
     icon: SVGUser,
-    sees: ['admin', 'forwarder'],
+    sees: ['admin', 'forwarder', 'driver', 'owner'],
   },
   {
     id: 7,
     name: t('menuHolder:links.settings'),
     path: APP_ROUTES.DASHBOARD.SETTINGS,
     icon: SVGSettings,
-    sees: ['admin', 'forwarder'],
+    sees: ['admin', 'forwarder', 'driver', 'owner'],
   },
   {
     id: 8,

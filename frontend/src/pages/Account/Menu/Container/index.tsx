@@ -1,39 +1,43 @@
-import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-import { getNavLinksByUserRole, INavItem, useAuth } from 'features';
-import { EditUserModal } from 'components/DashboardUsers';
+import { getNavLinksByUserRole, INavItem, useAuth, useEditUserModal } from 'features';
 
 import SVGCreate from 'assets/svg/SVGCreate';
 
 export const MenuHandler = () => {
   const { user } = useAuth();
+  const { openUserModal } = useEditUserModal();
   const { t } = useTranslation(['menuHolder', 'common']);
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   if (!user?.role) return <></>;
 
   return (
-    <>
+    <ul>
+      <MenuListContainer navItems={getNavLinksByUserRole(user.role, t)} />
       {user.role === 'admin' && (
-        <EditUserModal isOpen={isModalOpen} setIsOpen={() => setIsModalOpen((v) => !v)} isCreate />
+        <li>
+          <button className="--default w-full" onClick={() => openUserModal(true)}>
+            <div className="active-indicator" />
+            <div className="flex gap-8 align-center">
+              <SVGCreate />
+              <p className="clamp">{t('common:buttons.createUser')}</p>
+            </div>
+          </button>
+        </li>
       )}
-      <ul>
-        <MenuListContainer navItems={getNavLinksByUserRole(user.role, t)} />
-        {user.role === 'admin' && (
-          <li>
-            <button className="--default w-full" onClick={() => setIsModalOpen((v) => !v)}>
-              <div className="active-indicator" />
-              <div className="flex gap-8 align-center">
-                <SVGCreate />
-                <p className="clamp">{t('common:buttons.createUser')}</p>
-              </div>
-            </button>
-          </li>
-        )}
-      </ul>
-    </>
+      {user.role === 'owner' && (
+        <li>
+          <button className="--default w-full">
+            <div className="active-indicator" />
+            <div className="flex gap-8 align-center">
+              <SVGCreate />
+              <p className="clamp">{t('common:buttons.createUser')}</p>
+            </div>
+          </button>
+        </li>
+      )}
+    </ul>
   );
 };
 

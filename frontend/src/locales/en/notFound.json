@@ -1,0 +1,9 @@
+{
+  "header": "We’ve lost this page",
+  "text": "Sorry, the page you are looking for doesn’t exist or has been moved.",
+
+  "actions": {
+    "homePage": "Home Page",
+    "dashboard": "Dashboard"
+  }
+}

@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 
 import { APP_ROUTES, AuthProvider } from 'features';
 
-import { PublicRoutes, PrivateRoutes } from 'components';
+import { PublicRoutes, PrivateRoutes, Loader } from 'components';
 
 const Login = lazy(() => import('pages/Auth/Login'));
 const Registration = lazy(() => import('pages/Auth/Registration'));
@@ -14,32 +14,37 @@ const Profile = lazy(() => import('pages/Account/Profile'));
 const Settings = lazy(() => import('pages/Account/Settings'));
 const Applications = lazy(() => import('pages/Account/Applications'));
 const Orders = lazy(() => import('pages/Account/Orders'));
+import NotFound from 'pages/NotFound';
 
 import './scss/App.scss';
 import i18n from './locales/config';
+import { EditUserModalProvider } from 'features/hooks/useEditUserModal';
 i18n.init();
 
 const App = () => {
   return (
     <AuthProvider>
-      <Suspense fallback={<>Loader</>}>
-        <Routes>
-          <Route element={<PublicRoutes />}>
-            <Route path={APP_ROUTES.AUTH.LOGIN} element={<Login />} />
-            <Route path={APP_ROUTES.AUTH.REGISTRATION} element={<Registration />} />
-            <Route path={APP_ROUTES.AUTH.RECOVERY} element={<Recovery />} />
-          </Route>
+      <EditUserModalProvider>
+        <Suspense fallback={<Loader center />}>
+          <Routes>
+            <Route path="*" element={<NotFound />} />
+            <Route element={<PublicRoutes />}>
+              <Route path={APP_ROUTES.AUTH.LOGIN} element={<Login />} />
+              <Route path={APP_ROUTES.AUTH.REGISTRATION} element={<Registration />} />
+              <Route path={APP_ROUTES.AUTH.RECOVERY} element={<Recovery />} />
+            </Route>
 
-          <Route element={<PrivateRoutes />}>
-            <Route path={APP_ROUTES.DASHBOARD.INDEX} element={<Dashboard />} />
-            <Route path={APP_ROUTES.DASHBOARD.USER_TYPE} element={<Users />} />
-            <Route path={APP_ROUTES.DASHBOARD.ORDERS} element={<Orders />} />
-            <Route path={APP_ROUTES.DASHBOARD.PROFILE} element={<Profile />} />
-            <Route path={APP_ROUTES.DASHBOARD.SETTINGS} element={<Settings />} />
-            <Route path={APP_ROUTES.DASHBOARD.APPLICATIONS} element={<Applications />} />
-          </Route>
-        </Routes>
-      </Suspense>
+            <Route element={<PrivateRoutes />}>
+              <Route path={APP_ROUTES.DASHBOARD.INDEX} element={<Dashboard />} />
+              <Route path={APP_ROUTES.DASHBOARD.USER_TYPE} element={<Users />} />
+              <Route path={APP_ROUTES.DASHBOARD.ORDERS} element={<Orders />} />
+              <Route path={APP_ROUTES.DASHBOARD.PROFILE} element={<Profile />} />
+              <Route path={APP_ROUTES.DASHBOARD.SETTINGS} element={<Settings />} />
+              <Route path={APP_ROUTES.DASHBOARD.APPLICATIONS} element={<Applications />} />
+            </Route>
+          </Routes>
+        </Suspense>
+      </EditUserModalProvider>
     </AuthProvider>
   );
 };
