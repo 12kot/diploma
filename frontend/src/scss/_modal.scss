@@ -1,15 +1,20 @@
-.modal {
+.bg-modal {
+  position: fixed;
   z-index: -1;
   width: 100vw;
   height: 100vh;
-  position: fixed;
   top: 0;
   left: 0;
   background-color: var(--bg-color-modal);
   opacity: 0;
   transition: 0.3s;
+}
+
+.modal {
+  @extend .bg-modal;
   
   &__content {
+    overflow: hidden;
     max-width: 70vw;
     max-height: 70vh;
 
@@ -22,12 +27,77 @@
   }
 
   &.-active {
-  z-index: 4000;
+    z-index: 4000;
 
     opacity: 1;
 
-    & > .modal__content { 
+    & > .modal__content {
       transform: translateY(0);
     }
+  }
+}
+
+.rigth-modal {
+  @extend .bg-modal;
+
+  overflow-y: hidden;
+  &__content {
+    overflow-y: hidden;
+    max-width: 420px;
+    max-height: 100vh;
+    height: 100vh;
+
+    transition: 0.3s;
+    background-color: var(--bg-color);
+    transform: translateX(100vw);
+  }
+
+  &__header {
+    padding-right: 0;
+
+    height: 70px;
+    width: 100%;
+    border-bottom: 1px solid var(--border-color);
+
+    &--close {
+      width: 70px;
+
+      border-left: 1px solid var(--border-color);
+      border-radius: 0;
+    }
+
+    &--logo {
+      height: 70px;
+      padding: 16px 32px;
+    }
+  }
+
+  &.-active {
+    z-index: 4000;
+    opacity: 1;
+
+    & > .rigth-modal__content {
+      transform: translateX(calc(100vw - 100%));
+    }
+  }
+}
+
+.address-modal {
+  min-height: 30vh;
+  height: fit-content;
+  width: 370px;
+
+  padding: 32px 16px 16px;
+
+  &__map {
+    height: 200px;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+}
+
+.map-marker {
+  img {
+    width: 40px;
   }
 }

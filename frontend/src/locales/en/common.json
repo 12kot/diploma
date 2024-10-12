@@ -11,10 +11,34 @@
     "continueWorking": "Continue working",
     "createUser": "Create User",
     "createOrder": "Create Order",
-    "addDriver": "Add Driver"
+    "addDriver": "Add Driver",
+    "contactUs": "Contact Us",
+    "signUp": "Sign Up",
+    "getPaymentInfo": "Get payment information",
+    "addDownloadAddress": "Add a download address",
+    "addUploadAddress": "Add an upload address"
   },
   "placeholders": {
-    "findDriver": "Find Driver"
+    "findDriver": "Find Driver",
+    "name": "Name",
+    "type": "Type",
+    "width": "Width",
+    "heigth": "Heigth",
+    "depth": "Depth",
+    "weight": "Weight",
+    "loadingMethod": "Loading method",
+    "packageType": "Package type",
+    "cargoDescription": "Cargo description",
+    "whenPickCargo": "When to pick up the cargo",
+    "whenDeliver": "When to deliver",
+    "address": "Address",
+    "phone": "Phone",
+    "surname": "Surname",
+    "phoneNumber": "Phone number",
+    "email": "Email",
+    "country": "Country",
+    "city": "City",
+    "selfDescription": "Self-description"
   },
   "roles": {
     "admin": "Admin",

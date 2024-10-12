@@ -1,6 +1,8 @@
 export const APP_ROUTES = {
   HOME: {
     INDEX: '/',
+    ABOUT_US: '/about',
+    PRIVACY: '/pricvacy',
   },
   AUTH: {
     LOGIN: '/login',
@@ -17,5 +19,6 @@ export const APP_ROUTES = {
     SETTINGS: '/settings',
     APPLICATIONS: '/applications',
     ORDERS: '/orders',
+    CREATE_ORDER: '/order/create',
   }
 };

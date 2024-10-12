@@ -1,8 +1,10 @@
+import { useTranslation } from 'react-i18next';
+
+import { Labels, MapWithRoute, Modal } from 'components';
+
 import SVGClose from 'assets/svg/SVGClose';
 import SVGEarth from 'assets/svg/SVGEarth';
 import SVGTrendingUp from 'assets/svg/SVGTrendingUp';
-import { Labels, Modal } from 'components';
-import { useTranslation } from 'react-i18next';
 
 interface Props {
   isOpen: boolean;
@@ -34,12 +36,13 @@ export const AddDriverToOrder = ({ isOpen, setIsOpen }: Props) => {
         </section>
         <section className="flex-col gap">
           <Labels labels={labels} wrap />
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d1206112.193426632!2d24.37295603911168!3d53.81283745487652!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x46e078a115ce4489%3A0x3cc3a76402e38475!2z0JPRgNCT0KMg0LjQvC4g0K8u0JrRg9C_0LDQu9GLLCDQk9GA0L7QtNC90L4!3m2!1d53.695645999999996!2d23.8265319!4m5!1s0x46dbcfd35b1e6ad3%3A0xb61b853ddb570d9!2z0JzQuNC90YHQug!3m2!1d53.900601099999996!2d27.558971999999997!5e0!3m2!1sru!2sby!4v1728515158396!5m2!1sru!2sby"
-            className="h-full w-full"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
+          <MapWithRoute
+          origin={{ lat: 53.893009, lng: 27.567444 }}
+          destination={{
+            lat: 53.669353,
+            lng: 23.813131,
+          }}
+        />
         </section>
       </form>
     </Modal>

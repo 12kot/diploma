@@ -1,5 +1,5 @@
 body {
-  background: #fff;
+  background-color: #fff;
   margin: 0;
   padding: 0;
   font-size: 16px;
@@ -39,6 +39,10 @@ body {
   }
 }
 
+svg {
+  fill: var(--font-color);
+}
+
 input,
 textarea {
   font-family: 'Exo', sans-serif;
@@ -72,7 +76,7 @@ iframe {
 }
 
 .none {
-  display: none!important;
+  display: none !important;
 }
 
 .clamp {
@@ -117,8 +121,8 @@ button,
 
   svg,
   img {
-    height: 24px;
-    width: 24px;
+    height: 20px;
+    width: 20px;
     fill: #fff;
   }
 
@@ -128,6 +132,11 @@ button,
     color: var(--font-color);
 
     box-shadow: var(--box-shadow);
+
+    svg,
+    img {
+      fill: var(--font-color);
+    }
   }
 
   &.--default {
@@ -334,12 +343,6 @@ li {
   list-style-type: none;
 }
 
-.p {
-  &-0 {
-    padding: 0;
-  }
-}
-
 .weight {
   &-400 {
     font-weight: 400;
@@ -351,6 +354,61 @@ li {
 
 .nowrap {
   text-wrap: nowrap;
+}
+
+.p {
+  &-0 {
+    padding: 0;
+  }
+}
+
+.pt {
+  padding-top: auto;
+
+  &-8 {
+    padding-top: 8px;
+  }
+
+  &-16 {
+    padding-top: 16px !important;
+  }
+}
+
+.pb {
+  padding-bottom: auto;
+
+  &-0 {
+    padding-bottom: 0px !important;
+  }
+
+  &-8 {
+    padding-bottom: 8px !important;
+  }
+
+  &-16 {
+    padding-bottom: 16px;
+  }
+
+  &-header-modal {
+    padding-bottom: 94px;
+  }
+}
+
+.p-x {
+  padding: 0 auto;
+
+  &-8 {
+    padding: 0 8px;
+  }
+
+  &-16 {
+    padding: 0 16px;
+  }
+
+  &-32 {
+    padding-right: 32px !important ;
+    padding-left: 32px !important ;
+  }
 }
 
 .mb {
@@ -403,10 +461,18 @@ li {
   &-secondary {
     color: var(--font-color-second);
   }
+
+  &-light {
+    color: var(--font-color-light);
+  }
 }
 
 .overflow {
   overflow: hidden;
+
+  &-y-auto {
+    overflow-y: auto;
+  }
 }
 
 .flex {

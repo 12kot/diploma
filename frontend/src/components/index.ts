@@ -3,6 +3,7 @@ export * from './PublicRoutes';
 export * from './PrivateRoutes';
 export * from './Font';
 export * from './Modal';
+export * from './Map';
 export * from './HR';
 export * from './Charts';
 export * from './Labels';

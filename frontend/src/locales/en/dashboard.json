@@ -15,7 +15,9 @@
       "orders": "My orders"
     },
     "personalInfo": "Personal Information",
-    "professionalInfo": "Professional Information"
+    "professionalInfo": "Professional Information",
+    "whyIsImportant": "Why is it important to fill out information about yourself",
+    "whyIsImportantText": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem neque nihil sapiente corrupti exercitationem officia, tenetur sequi ut. Accusantium incidunt corrupti totam facilis eveniet perferendis, iusto iste ducimus quos facere."
   },
 
   "settings": {
@@ -93,5 +95,16 @@
 
   "order": {
     "addDriverToOrder": "Add Driver To Order"
+  },
+
+  "createOrder": {
+    "index": "Create Order",
+    "cargoInfo": "Cargo Information",
+    "deliveryInfo": "Delivery Information",
+
+    "modal": {
+      "addDownloadAddress": "Add a download address",
+    "addUploadAddress": "Add an upload address"
+    }
   }
 }

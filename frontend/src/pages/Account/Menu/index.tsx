@@ -1,33 +1,28 @@
-import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { useContactUsModal } from 'features';
+
 import { MenuHandler } from './Container';
-import ContactUsModal from './ContactUs';
 
 import SVGLogout from 'assets/svg/SVGLogout';
 
 const AccountMenu = () => {
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const { t } = useTranslation(['menuHolder']);
-
-  const handleOpenModal = () => {
-    setIsModalOpen(v => !v)
-  }
+  const { setContactUsModalOpen } = useContactUsModal();
+  const { t } = useTranslation(['menuHolder', 'common']);
 
   return (
     <nav className="account-container--menu">
-      <ContactUsModal isOpen={isModalOpen} setIsOpen={handleOpenModal} />
       <MenuHandler />
 
       <section className="account-container--menu__end">
         <div className="account-container--menu__support flex-center">
           <div className="account-container--menu__support -item flex-col gap-mini">
             <p>
-              <b>{t('menuHolder:support.contactUs')}</b>
+              <b>{t('common:buttons.contactUs')}</b>
             </p>
             <p className="text-12 text-secondary">{t('menuHolder:support.customerSupport')}</p>
-            <button className="mt-8" onClick={handleOpenModal}>
-              {t('menuHolder:support.contactUs')}
+            <button className="mt-8" onClick={() => setContactUsModalOpen()}>
+              {t('common:buttons.contactUs')}
             </button>
           </div>
         </div>

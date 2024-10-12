@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { AddDriverToOrder } from './Modal';
+import { MapWithRoute } from 'components';
 import { useEscapeKey, getOrderStatusText, useAuth } from 'features';
+
+import { AddDriverToOrder } from './Modal';
 
 import SVGBack from 'assets/svg/SVGBack';
 import tilesImage from 'assets/img/tiles.png';
@@ -19,9 +21,9 @@ export const FullOrder = ({ setActiveOrder }: Props) => {
   useEscapeKey(() => setActiveOrder(null));
 
   return (
-    <div className="flex-col gap relative order-container -order h-full nowrap">
+    <div className="flex-col relative order-container -order h-full nowrap">
       {user?.role === 'forwarder' && <AddDriverToOrder isOpen={isOpen} setIsOpen={() => setIsOpen((v) => !v)} />}
-      <section className="flex align-center realtive">
+      <section className="order-container__padding-header flex align-center realtive">
         <button className="--default --border square rounded p-0 absolute l-0 t-0" onClick={() => setActiveOrder(null)}>
           <SVGBack />
         </button>
@@ -31,11 +33,11 @@ export const FullOrder = ({ setActiveOrder }: Props) => {
       </section>
       <hr />
       {user?.role === 'forwarder' && (
-        <button onClick={() => setIsOpen((v) => !v)}>{t('common:buttons.addDriver')}</button>
+        <button onClick={() => setIsOpen((v) => !v)} className='order-container__padding-actions'>{t('common:buttons.addDriver')}</button>
       )}
 
-      <div className="flex order-container-info h-full">
-        <div className="flex-between gap order-container__active-order w-full h-full">
+      <div className="order-container-info flex h-full ">
+        <div className="order-container__padding  order-container__active-order flex-between gap w-full h-full">
           <div className="flex-col w-full gap">
             <section className="btn --transparent flex-start flex-col h-content">
               <b>{t('dashboard:pages.orders.driverInfo')}</b>
@@ -105,11 +107,12 @@ export const FullOrder = ({ setActiveOrder }: Props) => {
           </section>
         </div>
 
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d1206112.193426632!2d24.37295603911168!3d53.81283745487652!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x46e078a115ce4489%3A0x3cc3a76402e38475!2z0JPRgNCT0KMg0LjQvC4g0K8u0JrRg9C_0LDQu9GLLCDQk9GA0L7QtNC90L4!3m2!1d53.695645999999996!2d23.8265319!4m5!1s0x46dbcfd35b1e6ad3%3A0xb61b853ddb570d9!2z0JzQuNC90YHQug!3m2!1d53.900601099999996!2d27.558971999999997!5e0!3m2!1sru!2sby!4v1728515158396!5m2!1sru!2sby"
-          className="h-full w-full"
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
+        <MapWithRoute
+          origin={{ lat: 53.893009, lng: 27.567444 }}
+          destination={{
+            lat: 53.669353,
+            lng: 23.813131,
+          }}
         />
       </div>
       <img src={tilesImage} loading="lazy" className="top-0 left-0 absolute w-full z--1" />

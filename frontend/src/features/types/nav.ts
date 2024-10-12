@@ -11,6 +11,9 @@ import SVGInbox from 'assets/svg/SVGInbox';
 import SVGSettings from 'assets/svg/SVGSettings';
 import SVGUser from 'assets/svg/SVGUser';
 import SVGReceipt from 'assets/svg/SVGReceipt';
+import SVGInfo from 'assets/svg/SVGInfo';
+import SVGPrivacy from 'assets/svg/SVGPrivacy';
+import SVGCreate from 'assets/svg/SVGCreate';
 
 export interface INavItem {
   id: number;
@@ -18,7 +21,7 @@ export interface INavItem {
   path: string;
   icon: () => JSX.Element;
   count?: number;
-  sees: IUserRole[];
+  sees?: IUserRole[];
 }
 
 export const NavItems = (t: TFunction<['menuHolder'], undefined>): INavItem[] => [
@@ -77,10 +80,32 @@ export const NavItems = (t: TFunction<['menuHolder'], undefined>): INavItem[] =>
   },
   {
     id: 8,
+    name: t('menuHolder:links.createOrder'),
+    path: APP_ROUTES.DASHBOARD.CREATE_ORDER,
+    icon: SVGCreate,
+    sees: ['owner'],
+  },
+  {
+    id: 9,
     name: t('menuHolder:links.applications'),
     path: APP_ROUTES.DASHBOARD.APPLICATIONS,
     icon: SVGInbox,
     sees: ['admin'],
     count: 31,
+  },
+];
+
+export const GeneralNavItems = (t: TFunction<['menuHolder'], undefined>): INavItem[] => [
+  {
+    id: 1,
+    name: t('menuHolder:links.aboutUs'),
+    path: APP_ROUTES.HOME.ABOUT_US,
+    icon: SVGInfo,
+  },
+  {
+    id: 2,
+    name: t('menuHolder:links.privacy'),
+    path: APP_ROUTES.HOME.PRIVACY,
+    icon: SVGPrivacy,
   },
 ];

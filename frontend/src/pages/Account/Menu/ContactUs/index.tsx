@@ -41,7 +41,7 @@ const Form = ({ setIsSend, setIsOpen }: FormProps) => {
 
   return (
     <>
-      <H2 className="text-center">{t('menuHolder:support.contactUs')}</H2>
+      <H2 className="text-center">{t('common:buttons.contactUs')}</H2>
       <form className="flex-col gap" onSubmit={handleSubmit}>
         <div className="flex gap-mini">
           <input type="email" value="yakol.nikita@gmail.com" disabled />

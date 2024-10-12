@@ -12,6 +12,7 @@ interface IUser {
 interface AuthContextType {
   user: IUser | null;
   login: (user: IUser) => void;
+  setRole: (role: IUserRole) => void;
   logout: () => void;
 }
 
@@ -23,7 +24,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   useEffect(() => {
     //авторизация
-    setUser({ token: '', role: 'admin' });
+    setUser({ token: '', role: 'owner' });
   }, [authUser]);
 
   useEffect(() => {
@@ -42,6 +43,14 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     [setUser],
   );
 
+  //УДАЛИТЬ
+  const setRole = useCallback(
+    (role: IUserRole) => {
+      setUser({ role, token: '121212' });
+    },
+    [setUser],
+  );
+
   const logout = useCallback(() => {
     setUser(null);
   }, [setUser]);
@@ -51,6 +60,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       user,
       login,
       logout,
+      setRole
     }),
     [user, login, logout],
   );

@@ -39,7 +39,7 @@ export const ActiveUserChat = () => {
       </div>
       <form className="flex gap" onSubmit={onSubmit}>
         <input className="w-full" value={value} onChange={(e) => setValue(e.target.value)} />
-        <button className="rounded-8 --icon" disabled={isLoading}>
+        <button className="rounded-8" disabled={isLoading}>
           {isLoading ? <Loader /> : <SVGFullArrowUp />}
         </button>
       </form>

@@ -26,17 +26,6 @@ export const MenuHandler = () => {
           </button>
         </li>
       )}
-      {user.role === 'owner' && (
-        <li>
-          <button className="--default w-full">
-            <div className="active-indicator" />
-            <div className="flex gap-8 align-center">
-              <SVGCreate />
-              <p className="clamp">{t('common:buttons.createUser')}</p>
-            </div>
-          </button>
-        </li>
-      )}
     </ul>
   );
 };

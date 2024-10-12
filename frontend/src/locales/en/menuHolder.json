@@ -8,7 +8,15 @@
     "settings": "Settings",
     "applications": "Applications",
     "cargoOwners": "Cargo owners",
-    "orders": "Orders"
+    "orders": "Orders",
+    "aboutUs": "About Us",
+    "privacy": "Privacy Terms",
+    "createOrder": "Create Order"
+  },
+
+  "sections": {
+    "main": "MAIN",
+    "about": "ABOUT"
   },
   
   "logOut": "Log Out",
