@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
-import AccountMenu from '../../../components/ProfileMenu';
+
+import { ProfileMenu } from 'components';
 
 interface Props {
   children: ReactNode;
@@ -8,7 +9,7 @@ interface Props {
 const AccountHolder = ({ children }: Props) => {
   return (
     <div className="account-container">
-      <AccountMenu />
+      <ProfileMenu />
       {children}
     </div>
   );

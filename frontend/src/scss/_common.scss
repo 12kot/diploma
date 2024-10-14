@@ -59,7 +59,6 @@ textarea {
   resize: none;
   transition: var(--transition);
 
-
   &.--error {
     border-color: var(--red);
     background-color: var(--red-second);
@@ -472,9 +471,9 @@ li {
   &-light {
     color: var(--font-color-light);
   }
-  
+
   &-negative {
-    color: var(--font-color-negative)!important;
+    color: var(--font-color-negative) !important;
   }
 }
 
@@ -705,6 +704,12 @@ li {
     gap: 16px;
   }
 
+  &__lng {
+    @media (max-width: 620px) {
+      display: none;
+    }
+  }
+
   &__actions {
     height: 100%;
     @extend .flex-center;
@@ -718,12 +723,20 @@ li {
       display: flex;
       gap: 16px;
       padding-right: 40px;
+
+      @media (max-width: 768px) {
+        display: none;
+      }
     }
 
     &--profile {
       gap: 16px;
       padding-right: 16px;
       @extend .flex-center;
+
+      @media (max-width: 620px) {
+        display: none;
+      }
     }
 
     &--user {

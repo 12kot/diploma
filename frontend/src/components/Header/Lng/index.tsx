@@ -4,7 +4,7 @@ interface Props {
 
 const HeaderLng = ({ className }: Props) => {
   return (
-    <button className={`--transparent ${className}`} aria-label="Switch to Russian">
+    <button className={`--transparent app-header__lng ${className}`} aria-label="Switch to Russian">
       <img src="https://flagsapi.com/US/flat/64.png" alt="en" loading="lazy" />
       <p>EN</p>
     </button>

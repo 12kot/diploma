@@ -11,7 +11,7 @@ export const ProfileMenu = () => {
   const { t } = useTranslation(['menuHolder', 'common']);
 
   return (
-    <nav className="account-container--menu">
+    <nav className="account-container--menu hidden-1200">
       <MenuHandler />
 
       <section className="account-container--menu__end">
