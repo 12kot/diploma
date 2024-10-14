@@ -37,12 +37,12 @@ export const AddDriverToOrder = ({ isOpen, setIsOpen }: Props) => {
         <section className="flex-col gap">
           <Labels labels={labels} wrap />
           <MapWithRoute
-          origin={{ lat: 53.893009, lng: 27.567444 }}
-          destination={{
-            lat: 53.669353,
-            lng: 23.813131,
-          }}
-        />
+            origin={{ lat: 53.893009, lng: 27.567444 }}
+            destination={{
+              lat: 53.669353,
+              lng: 23.813131,
+            }}
+          />
         </section>
       </form>
     </Modal>

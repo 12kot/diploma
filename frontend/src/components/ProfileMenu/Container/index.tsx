@@ -36,7 +36,6 @@ interface Props {
 
 const MenuListContainer = ({ navItems }: Props) => {
   const location = useLocation();
-  console.log(location.pathname);
 
   return navItems.map((item) => (
     <li key={item.id}>

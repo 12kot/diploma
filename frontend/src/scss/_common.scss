@@ -57,6 +57,13 @@ textarea {
   box-shadow: var(--box-shadow);
 
   resize: none;
+  transition: var(--transition);
+
+
+  &.--error {
+    border-color: var(--red);
+    background-color: var(--red-second);
+  }
 
   &:focus {
     background-color: var(--bg-color-second);
