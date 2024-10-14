@@ -1,14 +1,20 @@
 .container {
   grid-area: 1 / 2 / 6 / 7;
 
+  overflow-y: hidden;
+  
   ::-webkit-scrollbar {
     width: 0;
     height: 0;
   }
-
+  
   &__grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(5, 1fr);
+    display: flex;
+
+    @media screen and (max-width: 1020px) {
+      .list {
+        display: none !important;
+      }
+    }
   }
 }

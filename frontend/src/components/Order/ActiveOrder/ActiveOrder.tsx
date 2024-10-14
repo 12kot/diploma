@@ -4,6 +4,8 @@ import { useEscapeKey, getOrderStatusText } from 'features';
 
 import SVGBack from 'assets/svg/SVGBack';
 
+import styles from './styles.module.scss';
+
 interface Props {
   setActiveOrder: (v: number | null) => void;
 }
@@ -14,7 +16,7 @@ export const ActiveOrder = ({ setActiveOrder }: Props) => {
   useEscapeKey(() => setActiveOrder(null));
 
   return (
-    <div className="flex-col gap wrap">
+    <div className={`flex-col gap wrap`}>
       <section className="flex align-center relative">
         <button className="--default --border square rounded p-0 absolute l-0 t-0" onClick={() => setActiveOrder(null)}>
           <SVGBack />
@@ -25,7 +27,7 @@ export const ActiveOrder = ({ setActiveOrder }: Props) => {
       </section>
       <hr />
 
-      <section className="flex-between gap pages-active-order media-flex-col-768">
+      <section className={`${styles.container} flex-between gap media-flex-col-768`}>
         <div className="btn --transparent w-m flex-start flex-col h-content w-full">
           <b>{t('pages.orders.cargoOwner')}</b>
           <div className="flex-col">

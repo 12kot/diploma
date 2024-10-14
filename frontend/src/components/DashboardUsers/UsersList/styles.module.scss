@@ -1,6 +1,8 @@
 .container {
   overflow-y: auto;
 
+  flex-grow: 1;
+
   &__item {
     padding-right: 32px;
     transition: var(--transition);
@@ -20,16 +22,16 @@
 
     &:hover {
       button {
-        background-color: var(--bg-color-second);
+        background-color: var(--bg-color-second) !important;
       }
 
-      background-color: var(--bg-color-second);
+      background-color: var(--bg-color-second) !important;
     }
   }
 
   &__active {
     button {
-      background-color: var(--bg-color-second);
+      background-color: var(--bg-color-second) !important;
       b {
         color: var(--main-color);
       }

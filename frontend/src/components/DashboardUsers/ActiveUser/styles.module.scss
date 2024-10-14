@@ -1,9 +1,11 @@
 .container {
   grid-area: 1 / 2 / 6 / 7;
-  
+
+  flex-grow: 1;
+
   padding: 32px;
   border-left: 1px solid var(--border-color);
 
-  max-height: 100%;
-  overflow: hidden;
+  height: 100%;
+  overflow: auto;
 }

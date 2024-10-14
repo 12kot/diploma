@@ -10,13 +10,14 @@ import styles from './styles.module.scss';
 
 interface Props {
   user: IUser;
+  closeActiveUser: () => void;
 }
 
-export const ActiveUser = ({ user }: Props) => {
+export const ActiveUser = ({ user, closeActiveUser }: Props) => {
   return (
     <div className={`${styles.container} grow-2 w-full relative`}>
       <div className="flex-col gap-mid h-full">
-        <UserLabels labels={user.labels} />
+        <UserLabels labels={user.labels} closeActiveUser={closeActiveUser} />
         <UserName name={user.name} isBanned={user.isBanned} role={user.role} />
         <ActiveUserPages activeUser={user} />
       </div>

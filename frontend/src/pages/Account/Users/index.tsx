@@ -8,7 +8,7 @@ import { ActiveUser, UsersList } from 'components/DashboardUsers';
 import SVGEarth from 'assets/svg/SVGEarth';
 import SVGTrendingUp from 'assets/svg/SVGTrendingUp';
 
-import styles from "./styles.module.scss";
+import styles from './styles.module.scss';
 
 const Users = () => {
   const [openUser, setOpenUser] = useState<number>();
@@ -42,11 +42,11 @@ const Users = () => {
 
   return (
     <div className={`${styles.container} ${openUser && styles.container__grid} media-full-1200`}>
-      <div className="flex-col w-full h-full">
+      <div className={`${styles.list} flex-col w-full h-full`}>
         <Filters />
         <UsersList users={users} activeUserId={openUser} setOpenUser={handleOpenUser} />
       </div>
-      {openUser && <ActiveUser user={users[openUser - 1]} />}
+      {openUser && <ActiveUser user={users[openUser - 1]} closeActiveUser={() => setOpenUser(undefined)} />}
     </div>
   );
 };

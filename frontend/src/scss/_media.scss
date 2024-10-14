@@ -40,6 +40,15 @@
   }
 }
 
+.media-direction {
+  &-768 {
+    @media (max-width: 768px) {
+      flex-direction: column-reverse;
+      gap: 0;
+    }
+  }
+}
+
 .media-center {
   &-768 {
     @media (max-width: 768px) {

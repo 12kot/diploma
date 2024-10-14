@@ -61,10 +61,10 @@ const orders: IOrder[] = [
 export const Orders = () => {
   const [activeOrder, setActiveOrder] = useState<number | null>();
 
-  if (activeOrder) return <div className='mt-16'><ActiveOrder setActiveOrder={setActiveOrder} /></div>
+  if (activeOrder) return <div className={`mt-16 ${styles.order__container}`}><ActiveOrder setActiveOrder={setActiveOrder} /></div>
 
   return (
-    <div className={`${styles.container} mt-16 flex-col gap wrap`}>
+    <div className={`${styles.container} mt-16 wrap`}>
       {orders.map((order) => (
         <Order {...order} key={order.id} setActiveOrder={(v) => setActiveOrder(v)} />
       ))}
