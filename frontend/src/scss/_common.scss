@@ -465,6 +465,10 @@ li {
   &-light {
     color: var(--font-color-light);
   }
+  
+  &-negative {
+    color: var(--font-color-negative)!important;
+  }
 }
 
 .overflow {

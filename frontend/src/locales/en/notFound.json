@@ -4,6 +4,7 @@
 
   "actions": {
     "homePage": "Home Page",
-    "dashboard": "Dashboard"
+    "dashboard": "Dashboard",
+    "singIn": "Sing In"
   }
 }

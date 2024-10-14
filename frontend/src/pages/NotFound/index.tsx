@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
+import { useAuth } from 'features';
 import { APP_ROUTES } from 'routes';
 import { H2, Header } from 'components';
 
@@ -8,6 +9,7 @@ import bigTilesImg from 'assets/img/bigTiles.png';
 import notFoundImg from 'assets/img/notFound.png';
 
 const NotFound = () => {
+  const { user } = useAuth();
   const { t } = useTranslation('notFound');
 
   return (
@@ -23,8 +25,8 @@ const NotFound = () => {
           <NavLink to={APP_ROUTES.HOME.INDEX.path} className="btn --transparent w-full decoration-none">
             {t('actions.homePage')}
           </NavLink>
-          <NavLink to={APP_ROUTES.DASHBOARD.INDEX.path} className="btn w-full decoration-none">
-            {t('actions.dashboard')}
+          <NavLink to={user ? APP_ROUTES.DASHBOARD.INDEX.path : APP_ROUTES.AUTH.LOGIN.path} className="btn w-full decoration-none">
+            {t(user ? 'actions.dashboard' : 'actions.singIn')}
           </NavLink>
         </div>
       </section>

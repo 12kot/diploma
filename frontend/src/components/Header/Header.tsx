@@ -59,6 +59,11 @@ export const Header = () => {
               </NavLink>
             )}
             {user && <ProfileCard />}
+            {!user && (
+              <NavLink className="btn w-full decoration-none text-negative" to={APP_ROUTES.AUTH.LOGIN.path}>
+                {t('common:buttons.signIn')}
+              </NavLink>
+            )}
           </div>
           <div className="app-header__actions--border" />
           <button className="app-header__actions--menu --default" onClick={() => setIsModalOpen((v) => !v)}>

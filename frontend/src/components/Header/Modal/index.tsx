@@ -102,7 +102,7 @@ const Content = ({ setIsOpen }: { setIsOpen: () => void }) => {
             {t('common:buttons.contactUs')}
           </button>
           <button className="w-full" onClick={() => handleNavigate(APP_ROUTES.AUTH.LOGIN.path)}>
-            {t('common:buttons.signUp')}
+            {t('common:buttons.signIn')}
           </button>
         </section>
       )}
