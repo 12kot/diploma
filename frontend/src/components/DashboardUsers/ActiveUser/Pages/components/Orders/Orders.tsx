@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { IOrder } from 'features';
 import { ActiveOrder, Order } from 'components/Order';
 
+import styles from "./styles.module.scss";
 
 const orders: IOrder[] = [
   {
@@ -63,7 +64,7 @@ export const Orders = () => {
   if (activeOrder) return <div className='mt-16'><ActiveOrder setActiveOrder={setActiveOrder} /></div>
 
   return (
-    <div className="mt-16 pages-analitics flex-col gap wrap">
+    <div className={`${styles.container} mt-16 flex-col gap wrap`}>
       {orders.map((order) => (
         <Order {...order} key={order.id} setActiveOrder={(v) => setActiveOrder(v)} />
       ))}

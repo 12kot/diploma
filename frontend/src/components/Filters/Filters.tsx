@@ -1,3 +1,5 @@
+import styles from "./styles.module.scss";
+
 const filters = [
   {
     id: 1,
@@ -33,7 +35,7 @@ const filters = [
 
 export const Filters = () => {
   return (
-    <div className="users-container-filters flex gap-mini w-full">
+    <div className={`${styles.container} flex gap-mini w-full`}>
       {filters.map((item) => (
         <button className={`--filter ${item.id === 1 && `--active`}`} key={item.id}>
           <p>{item.name}</p>

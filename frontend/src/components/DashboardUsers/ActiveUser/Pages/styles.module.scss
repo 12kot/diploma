@@ -1,0 +1,35 @@
+.container {
+  height: 100%;
+  overflow: hidden;
+
+  ::-webkit-scrollbar {
+    width: 6px!important;
+    height: 6px!important;
+  }
+
+  &__header {
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+
+    button {
+      color: var(--font-color-second);
+      border-radius: 0;
+
+      svg {
+        width: 20px;
+      }
+
+      &:active {
+        scale: 1;
+      }
+    }
+
+    &__active {
+      background-color: var(--main-color-second)!important;
+      color: var(--main-color);
+      svg {
+        fill: var(--main-color);
+      }
+    }
+  }
+}

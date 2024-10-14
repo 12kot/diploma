@@ -6,13 +6,15 @@ import { UserLabels } from './UserLabels/UserLabels';
 
 import tilesImage from 'assets/img/tiles.png';
 
+import styles from './styles.module.scss';
+
 interface Props {
   user: IUser;
 }
 
 export const ActiveUser = ({ user }: Props) => {
   return (
-    <div className="users-container -user grow-2 w-full relative">
+    <div className={`${styles.container} grow-2 w-full relative`}>
       <div className="flex-col gap-mid h-full">
         <UserLabels labels={user.labels} />
         <UserName name={user.name} isBanned={user.isBanned} role={user.role} />

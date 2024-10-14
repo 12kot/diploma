@@ -8,6 +8,8 @@ import { ActiveUser, UsersList } from 'components/DashboardUsers';
 import SVGEarth from 'assets/svg/SVGEarth';
 import SVGTrendingUp from 'assets/svg/SVGTrendingUp';
 
+import styles from "./styles.module.scss";
+
 const Users = () => {
   const [openUser, setOpenUser] = useState<number>();
   const location = useLocation();
@@ -39,7 +41,7 @@ const Users = () => {
   const users = getUserType(location.pathname.slice(location.pathname.lastIndexOf('/') + 1) as EUserRole);
 
   return (
-    <div className={`users-container ${openUser && '--users-grid'} media-full-1200`}>
+    <div className={`${styles.container} ${openUser && styles.container__grid} media-full-1200`}>
       <div className="flex-col w-full h-full">
         <Filters />
         <UsersList users={users} activeUserId={openUser} setOpenUser={handleOpenUser} />

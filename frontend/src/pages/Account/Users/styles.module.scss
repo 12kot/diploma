@@ -1,0 +1,14 @@
+.container {
+  grid-area: 1 / 2 / 6 / 7;
+
+  ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+  }
+}

@@ -6,6 +6,8 @@ import { EUserRole, useAuth } from 'features';
 import SVGEarth from 'assets/svg/SVGEarth';
 import SVGTrendingUp from 'assets/svg/SVGTrendingUp';
 
+import styles from "./styles.module.scss"
+
 interface Props {
   role: EUserRole;
   isBanned: boolean;
@@ -16,7 +18,7 @@ export const ActiveUserAbout = ({ role, isBanned }: Props) => {
   const { t } = useTranslation(['dashboard']);
 
   return (
-    <div className="mt-16 pages-about flex-col gap">
+    <div className={`${styles.container} mt-16 flex-col gap`}>
       <section className="flex gap-mini">
         <a className="btn --transparent text-12" href="tel:+375292812071">
           +375 29 281 20 71
@@ -25,7 +27,7 @@ export const ActiveUserAbout = ({ role, isBanned }: Props) => {
           yakol.nikita@gmail.com
         </a>
       </section>
-      <section className="flex gap pages-about-labels">
+      <section className={`flex gap ${styles.container__labels}`}>
         <div className="flex-col gap-mini">
           <p>
             <b>{t('pages.about.carrier')}</b>
@@ -39,11 +41,11 @@ export const ActiveUserAbout = ({ role, isBanned }: Props) => {
           <Labels labels={labels2} wrap />
         </div>
       </section>
-      <section className="flex-col gap-mini pages-about-info">
+      <section className={`flex-col gap-mini ${styles.container__info}`}>
         <p>
           <b>{t('pages.about.about')}</b>
         </p>
-        <div className="pages-about-info">
+        <div className={styles.container__info}>
           <p className="text-14">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit unde animi, iste consequuntur perferendis
             laudantium dolores quibusdam dolorem amet veritatis deserunt, officia illum voluptatum architecto veniam
@@ -64,7 +66,7 @@ export const ActiveUserAbout = ({ role, isBanned }: Props) => {
         </div>
       </section>
       {user?.role === EUserRole.Admin && (
-        <div className="flex gap-mini pages-about-actions">
+        <div className={`flex gap-mini ${styles.container__actions}`}>
           {isBanned ? (
             <button>{t(role === EUserRole.Forwarder ? 'actions.forwarders.continue' : 'actions.drivers.continue')}</button>
           ) : (

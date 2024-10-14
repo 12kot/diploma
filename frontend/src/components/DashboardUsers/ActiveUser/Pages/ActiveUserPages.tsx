@@ -14,6 +14,8 @@ import SVGChat from 'assets/svg/SVGChat';
 import SVGInfo from 'assets/svg/SVGInfo';
 import SVGCar from 'assets/svg/SVGCar';
 
+import styles from "./styles.module.scss";
+
 type IPageTypes = 'chat' | 'about' | 'analitics' | 'orders';
 
 interface IPage {
@@ -69,8 +71,8 @@ export const ActiveUserPages = ({ activeUser }: Props) => {
   };
 
   return (
-    <section className="flex-col pages">
-      <div className="flex pages-header">
+    <section className={`${styles.container} flex-col`}>
+      <div className={`${styles.container__header} flex`}>
         {getAvaliablePages().map((page, i) => (
           <Page key={i} page={page} setActivePage={setActivePage} activePage={activePage} />
         ))}
@@ -92,7 +94,7 @@ interface PageProps {
 const Page = ({ setActivePage, activePage, page }: PageProps) => {
   return (
     <button
-      className={`--default gap-mini w-full ${activePage === page.value && 'active'}`}
+      className={`--default gap-mini w-full ${activePage === page.value && styles.container__header__active}`}
       onClick={() => setActivePage(page.value)}>
       {page.icon}
       <p>

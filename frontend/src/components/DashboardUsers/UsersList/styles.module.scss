@@ -1,0 +1,41 @@
+.container {
+  overflow-y: auto;
+
+  &__item {
+    padding-right: 32px;
+    transition: var(--transition);
+    border-bottom: 1px solid var(--border-color);
+
+    &__link {
+      padding: 16px 0;
+      padding-left: 32px;
+      justify-content: flex-start;
+      align-items: flex-start;
+      border-radius: 0;
+
+      &:active {
+        scale: 1;
+      }
+    }
+
+    &:hover {
+      button {
+        background-color: var(--bg-color-second);
+      }
+
+      background-color: var(--bg-color-second);
+    }
+  }
+
+  &__active {
+    button {
+      background-color: var(--bg-color-second);
+      b {
+        color: var(--main-color);
+      }
+    }
+
+    background-color: var(--bg-color-second);
+    border-right: 3px solid var(--main-color);
+  }
+}
