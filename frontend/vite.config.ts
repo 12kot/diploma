@@ -20,10 +20,6 @@ export default ({ mode }: { mode: string }) => {
           },
         },
       },
-      minify: 'terser',
-      optimizeDeps: {
-        include: ['react', 'react-dom'],
-      },
     },
     resolve: {
       alias: {

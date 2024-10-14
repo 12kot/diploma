@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
+import { useLocation, useSearchParams } from 'react-router-dom';
 
 import { IUser, EUserRole } from 'features';
 import { Filters } from 'components';
@@ -6,16 +7,15 @@ import { ActiveUser, UsersList } from 'components/DashboardUsers';
 
 import SVGEarth from 'assets/svg/SVGEarth';
 import SVGTrendingUp from 'assets/svg/SVGTrendingUp';
-import { useParams, useSearchParams } from 'react-router-dom';
 
 const Users = () => {
   const [openUser, setOpenUser] = useState<number>();
-  const { userType } = useParams<{ userType: EUserRole }>();
+  const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     setOpenUser(undefined);
-  }, [userType]);
+  }, [location.pathname]);
 
   useEffect(() => {
     const userId = searchParams.get('openUser');
@@ -36,11 +36,11 @@ const Users = () => {
     [searchParams, setSearchParams],
   );
 
-  const users = getUserType(userType as EUserRole);
+  const users = getUserType(location.pathname.slice(location.pathname.lastIndexOf('/') + 1) as EUserRole);
 
   return (
     <div className={`users-container ${openUser && '--users-grid'} media-full-1200`}>
-      <div className="flex-col w-full --users-grid -first">
+      <div className="flex-col w-full h-full">
         <Filters />
         <UsersList users={users} activeUserId={openUser} setOpenUser={handleOpenUser} />
       </div>
@@ -112,6 +112,7 @@ const supervisores: IUser[] = [
       },
     ],
   },
+
   {
     id: 4,
     isBanned: true,
