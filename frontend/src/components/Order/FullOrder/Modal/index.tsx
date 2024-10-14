@@ -51,7 +51,7 @@ export const AddDriverToOrder = ({ isOpen, setIsOpen }: Props) => {
 
 const MiniDriver = ({ active }: { active?: boolean }) => {
   return (
-    <button className={`--default flex-start gap-mini mini-driver align-center ${active && 'mini-driver-active'}`}>
+    <div className={`--default flex-start gap-mini mini-driver align-center ${active && 'mini-driver-active'}`}>
       <img src="https://cdn3.pixelcut.app/1/3/profile_picture_1728ecf2bd.jpg" className="rounded" loading="lazy" />
       <div className="flex-col flex-start">
         <b className="text-14">Hanna super Driver</b>
@@ -63,7 +63,7 @@ const MiniDriver = ({ active }: { active?: boolean }) => {
           <SVGClose />
         </button>
       )}
-    </button>
+    </div>
   );
 };
 
