@@ -19,7 +19,7 @@ export const TotalInfo = ({ totalInfo }: Props) => {
   return (
     <section className="account-container--dashboard -total media-full-1200 flex-between rounded-16">
       {totalInfo(t).map((item) => (
-        <div className="flex-col gap-mini" key={item.id}>
+        <div className="flex-col gap-mini media-center-768" key={item.id}>
           <p className="text-12 text-secondary">{item.name}</p>
           <b className="text-h1">{item.value}</b>
           {item.percentage && (

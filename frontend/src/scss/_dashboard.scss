@@ -177,6 +177,8 @@
       grid-template-columns: repeat(2, minmax(200px, 1fr));
       grid-gap: calc(var(--gap) * 2);
 
+      max-height: fit-content;
+
       @media (max-width: 768px) {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
@@ -187,13 +189,9 @@
     }
 
     .chart {
-      width: 100%;
-      height: 100%;
-      min-height: 177px;
-
       canvas {
-        width: 100% !important;
-        height: auto !important;
+        width: 100%;
+        height: 100%;
       }
     }
   }
@@ -450,6 +448,12 @@
     overflow-y: hidden;
     height: 100%;
 
+    @media screen and (max-width: 768px) {
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+
     ::-webkit-scrollbar {
       width: 0;
       height: 0;
@@ -461,8 +465,18 @@
       border-right: 1px solid var(--border-color);
       overflow-y: auto;
 
+      @media screen and (max-width: 768px) {
+        overflow-y: unset;
+        height: fit-content;
+      }
+
       &-overflow {
         overflow-y: auto;
+
+        @media screen and (max-width: 768px) {
+          height: fit-content;
+          overflow-y: unset;
+        }
 
         textarea {
           flex-shrink: 0;
@@ -472,6 +486,10 @@
 
     &-second {
       grid-area: 1 / 2 / 2 / 3;
+
+      @media screen and (max-width: 768px) {
+        height: fit-content;
+      }
 
       svg {
         width: 70px;
@@ -484,6 +502,17 @@
   &-orders {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+
+    
+    @media screen and (max-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+      overflow-y: auto;
+    }
+
+    @media screen and (max-width: 550px) {
+      grid-template-columns: repeat(1, 1fr);
+      overflow-y: auto;
+    }
 
     &-active {
       padding: 16px 32px;
@@ -574,6 +603,8 @@
 .order-container {
   grid-area: 1 / 2 / 6 / 7;
 
+  height: 100%;
+
   ::-webkit-scrollbar {
     width: 0;
     height: 0;
@@ -598,11 +629,28 @@
     overflow: hidden;
 
     height: 100%;
+
+    @media (max-width: 950px) {
+      display: flex;
+      overflow-y: scroll;
+    }
+  }
+
+  &--map {
+    height: calc(90vh - 70px);
   }
 
   &-info {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+
+
+    @media (max-width: 950px) {
+      display: flex;
+      flex-direction: column;
+      overflow-y: hidden;
+      height: fit-content;
+    }
   }
 
   &__active-order {
@@ -612,6 +660,12 @@
     overflow-x: hidden;
 
     border-right: 1px solid var(--border-color);
+
+    @media (max-width: 550px) {
+      overflow-y: unset;
+      flex-direction: column;
+      height: fit-content;
+    }
   }
 
   &__modal {

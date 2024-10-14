@@ -380,6 +380,14 @@ li {
   }
 }
 
+.pr {
+  padding-right: auto;
+
+  &-8 {
+    padding-right: 8px;
+  }
+}
+
 .pb {
   padding-bottom: auto;
 

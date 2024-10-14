@@ -7,10 +7,19 @@
 }
 
 .media-flex-col {
-  &-768 {
+  &-center-768 {
     @media (max-width: 768px) {
       flex-direction: column;
       text-align: center;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  
+  &-768 {
+    @media (max-width: 768px) {
+      flex-direction: column;
+      width: 100%;
     }
   }
 }
@@ -19,6 +28,24 @@
   &-1200 {
     @media (max-width: 1200px) {
       width: 100%;
+    }
+  }
+}
+
+.media-gap {
+  &-768 {
+    @media (max-width: 768px) {
+      gap: 8px;
+    }
+  }
+}
+
+.media-center {
+  &-768 {
+    @media (max-width: 768px) {
+      text-align: center;
+      align-items: center;
+      justify-content: center;
     }
   }
 }

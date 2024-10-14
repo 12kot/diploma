@@ -15,7 +15,7 @@ export const ActiveOrder = ({ setActiveOrder }: Props) => {
 
   return (
     <div className="flex-col gap wrap">
-      <section className="flex align-center realtive">
+      <section className="flex align-center relative">
         <button className="--default --border square rounded p-0 absolute l-0 t-0" onClick={() => setActiveOrder(null)}>
           <SVGBack />
         </button>
@@ -25,8 +25,8 @@ export const ActiveOrder = ({ setActiveOrder }: Props) => {
       </section>
       <hr />
 
-      <section className="flex-between gap pages-active-order">
-        <div className="btn --transparent w-m flex-start flex-col h-content">
+      <section className="flex-between gap pages-active-order media-flex-col-768">
+        <div className="btn --transparent w-m flex-start flex-col h-content w-full">
           <b>{t('pages.orders.cargoOwner')}</b>
           <div className="flex-col">
             <p className="text-12 text-secondary">{t('pages.orders.id')}</p>
@@ -49,7 +49,7 @@ export const ActiveOrder = ({ setActiveOrder }: Props) => {
             </a>
           </div>
         </div>
-        <div className="btn --transparent w-m flex-start flex-col h-content">
+        <div className="btn --transparent w-m flex-start flex-col h-content w-full">
           <b>{t('pages.orders.cargoInfo')}</b>
           <div className="flex-col">
             <p className="text-12 text-secondary">{t('pages.orders.status')}</p>

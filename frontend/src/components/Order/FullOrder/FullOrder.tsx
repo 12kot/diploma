@@ -21,8 +21,10 @@ export const FullOrder = ({ setActiveOrder }: Props) => {
   useEscapeKey(() => setActiveOrder(null));
 
   return (
-    <div className="flex-col relative order-container -order h-full nowrap">
-      {user?.role === EUserRole.Forwarder && <AddDriverToOrder isOpen={isOpen} setIsOpen={() => setIsOpen((v) => !v)} />}
+    <div className="order-container -order flex-col relative h-full nowrap">
+      {user?.role === EUserRole.Forwarder && (
+        <AddDriverToOrder isOpen={isOpen} setIsOpen={() => setIsOpen((v) => !v)} />
+      )}
       <section className="order-container__padding-header flex align-center realtive">
         <button className="--default --border square rounded p-0 absolute l-0 t-0" onClick={() => setActiveOrder(null)}>
           <SVGBack />
@@ -33,7 +35,9 @@ export const FullOrder = ({ setActiveOrder }: Props) => {
       </section>
       <hr />
       {user?.role === EUserRole.Forwarder && (
-        <button onClick={() => setIsOpen((v) => !v)} className='order-container__padding-actions'>{t('common:buttons.addDriver')}</button>
+        <button onClick={() => setIsOpen((v) => !v)} className="order-container__padding-actions">
+          {t('common:buttons.addDriver')}
+        </button>
       )}
 
       <div className="order-container-info flex h-full ">
@@ -107,13 +111,15 @@ export const FullOrder = ({ setActiveOrder }: Props) => {
           </section>
         </div>
 
-        <MapWithRoute
-          origin={{ lat: 53.893009, lng: 27.567444 }}
-          destination={{
-            lat: 53.669353,
-            lng: 23.813131,
-          }}
-        />
+        <div className='order-container--map'>
+          <MapWithRoute
+            origin={{ lat: 53.893009, lng: 27.567444 }}
+            destination={{
+              lat: 53.669353,
+              lng: 23.813131,
+            }}
+          />
+        </div>
       </div>
       <img src={tilesImage} loading="lazy" className="top-0 left-0 absolute w-full z--1" />
     </div>

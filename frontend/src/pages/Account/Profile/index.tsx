@@ -12,7 +12,7 @@ const Profile = () => {
   const [activePage, setActivePage] = useState<IProfilePageType>('general');
 
   return (
-    <div className={`profile flex-col`}>
+    <div className={`profile flex-col media-full-1200`}>
       <ProfileHeader />
       <ProfilePages activePage={activePage} setActivePage={(v) => setActivePage(v)} />
       <hr />

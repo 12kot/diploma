@@ -11,6 +11,25 @@
       rel="stylesheet" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-analytics.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyCsK9B-HDe3zUEUnbBv9mf8oD9_2qLPsTs",
+        authDomain: "hh-cargo.firebaseapp.com",
+        projectId: "hh-cargo",
+        storageBucket: "hh-cargo.appspot.com",
+        messagingSenderId: "750349409089",
+        appId: "1:750349409089:web:b6c51b2714d72871e55fc0",
+        measurementId: "G-2VJW8MJ4EY"
+      };
+    
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+    </script>
     <title>Vite + React + TS</title>
   </head>
   <body>

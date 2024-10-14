@@ -18,13 +18,13 @@ interface Props {
 }
 
 export const OrdersList = ({ orders, activeUserId, setOpenUser }: Props) => {
-  const memoUsers = useMemo(() => {
+  const memoOrders = useMemo(() => {
     return orders.map((order) => (
       <Order key={order.id} activeUserId={activeUserId} setOpenUser={setOpenUser} {...order} />
     ));
   }, [orders, activeUserId, setOpenUser]);
 
-  return <section className="users-container-list flex-col w-full">{memoUsers}</section>;
+  return <section className="users-container-list flex-col w-full">{memoOrders}</section>;
 };
 
 interface UserProps extends IOrder {
@@ -37,14 +37,16 @@ const Order = ({ activeUserId, setOpenUser, ...order }: UserProps) => {
 
   return (
     <div className={`flex-between item w-full align-center ${activeUserId === order.id && 'active'}`}>
-      <button className="--default flex-col gap-mini w-full item-link h-full" onClick={() => setOpenUser(order.id)}>
+      <button className="--default flex-col gap-mini w-full item-link h-full overflow" onClick={() => setOpenUser(order.id)}>
         <div className="flex gap-mini align-center">
           <b>
             {order.cityFrom} → {order.cityTo}
           </b>
           <p className={`indicator ${getOrderIndicatorClass(order.type)}`}>{getOrderStatusText(order.type, t)}</p>
         </div>
-        <Labels labels={labels(order)} />
+        <div className="overflow-y-auto w-full flex">
+          <Labels labels={labels(order)} />
+        </div>
       </button>
       <button className="--default --border square rounded p-0">
         <SVGFavorite />
