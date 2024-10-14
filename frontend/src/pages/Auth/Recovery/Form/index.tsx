@@ -2,8 +2,8 @@ import { FormEvent, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
+import { APP_ROUTES } from 'routes';
 import { H1 } from 'components';
-import { APP_ROUTES } from 'features';
 
 import CheckEmail from './CheckEmail';
 
@@ -34,7 +34,7 @@ const RecoveryForm = () => {
             <p>{t('auth:recovery.submit')}</p>
           </button>
           <span>
-            {t('auth:links.rememberPassword')} <NavLink to={APP_ROUTES.AUTH.LOGIN}>{t('auth:signIn.index')}</NavLink>
+            {t('auth:links.rememberPassword')} <NavLink to={APP_ROUTES.AUTH.LOGIN.path}>{t('auth:signIn.index')}</NavLink>
           </span>
         </section>
       </form>

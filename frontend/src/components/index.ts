@@ -1,5 +1,3 @@
-export * from './PublicRoutes';
-export * from './PrivateRoutes';
 export * from './ProfileMenu';
 export * from './Font';
 export * from './Modal';

@@ -1,12 +1,13 @@
+import { FormEvent, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import ProvidersAuth from 'pages/Auth/components/ProvidersAuth';
 
 import { H1, HR } from 'components';
-import { APP_ROUTES } from 'features';
+import { APP_ROUTES } from 'routes';
+
 import CheckEmail from './CheckEmail';
-import { FormEvent, useState } from 'react';
 
 const RegisterForm = () => {
   const { t } = useTranslation(['auth', 'common']);
@@ -37,7 +38,7 @@ const RegisterForm = () => {
             <p>{t('auth:signUp.submit')}</p>
           </button>
           <span>
-            {t('auth:links.alreadyHave')} <NavLink to={APP_ROUTES.AUTH.LOGIN}>{t('auth:signIn.index')}</NavLink>
+            {t('auth:links.alreadyHave')} <NavLink to={APP_ROUTES.AUTH.LOGIN.path}>{t('auth:signIn.index')}</NavLink>
           </span>
         </section>
         <HR text={t('common:or')} />

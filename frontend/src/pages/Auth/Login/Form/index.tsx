@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next';
 
 import ProvidersAuth from 'pages/Auth/components/ProvidersAuth';
 
+import { APP_ROUTES } from 'routes';
 import { H1, HR } from 'components';
-import { APP_ROUTES } from 'features';
 
 const LoginForm = () => {
   const { t } = useTranslation(['auth', 'common']);
@@ -19,7 +19,7 @@ const LoginForm = () => {
         <section className="auth-container--form--inputs">
           <input placeholder={t('auth:email')} type="email" />
           <input placeholder={t('auth:password')} type="password" />
-          <NavLink to={APP_ROUTES.AUTH.RECOVERY} className="text-14">
+          <NavLink to={APP_ROUTES.AUTH.RECOVERY.path} className="text-14">
             {t('auth:links.forgotPassword')}
           </NavLink>
         </section>
@@ -28,7 +28,7 @@ const LoginForm = () => {
             <p>{t('auth:signIn.submit')}</p>
           </button>
           <span>
-            {t('auth:links.dontHave')} <NavLink to={APP_ROUTES.AUTH.REGISTRATION}>{t('auth:signUp.index')}</NavLink>
+            {t('auth:links.dontHave')} <NavLink to={APP_ROUTES.AUTH.REGISTRATION.path}>{t('auth:signUp.index')}</NavLink>
           </span>
         </section>
         <HR text={t('common:or')} />

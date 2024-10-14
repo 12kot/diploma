@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { MapWithRoute } from 'components';
-import { useEscapeKey, getOrderStatusText, useAuth } from 'features';
+import { useEscapeKey, getOrderStatusText, useAuth, EUserRole } from 'features';
 
 import { AddDriverToOrder } from './Modal';
 
@@ -22,7 +22,7 @@ export const FullOrder = ({ setActiveOrder }: Props) => {
 
   return (
     <div className="flex-col relative order-container -order h-full nowrap">
-      {user?.role === 'forwarder' && <AddDriverToOrder isOpen={isOpen} setIsOpen={() => setIsOpen((v) => !v)} />}
+      {user?.role === EUserRole.Forwarder && <AddDriverToOrder isOpen={isOpen} setIsOpen={() => setIsOpen((v) => !v)} />}
       <section className="order-container__padding-header flex align-center realtive">
         <button className="--default --border square rounded p-0 absolute l-0 t-0" onClick={() => setActiveOrder(null)}>
           <SVGBack />
@@ -32,7 +32,7 @@ export const FullOrder = ({ setActiveOrder }: Props) => {
         </p>
       </section>
       <hr />
-      {user?.role === 'forwarder' && (
+      {user?.role === EUserRole.Forwarder && (
         <button onClick={() => setIsOpen((v) => !v)} className='order-container__padding-actions'>{t('common:buttons.addDriver')}</button>
       )}
 

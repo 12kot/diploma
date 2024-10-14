@@ -1,14 +1,14 @@
 import { useTranslation } from 'react-i18next';
 
 import { H1 } from 'components';
-import { IUserRole, useAuth, useEditUserModal } from 'features';
+import { EUserRole, useAuth, useEditUserModal } from 'features';
 
 import SVGEdit from 'assets/svg/SVGEdit';
 
 interface Props {
   name: string;
   isBanned: boolean;
-  role: IUserRole;
+  role: EUserRole;
 }
 
 export const UserName = ({ name, isBanned, role }: Props) => {
@@ -28,7 +28,7 @@ export const UserName = ({ name, isBanned, role }: Props) => {
           </div>
         </div>
       </div>
-      {user?.role === 'admin' && (
+      {user?.role === EUserRole.Admin && (
         <button className="--default --border square rounded p-0" onClick={() => openUserModal()}>
           <SVGEdit />
         </button>

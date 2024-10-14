@@ -33,6 +33,7 @@ export default ({ mode }: { mode: string }) => {
         '@styles': path.resolve(__dirname, './src/assets/styles'),
         assets: path.resolve(__dirname, './src/assets'),
         layouts: path.resolve(__dirname, './src/layouts'),
+        routes: path.resolve(__dirname, './src/routes'),
         features: path.resolve(__dirname, './src/features'),
         components: path.resolve(__dirname, './src/components'),
         store: path.resolve(__dirname, './src/store'),

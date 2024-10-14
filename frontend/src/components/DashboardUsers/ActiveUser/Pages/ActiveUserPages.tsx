@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { TFunction } from 'i18next';
 import { useTranslation } from 'react-i18next';
 
-import { IUser, IUserRole, useAuth } from 'features';
+import { EUserRole, IUser, useAuth } from 'features';
 
 import { Orders } from './components/Orders';
 import { ActiveUserChat } from './components/Chat';
@@ -20,8 +20,8 @@ interface IPage {
   name: string;
   icon: JSX.Element;
   value: IPageTypes;
-  sees: IUserRole[];
-  has: IUserRole[];
+  sees: EUserRole[];
+  has: EUserRole[];
 }
 
 const pages = (t: TFunction<['dashboard'], undefined>): IPage[] => [
@@ -36,22 +36,22 @@ const pages = (t: TFunction<['dashboard'], undefined>): IPage[] => [
     name: t('pages.list.about'),
     icon: <SVGInfo />,
     value: 'about',
-    sees: ['admin', 'forwarder'],
-    has: ['forwarder', 'driver', 'owner'],
+    sees: [EUserRole.Admin, EUserRole.Forwarder],
+    has: [EUserRole.Forwarder, EUserRole.Driver, EUserRole.Owner],
   },
   {
     name: t('pages.list.analitics'),
     icon: <SVGAnalitics />,
     value: 'analitics',
-    sees: ['admin'],
-    has: ['driver', 'owner'],
+    sees: [EUserRole.Admin],
+    has: [EUserRole.Driver, EUserRole.Owner],
   },
   {
     name: t('pages.list.orders'),
     icon: <SVGCar />,
     value: 'orders',
-    sees: ['admin', 'forwarder'],
-    has: ['driver', 'owner'],
+    sees: [EUserRole.Admin, EUserRole.Forwarder],
+    has: [EUserRole.Driver, EUserRole.Owner],
   },
 ];
 
@@ -65,7 +65,7 @@ export const ActiveUserPages = ({ activeUser }: Props) => {
   const [activePage, setActivePage] = useState<IPageTypes>('about');
 
   const getAvaliablePages = () => {
-    return pages(t).filter((page) => page.has.includes(activeUser.role) && page.sees.includes(user?.role || 'driver'));
+    return pages(t).filter((page) => page.has.includes(activeUser.role) && page.sees.includes(user?.role || EUserRole.Driver));
   };
 
   return (

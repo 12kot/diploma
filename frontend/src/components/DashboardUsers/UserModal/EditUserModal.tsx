@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { AllRoles, IUserRole } from 'features';
+import { AllRoles, EUserRole } from 'features';
 
 import { H2 } from 'components/Font';
 import { Modal } from 'components/Modal';
@@ -14,7 +14,7 @@ interface ModalProps {
 
 export const EditUserModal = ({ isOpen, setIsOpen, isCreate }: ModalProps) => {
   const { t } = useTranslation(['dashboard', 'common']);
-  const [activeRole, setActiveRole] = useState<IUserRole>('admin');
+  const [activeRole, setActiveRole] = useState<EUserRole>(EUserRole.Admin);
 
   return (
     <Modal setIsOpen={setIsOpen} isOpen={isOpen} className="flex-col gap user-edit-modal">

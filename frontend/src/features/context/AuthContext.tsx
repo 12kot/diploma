@@ -1,18 +1,18 @@
 import React, { createContext, useContext, useMemo, ReactNode, useEffect, useCallback } from 'react';
-import { IUserRole } from 'features/types';
+import { EUserRole } from 'features/types';
 
-import { useLocalStorage } from './useLocalStorage';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 import { useUserAuthMutation } from 'store/api/authApi';
 
 interface IUser {
   token: string;
-  role: IUserRole;
+  role: EUserRole;
 }
 
 interface AuthContextType {
   user: IUser | null;
   login: (user: IUser) => void;
-  setRole: (role: IUserRole) => void;
+  setRole: (role: EUserRole) => void;
   logout: () => void;
 }
 
@@ -44,7 +44,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   //УДАЛИТЬ
   const setRole = useCallback(
-    (role: IUserRole) => {
+    (role: EUserRole) => {
       setUser({ role, token: '121212' });
     },
     [setUser],

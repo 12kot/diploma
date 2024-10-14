@@ -1,13 +1,13 @@
 import { useTranslation } from 'react-i18next';
 
 import { Labels } from 'components';
-import { IUserRole, useAuth } from 'features';
+import { EUserRole, useAuth } from 'features';
 
 import SVGEarth from 'assets/svg/SVGEarth';
 import SVGTrendingUp from 'assets/svg/SVGTrendingUp';
 
 interface Props {
-  role: IUserRole;
+  role: EUserRole;
   isBanned: boolean;
 }
 
@@ -63,13 +63,13 @@ export const ActiveUserAbout = ({ role, isBanned }: Props) => {
           </p>
         </div>
       </section>
-      {user?.role === 'admin' && (
+      {user?.role === EUserRole.Admin && (
         <div className="flex gap-mini pages-about-actions">
           {isBanned ? (
-            <button>{t(role === 'forwarder' ? 'actions.forwarders.continue' : 'actions.drivers.continue')}</button>
+            <button>{t(role === EUserRole.Forwarder ? 'actions.forwarders.continue' : 'actions.drivers.continue')}</button>
           ) : (
             <button className="--red">
-              {t(role === 'forwarder' ? 'actions.forwarders.suspend' : 'actions.drivers.suspend')}
+              {t(role === EUserRole.Forwarder ? 'actions.forwarders.suspend' : 'actions.drivers.suspend')}
             </button>
           )}
         </div>

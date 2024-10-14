@@ -1,7 +1,8 @@
 import { createContext, useContext, useState, ReactNode } from 'react';
 
+import { EUserRole } from 'features';
 import { EditUserModal } from 'components/DashboardUsers';
-import { useAuth } from './useAuth';
+import { useAuth } from './AuthContext';
 
 interface ModalContextProps {
   isModalOpen: boolean;
@@ -19,7 +20,7 @@ export const EditUserModalProvider = ({ children }: { children: ReactNode }) => 
   const [isCreate, setIsCreate] = useState<boolean>(false);
 
   const openUserModal = (create?: boolean) => {
-    if (user?.role !== 'admin') return;
+    if (user?.role !== EUserRole.Admin) return;
     setIsCreate(!!create);
     setIsModalOpen(true);
   };
@@ -29,7 +30,9 @@ export const EditUserModalProvider = ({ children }: { children: ReactNode }) => 
   return (
     <EditUserModalContext.Provider value={{ isModalOpen, openUserModal, closeUserModal, isCreate }}>
       {children}
-      {user?.role === 'admin' && <EditUserModal isOpen={isModalOpen} setIsOpen={closeUserModal} isCreate={isCreate} />}
+      {user?.role === EUserRole.Admin && (
+        <EditUserModal isOpen={isModalOpen} setIsOpen={closeUserModal} isCreate={isCreate} />
+      )}
     </EditUserModalContext.Provider>
   );
 };

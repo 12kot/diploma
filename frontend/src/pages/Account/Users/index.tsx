@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 
-import { IUser, IUserRole } from 'features';
+import { IUser, EUserRole } from 'features';
 import { Filters } from 'components';
 import { ActiveUser, UsersList } from 'components/DashboardUsers';
 
@@ -10,7 +10,7 @@ import { useParams, useSearchParams } from 'react-router-dom';
 
 const Users = () => {
   const [openUser, setOpenUser] = useState<number>();
-  const { userType } = useParams<{ userType: IUserRole }>();
+  const { userType } = useParams<{ userType: EUserRole }>();
   const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const Users = () => {
     [searchParams, setSearchParams],
   );
 
-  const users = getUserType(userType as IUserRole);
+  const users = getUserType(userType as EUserRole);
 
   return (
     <div className={`users-container ${openUser && '--users-grid'}`}>
@@ -51,9 +51,9 @@ const Users = () => {
 
 export default Users;
 
-const getUserType = (userType?: IUserRole) => {
-  if (userType === 'driver') return drivers;
-  if (userType === 'forwarder') return supervisores;
+const getUserType = (userType?: EUserRole) => {
+  if (userType === EUserRole.Driver) return drivers;
+  if (userType === EUserRole.Forwarder) return supervisores;
   return owners;
 };
 
@@ -62,7 +62,7 @@ const supervisores: IUser[] = [
     id: 1,
     isBanned: false,
     name: 'Hanna Cargo Limited',
-    role: 'forwarder',
+    role: EUserRole.Forwarder,
     labels: [
       {
         id: 1,
@@ -80,7 +80,7 @@ const supervisores: IUser[] = [
     id: 2,
     isBanned: false,
     name: 'Nikitoshas LCD',
-    role: 'forwarder',
+    role: EUserRole.Forwarder,
     labels: [
       {
         id: 1,
@@ -103,7 +103,7 @@ const supervisores: IUser[] = [
     id: 3,
     isBanned: true,
     name: 'Company name 1',
-    role: 'forwarder',
+    role: EUserRole.Forwarder,
     labels: [
       {
         id: 1,
@@ -116,7 +116,7 @@ const supervisores: IUser[] = [
     id: 4,
     isBanned: true,
     name: 'Company name 2',
-    role: 'forwarder',
+    role: EUserRole.Forwarder,
     labels: [
       {
         id: 1,
@@ -129,7 +129,7 @@ const supervisores: IUser[] = [
     id: 5,
     isBanned: true,
     name: 'Company name 3',
-    role: 'forwarder',
+    role: EUserRole.Forwarder,
     labels: [
       {
         id: 1,
@@ -145,7 +145,7 @@ const drivers: IUser[] = [
     id: 1,
     isBanned: false,
     name: 'Hanna Driver Limited',
-    role: 'driver',
+    role: EUserRole.Driver,
     labels: [
       {
         id: 1,
@@ -163,7 +163,7 @@ const drivers: IUser[] = [
     id: 2,
     isBanned: false,
     name: 'Nikitoshas LCD Driver',
-    role: 'driver',
+    role: EUserRole.Driver,
     labels: [
       {
         id: 1,
@@ -186,7 +186,7 @@ const drivers: IUser[] = [
     id: 3,
     isBanned: true,
     name: 'Driver name 1',
-    role: 'driver',
+    role: EUserRole.Driver,
     labels: [
       {
         id: 1,
@@ -199,7 +199,7 @@ const drivers: IUser[] = [
     id: 4,
     isBanned: false,
     name: 'Driver name 2',
-    role: 'driver',
+    role: EUserRole.Driver,
     labels: [
       {
         id: 1,
@@ -212,7 +212,7 @@ const drivers: IUser[] = [
     id: 5,
     isBanned: true,
     name: 'Driver name 3',
-    role: 'driver',
+    role: EUserRole.Driver,
     labels: [
       {
         id: 1,
@@ -228,7 +228,7 @@ const owners: IUser[] = [
     id: 1,
     isBanned: false,
     name: 'Hanna Owner Limited',
-    role: 'owner',
+    role: EUserRole.Owner,
     labels: [
       {
         id: 1,
@@ -246,7 +246,7 @@ const owners: IUser[] = [
     id: 2,
     isBanned: false,
     name: 'Nikitoshas LCD Driver',
-    role: 'owner',
+    role: EUserRole.Owner,
     labels: [
       {
         id: 1,
@@ -269,7 +269,7 @@ const owners: IUser[] = [
     id: 3,
     isBanned: true,
     name: 'Driver name 1',
-    role: 'owner',
+    role: EUserRole.Owner,
     labels: [
       {
         id: 1,
@@ -282,7 +282,7 @@ const owners: IUser[] = [
     id: 4,
     isBanned: false,
     name: 'Driver name 2',
-    role: 'owner',
+    role: EUserRole.Owner,
     labels: [
       {
         id: 1,
@@ -295,7 +295,7 @@ const owners: IUser[] = [
     id: 5,
     isBanned: true,
     name: 'Driver name 3',
-    role: 'owner',
+    role: EUserRole.Owner,
     labels: [
       {
         id: 1,

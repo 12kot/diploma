@@ -2,8 +2,9 @@ import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 
 import { RigthModal } from 'components';
+import { APP_ROUTES } from 'routes';
 import {
-  APP_ROUTES,
+  EUserRole,
   GeneralNavItems,
   getNavLinksByUserRole,
   INavItem,
@@ -61,14 +62,14 @@ const Content = ({ setIsOpen }: { setIsOpen: () => void }) => {
       {user && (
         <ProfileCardButton
           className="p-x-32 pb-16 flex-start w-content"
-          onClick={() => handleNavigate(APP_ROUTES.DASHBOARD.PROFILE)}
+          onClick={() => handleNavigate(APP_ROUTES.DASHBOARD.PROFILE.path)}
         />
       )}
       {user?.role && (
         <>
           <p className="text-12 p-x-32 pb-8 text-light">{t('menuHolder:sections.main')}</p>
           <MenuListContainer navItems={getNavLinksByUserRole(user.role, t)} setIsOpen={setIsOpen} />
-          {user.role === 'admin' && (
+          {user.role === EUserRole.Admin && (
             <li>
               <button className="--default w-full" onClick={() => handleOpenUserModal()}>
                 <div className="active-indicator" />
@@ -100,7 +101,7 @@ const Content = ({ setIsOpen }: { setIsOpen: () => void }) => {
           <button className="--transparent w-full" onClick={() => handleOpenContactUsModal()}>
             {t('common:buttons.contactUs')}
           </button>
-          <button className="w-full" onClick={() => handleNavigate(APP_ROUTES.AUTH.LOGIN)}>
+          <button className="w-full" onClick={() => handleNavigate(APP_ROUTES.AUTH.LOGIN.path)}>
             {t('common:buttons.signUp')}
           </button>
         </section>

@@ -1,7 +1,7 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-import { getNavLinksByUserRole, INavItem, useAuth, useEditUserModal } from 'features';
+import { EUserRole, getNavLinksByUserRole, INavItem, useAuth, useEditUserModal } from 'features';
 
 import SVGCreate from 'assets/svg/SVGCreate';
 
@@ -15,7 +15,7 @@ export const MenuHandler = () => {
   return (
     <ul>
       <MenuListContainer navItems={getNavLinksByUserRole(user.role, t)} />
-      {user.role === 'admin' && (
+      {user.role === EUserRole.Admin && (
         <li>
           <button className="--default w-full" onClick={() => openUserModal(true)}>
             <div className="active-indicator" />
@@ -35,9 +35,12 @@ interface Props {
 }
 
 const MenuListContainer = ({ navItems }: Props) => {
+  const location = useLocation();
+  console.log(location.pathname);
+
   return navItems.map((item) => (
     <li key={item.id}>
-      <NavLink to={item.path}>
+      <NavLink to={item.path} className={`${location.pathname === item.path && '-active'}`}>
         <div className="active-indicator" />
         <div className="flex gap-8 align-center">
           {item.icon()}
