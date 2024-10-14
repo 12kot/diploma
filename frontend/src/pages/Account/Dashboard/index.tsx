@@ -20,13 +20,13 @@ const Dashboard = () => {
   const { t } = useTranslation(['dashboard']);
 
   return (
-    <div className="account-container--dashboard flex-col gap">
-      <section className="flex-between align-center mb-16">
+    <div className="account-container--dashboard media-full-1200 flex-col gap">
+      <section className="flex-between align-center mb-16 media-flex-col-768 gap-8">
         <div className="flex-col">
           <H2>{t('dashboard:greeting.hello', { name: 'Hanna' })}</H2>
           <p className="text-secondary">{t('dashboard:greeting.traffic')}</p>
         </div>
-        <button>
+        <button className='nowrap'>
           <SVGReport />
           <p>{t('dashboard:greeting.generateReport')}</p>
         </button>

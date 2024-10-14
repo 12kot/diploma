@@ -45,11 +45,6 @@ export const APP_ROUTES = {
       roles: [EUserRole.Admin, EUserRole.Forwarder, EUserRole.Driver, EUserRole.Owner],
       element: lazy(() => import('pages/Account/Dashboard')),
     },
-    USER_TYPE: {
-      path: '/dashboard/users/:userType',
-      roles: [EUserRole.Admin, EUserRole.Forwarder],
-      element: lazy(() => import('pages/Account/Users')),
-    },
     FORWARDERS: {
       path: '/dashboard/users/forwarder',
       roles: [EUserRole.Admin],

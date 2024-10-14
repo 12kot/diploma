@@ -39,7 +39,7 @@ const Users = () => {
   const users = getUserType(userType as EUserRole);
 
   return (
-    <div className={`users-container ${openUser && '--users-grid'}`}>
+    <div className={`users-container ${openUser && '--users-grid'} media-full-1200`}>
       <div className="flex-col w-full --users-grid -first">
         <Filters />
         <UsersList users={users} activeUserId={openUser} setOpenUser={handleOpenUser} />

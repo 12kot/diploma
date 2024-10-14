@@ -8,7 +8,7 @@ const Orders = () => {
   const [activeOrder, setActiveOrder] = useState<number | null>();
 
   return (
-    <div className={`order-container ${activeOrder && '-orders-grid'}`}>
+    <div className={`order-container ${activeOrder && '-orders-grid'} media-full-1200`}>
       <div className={`flex-col w-full ${activeOrder && 'none'}`}>
         <Filters />
         <OrdersList orders={orders} activeUserId={activeOrder} setOpenUser={(v) => setActiveOrder(v)} />

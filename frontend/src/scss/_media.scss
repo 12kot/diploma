@@ -5,3 +5,20 @@
     }
   }
 }
+
+.media-flex-col {
+  &-768 {
+    @media (max-width: 768px) {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+}
+
+.media-full {
+  &-1200 {
+    @media (max-width: 1200px) {
+      width: 100%;
+    }
+  }
+}

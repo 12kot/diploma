@@ -123,7 +123,7 @@ const MenuListContainer = ({ navItems, setIsOpen }: NavProps) => {
     <li key={item.id}>
       <button
         onClick={() => handleNavigate(item.path)}
-        className={`--default w-full ${location.pathname === item.path && 'active'}`}>
+        className={`--default w-full ${location.pathname === item.path && '-active'}`}>
         <div className="active-indicator" />
         <div className="flex gap-8 align-center">
           {item.icon()}
