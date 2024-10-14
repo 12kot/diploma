@@ -1,6 +1,4 @@
-import { Header } from 'components';
-
-import AccountMenu from 'pages/Account/Menu';
+import { Header, ProfileMenu } from 'components';
 
 interface Props {
   header?: boolean;
@@ -12,7 +10,7 @@ export const AppHolder = ({ header, children, leftHolder }: Props) => {
   return (
     <main className={`app-container ${header && `--header`} ${leftHolder && `account-container`}`}>
       {header && <Header />}
-      {leftHolder && <AccountMenu />}
+      {leftHolder && <ProfileMenu />}
       {children}
     </main>
   );

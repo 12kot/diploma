@@ -24,7 +24,6 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   useEffect(() => {
     //авторизация
-    setUser({ token: '', role: 'owner' });
   }, [authUser]);
 
   useEffect(() => {
@@ -60,7 +59,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       user,
       login,
       logout,
-      setRole
+      setRole,
     }),
     [user, login, logout],
   );

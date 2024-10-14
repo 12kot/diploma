@@ -2,8 +2,8 @@ import { Suspense, useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 
 import { useAuth } from 'features';
-import { AppHolder } from 'components/AppHolder';
-import { Loader } from 'components/Loader';
+import { Loader } from 'components';
+import { AppHolder } from 'layouts';
 
 export const PrivateRoutes = () => {
   const { user } = useAuth();

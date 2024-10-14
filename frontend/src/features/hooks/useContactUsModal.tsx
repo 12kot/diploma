@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, ReactNode } from 'react';
 
-import ContactUsModal from 'pages/Account/Menu/ContactUs';
+import ContactUsModal from 'components/ProfileMenu/ContactUs';
 
 interface ModalContextProps {
   isContactUsModalOpen: boolean;
@@ -13,7 +13,7 @@ export const ContactUsModalProvider = ({ children }: { children: ReactNode }) =>
   const [isContactUsModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const setContactUsModalOpen = () => {
-    setIsModalOpen(v => !v);
+    setIsModalOpen((v) => !v);
   };
 
   return (

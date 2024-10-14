@@ -56,7 +56,7 @@ export const Header = () => {
                 <p>{t('common:buttons.createOrder')}</p>
               </NavLink>
             )}
-            <ProfileCard />
+            {user && <ProfileCard />}
           </div>
           <div className="app-header__actions--border" />
           <button className="app-header__actions--menu --default" onClick={() => setIsModalOpen((v) => !v)}>

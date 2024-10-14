@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import AccountMenu from '../Menu';
+import AccountMenu from '../../../components/ProfileMenu';
 
 interface Props {
   children: ReactNode;

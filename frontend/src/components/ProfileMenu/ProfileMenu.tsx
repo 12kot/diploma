@@ -6,7 +6,7 @@ import { MenuHandler } from './Container';
 
 import SVGLogout from 'assets/svg/SVGLogout';
 
-const AccountMenu = () => {
+export const ProfileMenu = () => {
   const { setContactUsModalOpen } = useContactUsModal();
   const { t } = useTranslation(['menuHolder', 'common']);
 
@@ -35,4 +35,3 @@ const AccountMenu = () => {
   );
 };
 
-export default AccountMenu;

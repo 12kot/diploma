@@ -1,7 +1,8 @@
-import { Outlet, useNavigate } from 'react-router-dom';
-import { useAuth } from '../../features/hooks/useAuth';
 import { useEffect } from 'react';
-import { AppHolder } from 'components/AppHolder';
+import { Outlet, useNavigate } from 'react-router-dom';
+
+import { AppHolder } from 'layouts';
+import { useAuth } from 'features';
 
 export const PublicRoutes = () => {
   const { user } = useAuth();
