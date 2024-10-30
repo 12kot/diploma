@@ -9,4 +9,5 @@ export * from './Loader';
 export * from './Dashboard';
 export * from './Order';
 export * from './Header';
+export * from './CheckEmail';
 export * from './Filters';

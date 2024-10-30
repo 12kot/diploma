@@ -11,6 +11,7 @@ interface IUser {
 
 interface AuthContextType {
   user: IUser | null;
+  isLoading: boolean;
   login: (user: IUser) => void;
   setRole: (role: EUserRole) => void;
   logout: () => void;
@@ -20,7 +21,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [user, setUser] = useLocalStorage<IUser | null>('user', null);
-  const [authUser, { data: authUserData, error }] = useUserAuthMutation();
+  const [authUser, { data: authUserData, error, isLoading }] = useUserAuthMutation();
 
   useEffect(() => {
     //авторизация
@@ -60,8 +61,9 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       login,
       logout,
       setRole,
+      isLoading
     }),
-    [user, login, logout],
+    [user, login, logout, isLoading],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

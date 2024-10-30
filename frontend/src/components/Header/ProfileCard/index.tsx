@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 
-import { APP_ROUTES } from 'routes';
+import { APP_ROUTES } from 'Router';
 
 interface Props {
   className?: string;
@@ -9,7 +9,9 @@ interface Props {
 
 const ProfileCard = ({ className }: Props) => {
   return (
-    <NavLink to={APP_ROUTES.DASHBOARD.PROFILE.path} className={`app-header__actions--user decoration-none ${className}`}>
+    <NavLink
+      to={APP_ROUTES.PROFILE}
+      className={`app-header__actions--user decoration-none ${className}`}>
       <Content />
     </NavLink>
   );

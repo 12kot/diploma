@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import SVGFacebook from 'assets/svg/SVGFacebook';
 import SVGGoogle from 'assets/svg/SVGGoogle';
 
-const ProvidersAuth = () => {
+export const ProvidersAuth = () => {
   const { t } = useTranslation(['auth']);
 
   return (
@@ -19,5 +19,3 @@ const ProvidersAuth = () => {
     </section>
   );
 };
-
-export default ProvidersAuth;

@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 
 import { RigthModal } from 'components';
-import { APP_ROUTES } from 'routes';
+import { APP_ROUTES } from 'Router';
 import {
   EUserRole,
   GeneralNavItems,
@@ -62,7 +62,7 @@ const Content = ({ setIsOpen }: { setIsOpen: () => void }) => {
       {user && (
         <ProfileCardButton
           className="p-x-32 pb-16 flex-start w-content"
-          onClick={() => handleNavigate(APP_ROUTES.DASHBOARD.PROFILE.path)}
+          onClick={() => handleNavigate(APP_ROUTES.PROFILE)}
         />
       )}
       {user?.role && (
@@ -101,7 +101,7 @@ const Content = ({ setIsOpen }: { setIsOpen: () => void }) => {
           <button className="--transparent w-full" onClick={() => handleOpenContactUsModal()}>
             {t('common:buttons.contactUs')}
           </button>
-          <button className="w-full" onClick={() => handleNavigate(APP_ROUTES.AUTH.LOGIN.path)}>
+          <button className="w-full" onClick={() => handleNavigate(APP_ROUTES.LOGIN)}>
             {t('common:buttons.signIn')}
           </button>
         </section>

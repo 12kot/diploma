@@ -1,10 +1,10 @@
 import { H2 } from 'components';
+import { useTranslation } from 'react-i18next';
 
 import previewImage from 'assets/img/preview.webp';
 import SVGStar from 'assets/svg/SVGStar';
-import { useTranslation } from 'react-i18next';
 
-const AuthPreview = () => {
+export const AuthPreview = () => {
   const { t } = useTranslation(['auth']);
 
   return (
@@ -33,5 +33,3 @@ const AuthPreview = () => {
     </div>
   );
 };
-
-export default AuthPreview;

@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
 import { H1 } from 'components';
-import { APP_ROUTES } from 'routes';
+import { APP_ROUTES } from 'Router';
 import { useEscapeKey, useHandleNavigation } from 'features';
 
 import SVGClose from 'assets/svg/SVGClose';
@@ -21,7 +21,9 @@ export const RigthModal = ({ children, isOpen, setIsOpen, className }: Props) =>
     <div className={`rigth-modal ${isOpen && '-active'}`} onClick={setIsOpen}>
       <div className={`rigth-modal__content ${className}`} onClick={(e) => e.stopPropagation()}>
         <header className="rigth-modal__header flex-between align-center">
-          <button className="--default rigth-modal__header--logo" onClick={() => handleNavigate(APP_ROUTES.HOME.INDEX.path)}>
+          <button
+            className="--default rigth-modal__header--logo"
+            onClick={() => handleNavigate(APP_ROUTES.INDEX)}>
             <H1>Logo</H1>
           </button>
           <button className="rigth-modal__header--close --default h-full flex-center" onClick={setIsOpen}>

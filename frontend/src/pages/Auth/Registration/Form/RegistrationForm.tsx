@@ -2,12 +2,11 @@ import { FormEvent, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-import { APP_ROUTES } from 'routes';
-import { H1 } from 'components';
+import { CheckEmail, H1, HR } from 'components';
+import { APP_ROUTES } from 'Router';
+import { ProvidersAuth } from 'pages/Auth';
 
-import CheckEmail from './CheckEmail';
-
-const RecoveryForm = () => {
+export const RegistrationForm = () => {
   const { t } = useTranslation(['auth', 'common']);
 
   const [isCheckOpen, setIsCheckOpen] = useState<boolean>(false);
@@ -23,23 +22,32 @@ const RecoveryForm = () => {
     <div className="auth-container--form flex-center flex-col">
       <form onSubmit={handleSubmit}>
         <header className="text-center">
-          <H1>{t('auth:recovery.header')}</H1>
-          <p>{t('auth:recovery.title')}</p>
+          <H1>{t('auth:signUp.header')}</H1>
+          <p>{t('auth:signUp.title')}</p>
         </header>
         <section className="auth-container--form--inputs">
+          <input placeholder={t('auth:name')} type="text" />
           <input placeholder={t('auth:email')} type="email" />
+          <input placeholder={t('auth:password')} type="password" />
         </section>
         <section className="text-center flex-col gap">
           <button>
-            <p>{t('auth:recovery.submit')}</p>
+            <p>{t('auth:signUp.submit')}</p>
           </button>
           <span>
-            {t('auth:links.rememberPassword')} <NavLink to={APP_ROUTES.AUTH.LOGIN.path}>{t('auth:signIn.index')}</NavLink>
+            {t('auth:links.alreadyHave')} <NavLink to={APP_ROUTES.LOGIN}>{t('auth:signIn.index')}</NavLink>
           </span>
         </section>
+        <HR text={t('common:or')} />
+        <ProvidersAuth />
       </form>
+      <section className="text-center auth-container--terms">
+        <span>
+          {t('auth:signUp.tosHeader')}
+          <br />
+          <NavLink to="">{t('auth:links.tos')}</NavLink> & <NavLink to="">{t('auth:links.privacy')}</NavLink>
+        </span>
+      </section>
     </div>
   );
 };
-
-export default RecoveryForm;

@@ -4,7 +4,7 @@ import { TFunction } from 'i18next';
 import { useTranslation } from 'react-i18next';
 
 import { H1 } from 'components';
-import { APP_ROUTES } from 'routes';
+import { APP_ROUTES } from 'Router';
 import { EUserRole, getNavLinksByUserRole, useAuth, useEditUserModal } from 'features';
 
 import HeaderLng from './Lng';
@@ -52,7 +52,7 @@ export const Header = () => {
             )}
             {user?.role === EUserRole.Owner && (
               <NavLink
-                to={APP_ROUTES.DASHBOARD.CREATE_ORDER.path}
+                to={APP_ROUTES.CREATE_ORDER}
                 className="btn --transparent decoration-none"
                 aria-label={t('common:buttons.createOrder')}>
                 <p>{t('common:buttons.createOrder')}</p>
@@ -60,7 +60,7 @@ export const Header = () => {
             )}
             {user && <ProfileCard />}
             {!user && (
-              <NavLink className="btn w-full decoration-none text-negative" to={APP_ROUTES.AUTH.LOGIN.path}>
+              <NavLink className="btn w-full decoration-none text-negative" to={APP_ROUTES.LOGIN}>
                 {t('common:buttons.signIn')}
               </NavLink>
             )}

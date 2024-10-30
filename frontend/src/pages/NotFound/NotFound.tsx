@@ -2,13 +2,13 @@ import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import { useAuth } from 'features';
-import { APP_ROUTES } from 'routes';
+import { APP_ROUTES } from 'Router';
 import { H2, Header } from 'components';
 
 import bigTilesImg from 'assets/img/bigTiles.png';
 import notFoundImg from 'assets/img/notFound.png';
 
-const NotFound = () => {
+export const NotFound = () => {
   const { user } = useAuth();
   const { t } = useTranslation('notFound');
 
@@ -22,10 +22,12 @@ const NotFound = () => {
           <p>{t('text')}</p>
         </div>
         <div className="flex gap-8 w-full">
-          <NavLink to={APP_ROUTES.HOME.INDEX.path} className="btn --transparent w-full decoration-none">
+          <NavLink to={APP_ROUTES.HOME} className="btn --transparent w-full decoration-none">
             {t('actions.homePage')}
           </NavLink>
-          <NavLink to={user ? APP_ROUTES.DASHBOARD.INDEX.path : APP_ROUTES.AUTH.LOGIN.path} className="btn w-full decoration-none">
+          <NavLink
+            to={user ? APP_ROUTES.DASHBOARD : APP_ROUTES.LOGIN}
+            className="btn w-full decoration-none">
             {t(user ? 'actions.dashboard' : 'actions.singIn')}
           </NavLink>
         </div>
@@ -34,5 +36,3 @@ const NotFound = () => {
     </div>
   );
 };
-
-export default NotFound;

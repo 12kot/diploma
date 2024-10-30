@@ -1,6 +1,6 @@
 import { TFunction } from 'i18next';
 
-import { APP_ROUTES } from 'routes';
+import { APP_ROUTES } from 'Router';
 import { EUserRole } from './user';
 
 import SVGCar from 'assets/svg/SVGCar';
@@ -28,14 +28,14 @@ export const NavItems = (t: TFunction<['menuHolder'], undefined>): INavItem[] =>
   {
     id: 1,
     name: t('menuHolder:links.dashboard'),
-    path: APP_ROUTES.DASHBOARD.INDEX.path,
+    path: APP_ROUTES.DASHBOARD,
     sees: [EUserRole.Admin, EUserRole.Forwarder, EUserRole.Driver, EUserRole.Owner],
     icon: SVGDashboard,
   },
   {
     id: 2,
     name: t('menuHolder:links.orders'),
-    path: APP_ROUTES.DASHBOARD.ORDERS.path,
+    path: APP_ROUTES.ORDERS,
     icon: SVGReceipt,
     sees: [EUserRole.Admin, EUserRole.Forwarder, EUserRole.Driver, EUserRole.Owner],
     count: 31,
@@ -43,7 +43,7 @@ export const NavItems = (t: TFunction<['menuHolder'], undefined>): INavItem[] =>
   {
     id: 3,
     name: t('menuHolder:links.forwarders'),
-    path: APP_ROUTES.DASHBOARD.FORWARDERS.path,
+    path: APP_ROUTES.FORWARDERS,
     icon: SVGCompany,
     sees: [EUserRole.Admin],
     count: 255,
@@ -51,7 +51,7 @@ export const NavItems = (t: TFunction<['menuHolder'], undefined>): INavItem[] =>
   {
     id: 4,
     name: t('menuHolder:links.drivers'),
-    path: APP_ROUTES.DASHBOARD.DRIVERS.path,
+    path: APP_ROUTES.DRIVERS,
     icon: SVGCar,
     sees: [EUserRole.Admin, EUserRole.Forwarder],
     count: 8,
@@ -59,7 +59,7 @@ export const NavItems = (t: TFunction<['menuHolder'], undefined>): INavItem[] =>
   {
     id: 5,
     name: t('menuHolder:links.cargoOwners'),
-    path: APP_ROUTES.DASHBOARD.OWNERS.path,
+    path: APP_ROUTES.OWNERS,
     icon: SVGCargoOwner,
     sees: [EUserRole.Admin, EUserRole.Forwarder],
     count: 31,
@@ -67,28 +67,28 @@ export const NavItems = (t: TFunction<['menuHolder'], undefined>): INavItem[] =>
   {
     id: 6,
     name: t('menuHolder:links.profile'),
-    path: APP_ROUTES.DASHBOARD.PROFILE.path,
+    path: APP_ROUTES.PROFILE,
     icon: SVGUser,
     sees: [EUserRole.Admin, EUserRole.Forwarder, EUserRole.Driver, EUserRole.Owner],
   },
   {
     id: 7,
     name: t('menuHolder:links.settings'),
-    path: APP_ROUTES.DASHBOARD.SETTINGS.path,
+    path: APP_ROUTES.SETTINGS,
     icon: SVGSettings,
     sees: [EUserRole.Admin, EUserRole.Forwarder, EUserRole.Driver, EUserRole.Owner],
   },
   {
     id: 8,
     name: t('menuHolder:links.createOrder'),
-    path: APP_ROUTES.DASHBOARD.CREATE_ORDER.path,
+    path: APP_ROUTES.CREATE_ORDER,
     icon: SVGCreate,
     sees: [EUserRole.Owner],
   },
   {
     id: 9,
     name: t('menuHolder:links.applications'),
-    path: APP_ROUTES.DASHBOARD.APPLICATIONS.path,
+    path: APP_ROUTES.APPLICATIONS,
     icon: SVGInbox,
     sees: [EUserRole.Admin],
     count: 31,
@@ -99,13 +99,13 @@ export const GeneralNavItems = (t: TFunction<['menuHolder'], undefined>): INavIt
   {
     id: 1,
     name: t('menuHolder:links.aboutUs'),
-    path: APP_ROUTES.HOME.ABOUT_US.path,
+    path: APP_ROUTES.ABOUT_US,
     icon: SVGInfo,
   },
   {
     id: 2,
     name: t('menuHolder:links.privacy'),
-    path: APP_ROUTES.HOME.PRIVACY.path,
+    path: APP_ROUTES.PRIVACY,
     icon: SVGPrivacy,
   },
 ];

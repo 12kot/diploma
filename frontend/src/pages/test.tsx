@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 
-import { APP_ROUTES } from 'routes';
+import { APP_ROUTES } from 'Router';
 import { EUserRole, useAuth } from 'features';
 import { H1 } from 'components';
 
@@ -16,7 +16,7 @@ const Test = () => {
       <button onClick={() => setRole(EUserRole.Owner)}>OWNER</button>
       <button onClick={logout}>LOGOUT</button>
 
-      <NavLink to={APP_ROUTES.DASHBOARD.INDEX.path} className="btn">
+      <NavLink to={APP_ROUTES.DASHBOARD} className="btn">
         GO TO DASHBOARD
       </NavLink>
     </div>
