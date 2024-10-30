@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { useAuth } from 'features';
 import { APP_ROUTES } from 'Router';
-import { H2, Header } from 'components';
+import { H2 } from 'components';
 
 import bigTilesImg from 'assets/img/bigTiles.png';
 import notFoundImg from 'assets/img/notFound.png';
@@ -13,8 +13,7 @@ export const NotFound = () => {
   const { t } = useTranslation('notFound');
 
   return (
-    <div className="app-container --header not-found flex-col flex-center gap-big">
-      <Header />
+    <div className="not-found gap-big">
       <img src={notFoundImg} className="not-found__img" alt="404" />
       <section className="not-found__content flex-col flex-center gap-mid">
         <div className="not-found__text flex-col gap-8 text-center">

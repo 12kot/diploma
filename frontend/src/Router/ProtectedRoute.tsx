@@ -24,7 +24,7 @@ export const ProtectedRoute = ({ children, permissions }: IProtectedRoutesProps)
     return <Navigate to={APP_ROUTES.LOGIN} />;
   }
 
-  if (isAuthorized) {
+  if (isAuthorized && !permissions.includes(EPermissions.AUTH_NOT_REQUIRED)) {
     if (permissions.includes(EPermissions.AUTH_LOGIN)) {
       return <Navigate to={APP_ROUTES.DASHBOARD} />;
     }
@@ -40,7 +40,7 @@ export const ProtectedRoute = ({ children, permissions }: IProtectedRoutesProps)
   }
 
   return (
-    <AppHolder header leftHolder={isAuthorized}>
+    <AppHolder header leftHolder={isAuthorized && permissions.includes(EPermissions.AUTH_REQUIRED)}>
       <Suspense fallback={<Loader center />}>{children}</Suspense>
     </AppHolder>
   );

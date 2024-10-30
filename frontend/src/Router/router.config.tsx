@@ -1,6 +1,7 @@
 import { ReactElement } from 'react';
+import { Navigate } from 'react-router-dom';
 
-import { LoginLazy, NotFoundLazy, RecoveryLazy, RegistrationLazy } from 'pages';
+import { HomeLazy, LoginLazy, NotFoundLazy, RecoveryLazy, RegistrationLazy } from 'pages';
 
 export enum EPermissions {
   AUTH_NOT_REQUIRED = "no_auth",
@@ -33,6 +34,7 @@ export enum APP_ROUTES {
   APPLICATIONS = '/dashboard/applications',
   ORDERS = '/dashboard/orders',
   CREATE_ORDER = '/dashboard/order/create',
+  ALL = '*',
 }
 
 export interface IRoute {
@@ -48,7 +50,7 @@ export type TRoutes = Record<string, IRoute>;
 
 export const routes: TRoutes = {
   [APP_ROUTES.HOME]: {
-    element: <></>,
+    element: <HomeLazy />,
     permissions: [EPermissions.AUTH_NOT_REQUIRED],
   },
   [APP_ROUTES.ABOUT_US]: {
@@ -110,6 +112,10 @@ export const routes: TRoutes = {
  
   [APP_ROUTES.NOT_FOUND]: {
     element: <NotFoundLazy />,
+    permissions: [EPermissions.AUTH_NOT_REQUIRED],
+  },
+  [APP_ROUTES.ALL]: {
+    element: <Navigate to={APP_ROUTES.NOT_FOUND} />,
     permissions: [EPermissions.AUTH_NOT_REQUIRED],
   },
 };
