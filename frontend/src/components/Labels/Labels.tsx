@@ -1,4 +1,4 @@
-import { ILabel } from "features";
+import { ILabel } from 'features';
 
 interface Props {
   wrap?: boolean;
@@ -9,11 +9,17 @@ export const Labels = ({ labels, wrap }: Props) => {
   return (
     <div className={`flex gap-mini ${wrap && 'wrap'}`}>
       {labels.map((label) => (
-        <div className="flex gap-mini indicator -border nowrap h-content" key={label.id}>
-          {label.icon}
-          <p>{label.name}</p>
-        </div>
+        <Label key={label.id} {...label} />
       ))}
+    </div>
+  );
+};
+
+const Label = ({ icon, name, id }: ILabel) => {
+  return (
+    <div className="flex gap-mini indicator -border nowrap h-content" key={id}>
+      {icon}
+      <p>{name}</p>
     </div>
   );
 };

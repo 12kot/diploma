@@ -25,7 +25,7 @@ export const Header = () => {
       <AccountModal setIsOpen={() => setIsModalOpen((v) => !v)} isOpen={isModalOpen} />
       <header className="app-header">
         <section className="app-header__logo">
-          <NavLink to="" className="decoration-none">
+          <NavLink to={APP_ROUTES.HOME} className="decoration-none">
             <H1>Logo</H1>
           </NavLink>
           <HeaderLng />

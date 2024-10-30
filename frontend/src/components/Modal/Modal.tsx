@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import { useEscapeKey } from 'features';
 
-import modalTiles from 'assets/img/modalTiles.png';
+import { modalTilesImg } from 'assets';
 
 interface Props {
   children?: ReactNode;
@@ -18,7 +18,7 @@ export const Modal = ({ children, isOpen, setIsOpen, className }: Props) => {
     <div className={`flex-center modal ${isOpen && '-active'}`} onClick={setIsOpen}>
       <div className={`modal__content ${className}`} onClick={(e) => e.stopPropagation()}>
         {children}
-        <img src={modalTiles} loading="lazy" className="top-0 left-0 absolute w-full z--1" />
+        <img src={modalTilesImg} loading="lazy" className="top-0 left-0 absolute w-full z--1" />
       </div>
     </div>
   );

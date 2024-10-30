@@ -1,5 +1,5 @@
-import GoogleMapReact from 'google-map-react';
 import { useEffect, useRef, useState } from 'react';
+import GoogleMapReact from 'google-map-react';
 
 interface Coordinates {
   lat: number;

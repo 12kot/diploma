@@ -1,5 +1,6 @@
-import mapMarker from 'assets/img/mapMarker.webp';
 import GoogleMapReact from 'google-map-react';
+
+import { mapMarkerImg } from 'assets';
 
 export const Map = () => {
   return (
@@ -34,7 +35,7 @@ const Marker = (data: MarkerProps) => {
       style={{
         transform: 'translate(-50%, -50%)',
       }}>
-      <img src={mapMarker} />
+      <img src={mapMarkerImg} />
     </div>
   );
 };

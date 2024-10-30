@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 
 import { AllRoles, EUserRole } from 'features';
 
-import { H2 } from 'components/Font';
+import { H2 } from 'components/UI/Font';
 import { Modal } from 'components/Modal';
 import { useFormik } from 'formik';
 

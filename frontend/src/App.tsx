@@ -2,6 +2,7 @@ import { Routes } from 'Router';
 import { AuthProvider, ContactUsModalProvider, EditUserModalProvider } from 'features';
 
 import './scss/App.scss';
+
 import i18n from './locales/config';
 i18n.init();
 
