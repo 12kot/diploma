@@ -4,14 +4,24 @@ import { Loader } from 'components';
 
 import { AuthPreview } from './components';
 
+import styles from './styles.module.scss';
+
 interface Props {
   children: ReactNode;
 }
 
 export const AuthHolder = ({ children }: Props) => {
   return (
-    <div className="auth-container">
-      <Suspense fallback={<Loader />}>{children}</Suspense>
+    <div className="relative auth-container">
+      <Suspense
+        fallback={
+          <div className={styles.loader}>
+            <Loader />
+          </div>
+        }>
+        {children}
+      </Suspense>
+
       <AuthPreview />
     </div>
   );

@@ -6,12 +6,12 @@ import {
   CreateOrderLazy,
   DashboardLazy,
   HomeLazy,
-  LoginLazy,
+  Login,
   NotFoundLazy,
   OrdersLazy,
   ProfileLazy,
-  RecoveryLazy,
-  RegistrationLazy,
+  Recovery,
+  Registration,
   SettingsLazy,
   UsersLazy,
 } from 'pages';
@@ -75,15 +75,15 @@ export const routes: TRoutes = {
     permissions: [EPermissions.AUTH_NOT_REQUIRED],
   },
   [APP_ROUTES.LOGIN]: {
-    element: <LoginLazy />,
+    element: <Login />,
     permissions: [EPermissions.AUTH_LOGIN],
   },
   [APP_ROUTES.REGISTRATION]: {
-    element: <RegistrationLazy />,
+    element: <Registration />,
     permissions: [EPermissions.AUTH_LOGIN],
   },
   [APP_ROUTES.RECOVERY]: {
-    element: <RecoveryLazy />,
+    element: <Recovery />,
     permissions: [EPermissions.AUTH_LOGIN],
   },
   [APP_ROUTES.DASHBOARD]: {
