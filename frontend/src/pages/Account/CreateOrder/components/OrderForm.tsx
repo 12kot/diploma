@@ -1,9 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import SVGCar from 'assets/svg/SVGCar';
-import SVGCargo from 'assets/svg/SVGCargo';
-import SVGDownload from 'assets/svg/SVGDownload';
-import SVGUpload from 'assets/svg/SVGUpload';
+import { SVGCar, SVGCargo, SVGDownload, SVGUpload } from 'assets';
 
 interface Props {
   openDownloadModal: () => void;
@@ -17,7 +14,6 @@ export const OrderForm = ({ openDownloadModal, setModalType }: Props) => {
     setModalType(v);
     openDownloadModal();
   };
-  
 
   return (
     <form className="create-order__padding create-order__content--first flex-col gap">

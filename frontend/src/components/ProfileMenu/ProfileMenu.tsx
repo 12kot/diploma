@@ -4,7 +4,7 @@ import { useContactUsModal } from 'features';
 
 import { MenuHandler } from './Container';
 
-import SVGLogout from 'assets/svg/SVGLogout';
+import { SVGLogout } from 'assets';
 
 export const ProfileMenu = () => {
   const { setContactUsModalOpen } = useContactUsModal();
@@ -34,4 +34,3 @@ export const ProfileMenu = () => {
     </nav>
   );
 };
-

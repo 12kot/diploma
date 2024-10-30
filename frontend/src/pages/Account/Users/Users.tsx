@@ -1,12 +1,11 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 
-import { IUser, EUserRole } from 'features';
 import { Filters } from 'components';
+import { IUser, EUserRole } from 'features';
 import { ActiveUser, UsersList } from 'components/DashboardUsers';
 
-import SVGEarth from 'assets/svg/SVGEarth';
-import SVGTrendingUp from 'assets/svg/SVGTrendingUp';
+import {SVGEarth, SVGTrendingUp} from 'assets';
 
 import styles from './styles.module.scss';
 

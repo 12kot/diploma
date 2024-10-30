@@ -11,7 +11,7 @@ import HeaderLng from './Lng';
 import AccountModal from './Modal';
 import ProfileCard from './ProfileCard';
 
-import SVGMenu from 'assets/svg/SVGMenu';
+import { SVGMenu } from 'assets';
 
 export const Header = () => {
   const { user } = useAuth();

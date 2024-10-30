@@ -4,9 +4,9 @@ import { useTranslation } from 'react-i18next';
 import { IUser } from 'features';
 import { Labels } from 'components';
 
-import SVGFavorite from 'assets/svg/SVGFavorite';
+import { SVGFavorite } from 'assets';
 
-import styles from "./styles.module.scss";
+import styles from './styles.module.scss';
 
 interface Props {
   users: IUser[];
@@ -32,8 +32,13 @@ const User = ({ activeUserId, id, setOpenUser, name, labels, isBanned }: UserPro
   const { t } = useTranslation('dashboard');
 
   return (
-    <div className={`${styles.container__item} flex-between w-full align-center ${activeUserId === id && styles.container__active}`}>
-      <button className={`--default flex-col gap-mini w-full ${styles.container__item__link} h-full`} onClick={() => setOpenUser(id)}>
+    <div
+      className={`${styles.container__item} flex-between w-full align-center ${
+        activeUserId === id && styles.container__active
+      }`}>
+      <button
+        className={`--default flex-col gap-mini w-full ${styles.container__item__link} h-full`}
+        onClick={() => setOpenUser(id)}>
         <div className="flex gap-mini align-center">
           <b>{name}</b>
           {isBanned && <p className="indicator -red">{t('common.banned', { date: '23.09.2024' })}</p>}

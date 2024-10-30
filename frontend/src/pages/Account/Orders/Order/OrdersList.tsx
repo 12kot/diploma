@@ -4,11 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Labels } from 'components';
 import { getOrderIndicatorClass, getOrderStatusText, ILabel, IOrder } from 'features';
 
-import SVGFavorite from 'assets/svg/SVGFavorite';
-import SVGDollar from 'assets/svg/SVGDollar';
-import SVGTag from 'assets/svg/SVGTag';
-import SVGTime from 'assets/svg/SVGTime';
-import SVGWeight from 'assets/svg/SVGWeight';
+import { SVGFavorite, SVGDollar, SVGTag, SVGTime, SVGWeight } from 'assets';
 
 interface Props {
   orders: IOrder[];
@@ -37,7 +33,9 @@ const Order = ({ activeUserId, setOpenUser, ...order }: UserProps) => {
 
   return (
     <div className={`flex-between item w-full align-center ${activeUserId === order.id && 'active'}`}>
-      <button className="--default flex-col gap-mini w-full item-link h-full overflow" onClick={() => setOpenUser(order.id)}>
+      <button
+        className="--default flex-col gap-mini w-full item-link h-full overflow"
+        onClick={() => setOpenUser(order.id)}>
         <div className="flex gap-mini align-center">
           <b>
             {order.cityFrom} → {order.cityTo}

@@ -1,8 +1,7 @@
 import { FormEvent, useState } from 'react';
 import { Loader } from 'components';
 
-import SVGFullArrowUp from 'assets/svg/SVGFullArrowUp';
-import SVGUnread from 'assets/svg/SVGUnread';
+import { SVGFullArrowUp, SVGUnread } from 'assets';
 
 const messages = [
   {
@@ -19,8 +18,8 @@ export const ActiveUserChat = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-      setIsLoading(v => !v)
+    e.preventDefault();
+    setIsLoading((v) => !v);
   };
 
   return (

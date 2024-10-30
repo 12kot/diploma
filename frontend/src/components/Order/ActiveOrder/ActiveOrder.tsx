@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import { useEscapeKey, getOrderStatusText } from 'features';
 
-import SVGBack from 'assets/svg/SVGBack';
+import { SVGBack } from 'assets';
 
 import styles from './styles.module.scss';
 

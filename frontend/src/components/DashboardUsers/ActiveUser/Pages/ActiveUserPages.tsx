@@ -9,12 +9,9 @@ import { ActiveUserChat } from './components/Chat';
 import { ActiveUserAbout } from './components/About';
 import { AcriveUserAnalitics } from './components/Analitics';
 
-import SVGAnalitics from 'assets/svg/SVGAnalitics';
-import SVGChat from 'assets/svg/SVGChat';
-import SVGInfo from 'assets/svg/SVGInfo';
-import SVGCar from 'assets/svg/SVGCar';
+import { SVGAnalitics, SVGChat, SVGInfo, SVGCar } from 'assets';
 
-import styles from "./styles.module.scss";
+import styles from './styles.module.scss';
 
 type IPageTypes = 'chat' | 'about' | 'analitics' | 'orders';
 
@@ -67,7 +64,9 @@ export const ActiveUserPages = ({ activeUser }: Props) => {
   const [activePage, setActivePage] = useState<IPageTypes>('about');
 
   const getAvaliablePages = () => {
-    return pages(t).filter((page) => page.has.includes(activeUser.role) && page.sees.includes(user?.role || EUserRole.Driver));
+    return pages(t).filter(
+      (page) => page.has.includes(activeUser.role) && page.sees.includes(user?.role || EUserRole.Driver),
+    );
   };
 
   return (

@@ -1,19 +1,22 @@
 import { TFunction } from 'i18next';
 
 import { APP_ROUTES } from 'Router';
+
 import { EUserRole } from './user';
 
-import SVGCar from 'assets/svg/SVGCar';
-import SVGCargoOwner from 'assets/svg/SVGCargoOwner';
-import SVGCompany from 'assets/svg/SVGCompany';
-import SVGDashboard from 'assets/svg/SVGDashboard';
-import SVGInbox from 'assets/svg/SVGInbox';
-import SVGSettings from 'assets/svg/SVGSettings';
-import SVGUser from 'assets/svg/SVGUser';
-import SVGReceipt from 'assets/svg/SVGReceipt';
-import SVGInfo from 'assets/svg/SVGInfo';
-import SVGPrivacy from 'assets/svg/SVGPrivacy';
-import SVGCreate from 'assets/svg/SVGCreate';
+import {
+  SVGCar,
+  SVGCargoOwner,
+  SVGCompany,
+  SVGDashboard,
+  SVGInbox,
+  SVGSettings,
+  SVGUser,
+  SVGReceipt,
+  SVGInfo,
+  SVGPrivacy,
+  SVGCreate,
+} from 'assets';
 
 export interface INavItem {
   id: number;

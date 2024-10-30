@@ -3,10 +3,9 @@ import { useTranslation } from 'react-i18next';
 import { Labels } from 'components';
 import { EUserRole, useAuth } from 'features';
 
-import SVGEarth from 'assets/svg/SVGEarth';
-import SVGTrendingUp from 'assets/svg/SVGTrendingUp';
+import { SVGEarth, SVGTrendingUp } from 'assets';
 
-import styles from "./styles.module.scss"
+import styles from './styles.module.scss';
 
 interface Props {
   role: EUserRole;
@@ -68,7 +67,9 @@ export const ActiveUserAbout = ({ role, isBanned }: Props) => {
       {user?.role === EUserRole.Admin && (
         <div className={`flex gap-mini ${styles.container__actions}`}>
           {isBanned ? (
-            <button>{t(role === EUserRole.Forwarder ? 'actions.forwarders.continue' : 'actions.drivers.continue')}</button>
+            <button>
+              {t(role === EUserRole.Forwarder ? 'actions.forwarders.continue' : 'actions.drivers.continue')}
+            </button>
           ) : (
             <button className="--red">
               {t(role === EUserRole.Forwarder ? 'actions.forwarders.suspend' : 'actions.drivers.suspend')}

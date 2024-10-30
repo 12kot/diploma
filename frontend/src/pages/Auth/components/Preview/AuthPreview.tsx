@@ -1,8 +1,8 @@
-import { H2 } from 'components';
 import { useTranslation } from 'react-i18next';
 
-import previewImage from 'assets/img/preview.webp';
-import SVGStar from 'assets/svg/SVGStar';
+import { H2 } from 'components';
+
+import { SVGStar, previewImg } from 'assets';
 
 export const AuthPreview = () => {
   const { t } = useTranslation(['auth']);
@@ -28,7 +28,7 @@ export const AuthPreview = () => {
         </div>
       </section>
       <section className="auth-container--preview--img">
-        <img src={previewImage} alt="preview" loading="lazy" />
+        <img src={previewImg} alt="preview" loading="lazy" />
       </section>
     </div>
   );

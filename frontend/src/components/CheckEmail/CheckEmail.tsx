@@ -3,8 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { H1 } from 'components';
 
-import mailImage from 'assets/img/mail.png';
-import SVGBack from 'assets/svg/SVGBack';
+import { SVGBack, mailImg } from 'assets';
 
 interface Props {
   handleClose: () => void;
@@ -20,7 +19,7 @@ export const CheckEmail = ({ handleClose }: Props) => {
         <p>{t('auth:signUp.checkEmail.backTo')}</p>
       </button>
       <div className="form flex-center">
-        <img src={mailImage} className="w-m" loading="lazy" />
+        <img src={mailImg} className="w-m" loading="lazy" />
         <header className="text-center">
           <H1>{t('auth:signUp.checkEmail.header')}</H1>
           <p>{t('auth:signUp.checkEmail.title')}</p>

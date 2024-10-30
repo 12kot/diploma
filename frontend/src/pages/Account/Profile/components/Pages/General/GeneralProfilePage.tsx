@@ -2,9 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import { H2 } from 'components';
 
-import SVGProfileInfo from 'assets/svg/SVGProfileInfo';
-import SVGImportant from 'assets/svg/SVGImportant';
-import tilesImage from 'assets/img/tiles.png';
+import {SVGProfileInfo, SVGImportant, tilesImg} from 'assets';
 
 export const GeneralProfilePage = () => {
   const { t } = useTranslation(['dashboard', 'common']);
@@ -36,7 +34,7 @@ export const GeneralProfilePage = () => {
         <SVGImportant />
         <H2>{t('dashboard:profile.whyIsImportant')}</H2>
         <p>{t('dashboard:profile.whyIsImportantText')}</p>
-        <img src={tilesImage} loading="lazy" className="top-0 left-0 absolute w-full z--1" />
+        <img src={tilesImg} loading="lazy" className="top-0 left-0 absolute w-full z--1" />
       </section>
     </div>
   );

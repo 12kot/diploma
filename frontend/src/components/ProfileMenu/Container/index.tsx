@@ -1,9 +1,9 @@
-import { NavLink, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { NavLink, useLocation } from 'react-router-dom';
 
 import { EUserRole, getNavLinksByUserRole, INavItem, useAuth, useEditUserModal } from 'features';
 
-import SVGCreate from 'assets/svg/SVGCreate';
+import {SVGCreate} from 'assets';
 
 export const MenuHandler = () => {
   const { user } = useAuth();

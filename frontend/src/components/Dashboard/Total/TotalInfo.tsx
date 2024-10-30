@@ -1,8 +1,7 @@
 import { TFunction } from 'i18next';
 import { useTranslation } from 'react-i18next';
 
-import SVGArrowUp from 'assets/svg/SVGArrowUp';
-import SVGArrowDown from 'assets/svg/SVGArrowDown';
+import { SVGArrowUp, SVGArrowDown } from 'assets';
 
 interface Props {
   totalInfo: (t: TFunction<['dashboard'], undefined>) => {

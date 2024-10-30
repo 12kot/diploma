@@ -3,9 +3,9 @@ import { useTranslation } from 'react-i18next';
 import { H1 } from 'components';
 import { EUserRole, useAuth, useEditUserModal } from 'features';
 
-import SVGEdit from 'assets/svg/SVGEdit';
+import { SVGEdit } from 'assets';
 
-import styles from "./styles.module.scss";
+import styles from './styles.module.scss';
 
 interface Props {
   name: string;

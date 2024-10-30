@@ -5,7 +5,7 @@ import { H2, TotalInfo } from 'components';
 
 import { DashboardCharts } from './Charts';
 
-import SVGReport from 'assets/svg/SVGReport';
+import { SVGReport } from 'assets';
 
 const totalInfo = (t: TFunction<['dashboard'], undefined>) => [
   { id: 1, name: t('dashboard:total.totalForwarders'), value: '255', percentage: 100 },

@@ -1,9 +1,7 @@
 import { Labels } from 'components';
 import { ILabel } from 'features';
 
-import SVGShare from 'assets/svg/SVGShare';
-import SVGFavorite from 'assets/svg/SVGFavorite';
-import SVGClose from 'assets/svg/SVGClose';
+import { SVGShare, SVGFavorite, SVGClose } from 'assets';
 
 interface Props {
   labels: ILabel[];
@@ -13,7 +11,7 @@ interface Props {
 export const UserLabels = ({ labels, closeActiveUser }: Props) => {
   return (
     <section className="flex-between align-center">
-      <div className='flex align-center gap'>
+      <div className="flex align-center gap">
         <button className="--transparent square p-0" onClick={closeActiveUser}>
           <SVGClose />
         </button>

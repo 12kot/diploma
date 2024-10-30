@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 
-import { RigthModal } from 'components';
 import { APP_ROUTES } from 'Router';
+import { RigthModal } from 'components';
 import {
   EUserRole,
   GeneralNavItems,
@@ -17,9 +17,7 @@ import {
 import HeaderLng from '../Lng';
 import { ProfileCardButton } from '../ProfileCard';
 
-import SVGCreate from 'assets/svg/SVGCreate';
-import tilesBottom from 'assets/img/tilesBottom.png';
-import SVGContactUs from 'assets/svg/SVGContactUs';
+import {SVGCreate, SVGContactUs, tilesBottomImg} from 'assets';
 
 interface Props {
   isOpen: boolean;
@@ -31,7 +29,7 @@ const AccountModal = ({ isOpen, setIsOpen }: Props) => {
     <RigthModal setIsOpen={setIsOpen} isOpen={isOpen}>
       <nav className="account-container--menu overflow-y-auto h-full">
         <Content setIsOpen={setIsOpen} />
-        <img src={tilesBottom} loading="lazy" className="bottom-0 left-0 absolute w-full z--1" />
+        <img src={tilesBottomImg} loading="lazy" className="bottom-0 left-0 absolute w-full z--1" />
       </nav>
     </RigthModal>
   );

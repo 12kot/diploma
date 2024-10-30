@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import SVGFacebook from 'assets/svg/SVGFacebook';
-import SVGGoogle from 'assets/svg/SVGGoogle';
+import { SVGFacebook, SVGGoogle } from 'assets';
 
 export const ProvidersAuth = () => {
   const { t } = useTranslation(['auth']);

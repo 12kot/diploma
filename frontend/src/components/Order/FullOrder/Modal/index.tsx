@@ -2,9 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import { Labels, MapWithRoute, Modal } from 'components';
 
-import SVGClose from 'assets/svg/SVGClose';
-import SVGEarth from 'assets/svg/SVGEarth';
-import SVGTrendingUp from 'assets/svg/SVGTrendingUp';
+import { SVGClose, SVGEarth, SVGTrendingUp } from 'assets';
 
 interface Props {
   isOpen: boolean;

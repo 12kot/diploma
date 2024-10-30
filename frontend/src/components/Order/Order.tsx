@@ -1,15 +1,24 @@
-import SVGDollar from 'assets/svg/SVGDollar';
-import SVGTag from 'assets/svg/SVGTag';
-import SVGTime from 'assets/svg/SVGTime';
-import SVGWeight from 'assets/svg/SVGWeight';
-import { getOrderIndicatorClass, getOrderStatusText, IOrder } from 'features';
 import { useTranslation } from 'react-i18next';
+
+import { getOrderIndicatorClass, getOrderStatusText, IOrder } from 'features';
+
+import { SVGDollar, SVGTag, SVGTime, SVGWeight } from 'assets';
 
 interface OrderProps extends IOrder {
   setActiveOrder: (v: number) => void;
 }
 
-export const Order = ({ id, cityFrom, cityTo, loadedDate, unloadedDate, cost, weight, type, setActiveOrder }: OrderProps) => {
+export const Order = ({
+  id,
+  cityFrom,
+  cityTo,
+  loadedDate,
+  unloadedDate,
+  cost,
+  weight,
+  type,
+  setActiveOrder,
+}: OrderProps) => {
   const { t } = useTranslation('dashboard');
 
   return (

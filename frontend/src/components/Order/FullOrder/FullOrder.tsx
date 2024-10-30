@@ -6,8 +6,7 @@ import { useEscapeKey, getOrderStatusText, useAuth, EUserRole } from 'features';
 
 import { AddDriverToOrder } from './Modal';
 
-import SVGBack from 'assets/svg/SVGBack';
-import tilesImage from 'assets/img/tiles.png';
+import {SVGBack, tilesImg} from 'assets';
 
 interface Props {
   setActiveOrder: (v: number | null) => void;
@@ -121,7 +120,7 @@ export const FullOrder = ({ setActiveOrder }: Props) => {
           />
         </div>
       </div>
-      <img src={tilesImage} loading="lazy" className="top-0 left-0 absolute w-full z--1" />
+      <img src={tilesImg} loading="lazy" className="top-0 left-0 absolute w-full z--1" />
     </div>
   );
 };

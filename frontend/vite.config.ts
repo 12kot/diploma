@@ -24,9 +24,6 @@ export default ({ mode }: { mode: string }) => {
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src'),
-        '@icons': path.resolve(__dirname, './src/assets/icons'),
-        '@images': path.resolve(__dirname, './src/assets/images'),
-        '@styles': path.resolve(__dirname, './src/assets/styles'),
         assets: path.resolve(__dirname, './src/assets'),
         Router: path.resolve(__dirname, './src/router'),
         layouts: path.resolve(__dirname, './src/layouts'),
