@@ -1,6 +1,6 @@
-import EarnedChart from "pages/Account/Dashboard/Charts/Earned";
+import { EarnedChart } from 'pages/Account/Dashboard/Charts/Earned';
 
-import styles from "./styles.module.scss";
+import styles from './styles.module.scss';
 
 export const AcriveUserAnalitics = () => {
   return (

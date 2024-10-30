@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import { H2, LineChart } from 'components';
 
-const UsersChart = () => {
+export const UsersChart = () => {
   const { t } = useTranslation(['dashboard']);
 
   const data = {
@@ -21,5 +21,3 @@ const UsersChart = () => {
     </div>
   );
 };
-
-export default UsersChart;

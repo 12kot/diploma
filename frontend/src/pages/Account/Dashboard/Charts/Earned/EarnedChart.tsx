@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import { H2, LineChart } from 'components';
 
-const EarnedChart = () => {
+export const EarnedChart = () => {
   const { t } = useTranslation(['dashboard']);
 
   const data = {
@@ -20,5 +20,3 @@ const EarnedChart = () => {
     </div>
   );
 };
-
-export default EarnedChart;

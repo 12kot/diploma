@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import { Navigate } from 'react-router-dom';
 
-import { HomeLazy, LoginLazy, NotFoundLazy, RecoveryLazy, RegistrationLazy } from 'pages';
+import { DashboardLazy, HomeLazy, LoginLazy, NotFoundLazy, RecoveryLazy, RegistrationLazy } from 'pages';
 
 export enum EPermissions {
   AUTH_NOT_REQUIRED = "no_auth",
@@ -74,12 +74,12 @@ export const routes: TRoutes = {
     permissions: [EPermissions.AUTH_LOGIN],
   },
   [APP_ROUTES.DASHBOARD]: {
-    element: <></>,
+    element: <DashboardLazy />,
     permissions: [EPermissions.AUTH_REQUIRED, EPermissions.AUTH_ADMIN, EPermissions.AUTH_FORWARDER, EPermissions.AUTH_DRIVER, EPermissions.AUTH_OWNER],
   },
   [APP_ROUTES.FORWARDERS]: {
     element: <></>,
-    permissions: [EPermissions.AUTH_REQUIRED],
+    permissions: [EPermissions.AUTH_REQUIRED, EPermissions.AUTH_ADMIN],
   },
   [APP_ROUTES.DRIVERS]: {
     element: <></>,
@@ -99,7 +99,7 @@ export const routes: TRoutes = {
   },
   [APP_ROUTES.APPLICATIONS]: {
     element: <></>,
-    permissions: [EPermissions.AUTH_REQUIRED],
+    permissions: [EPermissions.AUTH_REQUIRED, EPermissions.AUTH_ADMIN],
   },
   [APP_ROUTES.ORDERS]: {
     element: <></>,

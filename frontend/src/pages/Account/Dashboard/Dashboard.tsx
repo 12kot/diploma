@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { H2, TotalInfo } from 'components';
 
-import DashboardCharts from './Charts';
+import { DashboardCharts } from './Charts';
 
 import SVGReport from 'assets/svg/SVGReport';
 
@@ -16,7 +16,7 @@ const totalInfo = (t: TFunction<['dashboard'], undefined>) => [
   { id: 6, name: t('dashboard:total.paidOut'), value: '1.3M', percentage: 13 },
 ];
 
-const Dashboard = () => {
+export const Dashboard = () => {
   const { t } = useTranslation(['dashboard']);
 
   return (
@@ -26,7 +26,7 @@ const Dashboard = () => {
           <H2>{t('dashboard:greeting.hello', { name: 'Hanna' })}</H2>
           <p className="text-secondary">{t('dashboard:greeting.traffic')}</p>
         </div>
-        <button className='nowrap'>
+        <button className="nowrap">
           <SVGReport />
           <p>{t('dashboard:greeting.generateReport')}</p>
         </button>
@@ -36,5 +36,3 @@ const Dashboard = () => {
     </div>
   );
 };
-
-export default Dashboard;

@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import { H2, Loader } from 'components';
 
-const LoaderChart = () => {
+export const LoaderChart = () => {
   const { t } = useTranslation(['dashboard']);
 
   return (
@@ -14,5 +14,3 @@ const LoaderChart = () => {
     </div>
   );
 };
-
-export default LoaderChart;

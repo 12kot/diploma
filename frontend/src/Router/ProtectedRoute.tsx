@@ -1,7 +1,7 @@
 import { ReactElement, Suspense } from 'react';
 import { Navigate } from 'react-router-dom';
 
-import { useAuth } from 'features';
+import { EUserRole, useAuth } from 'features';
 import { AppHolder } from 'layouts';
 import { Loader } from 'components';
 
@@ -30,10 +30,10 @@ export const ProtectedRoute = ({ children, permissions }: IProtectedRoutesProps)
     }
 
     if (
-      (!permissions.includes(EPermissions.AUTH_ADMIN) && user?.role !== 'admin') ||
-      (!permissions.includes(EPermissions.AUTH_FORWARDER) && user?.role !== 'forwarder') ||
-      (!permissions.includes(EPermissions.AUTH_DRIVER) && user?.role !== 'driver') ||
-      (!permissions.includes(EPermissions.AUTH_OWNER) && user?.role !== 'owner')
+      !(permissions.includes(EPermissions.AUTH_ADMIN) && user?.role === EUserRole.Admin) &&
+      !(permissions.includes(EPermissions.AUTH_FORWARDER) && user?.role === EUserRole.Forwarder) &&
+      !(permissions.includes(EPermissions.AUTH_DRIVER) && user?.role === EUserRole.Driver) &&
+      !(permissions.includes(EPermissions.AUTH_OWNER) && user?.role === EUserRole.Owner)
     ) {
       return <Navigate to={APP_ROUTES.NOT_FOUND} />;
     }
