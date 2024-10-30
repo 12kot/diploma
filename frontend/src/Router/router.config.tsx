@@ -1,18 +1,31 @@
 import { ReactElement } from 'react';
 import { Navigate } from 'react-router-dom';
 
-import { DashboardLazy, HomeLazy, LoginLazy, NotFoundLazy, RecoveryLazy, RegistrationLazy } from 'pages';
+import {
+  ApplicationsLazy,
+  CreateOrderLazy,
+  DashboardLazy,
+  HomeLazy,
+  LoginLazy,
+  NotFoundLazy,
+  OrdersLazy,
+  ProfileLazy,
+  RecoveryLazy,
+  RegistrationLazy,
+  SettingsLazy,
+  UsersLazy,
+} from 'pages';
 
 export enum EPermissions {
-  AUTH_NOT_REQUIRED = "no_auth",
+  AUTH_NOT_REQUIRED = 'no_auth',
 
-  AUTH_LOGIN = "auth_login",
-  AUTH_REQUIRED = "auth",
+  AUTH_LOGIN = 'auth_login',
+  AUTH_REQUIRED = 'auth',
 
-  AUTH_ADMIN = "auth_admin",
-  AUTH_OWNER = "auth_owner",
-  AUTH_DRIVER = "auth_driver",
-  AUTH_FORWARDER = "auth_forwarder",
+  AUTH_ADMIN = 'auth_admin',
+  AUTH_OWNER = 'auth_owner',
+  AUTH_DRIVER = 'auth_driver',
+  AUTH_FORWARDER = 'auth_forwarder',
 }
 
 export enum APP_ROUTES {
@@ -54,11 +67,11 @@ export const routes: TRoutes = {
     permissions: [EPermissions.AUTH_NOT_REQUIRED],
   },
   [APP_ROUTES.ABOUT_US]: {
-    element: <></>,
+    element: <>About</>,
     permissions: [EPermissions.AUTH_NOT_REQUIRED],
   },
   [APP_ROUTES.PRIVACY]: {
-    element: <></>,
+    element: <>Privacy</>,
     permissions: [EPermissions.AUTH_NOT_REQUIRED],
   },
   [APP_ROUTES.LOGIN]: {
@@ -75,41 +88,65 @@ export const routes: TRoutes = {
   },
   [APP_ROUTES.DASHBOARD]: {
     element: <DashboardLazy />,
-    permissions: [EPermissions.AUTH_REQUIRED, EPermissions.AUTH_ADMIN, EPermissions.AUTH_FORWARDER, EPermissions.AUTH_DRIVER, EPermissions.AUTH_OWNER],
+    permissions: [
+      EPermissions.AUTH_REQUIRED,
+      EPermissions.AUTH_ADMIN,
+      EPermissions.AUTH_FORWARDER,
+      EPermissions.AUTH_DRIVER,
+      EPermissions.AUTH_OWNER,
+    ],
   },
   [APP_ROUTES.FORWARDERS]: {
-    element: <></>,
+    element: <UsersLazy />,
     permissions: [EPermissions.AUTH_REQUIRED, EPermissions.AUTH_ADMIN],
   },
   [APP_ROUTES.DRIVERS]: {
-    element: <></>,
+    element: <UsersLazy />,
     permissions: [EPermissions.AUTH_REQUIRED, EPermissions.AUTH_ADMIN, EPermissions.AUTH_FORWARDER],
   },
   [APP_ROUTES.OWNERS]: {
-    element: <></>,
+    element: <UsersLazy />,
     permissions: [EPermissions.AUTH_REQUIRED, EPermissions.AUTH_ADMIN, EPermissions.AUTH_FORWARDER],
   },
   [APP_ROUTES.PROFILE]: {
-    element: <></>,
-    permissions: [EPermissions.AUTH_REQUIRED, EPermissions.AUTH_ADMIN, EPermissions.AUTH_FORWARDER, EPermissions.AUTH_DRIVER, EPermissions.AUTH_OWNER],
+    element: <ProfileLazy />,
+    permissions: [
+      EPermissions.AUTH_REQUIRED,
+      EPermissions.AUTH_ADMIN,
+      EPermissions.AUTH_FORWARDER,
+      EPermissions.AUTH_DRIVER,
+      EPermissions.AUTH_OWNER,
+    ],
   },
   [APP_ROUTES.SETTINGS]: {
-    element: <></>,
-    permissions: [EPermissions.AUTH_REQUIRED, EPermissions.AUTH_ADMIN, EPermissions.AUTH_FORWARDER, EPermissions.AUTH_DRIVER, EPermissions.AUTH_OWNER],
+    element: <SettingsLazy />,
+    permissions: [
+      EPermissions.AUTH_REQUIRED,
+      EPermissions.AUTH_ADMIN,
+      EPermissions.AUTH_FORWARDER,
+      EPermissions.AUTH_DRIVER,
+      EPermissions.AUTH_OWNER,
+    ],
   },
   [APP_ROUTES.APPLICATIONS]: {
-    element: <></>,
+    element: <ApplicationsLazy />,
     permissions: [EPermissions.AUTH_REQUIRED, EPermissions.AUTH_ADMIN],
   },
   [APP_ROUTES.ORDERS]: {
-    element: <></>,
-    permissions: [EPermissions.AUTH_REQUIRED, EPermissions.AUTH_ADMIN, EPermissions.AUTH_FORWARDER, EPermissions.AUTH_DRIVER, EPermissions.AUTH_OWNER],
+    element: <OrdersLazy />,
+    permissions: [
+      EPermissions.AUTH_REQUIRED,
+      EPermissions.AUTH_ADMIN,
+      EPermissions.AUTH_FORWARDER,
+      EPermissions.AUTH_DRIVER,
+      EPermissions.AUTH_OWNER,
+    ],
   },
   [APP_ROUTES.CREATE_ORDER]: {
-    element: <></>,
+    element: <CreateOrderLazy />,
     permissions: [EPermissions.AUTH_REQUIRED, EPermissions.AUTH_OWNER],
   },
- 
+
   [APP_ROUTES.NOT_FOUND]: {
     element: <NotFoundLazy />,
     permissions: [EPermissions.AUTH_NOT_REQUIRED],

@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { Filters } from 'components';
 
-import ApplicationModal from './Modal';
+import { ApplicationModal } from './Modal';
 
-const Applications = () => {
+export const Applications = () => {
+  const { t } = useTranslation(['common']);
   const [modalOpen, setModalOpen] = useState<boolean>(false);
 
   return (
@@ -33,9 +35,9 @@ const Applications = () => {
                 sequi doloremque quae architecto, dignissimos quod?
               </p>
               <div className="flex gap-mini">
-                <button className="--transparent w-full">Finish Сhecking</button>
+                <button className="--transparent w-full">{t('common:buttons.finishChecking')}</button>
                 <button className="w-full" onClick={() => setModalOpen((v) => !v)}>
-                  Open
+                  {t('common:buttons.open')}
                 </button>
               </div>
             </div>
@@ -44,5 +46,3 @@ const Applications = () => {
     </div>
   );
 };
-
-export default Applications;

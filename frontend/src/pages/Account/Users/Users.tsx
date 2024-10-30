@@ -10,7 +10,7 @@ import SVGTrendingUp from 'assets/svg/SVGTrendingUp';
 
 import styles from './styles.module.scss';
 
-const Users = () => {
+export const Users = () => {
   const [openUser, setOpenUser] = useState<number>();
   const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -50,8 +50,6 @@ const Users = () => {
     </div>
   );
 };
-
-export default Users;
 
 const getUserType = (userType?: EUserRole) => {
   if (userType === EUserRole.Driver) return drivers;

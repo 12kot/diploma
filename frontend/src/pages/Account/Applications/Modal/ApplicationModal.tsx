@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import { Modal } from 'components';
 
 interface Props {
@@ -5,7 +7,9 @@ interface Props {
   setIsOpen: () => void;
 }
 
-const ApplicationModal = ({ isOpen, setIsOpen }: Props) => {
+export const ApplicationModal = ({ isOpen, setIsOpen }: Props) => {
+  const { t } = useTranslation(['common']);
+
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen} className="applications-modal flex-col gap">
       <header className="flex gap-mini align-center">
@@ -64,14 +68,12 @@ const ApplicationModal = ({ isOpen, setIsOpen }: Props) => {
       </section>
       <footer className="flex gap-mini">
         <button className="--transparent w-full" onClick={setIsOpen}>
-          Close
+          {t('common:buttons.close')}
         </button>
         <button className="w-full" onClick={setIsOpen}>
-          Finish Сhecking
+          {t('common:buttons.finishChecking')}
         </button>
       </footer>
     </Modal>
   );
 };
-
-export default ApplicationModal;

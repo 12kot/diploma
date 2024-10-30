@@ -1,28 +1,23 @@
 import { useState } from 'react';
 
 import { IOrder } from 'features';
-import { ActiveOrder, Order } from 'components';
+import { FullOrder, Filters } from 'components';
 
-const ProfileOrders = () => {
+import { OrdersList } from './Order';
+
+export const Orders = () => {
   const [activeOrder, setActiveOrder] = useState<number | null>();
 
-  if (activeOrder)
-    return (
-      <div className="profile-orders-active">
-        <ActiveOrder setActiveOrder={setActiveOrder} />
-      </div>
-    );
-
   return (
-    <div className="profile-padding profile-orders gap">
-      {orders.map((order) => (
-        <Order {...order} key={order.id} setActiveOrder={(v) => setActiveOrder(v)} />
-      ))}
+    <div className={`order-container ${activeOrder && '-orders-grid'} media-full-1200`}>
+      <div className={`flex-col w-full ${activeOrder && 'none'}`}>
+        <Filters />
+        <OrdersList orders={orders} activeUserId={activeOrder} setOpenUser={(v) => setActiveOrder(v)} />
+      </div>
+      {activeOrder && <FullOrder setActiveOrder={(v) => setActiveOrder(v)} />}
     </div>
   );
 };
-
-export default ProfileOrders;
 
 const orders: IOrder[] = [
   {

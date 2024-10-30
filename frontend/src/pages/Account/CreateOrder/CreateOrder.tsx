@@ -1,12 +1,12 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { H2, HR, MapWithRoute } from 'components';
 
-import OrderForm from './components/OrderForm';
-import AddressModal from './Modal/Address';
-import { useState } from 'react';
+import { OrderForm } from './components';
+import { AddressModal } from './Modal';
 
-const CreateOrder = () => {
+export const CreateOrder = () => {
   const { t } = useTranslation(['dashboard', 'common']);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [modalType, setModalType] = useState<'upload' | 'download'>('upload');
@@ -35,5 +35,3 @@ const CreateOrder = () => {
     </div>
   );
 };
-
-export default CreateOrder;

@@ -6,7 +6,7 @@ import SVGProfileInfo from 'assets/svg/SVGProfileInfo';
 import SVGImportant from 'assets/svg/SVGImportant';
 import tilesImage from 'assets/img/tiles.png';
 
-const GeneralProfilePage = () => {
+export const GeneralProfilePage = () => {
   const { t } = useTranslation(['dashboard', 'common']);
 
   return (
@@ -41,5 +41,3 @@ const GeneralProfilePage = () => {
     </div>
   );
 };
-
-export default GeneralProfilePage;

@@ -1,8 +1,8 @@
-import { H2 } from 'components';
-
 import { useTranslation } from 'react-i18next';
 
-const Settings = () => {
+import { H2 } from 'components';
+
+export const Settings = () => {
   const { t } = useTranslation(['dashboard', 'common']);
 
   return (
@@ -19,5 +19,3 @@ const Settings = () => {
     </div>
   );
 };
-
-export default Settings;

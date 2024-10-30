@@ -7,7 +7,7 @@ interface Props {
   setActivePage: (v: IProfilePageType) => void;
 }
 
-const ProfilePages = ({ activePage, setActivePage }: Props) => {
+export const ProfilePages = ({ activePage, setActivePage }: Props) => {
   const { user } = useAuth();
   const { t } = useTranslation('dashboard');
 
@@ -21,8 +21,6 @@ const ProfilePages = ({ activePage, setActivePage }: Props) => {
     </section>
   );
 };
-
-export default ProfilePages;
 
 interface PageProps extends IProfilePage, Props {}
 

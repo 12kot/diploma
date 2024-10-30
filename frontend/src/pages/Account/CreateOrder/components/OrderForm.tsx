@@ -10,7 +10,7 @@ interface Props {
   setModalType: (v: 'upload' | 'download') => void;
 }
 
-const OrderForm = ({ openDownloadModal, setModalType }: Props) => {
+export const OrderForm = ({ openDownloadModal, setModalType }: Props) => {
   const { t } = useTranslation(['dashboard', 'common']);
 
   const handleSetAddress = (v: 'upload' | 'download') => {
@@ -65,5 +65,3 @@ const OrderForm = ({ openDownloadModal, setModalType }: Props) => {
     </form>
   );
 };
-
-export default OrderForm;

@@ -1,5 +1,6 @@
-import { Map, Modal } from 'components';
 import { useTranslation } from 'react-i18next';
+
+import { Map, Modal } from 'components';
 
 interface Props {
   isOpen: boolean;
@@ -7,7 +8,7 @@ interface Props {
   modalType: 'upload' | 'download';
 }
 
-const AddressModal = ({ isOpen, setIsOpen, modalType }: Props) => {
+export const AddressModal = ({ isOpen, setIsOpen, modalType }: Props) => {
   const { t } = useTranslation(['dashboard', 'common']);
 
   return (
@@ -38,5 +39,3 @@ const AddressModal = ({ isOpen, setIsOpen, modalType }: Props) => {
     </Modal>
   );
 };
-
-export default AddressModal;

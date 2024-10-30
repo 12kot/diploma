@@ -2,6 +2,7 @@
   "or": "OR",
   "buttons": {
     "cancel": "Cancel",
+    "close": "Close",
     "send": "Send",
     "confirm": "Confirm",
     "save": "Save",
@@ -13,6 +14,8 @@
     "createOrder": "Create Order",
     "addDriver": "Add Driver",
     "contactUs": "Contact Us",
+    "open": "Open",
+    "finishChecking": "Finish Сhecking",
     "signUp": "Sign Up",
     "signIn": "Sign In",
     "getPaymentInfo": "Get payment information",

@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import { H1 } from 'components';
 
-const ProfileHeader = () => {
+export const ProfileHeader = () => {
   const { t } = useTranslation(['common']);
 
   return (
@@ -21,5 +21,3 @@ const ProfileHeader = () => {
     </header>
   );
 };
-
-export default ProfileHeader;
