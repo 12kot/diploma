@@ -50,7 +50,11 @@ export const AddDriverToOrder = ({ isOpen, setIsOpen }: Props) => {
 const MiniDriver = ({ active }: { active?: boolean }) => {
   return (
     <div className={`--default flex-start gap-mini mini-driver align-center ${active && 'mini-driver-active'}`}>
-      <img src="https://cdn3.pixelcut.app/1/3/profile_picture_1728ecf2bd.jpg" className="rounded" loading="lazy" />
+      <img
+        src="https://cdn.openart.ai/published/8EVNpLAOnr5fVQgKrqWw/Tnz4qXWD_lV1v_1024.webp"
+        className="rounded"
+        loading="lazy"
+      />
       <div className="flex-col flex-start">
         <b className="text-14">Hanna super Driver</b>
         <Labels labels={labels} />

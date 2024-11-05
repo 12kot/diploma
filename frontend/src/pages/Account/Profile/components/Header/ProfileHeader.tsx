@@ -8,7 +8,7 @@ export const ProfileHeader = () => {
   return (
     <header className="flex-between gap-mini align-center profile-padding media-flex-col-center-768 media-gap-768">
       <div className="profile-img flex gap w-full media-flex-col-center-768 media-gap-768">
-        <img src="https://cdn3.pixelcut.app/1/3/profile_picture_1728ecf2bd.jpg" className="rounded" />
+        <img src="https://cdn.openart.ai/published/8EVNpLAOnr5fVQgKrqWw/Tnz4qXWD_lV1v_1024.webp" className="rounded" />
         <section className="flex-col justify-center">
           <div className="flex gap-mini w-full align-center media-gap-768 media-direction-768">
             <H1>Hanna Kisel</H1>

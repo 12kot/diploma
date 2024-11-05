@@ -1,34 +1,45 @@
 import { TFunction } from 'i18next';
 import { useTranslation } from 'react-i18next';
 
+import { Indicator } from 'components';
+
 import { SVGArrowUp, SVGArrowDown } from 'assets';
 
+import styles from './styles.module.scss';
+
+interface IItem {
+  id: number;
+  name: string;
+  value: string;
+  percentage?: number;
+}
+
 interface Props {
-  totalInfo: (t: TFunction<['dashboard'], undefined>) => {
-    id: number;
-    name: string;
-    value: string;
-    percentage?: number;
-  }[];
+  totalInfo: (t: TFunction<['dashboard'], undefined>) => IItem[];
 }
 
 export const TotalInfo = ({ totalInfo }: Props) => {
   const { t } = useTranslation(['dashboard']);
 
   return (
-    <section className="account-container--dashboard -total media-full-1200 flex-between rounded-16">
+    <section className={styles.container}>
       {totalInfo(t).map((item) => (
-        <div className="flex-col gap-mini media-center-768" key={item.id}>
-          <p className="text-12 text-secondary">{item.name}</p>
-          <b className="text-h1">{item.value}</b>
-          {item.percentage && (
-            <div className={`indicator ${item.percentage < 0 && `-red`}`}>
-              {item.percentage >= 0 ? <SVGArrowUp /> : <SVGArrowDown />}
-              <p>{Math.abs(item.percentage)}%</p>
-            </div>
-          )}
-        </div>
+        <Item {...item} key={item.id} />
       ))}
     </section>
+  );
+};
+
+const Item = ({ name, value, percentage }: IItem) => {
+  return (
+    <div className={styles.item}>
+      <span className={styles.name}>{name}</span>
+      <b className={styles.value}>{value}</b>
+      {percentage && (
+        <Indicator type={percentage < 0 ? `red` : undefined} icon={percentage >= 0 ? <SVGArrowUp /> : <SVGArrowDown />}>
+          {Math.abs(percentage)}%
+        </Indicator>
+      )}
+    </div>
   );
 };
