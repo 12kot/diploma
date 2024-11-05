@@ -1,0 +1,55 @@
+@use '../bg';
+
+.container {
+  overflow: hidden;
+  @extend .bg-modal;
+
+  .content {
+    overflow-y: hidden;
+    max-width: 420px;
+    max-height: 100vh;
+    height: 100vh;
+
+    transition: 0.3s;
+    background-color: var(--bg-color);
+    transform: translateX(100vw);
+  }
+
+  .header {
+    padding-right: 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 70px;
+    width: 100%;
+    border-bottom: 1px solid var(--border-color);
+
+    .close {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 70px;
+      height: 100%;
+
+      border-left: 1px solid var(--border-color);
+      border-radius: 0;
+    }
+
+    .logo {
+      height: 69px;
+      padding: 16px 32px;
+    }
+  }
+}
+
+.active {
+  z-index: 4000;
+  opacity: 1;
+
+  & > .content {
+    transform: translateX(calc(100vw - 100%));
+  }
+}

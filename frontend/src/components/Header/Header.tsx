@@ -3,8 +3,8 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { TFunction } from 'i18next';
 import { useTranslation } from 'react-i18next';
 
-import { Button, H1 } from 'components';
 import { APP_ROUTES } from 'Router';
+import { Button, H1 } from 'components';
 import { EUserRole, getNavLinksByUserRole, useAuth, useEditUserModal } from 'features';
 
 import { HeaderLng } from './Lng';
