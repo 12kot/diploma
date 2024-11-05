@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap);
+
+  width: 100%;
+  padding-top: 16px;
+  padding-left: 32px;
+  padding-right: 32px;
+
+  .full {
+    width: 100%;
+  }
+}

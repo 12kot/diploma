@@ -1,0 +1,61 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-mini);
+
+  background-color: var(--main-color-second);
+  color: var(--main-color);
+
+  padding: 2px 8px;
+  border-radius: 40px;
+  
+  min-width: 23px;
+  width: fit-content;
+  
+  font-weight: 600;
+  font-size: 12px;
+
+  svg {
+    width: 15px;
+    height: 15px;
+    fill: var(--main-color);
+  }
+}
+
+.red {
+  background-color: var(--red-second);
+  color: var(--red);
+
+  svg {
+    fill: var(--red);
+  }
+}
+
+.blue {
+  background-color: var(--blue-second);
+  color: var(--blue);
+
+  svg {
+    fill: var(--blue);
+  }
+}
+
+.filter {
+  background-color: var(--bg-color-second);
+
+  .active {
+    background-color: var(--border-color-main);
+    color: var(--font-color-negative);
+  }
+}
+
+.border {
+  background-color: var(--bg-color-second);
+  border: 1px solid var(--border-color);
+  color: var(--font-color-second);
+
+  svg {
+    fill: var(--font-color-second);
+  }
+}

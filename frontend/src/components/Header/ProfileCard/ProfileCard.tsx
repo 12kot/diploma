@@ -1,17 +1,19 @@
 import { NavLink } from 'react-router-dom';
 
+import { cx } from 'features';
+import { Button } from 'components';
 import { APP_ROUTES } from 'Router';
+
+import styles from './styles.module.scss';
 
 interface Props {
   className?: string;
   onClick?: () => void;
 }
 
-const ProfileCard = ({ className }: Props) => {
+export const ProfileCard = ({ className }: Props) => {
   return (
-    <NavLink
-      to={APP_ROUTES.PROFILE}
-      className={`app-header__actions--user decoration-none ${className}`}>
+    <NavLink to={APP_ROUTES.PROFILE} className={cx(styles.container, className)}>
       <Content />
     </NavLink>
   );
@@ -19,9 +21,9 @@ const ProfileCard = ({ className }: Props) => {
 
 export const ProfileCardButton = ({ className, onClick }: Props) => {
   return (
-    <button onClick={onClick} className={`app-header__actions--user --default decoration-none ${className}`}>
+    <Button onClick={onClick} className={cx(styles.container, className)} buttonType="default">
       <Content />
-    </button>
+    </Button>
   );
 };
 
@@ -29,18 +31,16 @@ const Content = () => {
   return (
     <>
       <img src="https://cdn3.pixelcut.app/1/3/profile_picture_1728ecf2bd.jpg" alt="profile" loading="lazy" />
-      <div className="app-header__actions--user--info">
+      <div className={styles.info}>
         <p className="text-main">
           <b>Hanna Kisel</b>
         </p>
 
-        <div className="flex items-center gap-mini">
+        <div className={styles.profile}>
           <div className="main-color-bg rounded w-4" />
-          <p className="app-header__actions--user--info --status">Logistator</p>
+          <p className={styles.status}>Logistator</p>
         </div>
       </div>
     </>
   );
 };
-
-export default ProfileCard;

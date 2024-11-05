@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 import { AllRoles, EUserRole } from 'features';
 
 import { H2 } from 'components/UI/Font';
 import { Modal } from 'components/Modal';
-import { useFormik } from 'formik';
 
 interface ModalProps {
   isOpen: boolean;
