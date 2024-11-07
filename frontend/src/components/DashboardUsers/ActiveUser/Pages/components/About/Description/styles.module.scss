@@ -1,0 +1,20 @@
+.info {
+  height: 100%;
+  overflow-y: auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-mini);
+}
+
+.container {
+  @extend .info;
+}
+
+.text {
+  p {
+    font-size: var(--font-size-s);
+  }
+
+  @extend .info;
+}

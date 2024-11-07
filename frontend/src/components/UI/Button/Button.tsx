@@ -17,7 +17,7 @@ export const Button = ({ className, children, buttonType, ...rest }: Props) => {
   return (
     <button
       className={cx(
-        styles.container,
+        styles.button,
         className,
         buttonStyles?.includes('transparent') && styles.transparent,
         buttonStyles?.includes('default') && styles.default,
