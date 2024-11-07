@@ -27,20 +27,14 @@
     color: var(--font-color);
   }
 
-  &__logo {
+  .logo {
     padding: 16px 32px;
     gap: 16px;
 
     @extend .flex-center;
   }
 
-  &__lng {
-    @media (max-width: 620px) {
-      display: none;
-    }
-  }
-
-  &__actions {
+  .actions {
     height: 100%;
     @extend .flex-center;
 
@@ -59,7 +53,7 @@
       }
     }
 
-    &_profile {
+    .profile {
       gap: 16px;
       padding-right: 16px;
       @extend .flex-center;
@@ -69,12 +63,12 @@
       }
     }
 
-    &_border {
+    .border {
       height: 100%;
       border-right: 1px solid var(--border-color);
     }
 
-    &_menu {
+    .menu {
       @extend .flex-center;
       height: 100%;
       width: 70px;

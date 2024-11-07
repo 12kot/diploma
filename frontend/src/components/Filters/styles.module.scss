@@ -2,4 +2,8 @@
   overflow-x: auto;
   padding: 16px 32px;
   border-bottom: 1px solid var(--border-color);
+
+  display: flex;
+  gap: var(--gap-mini);
+  width: 100%;
 }

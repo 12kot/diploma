@@ -39,7 +39,7 @@ export const FullOrder = ({ setActiveOrder }: Props) => {
         </button>
       )}
 
-      <div className="order-container-info flex h-full ">
+      <div className="order-container-info flex h-full">
         <div className="order-container__padding  order-container__active-order flex-between gap w-full h-full">
           <div className="flex-col w-full gap">
             <section className="btn --transparent flex-start flex-col h-content">

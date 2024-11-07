@@ -43,11 +43,11 @@
 
 .filter {
   background-color: var(--bg-color-second);
+}
 
-  .active {
-    background-color: var(--border-color-main);
-    color: var(--font-color-negative);
-  }
+.filter_active {
+  background-color: var(--border-color-main);
+  color: var(--font-color-negative);
 }
 
 .border {

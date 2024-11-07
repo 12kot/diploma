@@ -1,40 +1,64 @@
 .container {
   overflow-y: auto;
+  width: 100%;
 
+  display: flex;
+  flex-direction: column;
   flex-grow: 1;
 
-  &__item {
-    padding-right: 32px;
+  .item {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
     transition: var(--transition);
     border-bottom: 1px solid var(--border-color);
 
-    &__link {
-      padding: 16px 0;
-      padding-left: 32px;
-      justify-content: flex-start;
-      align-items: flex-start;
-      border-radius: 0;
+    padding: 16px 32px;
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap-mini);
+
+      .name {
+        display: flex;
+        align-items: center;
+        gap: var(--gap-mini);
+      }
 
       &:active {
         scale: 1;
       }
     }
+    
+    .favorite {
+      min-width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      padding: 0;
+    }
+
+    .button {
+      position: absolute;
+      left: 0;
+      top: 0;
+
+      width: 100%;
+      height: 100%;
+    }
 
     &:hover {
-      button {
-        background-color: var(--bg-color-second) !important;
-      }
-
       background-color: var(--bg-color-second) !important;
     }
   }
 
-  &__active {
-    button {
-      background-color: var(--bg-color-second) !important;
-      b {
-        color: var(--main-color);
-      }
+  .active {
+    b {
+      color: var(--main-color);
     }
 
     background-color: var(--bg-color-second);

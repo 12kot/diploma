@@ -27,13 +27,13 @@ export const Header = () => {
     <>
       <AccountModal setIsOpen={() => setIsModalOpen((v) => !v)} isOpen={isModalOpen} />
       <header className={styles.container}>
-        <section className={styles.container__logo}>
+        <section className={styles.logo}>
           <NavLink to={APP_ROUTES.HOME} className={styles.td_none}>
             <H1>Logo</H1>
           </NavLink>
           <HeaderLng />
         </section>
-        <section className={styles.container__actions}>
+        <section className={styles.actions}>
           <ul>
             {user?.role &&
               getPagesByRole(t, user.role).map((page) => (
@@ -44,7 +44,7 @@ export const Header = () => {
                 </li>
               ))}
           </ul>
-          <div className={styles.container__actions_profile}>
+          <div className={styles.profile}>
             {user?.role === EUserRole.Admin && (
               <Button
                 buttonType="transparent"
@@ -64,10 +64,10 @@ export const Header = () => {
             {user && <ProfileCard />}
             {!user && <Button onClick={() => navigate(APP_ROUTES.LOGIN)}>{t('common:buttons.signIn')}</Button>}
           </div>
-          <div className={styles.container__actions_border} />
+          <div className={styles.border} />
           <Button
             buttonType="default"
-            className={styles.container__actions_menu}
+            className={styles.menu}
             onClick={() => setIsModalOpen((v) => !v)}>
             <SVGMenu />
           </Button>

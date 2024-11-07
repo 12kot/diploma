@@ -5,13 +5,13 @@ import { useTranslation } from 'react-i18next';
 import { Button } from 'components';
 import { cx, EUserRole, IUser, useAuth } from 'features';
 
-import { Orders, ActiveUserChat, ActiveUserAbout, AcriveUserAnalitics } from './components';
+import { Orders, ActiveUserAbout, AcriveUserAnalitics } from './components';
 
-import { SVGAnalitics, SVGChat, SVGInfo, SVGCar } from 'assets';
+import { SVGAnalitics, SVGInfo, SVGCar } from 'assets';
 
 import styles from './styles.module.scss';
 
-type IPageTypes = 'chat' | 'about' | 'analitics' | 'orders';
+type IPageTypes = 'about' | 'analitics' | 'orders';
 
 interface IPage {
   name: string;
@@ -22,13 +22,6 @@ interface IPage {
 }
 
 const pages = (t: TFunction<['dashboard'], undefined>): IPage[] => [
-  {
-    name: t('pages.list.chat'),
-    icon: <SVGChat />,
-    value: 'chat',
-    sees: [],
-    has: [],
-  },
   {
     name: t('pages.list.about'),
     icon: <SVGInfo />,
@@ -74,7 +67,6 @@ export const ActiveUserPages = ({ activeUser }: Props) => {
           <Page key={i} page={page} setActivePage={setActivePage} activePage={activePage} />
         ))}
       </div>
-      {activePage === 'chat' && <ActiveUserChat />}
       {activePage === 'about' && <ActiveUserAbout role={activeUser.role} isBanned={activeUser.isBanned} />}
       {activePage === 'analitics' && <AcriveUserAnalitics />}
       {activePage === 'orders' && <Orders />}

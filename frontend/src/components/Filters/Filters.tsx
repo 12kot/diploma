@@ -1,4 +1,6 @@
-import styles from "./styles.module.scss";
+import { Button, Indicator } from 'components';
+
+import styles from './styles.module.scss';
 
 const filters = [
   {
@@ -35,12 +37,12 @@ const filters = [
 
 export const Filters = () => {
   return (
-    <div className={`${styles.container} flex gap-mini w-full`}>
+    <div className={styles.container}>
       {filters.map((item) => (
-        <button className={`--filter ${item.id === 1 && `--active`}`} key={item.id}>
-          <p>{item.name}</p>
-          <p className={`indicator -filter ${item.id === 1 && `-active`}`}>{item.count}</p>
-        </button>
+        <Button buttonType={[item.id === 1 ? `filter_active` : 'filter']} key={item.id}>
+          {item.name}
+          <Indicator type={item.id === 1 ? `filter_active` : 'filter'}>{item.count}</Indicator>
+        </Button>
       ))}
     </div>
   );

@@ -2,6 +2,8 @@ import GoogleMapReact from 'google-map-react';
 
 import { mapMarkerImg } from 'assets';
 
+import styles from './styles.module.scss';
+
 export const Map = () => {
   return (
     <GoogleMapReact
@@ -30,11 +32,7 @@ interface MarkerProps {
 const Marker = (data: MarkerProps) => {
   console.log(data);
   return (
-    <div
-      className="map-marker"
-      style={{
-        transform: 'translate(-50%, -50%)',
-      }}>
+    <div className={styles.marker}>
       <img src={mapMarkerImg} />
     </div>
   );

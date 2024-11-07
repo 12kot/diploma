@@ -637,7 +637,7 @@
   }
 
   &--map {
-    height: calc(90vh - 70px);
+    min-height: 100%;
   }
 
   &-info {
