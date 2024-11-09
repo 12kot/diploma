@@ -14,22 +14,19 @@
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
 
-    button {
-      color: var(--font-color-second);
-      border-radius: 0;
-
-      svg {
-        width: 20px;
-      }
-
-      &:active {
-        scale: 1;
-      }
-    }
-
     .page {
       width: 100%;
       gap: var(--gap-mini);
+    
+      color: var(--font-color-second);
+  
+      svg {
+        width: 20px;
+      }
+  
+      &:active {
+        scale: 1;
+      }
 
       .name {
         font-size: var(--font-size);

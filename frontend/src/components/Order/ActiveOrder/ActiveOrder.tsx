@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
+import { Button } from 'components';
 import { useEscapeKey, getOrderStatusText } from 'features';
 
 import { SVGBack } from 'assets';
@@ -16,66 +17,66 @@ export const ActiveOrder = ({ setActiveOrder }: Props) => {
   useEscapeKey(() => setActiveOrder(null));
 
   return (
-    <div className={`flex-col gap wrap`}>
-      <section className="flex align-center relative">
-        <button className="--default --border square rounded p-0 absolute l-0 t-0" onClick={() => setActiveOrder(null)}>
+    <div className={styles.container}>
+      <section className={styles.header}>
+        <Button buttonType={["default", "border"]} className={styles.back} onClick={() => setActiveOrder(null)}>
           <SVGBack />
-        </button>
-        <p className="text-center w-full">
+        </Button>
+        <p className={styles.text}>
           <b>Warsaw → Hrodna</b>
         </p>
       </section>
       <hr />
 
-      <section className={`${styles.container} flex-between gap media-flex-col-768`}>
-        <div className="btn --transparent w-m flex-start flex-col h-content w-full">
+      <section className={styles.content}>
+        <div className={styles.info}>
           <b>{t('pages.orders.cargoOwner')}</b>
-          <div className="flex-col">
-            <p className="text-12 text-secondary">{t('pages.orders.id')}</p>
-            <p className="text-14">10219939113</p>
+          <div className={styles.card}>
+            <p className={styles.headerText}>{t('pages.orders.id')}</p>
+            <p className={styles.mainText}>10219939113</p>
           </div>
-          <div className="flex-col">
-            <p className="text-12 text-secondary">{t('pages.orders.name')}</p>
-            <p className="text-14">Full Name</p>
+          <div className={styles.card}>
+            <p className={styles.headerText}>{t('pages.orders.name')}</p>
+            <p className={styles.mainText}>Full Name</p>
           </div>
-          <div className="flex-col">
-            <p className="text-12 text-secondary">{t('pages.orders.email')}</p>
-            <a href="mailto:yakol.nikita@gmail.com" className="text-14">
+          <div className={styles.card}>
+            <p className={styles.headerText}>{t('pages.orders.email')}</p>
+            <a href="mailto:yakol.nikita@gmail.com" className={styles.mainText}>
               yakol.nikita@gmail.com
             </a>
           </div>
-          <div className="flex-col">
-            <p className="text-12 text-secondary">{t('pages.orders.phone')}</p>
-            <a href="tel:+375292812071" className="text-14">
+          <div className={styles.card}>
+            <p className={styles.headerText}>{t('pages.orders.phone')}</p>
+            <a href="tel:+375292812071" className={styles.mainText}>
               +375 29 281 20 71
             </a>
           </div>
         </div>
-        <div className="btn --transparent w-m flex-start flex-col h-content w-full">
+        <div className={styles.info}>
           <b>{t('pages.orders.cargoInfo')}</b>
-          <div className="flex-col">
-            <p className="text-12 text-secondary">{t('pages.orders.status')}</p>
-            <p className="text-14">{getOrderStatusText('waiting', t)}</p>
+          <div className={styles.card}>
+            <p className={styles.headerText}>{t('pages.orders.status')}</p>
+            <p className={styles.mainText}>{getOrderStatusText('waiting', t)}</p>
           </div>
-          <div className="flex-col">
-            <p className="text-12 text-secondary">{t('pages.orders.id')}</p>
-            <p className="text-14">10219939113</p>
+          <div className={styles.card}>
+            <p className={styles.headerText}>{t('pages.orders.id')}</p>
+            <p className={styles.mainText}>10219939113</p>
           </div>
-          <div className="flex-col">
-            <p className="text-12 text-secondary">{t('pages.orders.typeOfPackaging')}</p>
-            <p className="text-14">Package name</p>
+          <div className={styles.card}>
+            <p className={styles.headerText}>{t('pages.orders.typeOfPackaging')}</p>
+            <p className={styles.mainText}>Package name</p>
           </div>
-          <div className="flex-col">
-            <p className="text-12 text-secondary">{t('pages.orders.receivingAddress')}</p>
-            <p className="text-14">Poland, Warsaw</p>
+          <div className={styles.card}>
+            <p className={styles.headerText}>{t('pages.orders.receivingAddress')}</p>
+            <p className={styles.mainText}>Poland, Warsaw</p>
           </div>
-          <div className="flex-col">
-            <p className="text-12 text-secondary">{t('pages.orders.unloadingAddress')}</p>
-            <p className="text-14">Belarus, Hrodna</p>
+          <div className={styles.card}>
+            <p className={styles.headerText}>{t('pages.orders.unloadingAddress')}</p>
+            <p className={styles.mainText}>Belarus, Hrodna</p>
           </div>
-          <div className="flex-col">
-            <p className="text-12 text-secondary">{t('pages.orders.price')}</p>
-            <p className="text-14">$25000</p>
+          <div className={styles.card}>
+            <p className={styles.headerText}>{t('pages.orders.price')}</p>
+            <p className={styles.mainText}>$25000</p>
           </div>
         </div>
       </section>

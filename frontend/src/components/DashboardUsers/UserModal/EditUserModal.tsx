@@ -5,8 +5,7 @@ import * as Yup from 'yup';
 
 import { AllRoles, EUserRole } from 'features';
 
-import { H2 } from 'components/UI/Font';
-import { Modal } from 'components/Modal';
+import { H2, Modal} from 'components';
 
 interface ModalProps {
   isOpen: boolean;
