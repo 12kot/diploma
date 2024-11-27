@@ -7,6 +7,7 @@ export * from "./SVGCargo";
 export * from "./SVGCargoOwner";
 export * from "./SVGChat";
 export * from "./SVGClose";
+export * from "./SVGCheck";
 export * from "./SVGCompany";
 export * from "./SVGContactUs";
 export * from "./SVGCreate";

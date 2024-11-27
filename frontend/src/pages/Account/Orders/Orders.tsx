@@ -1,16 +1,18 @@
 import { useState } from 'react';
 
-import { IOrder } from 'features';
+import { cx, IOrder } from 'features';
 import { FullOrder, Filters } from 'components';
 
 import { OrdersList } from './Order';
+
+import styles from './styles.module.scss';
 
 export const Orders = () => {
   const [activeOrder, setActiveOrder] = useState<number | null>();
 
   return (
-    <div className={`order-container ${activeOrder && '-orders-grid'} media-full-1200`}>
-      <div className={`flex-col w-full ${activeOrder && 'none'}`}>
+    <div className={styles.container}>
+      <div className={cx(styles.content, !!activeOrder && styles.none)}>
         <Filters />
         <OrdersList orders={orders} activeUserId={activeOrder} setOpenUser={(v) => setActiveOrder(v)} />
       </div>

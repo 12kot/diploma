@@ -1,8 +1,11 @@
 import { useTranslation } from 'react-i18next';
 
-import { Labels, MapWithRoute, Modal } from 'components';
+import { cx } from 'features';
+import { Button, Labels, MapWithRoute, Modal } from 'components';
 
-import { SVGClose, SVGEarth, SVGTrendingUp } from 'assets';
+import { SVGCheck, SVGClose, SVGEarth, SVGTrendingUp } from 'assets';
+
+import styles from './styles.module.scss';
 
 interface Props {
   isOpen: boolean;
@@ -13,26 +16,26 @@ export const AddDriverToOrder = ({ isOpen, setIsOpen }: Props) => {
   const { t } = useTranslation(['dashboard', 'common']);
 
   return (
-    <Modal isOpen={isOpen} setIsOpen={setIsOpen} className="order-container__modal flex-col gap">
-      <header className="flex gap-mini align-center">
-        <p className="clamp-2">
+    <Modal isOpen={isOpen} setIsOpen={setIsOpen} className={styles.container}>
+      <header className={styles.header}>
+        <p className={styles.clamp}>
           <b>{t('dashboard:order.addDriverToOrder')}</b>
         </p>
       </header>
-      <form className="order-container__modal-content h-full gap overflow">
-        <section className="flex-col gap overflow">
-          <input type="text" placeholder={t('common:placeholders.findDriver')} className="w-full" />
+      <form className={styles.content}>
+        <section className={styles.cards}>
+          <input type="text" placeholder={t('common:placeholders.findDriver')} />
           <MiniDriver active />
-          <div className="flex-col order-container__modal-content-drivers">
+          <div className={styles.drivers}>
             {Array(15)
               .fill(0)
               .map((_, i) => (
                 <MiniDriver key={i} active={i === 8} />
               ))}
           </div>
-          <button className="w-full mt">{t('common:buttons.confirm')}</button>
+          <Button className={styles.confirm}>{t('common:buttons.confirm')}</Button>
         </section>
-        <section className="flex-col gap">
+        <section className={styles.map}>
           <Labels labels={labels} wrap />
           <MapWithRoute
             origin={{ lat: 53.893009, lng: 27.567444 }}
@@ -49,21 +52,25 @@ export const AddDriverToOrder = ({ isOpen, setIsOpen }: Props) => {
 
 const MiniDriver = ({ active }: { active?: boolean }) => {
   return (
-    <div className={`--default flex-start gap-mini mini-driver align-center ${active && 'mini-driver-active'}`}>
+    <div className={cx(styles.card, active && styles.card_active)}>
       <img
         src="https://cdn.openart.ai/published/8EVNpLAOnr5fVQgKrqWw/Tnz4qXWD_lV1v_1024.webp"
-        className="rounded"
         loading="lazy"
       />
-      <div className="flex-col flex-start">
-        <b className="text-14">Hanna super Driver</b>
+      <div className={styles.name}>
+        <b>Hanna super Driver</b>
         <Labels labels={labels} />
       </div>
 
+      {!active && (
+        <Button buttonType={'default'} className={cx(styles.close, styles.check)} type="button">
+          <SVGCheck />
+        </Button>
+      )}
       {active && (
-        <button className="--default square rounded p-0 ml" type="button">
+        <Button buttonType={'default'} className={styles.close} type="button">
           <SVGClose />
-        </button>
+        </Button>
       )}
     </div>
   );
