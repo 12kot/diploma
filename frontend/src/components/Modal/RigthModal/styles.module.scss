@@ -41,6 +41,10 @@
     .logo {
       height: 69px;
       padding: 16px 32px;
+
+      h1 {
+        font-size: var(--font-size-xxl);
+      }
     }
   }
 }

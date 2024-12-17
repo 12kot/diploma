@@ -21,7 +21,7 @@ export const CheckEmail = ({ handleClose }: Props) => {
       </Button>
 
       <div className={styles.form}>
-        <img src={mailImg} className="w-m" loading="lazy" />
+        <img src={mailImg} className={styles.image} loading="lazy" />
         <header className={styles.header}>
           <H1>{t('auth:signUp.checkEmail.header')}</H1>
           <p>{t('auth:signUp.checkEmail.title')}</p>

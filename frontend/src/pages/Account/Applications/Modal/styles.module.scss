@@ -1,0 +1,40 @@
+@use 'src/scss/button';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xl);
+  max-width: 420px !important;
+  overflow: hidden;
+
+  .header {
+    display: flex;
+    gap: var(--gap-mini);
+    align-items: center;
+  }
+
+  .content {
+    padding-right: 16px;
+    overflow-y: auto;
+    max-width: 420px !important;
+
+    p {
+      font-size: var(--font-size-s);
+    }
+  }
+
+  .data {
+    display: flex;
+    gap: var(--gap-mini);
+
+    a {
+      font-size: var(--font-size-xs);
+      @extend .button;
+      @extend .transparent;
+    }
+
+    button {
+      width: 100%;
+    }
+  }
+}

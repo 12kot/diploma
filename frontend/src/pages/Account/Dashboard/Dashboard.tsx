@@ -1,11 +1,13 @@
 import { TFunction } from 'i18next';
 import { useTranslation } from 'react-i18next';
 
-import { H2, TotalInfo } from 'components';
+import { Button, H2, TotalInfo } from 'components';
 
 import { DashboardCharts } from './Charts';
 
 import { SVGReport } from 'assets';
+
+import styles from './styles.module.scss';
 
 const totalInfo = (t: TFunction<['dashboard'], undefined>) => [
   { id: 1, name: t('dashboard:total.totalForwarders'), value: '255', percentage: 100 },
@@ -20,16 +22,16 @@ export const Dashboard = () => {
   const { t } = useTranslation(['dashboard']);
 
   return (
-    <div className="account-container--dashboard media-full-1200 flex-col gap">
-      <section className="flex-between align-center mb-16 media-flex-col-center-768 gap-8">
-        <div className="flex-col">
+    <div className={styles.container}>
+      <section className={styles.greeting}>
+        <div className={styles.name}>
           <H2>{t('dashboard:greeting.hello', { name: 'Hanna' })}</H2>
-          <p className="text-secondary">{t('dashboard:greeting.traffic')}</p>
+          <span>{t('dashboard:greeting.traffic')}</span>
         </div>
-        <button className="nowrap">
+        <Button>
           <SVGReport />
           <p>{t('dashboard:greeting.generateReport')}</p>
-        </button>
+        </Button>
       </section>
       <TotalInfo totalInfo={totalInfo} />
       <DashboardCharts />

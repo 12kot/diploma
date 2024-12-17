@@ -1,0 +1,23 @@
+.container {
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  display: grid;
+  grid-template-columns: repeat(2, minmax(200px, 1fr));
+  grid-gap: calc(var(--gap) * 2);
+
+  max-height: fit-content;
+  padding: 16px 32px;
+
+  @media (max-width: 768px) {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: 1fr;
+
+    padding: 0;
+  }
+
+  @media (max-width: 1200px) {
+    width: 100%;
+  }
+}

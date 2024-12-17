@@ -1,0 +1,41 @@
+.container {
+  grid-area: 1 / 2 / 6 / 7;
+
+  overflow-y: hidden;
+  height: 100%;
+  flex-direction: column;
+
+  textarea {
+    flex-shrink: 0;
+  }
+
+  &__svg {
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .payment {
+    padding: 16px 32px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+
+    overflow-y: hidden;
+    height: 100%;
+
+    .map {
+      overflow: auto;
+      height: 100%;
+      grid-area: 1 / 2 / 2 / 3;
+    }
+  }
+}

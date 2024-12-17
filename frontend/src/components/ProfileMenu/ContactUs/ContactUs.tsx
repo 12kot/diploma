@@ -1,30 +1,31 @@
 import { FormEvent, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
-import { H2, Modal } from 'components';
+import { Button, H2, Modal } from 'components';
 
 import mailImage from 'assets/img/mail.png';
-import { useTranslation } from 'react-i18next';
+
+import styles from './styles.module.scss';
 
 interface Props {
   isOpen: boolean;
   setIsOpen: () => void;
 }
 
-const ContactUsModal = ({ isOpen, setIsOpen }: Props) => {
+export const ContactUsModal = ({ isOpen, setIsOpen }: Props) => {
   const [isSend, setIsSend] = useState<boolean>(false);
 
+  const renderContent = () => {
+    if (isSend) return <SendModal setIsSend={(v) => setIsSend(v)} setIsOpen={setIsOpen} />;
+    return <Form setIsSend={(v) => setIsSend(v)} setIsOpen={setIsOpen} />;
+  };
+
   return (
-    <Modal isOpen={isOpen} setIsOpen={setIsOpen} className="flex-col gap contact-us__modal">
-      {isSend ? (
-        <SendModal setIsSend={(v) => setIsSend(v)} setIsOpen={setIsOpen} />
-      ) : (
-        <Form setIsSend={(v) => setIsSend(v)} setIsOpen={setIsOpen} />
-      )}
+    <Modal isOpen={isOpen} setIsOpen={setIsOpen} className={styles.container}>
+      {renderContent()}
     </Modal>
   );
 };
-
-export default ContactUsModal;
 
 interface FormProps {
   setIsSend: (v: boolean) => void;
@@ -42,18 +43,18 @@ const Form = ({ setIsSend, setIsOpen }: FormProps) => {
   return (
     <>
       <H2 className="text-center">{t('common:buttons.contactUs')}</H2>
-      <form className="flex-col gap" onSubmit={handleSubmit}>
-        <div className="flex gap-mini">
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <div className={styles.user}>
           <input type="email" value="yakol.nikita@gmail.com" disabled />
           <input type="phone" value="+375 29 281 20 71" disabled />
         </div>
         <input type="text" placeholder={t('menuHolder:support.modal.whatHappened')} />
         <textarea rows={5} placeholder={t('menuHolder:support.modal.describeProblem')} />
-        <footer className="flex gap-mini">
-          <button className="--transparent w-full" type="button" onClick={setIsOpen}>
+        <footer className={styles.actions}>
+          <Button buttonType={'transparent'} type="button" onClick={setIsOpen}>
             {t('common:buttons.cancel')}
-          </button>
-          <button className="w-full ">{t('common:buttons.send')}</button>
+          </Button>
+          <Button>{t('common:buttons.send')}</Button>
         </footer>
       </form>
     </>
@@ -64,14 +65,14 @@ const SendModal = ({ setIsSend, setIsOpen }: FormProps) => {
   const { t } = useTranslation(['menuHolder', 'common']);
 
   return (
-    <div className="flex-col flex-center gap contact-us__modal__send">
-      <img src={mailImage} alt="mail-image" loading="lazy" className="w-m" />
-      <p className="text-center text-14">{t('menuHolder:support.modal.sendSuccessText')}</p>
-      <div className="flex gap-mini">
-        <button className="--transparent" onClick={() => setIsSend(false)}>
+    <div className={styles.send}>
+      <img src={mailImage} alt="mail-image" loading="lazy" />
+      <p>{t('menuHolder:support.modal.sendSuccessText')}</p>
+      <div className={styles.actions}>
+        <Button buttonType={'transparent'} onClick={() => setIsSend(false)}>
           {t('common:buttons.sendAnotherRequest')}
-        </button>
-        <button onClick={setIsOpen}>{t('common:buttons.continueWorking')}</button>
+        </Button>
+        <Button onClick={setIsOpen}>{t('common:buttons.continueWorking')}</Button>
       </div>
     </div>
   );

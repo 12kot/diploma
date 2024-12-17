@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { H2, HR, MapWithRoute } from 'components';
+import { Button, H2, HR, MapWithRoute } from 'components';
 
 import { OrderForm } from './components';
 import { AddressModal } from './Modal';
+
+import styles from "./styles.module.scss";
 
 export const CreateOrder = () => {
   const { t } = useTranslation(['dashboard', 'common']);
@@ -12,17 +14,17 @@ export const CreateOrder = () => {
   const [modalType, setModalType] = useState<'upload' | 'download'>('upload');
 
   return (
-    <div className="create-order flex-col">
+    <div className={styles.container}>
       <AddressModal isOpen={isOpen} setIsOpen={() => setIsOpen((v) => !v)} modalType={modalType} />
-      <section className="create-order__padding flex-between align-center">
+      <section className={styles.payment}>
         <H2>{t('dashboard:createOrder.index')}</H2>
-        <button>{t('common:buttons.getPaymentInfo')}</button>
+        <Button>{t('common:buttons.getPaymentInfo')}</Button>
       </section>
       <HR />
-      <section className="create-order__content h-full">
+      <section className={styles.content}>
         <OrderForm openDownloadModal={() => setIsOpen((v) => !v)} setModalType={setModalType} />
 
-        <div className="create-order__content--second">
+        <div className={styles.map}>
           <MapWithRoute
             origin={{ lat: 53.893009, lng: 27.567444 }}
             destination={{

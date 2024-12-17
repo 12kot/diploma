@@ -1,6 +1,8 @@
 import { useTranslation } from 'react-i18next';
 
-import { Map, Modal } from 'components';
+import { Button, Map, Modal } from 'components';
+
+import styles from './styles.module.scss';
 
 interface Props {
   isOpen: boolean;
@@ -12,7 +14,7 @@ export const AddressModal = ({ isOpen, setIsOpen, modalType }: Props) => {
   const { t } = useTranslation(['dashboard', 'common']);
 
   return (
-    <Modal isOpen={isOpen} setIsOpen={setIsOpen} className="address-modal flex-col align-center gap">
+    <Modal isOpen={isOpen} setIsOpen={setIsOpen} className={styles.container}>
       <p>
         <b>
           {t(
@@ -22,18 +24,18 @@ export const AddressModal = ({ isOpen, setIsOpen, modalType }: Props) => {
           )}
         </b>
       </p>
-      <div className="address-modal__map w-full z-10">
+      <div className={styles.map}>
         <Map />
       </div>
-      <form className="flex-col gap w-full">
-        <input type="text" placeholder={t('common:placeholders.address')} className="w-full" />
-        <input type="text" placeholder={t('common:placeholders.phone')} className="w-full" />
+      <form className={styles.form}>
+        <input type="text" placeholder={t('common:placeholders.address')} />
+        <input type="text" placeholder={t('common:placeholders.phone')} />
 
-        <section className="flex gap-mini">
-          <button className="--transparent w-full" type="button" onClick={setIsOpen}>
+        <section className={styles.actions}>
+          <Button buttonType={'transparent'} type="button" onClick={setIsOpen}>
             {t('common:buttons.cancel')}
-          </button>
-          <button className="w-full">{t('common:buttons.save')}</button>
+          </Button>
+          <Button>{t('common:buttons.save')}</Button>
         </section>
       </form>
     </Modal>
