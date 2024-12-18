@@ -12,7 +12,7 @@ interface Props {
 
 export const AuthHolder = ({ children }: Props) => {
   return (
-    <div className="relative auth-container">
+    <div className={styles.container}>
       <Suspense
         fallback={
           <div className={styles.loader}>

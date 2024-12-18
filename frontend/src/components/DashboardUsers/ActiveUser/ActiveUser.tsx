@@ -1,5 +1,6 @@
 import { IUser } from 'features';
 
+import { BgImage } from 'components';
 import { ActiveUserPages } from './Pages';
 import { UserName } from './Name/UserName';
 import { UserLabels } from './UserLabels/UserLabels';
@@ -21,7 +22,7 @@ export const ActiveUser = ({ user, closeActiveUser }: Props) => {
         <UserName name={user.name} isBanned={user.isBanned} role={user.role} />
         <ActiveUserPages activeUser={user} />
       </div>
-      <img src={tilesImage} loading="lazy" className="top-0 left-0 absolute w-full z--1" />
+      <BgImage image={tilesImage} isTop />
     </div>
   );
 };

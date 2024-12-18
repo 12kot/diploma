@@ -36,12 +36,12 @@ const Content = () => {
         loading="lazy"
       />
       <div className={styles.info}>
-        <p className="text-main">
+        <p>
           <b>Hanna Kisel</b>
         </p>
 
         <div className={styles.profile}>
-          <div className="main-color-bg rounded w-4" />
+          <div className={styles.status} />
           <p className={styles.status}>Logistator</p>
         </div>
       </div>

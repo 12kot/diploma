@@ -17,6 +17,7 @@
   .info {
     display: flex;
     flex-direction: column;
+    color: var(--font-color);
 
     b {
       font-size: 14px;
@@ -26,6 +27,13 @@
       display: flex;
       align-items: center;
       gap: var(--gap-mini);
+
+      .status {
+        border-radius: 50%;
+        background-color: var(--main-color);
+        width: 4px;
+        height: 4px;
+      }
     }
 
     .status {

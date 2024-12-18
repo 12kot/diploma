@@ -28,18 +28,18 @@ export const OrderForm = ({ openDownloadModal, setModalType }: Props) => {
         </p>
       </div>
       <section className={styles.item}>
-        <input type="text" placeholder={t('common:placeholders.name')} className="w-full" />
-        <input type="text" placeholder={t('common:placeholders.type')} className="w-full" />
+        <input type="text" placeholder={t('common:placeholders.name')} />
+        <input type="text" placeholder={t('common:placeholders.type')} />
       </section>
       <section className={styles.item}>
-        <input type="text" placeholder={t('common:placeholders.width')} className="w-full" />
-        <input type="text" placeholder={t('common:placeholders.heigth')} className="w-full" />
-        <input type="text" placeholder={t('common:placeholders.depth')} className="w-full" />
-        <input type="text" placeholder={t('common:placeholders.weight')} className="w-full" />
+        <input type="text" placeholder={t('common:placeholders.width')} />
+        <input type="text" placeholder={t('common:placeholders.heigth')} />
+        <input type="text" placeholder={t('common:placeholders.depth')} />
+        <input type="text" placeholder={t('common:placeholders.weight')} />
       </section>
       <section className={styles.item}>
-        <input type="text" placeholder={t('common:placeholders.loadingMethod')} className="w-full" />
-        <input type="text" placeholder={t('common:placeholders.packageType')} className="w-full" />
+        <input type="text" placeholder={t('common:placeholders.loadingMethod')} />
+        <input type="text" placeholder={t('common:placeholders.packageType')} />
       </section>
       <textarea rows={10} placeholder={t('common:placeholders.cargoDescription')} />
       <div className={styles.info}>
@@ -59,8 +59,8 @@ export const OrderForm = ({ openDownloadModal, setModalType }: Props) => {
         </Button>
       </section>
       <section className={styles.item}>
-        <input type="date" className="w-full" placeholder={t('common:placeholders.whenPickCargo')} />
-        <input type="date" className="w-full" placeholder={t('common:placeholders.whenDeliver')} />
+        <input type="date" placeholder={t('common:placeholders.whenPickCargo')} />
+        <input type="date" placeholder={t('common:placeholders.whenDeliver')} />
       </section>
     </form>
   );

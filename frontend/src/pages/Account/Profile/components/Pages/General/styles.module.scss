@@ -1,0 +1,95 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+
+  overflow-y: hidden;
+  height: 100%;
+
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+
+  ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+
+  .first {
+    grid-area: 1 / 1 / 2 / 2;
+    height: 100%;
+    border-right: 1px solid var(--border-color);
+    overflow-y: auto;
+
+    padding: 32px 32px 16px;
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-xl);
+
+    .profile {
+      display: flex;
+      gap: var(--gap-mini);
+      align-items: center;
+
+      b {
+        font-size: var(--font-size-sm);
+      }
+    }
+
+    .form {
+      overflow-y: auto;
+
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap-mini);
+
+      .section {
+        display: flex;
+        gap: var(--gap-mini);
+
+        input {
+          width: 100%;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        height: fit-content;
+        overflow-y: unset;
+      }
+
+      textarea {
+        flex-shrink: 0;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      overflow-y: unset;
+      height: fit-content;
+    }
+  }
+
+  .second {
+    grid-area: 1 / 2 / 2 / 3;
+    padding: 32px 32px 16px;
+
+    position: relative;
+    text-align: center;
+    align-items: center;
+    gap: var(--gap);
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (max-width: 768px) {
+      height: fit-content;
+    }
+
+    svg {
+      width: 70px;
+      height: 70px;
+      fill: var(--main-color);
+    }
+  }
+}

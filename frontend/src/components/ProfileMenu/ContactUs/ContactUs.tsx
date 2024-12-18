@@ -42,7 +42,7 @@ const Form = ({ setIsSend, setIsOpen }: FormProps) => {
 
   return (
     <>
-      <H2 className="text-center">{t('common:buttons.contactUs')}</H2>
+      <H2 className={styles.center}>{t('common:buttons.contactUs')}</H2>
       <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.user}>
           <input type="email" value="yakol.nikita@gmail.com" disabled />

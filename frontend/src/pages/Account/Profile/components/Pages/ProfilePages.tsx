@@ -1,6 +1,9 @@
 import { useTranslation } from 'react-i18next';
 
-import { getProfilePagesByUserRole, IProfilePage, IProfilePageType, useAuth } from 'features';
+import { cx, getProfilePagesByUserRole, IProfilePage, IProfilePageType, useAuth } from 'features';
+
+import styles from "./styles.module.scss";
+import { Button } from 'components';
 
 interface Props {
   activePage: IProfilePageType;
@@ -14,7 +17,7 @@ export const ProfilePages = ({ activePage, setActivePage }: Props) => {
   if (!user?.role) return <></>;
 
   return (
-    <section className="profile-pages flex">
+    <section className={styles.container}>
       {getProfilePagesByUserRole(user?.role, t).map((page) => (
         <Page key={page.id} {...page} activePage={activePage} setActivePage={setActivePage} />
       ))}
@@ -26,11 +29,11 @@ interface PageProps extends IProfilePage, Props {}
 
 const Page = ({ activePage, type, name, setActivePage }: PageProps) => {
   return (
-    <div className={`relative ${type === activePage && 'active'}`}>
-      <button className="--default" onClick={() => setActivePage(type)}>
+    <div className={cx(styles.page, type === activePage && styles.active)}>
+      <Button buttonType={'default'} onClick={() => setActivePage(type)}>
         {name}
-      </button>
-      <div className="activeHolder" />
+      </Button>
+      <div className={styles.activeHolder} />
     </div>
   );
 };

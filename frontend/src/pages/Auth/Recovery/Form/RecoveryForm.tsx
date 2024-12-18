@@ -3,7 +3,9 @@ import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import { APP_ROUTES } from 'Router';
-import { CheckEmail, H1 } from 'components';
+import { Button, CheckEmail, H1 } from 'components';
+
+import styles from '../../form.module.scss';
 
 export const RecoveryForm = () => {
   const { t } = useTranslation(['auth', 'common']);
@@ -18,19 +20,19 @@ export const RecoveryForm = () => {
   if (isCheckOpen) return <CheckEmail handleClose={() => setIsCheckOpen((v) => !v)} />;
 
   return (
-    <div className="auth-container--form flex-center flex-col">
-      <form onSubmit={handleSubmit}>
-        <header className="text-center">
-          <H1>{t('auth:recovery.header')}</H1>
+    <div className={styles.container}>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <header className={styles.header}>
+          <H1 className={styles.headerText}>{t('auth:recovery.header')}</H1>
           <p>{t('auth:recovery.title')}</p>
         </header>
-        <section className="auth-container--form--inputs">
+        <section className={styles.inputs}>
           <input placeholder={t('auth:email')} type="email" />
         </section>
-        <section className="text-center flex-col gap">
-          <button>
+        <section className={styles.submit}>
+          <Button>
             <p>{t('auth:recovery.submit')}</p>
-          </button>
+          </Button>
           <span>
             {t('auth:links.rememberPassword')}{' '}
             <NavLink to={APP_ROUTES.LOGIN}>{t('auth:signIn.index')}</NavLink>

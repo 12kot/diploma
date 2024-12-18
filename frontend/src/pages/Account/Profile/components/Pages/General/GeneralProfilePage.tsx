@@ -1,40 +1,43 @@
 import { useTranslation } from 'react-i18next';
 
-import { H2 } from 'components';
+import { BgImage, H2 } from 'components';
 
-import {SVGProfileInfo, SVGImportant, tilesImg} from 'assets';
+import { SVGProfileInfo, SVGImportant, tilesImg } from 'assets';
+
+import styles from './styles.module.scss';
 
 export const GeneralProfilePage = () => {
   const { t } = useTranslation(['dashboard', 'common']);
 
   return (
-    <div className="profile-grid">
-      <section className="flex-col gap profile-padding profile-grid-first">
-        <div className="flex gap-mini align-center">
+    <div className={styles.container}>
+      <section className={styles.first}>
+        <div className={styles.profile}>
           <SVGProfileInfo />
           <p>
-            <b className="text-14">{t('dashboard:profile.personalInfo')}</b>
+            <b>{t('dashboard:profile.personalInfo')}</b>
           </p>
         </div>
-        <form className="flex-col gap profile-grid-first-overflow">
-          <section className="flex gap-mini">
-            <input type="text" placeholder={t('common:placeholders.name')} className="w-full" />
-            <input type="text" placeholder={t('common:placeholders.surname')} className="w-full" />
+
+        <form className={styles.form}>
+          <section className={styles.section}>
+            <input type="text" placeholder={t('common:placeholders.name')} />
+            <input type="text" placeholder={t('common:placeholders.surname')} />
           </section>
           <input type="email" placeholder={t('common:placeholders.email')} />
           <input type="phone" placeholder={t('common:placeholders.phoneNumber')} />
-          <section className="flex gap-mini">
-            <input type="text" placeholder={t('common:placeholders.country')} className="w-full" />
-            <input type="text" placeholder={t('common:placeholders.city')} className="w-full" />
+          <section className={styles.section}>
+            <input type="text" placeholder={t('common:placeholders.country')} />
+            <input type="text" placeholder={t('common:placeholders.city')} />
           </section>
           <textarea rows={10} placeholder={t('common:placeholders.selfDescription')} />
         </form>
       </section>
-      <section className="flex-col gap align-center text-center profile-grid-second profile-padding relative">
+      <section className={styles.second}>
         <SVGImportant />
         <H2>{t('dashboard:profile.whyIsImportant')}</H2>
         <p>{t('dashboard:profile.whyIsImportantText')}</p>
-        <img src={tilesImg} loading="lazy" className="top-0 left-0 absolute w-full z--1" />
+        <BgImage image={tilesImg} isTop />
       </section>
     </div>
   );

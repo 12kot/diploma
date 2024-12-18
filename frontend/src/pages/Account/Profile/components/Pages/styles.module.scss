@@ -1,0 +1,32 @@
+.container {
+  padding: 0 32px;
+  display: flex;
+}
+
+button {
+  font-weight: 500;
+  border-radius: 0;
+  color: var(--font-color-second);
+}
+
+.page {
+  position: relative;
+}
+
+.active {
+  button {
+    color: var(--font-color);
+  }
+
+  .activeHolder {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+
+    height: 3px;
+    width: 70%;
+    border-radius: 4px 4px 0 0;
+    background-color: var(--main-color);
+  }
+}

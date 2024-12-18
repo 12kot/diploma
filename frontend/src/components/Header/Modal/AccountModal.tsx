@@ -1,4 +1,4 @@
-import { RigthModal } from 'components';
+import { BgImage, RigthModal } from 'components';
 
 import { tilesBottomImg } from 'assets';
 
@@ -16,7 +16,7 @@ export const AccountModal = ({ isOpen, setIsOpen }: Props) => {
     <RigthModal setIsOpen={setIsOpen} isOpen={isOpen}>
       <nav className={styles.container}>
         <Content setIsOpen={setIsOpen} />
-        <img src={tilesBottomImg} loading="lazy" className="bottom-0 left-0 absolute w-full z--1" />
+        <BgImage image={tilesBottomImg} />
       </nav>
     </RigthModal>
   );

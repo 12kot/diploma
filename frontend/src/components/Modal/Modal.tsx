@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 
+import { BgImage } from 'components';
 import { cx, useEscapeKey } from 'features';
 
 import { modalTilesImg } from 'assets';
@@ -20,7 +21,7 @@ export const Modal = ({ children, isOpen, setIsOpen, className }: Props) => {
     <div className={cx(styles.container, isOpen && styles.active)} onClick={setIsOpen}>
       <div className={cx(styles.content, className)} onClick={(e) => e.stopPropagation()}>
         {children}
-        <img src={modalTilesImg} loading="lazy" className="top-0 left-0 absolute w-full z--1" />
+        <BgImage image={modalTilesImg} isTop />
       </div>
     </div>
   );

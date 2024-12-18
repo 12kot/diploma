@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Button, MapWithRoute } from 'components';
+import { BgImage, Button, MapWithRoute } from 'components';
 import { useEscapeKey, getOrderStatusText, useAuth, EUserRole, cx } from 'features';
 
 import { AddDriverToOrder } from './Modal';
@@ -120,7 +120,7 @@ export const FullOrder = ({ setActiveOrder }: Props) => {
           />
         </div>
       </div>
-      <img src={tilesImg} loading="lazy" className="top-0 left-0 absolute w-full z--1" />
+      <BgImage image={tilesImg} isTop />
     </div>
   );
 };

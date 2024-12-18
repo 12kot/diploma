@@ -1,37 +1,37 @@
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-import { useAuth } from 'features';
+import { cx, useAuth } from 'features';
 import { APP_ROUTES } from 'Router';
-import { H2 } from 'components';
+import { BgImage, H2 } from 'components';
 
 import bigTilesImg from 'assets/img/bigTiles.png';
 import notFoundImg from 'assets/img/notFound.png';
+
+import styles from './styles.module.scss';
 
 export const NotFound = () => {
   const { user } = useAuth();
   const { t } = useTranslation('notFound');
 
   return (
-    <div className="not-found gap-big">
-      <img src={notFoundImg} className="not-found__img" alt="404" />
-      <section className="not-found__content flex-col flex-center gap-mid">
-        <div className="not-found__text flex-col gap-8 text-center">
+    <div className={styles.container}>
+      <img src={notFoundImg} className={styles.img} alt="404" />
+      <section className={styles.content}>
+        <div className={styles.text}>
           <H2>{t('header')}</H2>
           <p>{t('text')}</p>
         </div>
-        <div className="flex gap-8 w-full">
-          <NavLink to={APP_ROUTES.HOME} className="btn --transparent w-full decoration-none">
+        <div className={styles.links}>
+          <NavLink to={APP_ROUTES.HOME} className={cx(styles.link, styles.transparent)}>
             {t('actions.homePage')}
           </NavLink>
-          <NavLink
-            to={user ? APP_ROUTES.DASHBOARD : APP_ROUTES.LOGIN}
-            className="btn w-full decoration-none">
+          <NavLink to={user ? APP_ROUTES.DASHBOARD : APP_ROUTES.LOGIN} className={styles.link}>
             {t(user ? 'actions.dashboard' : 'actions.singIn')}
           </NavLink>
         </div>
       </section>
-      <img src={bigTilesImg} loading="lazy" className="bottom-0 left-0 absolute w-full z--1" />
+      <BgImage image={bigTilesImg} />
     </div>
   );
 };
