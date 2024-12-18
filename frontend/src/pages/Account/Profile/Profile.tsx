@@ -10,7 +10,7 @@ export const Profile = () => {
   const [activePage, setActivePage] = useState<IProfilePageType>('general');
 
   return (
-    <div className={styles.profile}>
+    <div className={styles.container}>
       <ProfileHeader />
       <ProfilePages activePage={activePage} setActivePage={(v) => setActivePage(v)} />
       <hr />

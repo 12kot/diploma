@@ -41,7 +41,7 @@ export const Users = () => {
 
   return (
     <div className={cx(styles.container, openUser && styles.grid)}>
-      <div className={cx(styles.list)}>
+      <div className={styles.list}>
         <Filters />
         <UsersList users={users} activeUserId={openUser} setOpenUser={handleOpenUser} />
       </div>

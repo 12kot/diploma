@@ -42,7 +42,7 @@ const Content = () => {
 
         <div className={styles.profile}>
           <div className={styles.status} />
-          <p className={styles.status}>Logistator</p>
+          <p className={styles.post}>Logistator</p>
         </div>
       </div>
     </>

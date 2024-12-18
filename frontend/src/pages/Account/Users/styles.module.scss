@@ -15,17 +15,17 @@
     height: 100%;
   }
 
-  .grid {
-    display: flex;
-
-    @media screen and (max-width: 1020px) {
-      .list {
-        display: none !important;
-      }
-    }
-  }
-
   @media (max-width: 1200px) {
     width: 100%;
+  }
+}
+
+.grid {
+  display: flex;
+
+  @media screen and (max-width: 1020px) {
+    .list {
+      display: none !important;
+    }
   }
 }
