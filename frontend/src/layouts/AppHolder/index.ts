@@ -1,1 +1,1 @@
-export * from "./AppHolder";
+export * from "./appHolder";
