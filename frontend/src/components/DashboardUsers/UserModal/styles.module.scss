@@ -1,0 +1,68 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xl);
+
+  width: 440px;
+  overflow: hidden;
+
+  ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+
+  .form {
+    height: 100%;
+    overflow: auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-xl);
+
+    input {
+      width: 100%;
+    }
+
+    .error {
+      border-color: var(--red);
+      background-color: var(--red-second);
+    }
+  }
+
+  .section {
+    display: flex;
+    gap: var(--gap-mini);
+  }
+
+  .roles {
+    display: flex;
+    width: 100%;
+
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+
+    .button {
+      flex-grow: 1;
+      border-radius: 0;
+      text-wrap: nowrap;
+
+      &:active {
+        scale: 1;
+      }
+    }
+
+    .active {
+      background-color: var(--main-color-second) !important;
+      color: var(--main-color) !important;
+    }
+  }
+
+  .actions {
+    display: flex;
+    gap: var(--gap-mini);
+
+    button {
+      width: 100%;
+    }
+  }
+}

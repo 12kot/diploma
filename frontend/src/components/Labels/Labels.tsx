@@ -1,4 +1,7 @@
-import { ILabel } from 'features';
+import { cx, ILabel } from 'features';
+import { Indicator } from 'components';
+
+import styles from './styles.module.scss';
 
 interface Props {
   wrap?: boolean;
@@ -7,7 +10,7 @@ interface Props {
 
 export const Labels = ({ labels, wrap }: Props) => {
   return (
-    <div className={`flex gap-mini ${wrap && 'wrap'}`}>
+    <div className={cx(styles.container, wrap && styles.wrap)}>
       {labels.map((label) => (
         <Label key={label.id} {...label} />
       ))}
@@ -17,9 +20,9 @@ export const Labels = ({ labels, wrap }: Props) => {
 
 const Label = ({ icon, name, id }: ILabel) => {
   return (
-    <div className="flex gap-mini indicator -border nowrap h-content" key={id}>
+    <Indicator type="border" className={styles.label} key={id}>
       {icon}
-      <p>{name}</p>
-    </div>
+      {name}
+    </Indicator>
   );
 };

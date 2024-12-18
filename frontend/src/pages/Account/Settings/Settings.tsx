@@ -1,20 +1,22 @@
 import { useTranslation } from 'react-i18next';
 
-import { H2 } from 'components';
+import { Button, H2 } from 'components';
+
+import styles from './styles.module.scss';
 
 export const Settings = () => {
   const { t } = useTranslation(['dashboard', 'common']);
 
   return (
-    <div className="settings flex-col gap">
-      <div className="flex-col gap-mini">
+    <div className={styles.container}>
+      <div className={styles.text}>
         <H2>{t('dashboard:settings.changePassword')}</H2>
         <span>{t('dashboard:settings.note')}</span>
       </div>
-      <form className="flex-col gap">
+      <form className={styles.form}>
         <input type="password" placeholder="Current password" />
         <input type="password" placeholder="New password" />
-        <button>{t('common:buttons.updatePassword')}</button>
+        <Button>{t('common:buttons.updatePassword')}</Button>
       </form>
     </div>
   );

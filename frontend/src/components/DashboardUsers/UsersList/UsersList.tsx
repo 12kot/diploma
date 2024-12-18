@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { IUser } from 'features';
-import { Labels } from 'components';
+import { cx, IUser } from 'features';
+import { Button, Indicator, Labels } from 'components';
 
 import { SVGFavorite } from 'assets';
 
@@ -20,7 +20,7 @@ export const UsersList = ({ users, activeUserId, setOpenUser }: Props) => {
     return users.map((user) => <User key={user.id} activeUserId={activeUserId} setOpenUser={setOpenUser} {...user} />);
   }, [users, activeUserId, setOpenUser]);
 
-  return <section className={`${styles.container} flex-col w-full`}>{memoUsers}</section>;
+  return <section className={styles.container}>{memoUsers}</section>;
 };
 
 interface UserProps extends IUser {
@@ -32,22 +32,18 @@ const User = ({ activeUserId, id, setOpenUser, name, labels, isBanned }: UserPro
   const { t } = useTranslation('dashboard');
 
   return (
-    <div
-      className={`${styles.container__item} flex-between w-full align-center ${
-        activeUserId === id && styles.container__active
-      }`}>
-      <button
-        className={`--default flex-col gap-mini w-full ${styles.container__item__link} h-full`}
-        onClick={() => setOpenUser(id)}>
-        <div className="flex gap-mini align-center">
+    <div className={cx(styles.item, activeUserId === id && styles.active)}>
+      <section className={styles.info}>
+        <div className={styles.name}>
           <b>{name}</b>
-          {isBanned && <p className="indicator -red">{t('common.banned', { date: '23.09.2024' })}</p>}
+          {isBanned && <Indicator type="red">{t('common.banned', { date: '23.09.2024' })}</Indicator>}
         </div>
-        <Labels labels={labels} />
-      </button>
-      <button className="--default --border square rounded p-0">
+        <Labels labels={labels} wrap />
+      </section>
+      <Button buttonType={['default', 'border']} className={styles.favorite}>
         <SVGFavorite />
-      </button>
+      </Button>
+      <button className={styles.button} onClick={() => setOpenUser(id)} />
     </div>
   );
 };

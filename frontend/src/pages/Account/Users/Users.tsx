@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 
 import { Filters } from 'components';
-import { IUser, EUserRole } from 'features';
+import { IUser, EUserRole, cx } from 'features';
 import { ActiveUser, UsersList } from 'components/DashboardUsers';
 
 import {SVGEarth, SVGTrendingUp} from 'assets';
@@ -40,8 +40,8 @@ export const Users = () => {
   const users = getUserType(location.pathname.slice(location.pathname.lastIndexOf('/') + 1) as EUserRole);
 
   return (
-    <div className={`${styles.container} ${openUser && styles.container__grid} media-full-1200`}>
-      <div className={`${styles.list} flex-col w-full h-full`}>
+    <div className={cx(styles.container, openUser && styles.grid)}>
+      <div className={styles.list}>
         <Filters />
         <UsersList users={users} activeUserId={openUser} setOpenUser={handleOpenUser} />
       </div>

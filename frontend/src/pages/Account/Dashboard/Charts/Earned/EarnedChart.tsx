@@ -2,6 +2,8 @@ import { useTranslation } from 'react-i18next';
 
 import { H2, LineChart } from 'components';
 
+import styles from "../chart.module.scss"
+
 export const EarnedChart = () => {
   const { t } = useTranslation(['dashboard']);
 
@@ -14,7 +16,7 @@ export const EarnedChart = () => {
   };
 
   return (
-    <div className="chart flex-col gap-mini">
+    <div className={styles.chart}>
       <H2>{t('charts.earned')}</H2>
       <LineChart data={data} />
     </div>

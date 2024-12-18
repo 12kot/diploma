@@ -1,0 +1,19 @@
+.container {
+  position: relative;
+
+  p {
+    background-color: var(--bg-color);
+    padding: 0 8px;
+
+    left: calc(50% - 16px);
+    top: calc(-50% + 1px);
+    transform: translate(calc(50% - 16px), calc(-50% + 1px));
+
+    position: absolute;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 10px;
+
+    color: var(--font-color-second);
+  }
+}

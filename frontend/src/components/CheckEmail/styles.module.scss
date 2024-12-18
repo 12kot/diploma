@@ -1,0 +1,40 @@
+.container {
+  grid-area: 1 / 1 / 6 / 3;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  padding: 32px;
+
+  .back {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    gap: var(--gap-mini);
+    font-size: var(--font-size-s);
+  }
+
+  .form {
+    width: 270px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    flex-grow: 1;
+    gap: var(--gap-xxl);
+
+    .image {
+      width: 50%;
+    }
+
+    .header {
+      text-align: center;
+
+      font-size: 14px;
+    }
+  }
+}

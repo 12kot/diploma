@@ -1,9 +1,10 @@
-import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-import { H1 } from 'components';
+import { Button, H1 } from 'components';
 
 import { SVGBack, mailImg } from 'assets';
+
+import styles from './styles.module.scss';
 
 interface Props {
   handleClose: () => void;
@@ -13,21 +14,20 @@ export const CheckEmail = ({ handleClose }: Props) => {
   const { t } = useTranslation(['auth']);
 
   return (
-    <div className="auth-container--form flex-center flex-col relative">
-      <button className="btn --transparent absolute w-content top-16 left-16 gap-mini text-14" onClick={handleClose}>
+    <div className={styles.container}>
+      <Button buttonType="transparent" className={styles.back} onClick={handleClose}>
         <SVGBack />
-        <p>{t('auth:signUp.checkEmail.backTo')}</p>
-      </button>
-      <div className="form flex-center">
-        <img src={mailImg} className="w-m" loading="lazy" />
-        <header className="text-center">
+        {t('auth:signUp.checkEmail.backTo')}
+      </Button>
+
+      <div className={styles.form}>
+        <img src={mailImg} className={styles.image} loading="lazy" />
+        <header className={styles.header}>
           <H1>{t('auth:signUp.checkEmail.header')}</H1>
           <p>{t('auth:signUp.checkEmail.title')}</p>
         </header>
 
-        <NavLink to="https://mail.google.com/mail" className="btn" target="_blank">
-          <p>{t('auth:signUp.checkEmail.submit')}</p>
-        </NavLink>
+        <Button onClick={() => window.open('https://mail.google.com/mail', '_blank')}>{t('auth:signUp.checkEmail.submit')}</Button>
       </div>
     </div>
   );

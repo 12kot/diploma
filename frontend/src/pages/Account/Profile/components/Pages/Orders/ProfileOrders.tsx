@@ -3,18 +3,20 @@ import { useState } from 'react';
 import { IOrder } from 'features';
 import { ActiveOrder, Order } from 'components';
 
+import styles from './styles.module.scss';
+
 export const ProfileOrders = () => {
   const [activeOrder, setActiveOrder] = useState<number | null>();
 
   if (activeOrder)
     return (
-      <div className="profile-orders-active">
+      <div className={styles.active}>
         <ActiveOrder setActiveOrder={setActiveOrder} />
       </div>
     );
 
   return (
-    <div className="profile-padding profile-orders gap">
+    <div className={styles.container}>
       {orders.map((order) => (
         <Order {...order} key={order.id} setActiveOrder={(v) => setActiveOrder(v)} />
       ))}

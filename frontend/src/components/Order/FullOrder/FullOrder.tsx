@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { MapWithRoute } from 'components';
-import { useEscapeKey, getOrderStatusText, useAuth, EUserRole } from 'features';
+import { BgImage, Button, MapWithRoute } from 'components';
+import { useEscapeKey, getOrderStatusText, useAuth, EUserRole, cx } from 'features';
 
 import { AddDriverToOrder } from './Modal';
 
-import {SVGBack, tilesImg} from 'assets';
+import { SVGBack, tilesImg } from 'assets';
+
+import styles from './style.module.scss';
 
 interface Props {
   setActiveOrder: (v: number | null) => void;
@@ -20,97 +22,95 @@ export const FullOrder = ({ setActiveOrder }: Props) => {
   useEscapeKey(() => setActiveOrder(null));
 
   return (
-    <div className="order-container -order flex-col relative h-full nowrap">
+    <div className={styles.container}>
       {user?.role === EUserRole.Forwarder && (
         <AddDriverToOrder isOpen={isOpen} setIsOpen={() => setIsOpen((v) => !v)} />
       )}
-      <section className="order-container__padding-header flex align-center realtive">
-        <button className="--default --border square rounded p-0 absolute l-0 t-0" onClick={() => setActiveOrder(null)}>
+      <section className={cx(styles.padding_header, styles.route)}>
+        <Button buttonType={['default', 'border']} className={styles.back} onClick={() => setActiveOrder(null)}>
           <SVGBack />
-        </button>
-        <p className="text-center w-full">
+        </Button>
+        <p className={styles.text}>
           <b>Warsaw → Hrodna</b>
         </p>
       </section>
       <hr />
       {user?.role === EUserRole.Forwarder && (
-        <button onClick={() => setIsOpen((v) => !v)} className="order-container__padding-actions">
-          {t('common:buttons.addDriver')}
-        </button>
+        <div className={styles.addDriver}>
+          <Button onClick={() => setIsOpen((v) => !v)}>
+            {t('common:buttons.addDriver')}
+          </Button>
+        </div>
       )}
 
-      <div className="order-container-info flex h-full ">
-        <div className="order-container__padding  order-container__active-order flex-between gap w-full h-full">
-          <div className="flex-col w-full gap">
-            <section className="btn --transparent flex-start flex-col h-content">
+      <div className={styles.info}>
+        <div className={styles.active_order}>
+          <div className={styles.item}>
+            <section className={styles.section}>
               <b>{t('dashboard:pages.orders.driverInfo')}</b>
-              <div className="flex-col">
-                <p className="text-12 text-secondary">{t('dashboard:pages.orders.status')}</p>
-                <p className="text-14">{getOrderStatusText('waiting', t)}</p>
+              <div className={styles.data}>
+                <span>{t('dashboard:pages.orders.status')}</span>
+                <p>{getOrderStatusText('waiting', t)}</p>
               </div>
-              <div className="flex-col">
-                <p className="text-12 text-secondary">{t('dashboard:pages.orders.id')}</p>
-                <p className="text-14">10219939113</p>
+              <div className={styles.data}>
+                <span>{t('dashboard:pages.orders.id')}</span>
+                <p>10219939113</p>
               </div>
-              <div className="flex-col">
-                <p className="text-12 text-secondary">{t('dashboard:pages.orders.typeOfPackaging')}</p>
-                <p className="text-14">Package name</p>
+              <div className={styles.data}>
+                <span>{t('dashboard:pages.orders.typeOfPackaging')}</span>
+                <p>Package name</p>
               </div>
             </section>
-            <section className="btn --transparent flex-start flex-col h-content">
+            <section className={styles.section}>
               <b>{t('dashboard:pages.orders.cargoOwner')}</b>
-              <div className="flex-col">
-                <p className="text-12 text-secondary">{t('dashboard:pages.orders.id')}</p>
-                <p className="text-14">10219939113</p>
+              <div className={styles.data}>
+                <span>{t('dashboard:pages.orders.id')}</span>
+                <p>10219939113</p>
               </div>
-              <div className="flex-col">
-                <p className="text-12 text-secondary">{t('dashboard:pages.orders.name')}</p>
-                <p className="text-14">Full Name</p>
+              <div className={styles.data}>
+                <span>{t('dashboard:pages.orders.name')}</span>
+                <p>Full Name</p>
               </div>
-              <div className="flex-col">
-                <p className="text-12 text-secondary">{t('dashboard:pages.orders.email')}</p>
-                <a href="mailto:yakol.nikita@gmail.com" className="text-14">
-                  yakol.nikita@gmail.com
-                </a>
+              <div className={styles.data}>
+                <span>{t('dashboard:pages.orders.email')}</span>
+                <a href="mailto:yakol.nikita@gmail.com">yakol.nikita@gmail.com</a>
               </div>
-              <div className="flex-col">
-                <p className="text-12 text-secondary">{t('dashboard:pages.orders.phone')}</p>
-                <a href="tel:+375292812071" className="text-14">
-                  +375 29 281 20 71
-                </a>
+              <div className={styles.data}>
+                <span>{t('dashboard:pages.orders.phone')}</span>
+                <a href="tel:+375292812071">+375 29 281 20 71</a>
               </div>
             </section>
           </div>
-          <section className="btn --transparent flex-start flex-col h-content w-full">
+          <section className={cx(styles.section, styles.width)}>
             <b>{t('pages.orders.cargoInfo')}</b>
-            <div className="flex-col">
-              <p className="text-12 text-secondary">{t('dashboard:pages.orders.status')}</p>
-              <p className="text-14">{getOrderStatusText('waiting', t)}</p>
+            <div className={styles.data}>
+              <span>{t('dashboard:pages.orders.status')}</span>
+              <p>{getOrderStatusText('waiting', t)}</p>
             </div>
-            <div className="flex-col">
-              <p className="text-12 text-secondary">{t('dashboard:pages.orders.id')}</p>
-              <p className="text-14">10219939113</p>
+            <div className={styles.data}>
+              <span>{t('dashboard:pages.orders.id')}</span>
+              <p>10219939113</p>
             </div>
-            <div className="flex-col">
-              <p className="text-12 text-secondary">{t('dashboard:pages.orders.typeOfPackaging')}</p>
-              <p className="text-14">Package name</p>
+            <div className={styles.data}>
+              <span>{t('dashboard:pages.orders.typeOfPackaging')}</span>
+              <p>Package name</p>
             </div>
-            <div className="flex-col">
-              <p className="text-12 text-secondary">{t('dashboard:pages.orders.receivingAddress')}</p>
-              <p className="text-14">Poland, Warsaw</p>
+            <div className={styles.data}>
+              <span>{t('dashboard:pages.orders.receivingAddress')}</span>
+              <p>Poland, Warsaw</p>
             </div>
-            <div className="flex-col">
-              <p className="text-12 text-secondary">{t('dashboard:pages.orders.unloadingAddress')}</p>
-              <p className="text-14">Belarus, Hrodna</p>
+            <div className={styles.data}>
+              <span>{t('dashboard:pages.orders.unloadingAddress')}</span>
+              <p>Belarus, Hrodna</p>
             </div>
-            <div className="flex-col">
-              <p className="text-12 text-secondary">{t('dashboard:pages.orders.price')}</p>
-              <p className="text-14">$25000</p>
+            <div className={styles.data}>
+              <span>{t('dashboard:pages.orders.price')}</span>
+              <p>$25000</p>
             </div>
           </section>
         </div>
 
-        <div className='order-container--map'>
+        <div className={styles.map}>
           <MapWithRoute
             origin={{ lat: 53.893009, lng: 27.567444 }}
             destination={{
@@ -120,7 +120,7 @@ export const FullOrder = ({ setActiveOrder }: Props) => {
           />
         </div>
       </div>
-      <img src={tilesImg} loading="lazy" className="top-0 left-0 absolute w-full z--1" />
+      <BgImage image={tilesImg} isTop />
     </div>
   );
 };

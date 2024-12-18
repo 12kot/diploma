@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  gap: var(--gap-mini);
+
+  .label {
+    display: flex;
+    gap: var(--gap-mini);
+    flex-wrap: nowrap;
+    text-wrap: nowrap;
+    
+    height: fit-content;
+  }
+}
+
+.wrap {
+  flex-wrap: wrap;
+}

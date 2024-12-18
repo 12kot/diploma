@@ -61,7 +61,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       login,
       logout,
       setRole,
-      isLoading
+      isLoading,
     }),
     [user, login, logout, isLoading],
   );

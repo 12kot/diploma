@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, ReactNode } from 'react';
 
-import ContactUsModal from 'components/ProfileMenu/ContactUs';
+import { ContactUsModal } from 'components/ProfileMenu/ContactUs';
 
 interface ModalContextProps {
   isContactUsModalOpen: boolean;

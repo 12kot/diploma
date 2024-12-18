@@ -4,21 +4,23 @@ import { H2 } from 'components';
 
 import { SVGStar, previewImg } from 'assets';
 
+import styles from './styles.module.scss';
+
 export const AuthPreview = () => {
   const { t } = useTranslation(['auth']);
 
   return (
-    <div className="auth-container--preview">
-      <section className="auth-container--preview--review flex-col gap-mid">
-        <H2 className="main-color">{t('auth:preview.feedback')}</H2>
-        <div className="flex-between items-center">
-          <div className="flex-col gap-mini">
+    <div className={styles.container}>
+      <section className={styles.review}>
+        <H2 className={styles.feedback}>{t('auth:preview.feedback')}</H2>
+        <div className={styles.company}>
+          <div className={styles.info}>
             <p>
               <b>{t('auth:preview.username')}</b>
             </p>
             <span>{t('auth:preview.company')}</span>
           </div>
-          <div className="flex gap-mini">
+          <div className={styles.stars}>
             {Array(5)
               .fill(0)
               .map((_, i) => (
@@ -27,7 +29,7 @@ export const AuthPreview = () => {
           </div>
         </div>
       </section>
-      <section className="auth-container--preview--img">
+      <section className={styles.img}>
         <img src={previewImg} alt="preview" loading="lazy" />
       </section>
     </div>

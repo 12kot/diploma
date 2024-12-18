@@ -8,7 +8,7 @@ export const getOrderStatusText = (type: IOrderType, t: TFunction<"dashboard", u
 };
 
 export const getOrderIndicatorClass = (type: IOrderType) => {
-  if (type === 'waiting') return '-blue';
-  if (type === 'closed') return '-red';
-  return '';
+  if (type === 'waiting') return 'blue';
+  if (type === 'closed') return 'red';
+  return undefined;
 };

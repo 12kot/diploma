@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { H1 } from 'components';
+import { Button, H1, Indicator } from 'components';
 import { EUserRole, useAuth, useEditUserModal } from 'features';
 
 import { SVGEdit } from 'assets';
@@ -15,25 +15,29 @@ interface Props {
 
 export const UserName = ({ name, isBanned, role }: Props) => {
   const { user } = useAuth();
-  const { openUserModal } = useEditUserModal();
   const { t } = useTranslation('dashboard');
+  const { openUserModal } = useEditUserModal();
 
   return (
-    <section className={`${styles.container} flex-between gap align-center`}>
-      <div className="flex gap align-center">
-        <img src="https://cdn3.pixelcut.app/1/3/profile_picture_1728ecf2bd.jpg" className="rounded" loading="lazy" />
-        <div className="flex-col gap-mini">
+    <section className={styles.container}>
+      <div className={styles.nameContainer}>
+        <img
+          src="https://cdn.openart.ai/published/8EVNpLAOnr5fVQgKrqWw/Tnz4qXWD_lV1v_1024.webp"
+          className={styles.img}
+          loading="lazy"
+        />
+        <div className={styles.name}>
           <H1>{name}</H1>
-          <div className="flex gap-mini">
-            <p className="indicator">{role}</p>
-            {isBanned && <p className="indicator -red">{t('common.banned', { date: '23.09.2024' })}</p>}
+          <div className={styles.indicators}>
+            <Indicator>{role}</Indicator>
+            {isBanned && <Indicator type="red">{t('common.banned', { date: '23.09.2024' })}</Indicator>}
           </div>
         </div>
       </div>
       {user?.role === EUserRole.Admin && (
-        <button className="--default --border square rounded p-0" onClick={() => openUserModal()}>
+        <Button buttonType={['border', 'default']} className={styles.editUser} onClick={() => openUserModal()}>
           <SVGEdit />
-        </button>
+        </Button>
       )}
     </section>
   );

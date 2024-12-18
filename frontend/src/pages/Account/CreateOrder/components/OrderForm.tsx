@@ -1,6 +1,10 @@
 import { useTranslation } from 'react-i18next';
 
+import { Button } from 'components';
+
 import { SVGCar, SVGCargo, SVGDownload, SVGUpload } from 'assets';
+
+import styles from './styles.module.scss';
 
 interface Props {
   openDownloadModal: () => void;
@@ -16,47 +20,47 @@ export const OrderForm = ({ openDownloadModal, setModalType }: Props) => {
   };
 
   return (
-    <form className="create-order__padding create-order__content--first flex-col gap">
-      <div className="flex gap-mini align-center create-order__svg">
+    <form className={styles.container}>
+      <div className={styles.info}>
         <SVGCargo />
         <p>
-          <b className="text-14">{t('dashboard:createOrder.cargoInfo')}</b>
+          <b>{t('dashboard:createOrder.cargoInfo')}</b>
         </p>
       </div>
-      <section className="flex gap-mini">
-        <input type="text" placeholder={t('common:placeholders.name')} className="w-full" />
-        <input type="text" placeholder={t('common:placeholders.type')} className="w-full" />
+      <section className={styles.item}>
+        <input type="text" placeholder={t('common:placeholders.name')} />
+        <input type="text" placeholder={t('common:placeholders.type')} />
       </section>
-      <section className="flex gap-mini">
-        <input type="text" placeholder={t('common:placeholders.width')} className="w-full" />
-        <input type="text" placeholder={t('common:placeholders.heigth')} className="w-full" />
-        <input type="text" placeholder={t('common:placeholders.depth')} className="w-full" />
-        <input type="text" placeholder={t('common:placeholders.weight')} className="w-full" />
+      <section className={styles.item}>
+        <input type="text" placeholder={t('common:placeholders.width')} />
+        <input type="text" placeholder={t('common:placeholders.heigth')} />
+        <input type="text" placeholder={t('common:placeholders.depth')} />
+        <input type="text" placeholder={t('common:placeholders.weight')} />
       </section>
-      <section className="flex gap-mini">
-        <input type="text" placeholder={t('common:placeholders.loadingMethod')} className="w-full" />
-        <input type="text" placeholder={t('common:placeholders.packageType')} className="w-full" />
+      <section className={styles.item}>
+        <input type="text" placeholder={t('common:placeholders.loadingMethod')} />
+        <input type="text" placeholder={t('common:placeholders.packageType')} />
       </section>
       <textarea rows={10} placeholder={t('common:placeholders.cargoDescription')} />
-      <div className="flex gap-mini align-center create-order__svg">
+      <div className={styles.info}>
         <SVGCar />
         <p>
-          <b className="text-14">{t('dashboard:createOrder.deliveryInfo')}</b>
+          <b>{t('dashboard:createOrder.deliveryInfo')}</b>
         </p>
       </div>
-      <section className="flex gap-mini">
-        <button type="button" className="--transparent w-full" onClick={() => handleSetAddress('download')}>
+      <section className={styles.item}>
+        <Button type="button" buttonType={'transparent'} onClick={() => handleSetAddress('download')}>
           <SVGDownload />
           <p>{t('common:buttons.addDownloadAddress')}</p>
-        </button>
-        <button type="button" className="--transparent w-full" onClick={() => handleSetAddress('upload')}>
+        </Button>
+        <Button type="button" buttonType={'transparent'} onClick={() => handleSetAddress('upload')}>
           <SVGUpload />
           {t('common:buttons.addUploadAddress')}
-        </button>
+        </Button>
       </section>
-      <section className="flex gap-mini">
-        <input type="date" className="w-full" placeholder={t('common:placeholders.whenPickCargo')} />
-        <input type="date" className="w-full" placeholder={t('common:placeholders.whenDeliver')} />
+      <section className={styles.item}>
+        <input type="date" placeholder={t('common:placeholders.whenPickCargo')} />
+        <input type="date" placeholder={t('common:placeholders.whenDeliver')} />
       </section>
     </form>
   );

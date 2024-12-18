@@ -1,6 +1,8 @@
 import { useTranslation } from 'react-i18next';
 
-import { Modal } from 'components';
+import { Button, Clamp, Indicator, Modal } from 'components';
+
+import styles from './styles.module.scss';
 
 interface Props {
   isOpen: boolean;
@@ -11,23 +13,19 @@ export const ApplicationModal = ({ isOpen, setIsOpen }: Props) => {
   const { t } = useTranslation(['common']);
 
   return (
-    <Modal isOpen={isOpen} setIsOpen={setIsOpen} className="applications-modal flex-col gap">
-      <header className="flex gap-mini align-center">
-        <p className="clamp-2">
+    <Modal isOpen={isOpen} setIsOpen={setIsOpen} className={styles.container}>
+      <header className={styles.header}>
+        <Clamp clamp={2}>
           <b>Header header header</b>
-        </p>
-        <p className="indicator">Active</p>
+        </Clamp>
+        <Indicator>Active</Indicator>
       </header>
-      <section className="flex gap-mini">
-        <a className="btn --transparent text-12" href="tel:+375292812071">
-          +375 29 281 20 71
-        </a>
-        <a className="btn --transparent text-12" href="mailto:yakol.nikita@gmail.com">
-          yakol.nikita@gmail.com
-        </a>
+      <section className={styles.data}>
+        <a href="tel:+375292812071">+375 29 281 20 71</a>
+        <a href="mailto:yakol.nikita@gmail.com">yakol.nikita@gmail.com</a>
       </section>
-      <section className="applications-modal-content">
-        <p className="text-14">
+      <section className={styles.content}>
+        <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni quae, sed placeat voluptatum molestias
           consequatur labore aliquid atque modi fugiat aliquam ullam mollitia eos nesciunt nam quam tenetur iusto
           eligendi quibusdam eum, veritatis deserunt? Optio explicabo debitis fugit consequuntur asperiores recusandae
@@ -66,13 +64,11 @@ export const ApplicationModal = ({ isOpen, setIsOpen }: Props) => {
           voluptates aperiam! Vel quaerat temporibus asperiores facilis omnis optio, eaque deserunt.
         </p>
       </section>
-      <footer className="flex gap-mini">
-        <button className="--transparent w-full" onClick={setIsOpen}>
+      <footer className={styles.data}>
+        <Button buttonType={'transparent'} onClick={setIsOpen}>
           {t('common:buttons.close')}
-        </button>
-        <button className="w-full" onClick={setIsOpen}>
-          {t('common:buttons.finishChecking')}
-        </button>
+        </Button>
+        <Button onClick={setIsOpen}>{t('common:buttons.finishChecking')}</Button>
       </footer>
     </Modal>
   );

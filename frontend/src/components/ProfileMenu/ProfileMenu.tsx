@@ -1,35 +1,38 @@
 import { useTranslation } from 'react-i18next';
 
+import { Button } from 'components';
 import { useContactUsModal } from 'features';
 
 import { MenuHandler } from './Container';
 
 import { SVGLogout } from 'assets';
 
+import styles from "./styles.module.scss";
+
 export const ProfileMenu = () => {
   const { setContactUsModalOpen } = useContactUsModal();
   const { t } = useTranslation(['menuHolder', 'common']);
 
   return (
-    <nav className="account-container--menu hidden-1200">
+    <nav className={styles.container}>
       <MenuHandler />
 
-      <section className="account-container--menu__end">
-        <div className="account-container--menu__support flex-center">
-          <div className="account-container--menu__support -item flex-col gap-mini">
+      <section className={styles.end}>
+        <div className={styles.support}>
+          <div className={styles.item}>
             <p>
               <b>{t('common:buttons.contactUs')}</b>
             </p>
-            <p className="text-12 text-secondary">{t('menuHolder:support.customerSupport')}</p>
-            <button className="mt-8" onClick={() => setContactUsModalOpen()}>
+            <span>{t('menuHolder:support.customerSupport')}</span>
+            <Button onClick={() => setContactUsModalOpen()}>
               {t('common:buttons.contactUs')}
-            </button>
+            </Button>
           </div>
         </div>
-        <button className="account-container--menu__logout --default w-full mt-8">
+        <Button buttonType={'default'} className={styles.logout}>
           <SVGLogout />
           <p>{t('menuHolder:logOut')}</p>
-        </button>
+        </Button>
       </section>
     </nav>
   );

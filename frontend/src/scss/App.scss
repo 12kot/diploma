@@ -1,9 +1,4 @@
 @import 'common';
-@import 'auth';
-@import 'dashboard';
-@import 'notFound';
-@import 'modal';
-@import 'media';
 
 :root {
   --bg-color: #ffffff;
@@ -18,8 +13,17 @@
 
   --font-color: #12121c;
   --font-color-second: #5f6078;
-  --font-color-light: #BCBDCD;
+  --font-color-light: #bcbdcd;
   --font-color-negative: #ffffff;
+
+  --font-size-xxl: 32px;
+  --font-size: 16px;
+  --font-size-s: 14px;
+  --font-size-xs: 12px;
+
+  --h1-size: 20px;
+  --h2-size: 20px;
+  --h3-size: 18px;
 
   --box-shadow: 0px 1px 2px 0px #0000000d;
 
@@ -30,5 +34,15 @@
   --blue-second: #291cdf1a;
 
   --transition: 0.5s;
+
+  --border-radius: 16px;
+
+  --gap-2xxl: 40px;
+  --gap-xxl: 32px;
+  --gap-2xl: 24px;
+  --gap-xl: 16px;
   --gap: 8px;
+  --gap-mini: 4px;
+
+  --header-height: 70px;
 }

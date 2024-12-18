@@ -1,10 +1,12 @@
 import { ReactNode } from 'react';
 
 import { APP_ROUTES } from 'Router';
-import { H1 } from 'components';
-import { useEscapeKey, useHandleNavigation } from 'features';
+import { Button, H1 } from 'components';
+import { cx, useEscapeKey, useHandleNavigation } from 'features';
 
 import { SVGClose } from 'assets';
+
+import styles from './styles.module.scss';
 
 interface Props {
   children?: ReactNode;
@@ -18,15 +20,15 @@ export const RigthModal = ({ children, isOpen, setIsOpen, className }: Props) =>
   const { handleNavigate } = useHandleNavigation(setIsOpen);
 
   return (
-    <div className={`rigth-modal ${isOpen && '-active'}`} onClick={setIsOpen}>
-      <div className={`rigth-modal__content ${className}`} onClick={(e) => e.stopPropagation()}>
-        <header className="rigth-modal__header flex-between align-center">
-          <button className="--default rigth-modal__header--logo" onClick={() => handleNavigate(APP_ROUTES.HOME)}>
+    <div className={cx(styles.container, isOpen && styles.active)} onClick={setIsOpen}>
+      <div className={cx(styles.content, className)} onClick={(e) => e.stopPropagation()}>
+        <header className={styles.header}>
+          <Button buttonType="default" className={styles.logo} onClick={() => handleNavigate(APP_ROUTES.HOME)}>
             <H1>Logo</H1>
-          </button>
-          <button className="rigth-modal__header--close --default h-full flex-center" onClick={setIsOpen}>
+          </Button>
+          <Button buttonType="default" className={styles.close} onClick={setIsOpen}>
             <SVGClose />
-          </button>
+          </Button>
         </header>
         {children}
       </div>

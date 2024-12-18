@@ -4,7 +4,7 @@ import styles from './styles.module.scss';
 
 export const AcriveUserAnalitics = () => {
   return (
-    <div className={`${styles.container} mt-16`}>
+    <div className={styles.container}>
       <EarnedChart />
       <EarnedChart />
       <EarnedChart />

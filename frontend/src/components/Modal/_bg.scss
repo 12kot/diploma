@@ -1,0 +1,11 @@
+.bg-modal {
+  position: fixed;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: var(--bg-color-modal);
+  opacity: 0;
+  transition: 0.3s;
+}
