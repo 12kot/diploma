@@ -11,10 +11,10 @@ export interface IUser {
 }
 
 export enum EUserRole {
-  Admin = "admin",
-  Forwarder = "forwarder",
-  Driver = "driver",
-  Owner = "owner",
+  Admin = "ADMIN",
+  Forwarder = "FORWARDER",
+  Driver = "TRANSPORTER",
+  Owner = "CUSTOMER",
 }
 
 export const AllRoles = (

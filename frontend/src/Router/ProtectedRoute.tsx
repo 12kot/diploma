@@ -13,8 +13,8 @@ interface IProtectedRoutesProps {
 }
 
 export const ProtectedRoute = ({ children, permissions }: IProtectedRoutesProps): ReactElement | null => {
-  const { user, isLoading } = useAuth();
-  const isAuthorized = !!user?.token;
+  const { user, miniUser, isLoading } = useAuth();
+  const isAuthorized = !!miniUser?.token;
 
   if (isLoading) {
     return <Loader center />;

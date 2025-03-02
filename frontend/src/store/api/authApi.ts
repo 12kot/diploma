@@ -9,11 +9,14 @@ export const authApi = createApi({
     },
   }),
   endpoints: (builder) => ({
-    userAuth: builder.mutation<void, void>({
+    userAuth: builder.mutation<string, { name: string; password: string }>({
       query: (body) => ({
-        url: '/api/auth/login/',
+        url: '/login/',
         method: 'POST',
         body,
+        responseHandler: async (response) => {
+          return await response.text();
+        },
       }),
     }),
   }),

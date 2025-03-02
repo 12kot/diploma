@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import { Button } from 'components';
-import { useContactUsModal } from 'features';
+import { useAuth, useContactUsModal } from 'features';
 
 import { MenuHandler } from './Container';
 
@@ -10,6 +10,7 @@ import { SVGLogout } from 'assets';
 import styles from "./styles.module.scss";
 
 export const ProfileMenu = () => {
+  const { logout } = useAuth();
   const { setContactUsModalOpen } = useContactUsModal();
   const { t } = useTranslation(['menuHolder', 'common']);
 
@@ -29,7 +30,7 @@ export const ProfileMenu = () => {
             </Button>
           </div>
         </div>
-        <Button buttonType={'default'} className={styles.logout}>
+        <Button buttonType={'default'} className={styles.logout} onClick={logout}>
           <SVGLogout />
           <p>{t('menuHolder:logOut')}</p>
         </Button>

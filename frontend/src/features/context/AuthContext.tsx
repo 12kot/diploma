@@ -1,69 +1,70 @@
-import React, { createContext, useContext, useMemo, ReactNode, useEffect, useCallback } from 'react';
+import React, { createContext, useContext, useMemo, ReactNode, useCallback, useState, useEffect } from 'react';
 import { EUserRole } from 'features/types';
 
 import { useLocalStorage } from '../hooks/useLocalStorage';
-import { useUserAuthMutation } from 'store/api/authApi';
+import { useFindUserInfoMutation } from 'store';
 
 interface IUser {
-  token: string;
   role: EUserRole;
+}
+
+interface MiniUser {
+  token: string;
+  name: string;
 }
 
 interface AuthContextType {
   user: IUser | null;
+  miniUser: MiniUser | null;
   isLoading: boolean;
-  login: (user: IUser) => void;
-  setRole: (role: EUserRole) => void;
+  login: (miniUser: MiniUser) => void;
   logout: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [user, setUser] = useLocalStorage<IUser | null>('user', null);
-  const [authUser, { data: authUserData, error, isLoading }] = useUserAuthMutation();
+  const [user, setUser] = useState<IUser | null>(null);
+  const [findUserInfo, { error, data: userData, isLoading }] = useFindUserInfoMutation();
+  const [miniUser, setMiniUser] = useLocalStorage<MiniUser | null>('miniUser', null);
 
   useEffect(() => {
-    //авторизация
-  }, [authUser]);
+    if (!miniUser) return;
+
+    findUserInfo({ name: miniUser.name });
+  }, [miniUser, findUserInfo]);
 
   useEffect(() => {
-    //если ошибка - разлогин
+    if (!error) return;
+    setUser(null);
   }, [error]);
 
   useEffect(() => {
-    if (!authUserData) return;
-    //устанавливаем юзера
-  }, [authUserData]);
+    if (!userData) return;
+    setUser({...userData, role: userData?.roles[0]?.role});
+  }, [userData]);
 
   const login = useCallback(
-    (user: IUser) => {
-      setUser(user);
+    (miniUser: MiniUser) => {
+      setMiniUser(miniUser);
     },
-    [setUser],
-  );
-
-  //УДАЛИТЬ
-  const setRole = useCallback(
-    (role: EUserRole) => {
-      setUser({ role, token: '121212' });
-    },
-    [setUser],
+    [setMiniUser],
   );
 
   const logout = useCallback(() => {
     setUser(null);
-  }, [setUser]);
+    setMiniUser(null);
+  }, [setUser, setMiniUser]);
 
   const value = useMemo(
     () => ({
       user,
+      miniUser,
+      isLoading,
       login,
       logout,
-      setRole,
-      isLoading,
     }),
-    [user, login, logout, isLoading],
+    [user, login, logout, miniUser, isLoading],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
