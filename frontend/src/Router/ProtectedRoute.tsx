@@ -16,7 +16,7 @@ export const ProtectedRoute = ({ children, permissions }: IProtectedRoutesProps)
   const { user, miniUser, isLoading } = useAuth();
   const isAuthorized = !!miniUser?.token;
 
-  if (isLoading) {
+  if (isLoading || (miniUser?.token && !user?.role)) {
     return <Loader center />;
   }
 
