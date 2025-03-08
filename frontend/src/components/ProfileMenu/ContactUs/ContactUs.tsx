@@ -6,6 +6,7 @@ import { Button, H2, Modal } from 'components';
 import mailImage from 'assets/img/mail.png';
 
 import styles from './styles.module.scss';
+import { useAppSelector } from 'store';
 
 interface Props {
   isOpen: boolean;
@@ -34,6 +35,7 @@ interface FormProps {
 
 const Form = ({ setIsSend, setIsOpen }: FormProps) => {
   const { t } = useTranslation(['menuHolder', 'common']);
+  const { email, phoneNumber } = useAppSelector((state) => state.user);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -45,8 +47,8 @@ const Form = ({ setIsSend, setIsOpen }: FormProps) => {
       <H2 className={styles.center}>{t('common:buttons.contactUs')}</H2>
       <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.user}>
-          <input type="email" value="yakol.nikita@gmail.com" disabled />
-          <input type="phone" value="+375 29 281 20 71" disabled />
+          <input type="email" value={email} disabled />
+          <input type="phone" value={phoneNumber} disabled />
         </div>
         <input type="text" placeholder={t('menuHolder:support.modal.whatHappened')} />
         <textarea rows={5} placeholder={t('menuHolder:support.modal.describeProblem')} />

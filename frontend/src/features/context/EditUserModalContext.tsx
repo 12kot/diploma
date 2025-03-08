@@ -2,7 +2,7 @@ import { createContext, useContext, useState, ReactNode } from 'react';
 
 import { EUserRole } from 'features';
 import { EditUserModal } from 'components/DashboardUsers';
-import { useAuth } from './AuthContext';
+import { useAppSelector } from 'store';
 
 interface ModalContextProps {
   isModalOpen: boolean;
@@ -14,7 +14,7 @@ interface ModalContextProps {
 const EditUserModalContext = createContext<ModalContextProps | undefined>(undefined);
 
 export const EditUserModalProvider = ({ children }: { children: ReactNode }) => {
-  const { user } = useAuth();
+  const user = useAppSelector(state => state.user);
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [isCreate, setIsCreate] = useState<boolean>(false);

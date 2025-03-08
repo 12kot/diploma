@@ -8,6 +8,7 @@ import { AllRoles, cx, EUserRole } from 'features';
 import { Button, H2, Modal } from 'components';
 
 import styles from './styles.module.scss';
+import { useAppSelector } from 'store';
 
 interface ModalProps {
   isOpen: boolean;
@@ -17,6 +18,7 @@ interface ModalProps {
 
 export const EditUserModal = ({ isOpen, setIsOpen, isCreate }: ModalProps) => {
   const { t } = useTranslation(['dashboard', 'common']);
+  const { firstName, lastName } = useAppSelector((state) => state.user);
   const [activeRole, setActiveRole] = useState<EUserRole>(EUserRole.Admin);
 
   const validationSchema = Yup.object({
@@ -43,7 +45,7 @@ export const EditUserModal = ({ isOpen, setIsOpen, isCreate }: ModalProps) => {
     <Modal setIsOpen={setIsOpen} isOpen={isOpen} className={styles.container}>
       <header>
         <H2>
-          {isCreate ? t('dashboard:editProfile.create') : t('dashboard:editProfile.edit', { name: 'Hanna Kisel' })}
+          {isCreate ? t('dashboard:editProfile.create') : t('dashboard:editProfile.edit', { name: firstName + ' ' + lastName })}
         </H2>
       </header>
       <form className={styles.form} onSubmit={formik.handleSubmit}>
@@ -127,7 +129,7 @@ export const EditUserModal = ({ isOpen, setIsOpen, isCreate }: ModalProps) => {
         />
       </form>
       <section className={styles.actions}>
-        <Button buttonType={"transparent"} onClick={setIsOpen}>
+        <Button buttonType={'transparent'} onClick={setIsOpen}>
           {t('common:buttons.cancel')}
         </Button>
         <Button onClick={() => formik.handleSubmit()}>

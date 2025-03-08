@@ -6,7 +6,12 @@ import { SVGProfileInfo, SVGImportant, tilesImg } from 'assets';
 
 import styles from './styles.module.scss';
 
-export const GeneralProfilePage = () => {
+interface Props {
+  formData: { firstName: string; lastName: string; email: string; phoneNumber: string; about: string };
+  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+}
+
+export const GeneralProfilePage: React.FC<Props> = ({ formData, onChange }) => {
   const { t } = useTranslation(['dashboard', 'common']);
 
   return (
@@ -21,16 +26,42 @@ export const GeneralProfilePage = () => {
 
         <form className={styles.form}>
           <section className={styles.section}>
-            <input type="text" placeholder={t('common:placeholders.name')} />
-            <input type="text" placeholder={t('common:placeholders.surname')} />
+            <input
+              name="firstName"
+              type="text"
+              value={formData.firstName}
+              onChange={onChange}
+              placeholder={t('common:placeholders.name')}
+            />
+            <input
+              name="lastName"
+              type="text"
+              value={formData.lastName}
+              onChange={onChange}
+              placeholder={t('common:placeholders.surname')}
+            />
           </section>
-          <input type="email" placeholder={t('common:placeholders.email')} />
-          <input type="phone" placeholder={t('common:placeholders.phoneNumber')} />
-          <section className={styles.section}>
-            <input type="text" placeholder={t('common:placeholders.country')} />
-            <input type="text" placeholder={t('common:placeholders.city')} />
-          </section>
-          <textarea rows={10} placeholder={t('common:placeholders.selfDescription')} />
+          <input
+            name="email"
+            type="email"
+            value={formData.email}
+            onChange={onChange}
+            placeholder={t('common:placeholders.email')}
+          />
+          <input
+            name="phoneNumber"
+            type="tel"
+            value={formData.phoneNumber}
+            onChange={onChange}
+            placeholder={t('common:placeholders.phoneNumber')}
+          />
+          <textarea
+            name="description"
+            rows={10}
+            value={formData.about}
+            onChange={onChange}
+            placeholder={t('common:placeholders.selfDescription')}
+          />
         </form>
       </section>
       <section className={styles.second}>

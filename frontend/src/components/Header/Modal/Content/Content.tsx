@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { GeneralNavItems, useAuth } from 'features';
+import { GeneralNavItems } from 'features';
 
 import { ProfileSection } from './ProfileSection';
 import { MainSection } from './MainSection';
@@ -10,9 +10,10 @@ import { LanguageSection } from './LanguageSection';
 import { LoginSection } from './LoginSection';
 
 import styles from './styles.module.scss';
+import { useAppSelector } from 'store';
 
 export const Content = ({ setIsOpen }: { setIsOpen: () => void }) => {
-  const { user } = useAuth();
+  const user = useAppSelector(state => state.user);
   const { t } = useTranslation(['menuHolder']);
 
   return (

@@ -1,12 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
 
+import { usersApi } from './api';
 import { authApi } from './api/authApi';
+import userSlice from './slices/userSlice';
 
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
-import { usersApi } from './api';
 
 export const store = configureStore({
   reducer: {
+    user: userSlice,
     [authApi.reducerPath]: authApi.reducer,
     [usersApi.reducerPath]: usersApi.reducer,
   },

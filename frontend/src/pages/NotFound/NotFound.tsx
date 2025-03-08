@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-import { cx, useAuth } from 'features';
+import { cx } from 'features';
 import { APP_ROUTES } from 'Router';
 import { BgImage, H2 } from 'components';
 
@@ -9,9 +9,10 @@ import bigTilesImg from 'assets/img/bigTiles.png';
 import notFoundImg from 'assets/img/notFound.png';
 
 import styles from './styles.module.scss';
+import { useAppSelector } from 'store';
 
 export const NotFound = () => {
-  const { user } = useAuth();
+  const user = useAppSelector(state => state.user);
   const { t } = useTranslation('notFound');
 
   return (

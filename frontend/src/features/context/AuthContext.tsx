@@ -1,12 +1,9 @@
-import React, { createContext, useContext, useMemo, ReactNode, useCallback, useState, useEffect } from 'react';
-import { EUserRole } from 'features/types';
+import React, { createContext, useContext, useMemo, ReactNode, useCallback, useEffect } from 'react';
 
 import { useLocalStorage } from '../hooks/useLocalStorage';
-import { useFindUserInfoMutation } from 'store';
+import { useAppDispatch, useFindUserInfoMutation } from 'store';
+import { editUserInfo } from 'store/slices/userSlice';
 
-interface IUser {
-  role: EUserRole;
-}
 
 interface MiniUser {
   token: string;
@@ -14,7 +11,6 @@ interface MiniUser {
 }
 
 interface AuthContextType {
-  user: IUser | null;
   miniUser: MiniUser | null;
   isLoading: boolean;
   login: (miniUser: MiniUser) => void;
@@ -24,7 +20,7 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [user, setUser] = useState<IUser | null>(null);
+  const dispatch = useAppDispatch();
   const [findUserInfo, { error, data: userData, isLoading }] = useFindUserInfoMutation();
   const [miniUser, setMiniUser] = useLocalStorage<MiniUser | null>('miniUser', null);
 
@@ -36,12 +32,13 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   useEffect(() => {
     if (!error) return;
-    setUser(null);
+    dispatch(editUserInfo(null));
+    setMiniUser(null);
   }, [error]);
 
   useEffect(() => {
     if (!userData) return;
-    setUser({...userData, role: userData?.roles[0]?.role});
+    dispatch(editUserInfo({...userData, role: userData?.roles[0]?.role}));
   }, [userData]);
 
   const login = useCallback(
@@ -52,19 +49,18 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   );
 
   const logout = useCallback(() => {
-    setUser(null);
+    dispatch(editUserInfo(null));
     setMiniUser(null);
-  }, [setUser, setMiniUser]);
+  }, [dispatch, setMiniUser]);
 
   const value = useMemo(
     () => ({
-      user,
       miniUser,
       isLoading,
       login,
       logout,
     }),
-    [user, login, logout, miniUser, isLoading],
+    [login, logout, miniUser, isLoading],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

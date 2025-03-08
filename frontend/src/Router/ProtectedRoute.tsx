@@ -6,6 +6,7 @@ import { AppHolder } from 'layouts';
 import { Loader } from 'components';
 
 import { APP_ROUTES, EPermissions } from './router.config';
+import { useAppSelector } from 'store';
 
 interface IProtectedRoutesProps {
   children: ReactElement;
@@ -13,7 +14,8 @@ interface IProtectedRoutesProps {
 }
 
 export const ProtectedRoute = ({ children, permissions }: IProtectedRoutesProps): ReactElement | null => {
-  const { user, miniUser, isLoading } = useAuth();
+  const { miniUser, isLoading } = useAuth();
+  const user = useAppSelector((state) => state.user);
   const isAuthorized = !!miniUser?.token;
 
   if (isLoading || (miniUser?.token && !user?.role)) {

@@ -5,6 +5,7 @@ import { Button } from 'components';
 import { APP_ROUTES } from 'Router';
 
 import styles from './styles.module.scss';
+import { useAppSelector } from 'store';
 
 interface Props {
   className?: string;
@@ -28,6 +29,8 @@ export const ProfileCardButton = ({ className, onClick }: Props) => {
 };
 
 const Content = () => {
+  const { firstName, lastName, role } = useAppSelector((state) => state.user);
+  
   return (
     <>
       <img
@@ -37,12 +40,12 @@ const Content = () => {
       />
       <div className={styles.info}>
         <p>
-          <b>Hanna Kisel</b>
+          <b>{firstName + ' ' + lastName}</b>
         </p>
 
         <div className={styles.profile}>
           <div className={styles.status} />
-          <p className={styles.post}>Logistator</p>
+          <p className={styles.post}>{role}</p>
         </div>
       </div>
     </>

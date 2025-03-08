@@ -1,20 +1,25 @@
 import { TFunction } from 'i18next';
 
-import { ILabel } from './label';
-
 export interface IUser {
   id: number;
   name: string;
-  role: EUserRole;
-  isBanned: boolean;
-  labels: ILabel[];
+  email: string;
+  rating: number;
+  enabled: boolean;
+  firstName: string;
+  lastName: string;
+  phoneNumber: string;
+  about: string;
+  transportations?: null;
+  payments?: null;
+  role: EUserRole
 }
 
 export enum EUserRole {
-  Admin = "ADMIN",
-  Forwarder = "FORWARDER",
-  Driver = "TRANSPORTER",
-  Owner = "CUSTOMER",
+  Admin = 'ADMIN',
+  Forwarder = 'FORWARDER',
+  Driver = 'TRANSPORTER',
+  Owner = 'CUSTOMER',
 }
 
 export const AllRoles = (

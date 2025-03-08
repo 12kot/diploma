@@ -1,9 +1,10 @@
 import { useTranslation } from 'react-i18next';
 
-import { cx, getProfilePagesByUserRole, IProfilePage, IProfilePageType, useAuth } from 'features';
+import { cx, getProfilePagesByUserRole, IProfilePage, IProfilePageType } from 'features';
 
 import styles from "./styles.module.scss";
 import { Button } from 'components';
+import { useAppSelector } from 'store';
 
 interface Props {
   activePage: IProfilePageType;
@@ -11,7 +12,7 @@ interface Props {
 }
 
 export const ProfilePages = ({ activePage, setActivePage }: Props) => {
-  const { user } = useAuth();
+  const user = useAppSelector(state => state.user);
   const { t } = useTranslation('dashboard');
 
   if (!user?.role) return <></>;

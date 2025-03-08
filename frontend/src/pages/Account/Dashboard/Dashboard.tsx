@@ -8,6 +8,7 @@ import { DashboardCharts } from './Charts';
 import { SVGReport } from 'assets';
 
 import styles from './styles.module.scss';
+import { useAppSelector } from 'store';
 
 const totalInfo = (t: TFunction<['dashboard'], undefined>) => [
   { id: 1, name: t('dashboard:total.totalForwarders'), value: '255', percentage: 100 },
@@ -20,12 +21,13 @@ const totalInfo = (t: TFunction<['dashboard'], undefined>) => [
 
 export const Dashboard = () => {
   const { t } = useTranslation(['dashboard']);
+  const firstName = useAppSelector((state) => state.user.firstName);
 
   return (
     <div className={styles.container}>
       <section className={styles.greeting}>
         <div className={styles.name}>
-          <H2>{t('dashboard:greeting.hello', { name: 'Hanna' })}</H2>
+          <H2>{t('dashboard:greeting.hello', { name: firstName })}</H2>
           <span>{t('dashboard:greeting.traffic')}</span>
         </div>
         <Button>

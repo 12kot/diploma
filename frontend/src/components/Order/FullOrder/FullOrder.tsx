@@ -2,20 +2,21 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { BgImage, Button, MapWithRoute } from 'components';
-import { useEscapeKey, getOrderStatusText, useAuth, EUserRole, cx } from 'features';
+import { useEscapeKey, getOrderStatusText, EUserRole, cx } from 'features';
 
 import { AddDriverToOrder } from './Modal';
 
 import { SVGBack, tilesImg } from 'assets';
 
 import styles from './style.module.scss';
+import { useAppSelector } from 'store';
 
 interface Props {
   setActiveOrder: (v: number | null) => void;
 }
 
 export const FullOrder = ({ setActiveOrder }: Props) => {
-  const { user } = useAuth();
+  const user = useAppSelector(state => state.user);
   const { t } = useTranslation(['dashboard', 'common']);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 

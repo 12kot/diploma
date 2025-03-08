@@ -1,15 +1,16 @@
 import { useTranslation } from 'react-i18next';
 import { NavLink, useLocation } from 'react-router-dom';
 
-import { cx, EUserRole, getNavLinksByUserRole, INavItem, useAuth, useEditUserModal } from 'features';
+import { cx, EUserRole, getNavLinksByUserRole, INavItem, useEditUserModal } from 'features';
 
 import { SVGCreate } from 'assets';
 
 import styles from "./styles.module.scss";
 import { Button, Indicator } from 'components/UI';
+import { useAppSelector } from 'store';
 
 export const MenuHandler = () => {
-  const { user } = useAuth();
+  const user = useAppSelector(state => state.user);
   const { openUserModal } = useEditUserModal();
   const { t } = useTranslation(['menuHolder', 'common']);
 

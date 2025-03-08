@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import { Button, H1, Indicator } from 'components';
-import { EUserRole, useAuth, useEditUserModal } from 'features';
+import { EUserRole, useEditUserModal } from 'features';
 
 import { SVGEdit } from 'assets';
 
@@ -11,10 +11,10 @@ interface Props {
   name: string;
   isBanned: boolean;
   role: EUserRole;
+  userRole: EUserRole;
 }
 
-export const UserName = ({ name, isBanned, role }: Props) => {
-  const { user } = useAuth();
+export const UserName = ({ name, isBanned, role, userRole }: Props) => {
   const { t } = useTranslation('dashboard');
   const { openUserModal } = useEditUserModal();
 
@@ -34,7 +34,7 @@ export const UserName = ({ name, isBanned, role }: Props) => {
           </div>
         </div>
       </div>
-      {user?.role === EUserRole.Admin && (
+      {userRole === EUserRole.Admin && (
         <Button buttonType={['border', 'default']} className={styles.editUser} onClick={() => openUserModal()}>
           <SVGEdit />
         </Button>

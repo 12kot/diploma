@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 import { APP_ROUTES } from 'Router';
 import { Button, H1 } from 'components';
-import { EUserRole, getNavLinksByUserRole, useAuth, useEditUserModal } from 'features';
+import { EUserRole, getNavLinksByUserRole, useEditUserModal } from 'features';
 
 import { HeaderLng } from './Lng';
 import { AccountModal } from './Modal';
@@ -14,9 +14,10 @@ import { ProfileCard } from './ProfileCard';
 import { SVGMenu } from 'assets';
 
 import styles from './styles.module.scss';
+import { useAppSelector } from 'store';
 
 export const Header = () => {
-  const { user } = useAuth();
+  const user = useAppSelector(state => state.user);
   const navigate = useNavigate();
   const { t } = useTranslation(['menuHolder', 'common']);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);

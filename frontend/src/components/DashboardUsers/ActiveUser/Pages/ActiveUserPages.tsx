@@ -3,13 +3,14 @@ import { TFunction } from 'i18next';
 import { useTranslation } from 'react-i18next';
 
 import { Button } from 'components';
-import { cx, EUserRole, IUser, useAuth } from 'features';
+import { cx, EUserRole, IUser } from 'features';
 
 import { Orders, ActiveUserAbout, AcriveUserAnalitics } from './components';
 
 import { SVGAnalitics, SVGInfo, SVGCar } from 'assets';
 
 import styles from './styles.module.scss';
+import { useAppSelector } from 'store';
 
 type IPageTypes = 'about' | 'analitics' | 'orders';
 
@@ -50,7 +51,7 @@ interface Props {
 }
 
 export const ActiveUserPages = ({ activeUser }: Props) => {
-  const { user } = useAuth();
+  const user = useAppSelector(state => state.user);
   const { t } = useTranslation(['dashboard']);
   const [activePage, setActivePage] = useState<IPageTypes>('about');
 
@@ -67,7 +68,7 @@ export const ActiveUserPages = ({ activeUser }: Props) => {
           <Page key={i} page={page} setActivePage={setActivePage} activePage={activePage} />
         ))}
       </div>
-      {activePage === 'about' && <ActiveUserAbout role={activeUser.role} isBanned={activeUser.isBanned} />}
+      {activePage === 'about' && <ActiveUserAbout role={activeUser.role} isBanned={activeUser.enabled} />}
       {activePage === 'analitics' && <AcriveUserAnalitics />}
       {activePage === 'orders' && <Orders />}
     </section>

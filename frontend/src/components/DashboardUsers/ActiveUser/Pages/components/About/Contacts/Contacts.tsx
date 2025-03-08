@@ -1,13 +1,18 @@
 import styles from './styles.module.scss';
 
-export const Contacts = () => {
+interface Props {
+  email: string;
+  phone: string;
+}
+
+export const Contacts: React.FC<Props> = ({ phone, email }) => {
   return (
     <section className={styles.container}>
-      <a className={styles.link} href="tel:+375292812071">
-        +375 29 281 20 71
+      <a className={styles.link} href={`tel:${phone}`}>
+        {phone}
       </a>
-      <a className={styles.link} href="mailto:yakol.nikita@gmail.com">
-        yakol.nikita@gmail.com
+      <a className={styles.link} href={`mailto:${email}`}>
+        {email}
       </a>
     </section>
   );

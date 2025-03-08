@@ -28,7 +28,7 @@ interface UserProps extends IUser {
   setOpenUser: (id: number) => void;
 }
 
-const User = ({ activeUserId, id, setOpenUser, name, labels, isBanned }: UserProps) => {
+const User = ({ activeUserId, id, setOpenUser, name, enabled }: UserProps) => {
   const { t } = useTranslation('dashboard');
 
   return (
@@ -36,9 +36,9 @@ const User = ({ activeUserId, id, setOpenUser, name, labels, isBanned }: UserPro
       <section className={styles.info}>
         <div className={styles.name}>
           <b>{name}</b>
-          {isBanned && <Indicator type="red">{t('common.banned', { date: '23.09.2024' })}</Indicator>}
+          {!enabled && <Indicator type="red">{t('common.banned', { date: '23.09.2024' })}</Indicator>}
         </div>
-        <Labels labels={labels} wrap />
+        {/* <Labels labels={labels} wrap /> */}
       </section>
       <Button buttonType={['default', 'border']} className={styles.favorite}>
         <SVGFavorite />
