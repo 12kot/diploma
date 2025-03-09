@@ -91,7 +91,7 @@ const supervisores: IUser[] = [
     name: 'Company name 3',
     role: EUserRole.Forwarder,
   },
-];
+] as IUser[];
 
 const drivers: IUser[] = [
   {
@@ -124,7 +124,7 @@ const drivers: IUser[] = [
     name: 'Driver name 3',
     role: EUserRole.Driver,
   },
-];
+] as IUser[];
 
 const owners: IUser[] = [
   {
@@ -157,4 +157,4 @@ const owners: IUser[] = [
     name: 'Driver name 3',
     role: EUserRole.Owner,
   },
-];
+] as IUser[];

@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { cx, IUser } from 'features';
-import { Button, Indicator, Labels } from 'components';
+import { Button, Indicator } from 'components';
 
 import { SVGFavorite } from 'assets';
 
@@ -38,7 +38,6 @@ const User = ({ activeUserId, id, setOpenUser, name, enabled }: UserProps) => {
           <b>{name}</b>
           {!enabled && <Indicator type="red">{t('common.banned', { date: '23.09.2024' })}</Indicator>}
         </div>
-        {/* <Labels labels={labels} wrap /> */}
       </section>
       <Button buttonType={['default', 'border']} className={styles.favorite}>
         <SVGFavorite />

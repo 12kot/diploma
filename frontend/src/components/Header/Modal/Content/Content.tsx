@@ -18,12 +18,12 @@ export const Content = ({ setIsOpen }: { setIsOpen: () => void }) => {
 
   return (
     <ul className={styles.container}>
-      {user && <ProfileSection setIsOpen={setIsOpen} />}
+      {!!user.name && <ProfileSection setIsOpen={setIsOpen} />}
       {user?.role && <MainSection setIsOpen={setIsOpen} userRole={user.role} />}
       <AboutSection setIsOpen={setIsOpen} />
       <MenuListContainer navItems={GeneralNavItems(t)} setIsOpen={setIsOpen} />
       <LanguageSection />
-      {!user && <LoginSection setIsOpen={setIsOpen} />}
+      {!user.name && <LoginSection setIsOpen={setIsOpen} />}
     </ul>
   );
 };

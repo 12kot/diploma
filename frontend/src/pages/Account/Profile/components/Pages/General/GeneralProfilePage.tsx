@@ -56,7 +56,7 @@ export const GeneralProfilePage: React.FC<Props> = ({ formData, onChange }) => {
             placeholder={t('common:placeholders.phoneNumber')}
           />
           <textarea
-            name="description"
+            name="about"
             rows={10}
             value={formData.about}
             onChange={onChange}

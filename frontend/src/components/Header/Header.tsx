@@ -62,8 +62,8 @@ export const Header = () => {
                 {t('common:buttons.createOrder')}
               </Button>
             )}
-            {user && <ProfileCard />}
-            {!user && <Button onClick={() => navigate(APP_ROUTES.LOGIN)}>{t('common:buttons.signIn')}</Button>}
+            {!!user.name && <ProfileCard />}
+            {!user.name && <Button onClick={() => navigate(APP_ROUTES.LOGIN)}>{t('common:buttons.signIn')}</Button>}
           </div>
           <div className={styles.border} />
           <Button

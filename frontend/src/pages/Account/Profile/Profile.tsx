@@ -9,7 +9,7 @@ import { useAppSelector, useEditUserMutation } from 'store';
 
 export const Profile = () => {
   const [editUser, { isLoading }] = useEditUserMutation();
-  const { id, firstName, lastName, email, phoneNumber } = useAppSelector((state) => state.user);
+  const { id, firstName, lastName, email, phoneNumber, about } = useAppSelector((state) => state.user);
   const [activePage, setActivePage] = useState<IProfilePageType>('general');
 
   const [formData, setFormData] = useState({
@@ -17,7 +17,7 @@ export const Profile = () => {
     lastName: lastName,
     email: email,
     phoneNumber: phoneNumber,
-    about: '',
+    about: about,
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
