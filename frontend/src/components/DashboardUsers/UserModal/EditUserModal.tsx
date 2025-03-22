@@ -8,7 +8,7 @@ import { AllRoles, cx, EUserRole } from 'features';
 import { Button, H2, Modal } from 'components';
 
 import styles from './styles.module.scss';
-import { useAppSelector } from 'store';
+import { useAppSelector, useRegisterUserMutation } from 'store';
 
 interface ModalProps {
   isOpen: boolean;
@@ -18,6 +18,7 @@ interface ModalProps {
 
 export const EditUserModal = ({ isOpen, setIsOpen, isCreate }: ModalProps) => {
   const { t } = useTranslation(['dashboard', 'common']);
+  const [registerUser] = useRegisterUserMutation();
   const { firstName, lastName } = useAppSelector((state) => state.user);
   const [activeRole, setActiveRole] = useState<EUserRole>(EUserRole.Admin);
 
@@ -26,18 +27,44 @@ export const EditUserModal = ({ isOpen, setIsOpen, isCreate }: ModalProps) => {
     surname: Yup.string().required(),
     email: Yup.string().email().required(),
     phone: Yup.string().required(),
-    country: Yup.string().required(),
-    city: Yup.string().required(),
+    username: Yup.string().required(),
+    password: Yup.string().required(),
     self: Yup.string(),
   });
 
   const formik = useFormik<IFormik>({
     initialValues: initFormik,
     validationSchema,
-    onSubmit: (data, { resetForm }) => {
-      console.log(data);
-      setIsOpen();
-      resetForm();
+    onSubmit: async (data, { resetForm }) => {
+      const userData = {
+        about: data.self,
+        email: data.email,
+        firstName: data.name,
+        lastName: data.surname,
+        name: data.username,
+        password: data.password,
+        phoneNumber: data.phone,
+        roles: [
+          {
+            role: activeRole,
+          },
+        ],
+      };
+
+      let isError = false;
+
+      if (isCreate) {
+        const res = await registerUser(userData);
+        isError = !!res.error;
+      }
+
+      if (isError) {
+        alert('Error');
+      } else {
+        setIsOpen();
+        resetForm();
+        alert('Done');
+      }
     },
   });
 
@@ -45,10 +72,32 @@ export const EditUserModal = ({ isOpen, setIsOpen, isCreate }: ModalProps) => {
     <Modal setIsOpen={setIsOpen} isOpen={isOpen} className={styles.container}>
       <header>
         <H2>
-          {isCreate ? t('dashboard:editProfile.create') : t('dashboard:editProfile.edit', { name: firstName + ' ' + lastName })}
+          {isCreate
+            ? t('dashboard:editProfile.create')
+            : t('dashboard:editProfile.edit', { name: firstName + ' ' + lastName })}
         </H2>
       </header>
       <form className={styles.form} onSubmit={formik.handleSubmit}>
+        <section className={styles.section}>
+          <input
+            type="text"
+            name="username"
+            placeholder={t('common:placeholders.username')}
+            className={cx(formik.touched.username && formik.errors.username && styles.error)}
+            value={formik.values.username}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+          <input
+            type="text"
+            name="password"
+            placeholder={t('common:placeholders.password')}
+            className={cx(formik.touched.password && formik.errors.password && styles.error)}
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+        </section>
         <section className={styles.section}>
           <input
             type="text"
@@ -99,26 +148,6 @@ export const EditUserModal = ({ isOpen, setIsOpen, isCreate }: ModalProps) => {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
         />
-        <section className={styles.section}>
-          <input
-            type="text"
-            name="country"
-            placeholder={t('common:placeholders.country')}
-            className={cx(formik.touched.country && formik.errors.country && styles.error)}
-            value={formik.values.country}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-          />
-          <input
-            type="text"
-            name="city"
-            placeholder={t('common:placeholders.city')}
-            className={cx(formik.touched.city && formik.errors.city && styles.error)}
-            value={formik.values.city}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-          />
-        </section>
         <textarea
           rows={8}
           name="self"
@@ -127,15 +156,13 @@ export const EditUserModal = ({ isOpen, setIsOpen, isCreate }: ModalProps) => {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
         />
+        <section className={styles.actions}>
+          <Button buttonType={'transparent'} onClick={setIsOpen}>
+            {t('common:buttons.cancel')}
+          </Button>
+          <Button type="submit">{isCreate ? t('common:buttons.createUser') : t('common:buttons.save')}</Button>
+        </section>
       </form>
-      <section className={styles.actions}>
-        <Button buttonType={'transparent'} onClick={setIsOpen}>
-          {t('common:buttons.cancel')}
-        </Button>
-        <Button onClick={() => formik.handleSubmit()}>
-          {isCreate ? t('common:buttons.createUser') : t('common:buttons.save')}
-        </Button>
-      </section>
     </Modal>
   );
 };
@@ -145,8 +172,8 @@ interface IFormik {
   surname: string;
   email: string;
   phone: string;
-  country: string;
-  city: string;
+  username: string;
+  password: string;
   self: string;
 }
 
@@ -155,7 +182,7 @@ const initFormik: IFormik = {
   surname: '',
   email: '',
   phone: '',
-  country: '',
-  city: '',
+  username: '',
+  password: '',
   self: '',
 };

@@ -2,6 +2,7 @@ import { ReactElement } from 'react';
 import { Navigate } from 'react-router-dom';
 
 import {
+  AddressLazy,
   ApplicationsLazy,
   CreateOrderLazy,
   DashboardLazy,
@@ -39,6 +40,7 @@ export enum APP_ROUTES {
   NOT_FOUND = '/404',
 
   DASHBOARD = '/dashboard',
+  ADDRESSES = '/dashboard/addresses',
   FORWARDERS = '/dashboard/users/forwarder',
   DRIVERS = '/dashboard/users/driver',
   OWNERS = '/dashboard/users/owner',
@@ -106,6 +108,10 @@ export const routes: TRoutes = {
   },
   [APP_ROUTES.OWNERS]: {
     element: <UsersLazy />,
+    permissions: [EPermissions.AUTH_REQUIRED, EPermissions.AUTH_ADMIN, EPermissions.AUTH_FORWARDER],
+  },
+  [APP_ROUTES.ADDRESSES]: {
+    element: <AddressLazy />,
     permissions: [EPermissions.AUTH_REQUIRED, EPermissions.AUTH_ADMIN, EPermissions.AUTH_FORWARDER],
   },
   [APP_ROUTES.PROFILE]: {

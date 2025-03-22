@@ -1,6 +1,6 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 import { BaseQuery } from './baseQuery';
-import { EUserRole, IUser } from 'features';
+import { EUserRole, IRegisterUser, IUser } from 'features';
 
 interface IGetUser extends IUser {
   roles: { role: EUserRole }[];
@@ -25,7 +25,15 @@ export const usersApi = createApi({
         body,
       }),
     }),
+   
+    registerUser: builder.mutation<IUser, Partial<IRegisterUser>>({
+      query: (body) => ({
+        url: `/api/users/register`,
+        method: 'POST',
+        body,
+      }),
+    }),
   }),
 });
 
-export const { useFindUserInfoMutation, useEditUserMutation } = usersApi;
+export const { useFindUserInfoMutation, useEditUserMutation, useRegisterUserMutation } = usersApi;

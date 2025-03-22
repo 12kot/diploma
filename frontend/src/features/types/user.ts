@@ -12,7 +12,20 @@ export interface IUser {
   about: string;
   transportations?: null;
   payments?: null;
-  role: EUserRole
+  role: EUserRole;
+}
+
+export interface IRegisterUser {
+  about?: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  name: string;
+  password: string;
+  phoneNumber: string;
+  roles: {
+    role: string;
+  }[];
 }
 
 export enum EUserRole {

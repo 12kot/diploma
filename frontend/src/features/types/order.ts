@@ -1,3 +1,13 @@
+export interface IAddress {
+  apartment: number;
+  cityName: string;
+  countryName: string;
+  house: number;
+  id: number;
+  phoneNumber: string;
+  street: string;
+}
+
 export interface IOrder {
   id: number;
   cityFrom: string;
@@ -9,4 +19,4 @@ export interface IOrder {
   type: IOrderType;
 }
 
-export type IOrderType = 'waiting' | 'closed' | 'way'
+export type IOrderType = 'waiting' | 'closed' | 'way';

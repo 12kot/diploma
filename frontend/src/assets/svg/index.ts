@@ -4,6 +4,7 @@ export * from "./SVGArrowUp";
 export * from "./SVGBack";
 export * from "./SVGCar";
 export * from "./SVGCargo";
+export * from "./SVGTrash";
 export * from "./SVGCargoOwner";
 export * from "./SVGChat";
 export * from "./SVGClose";

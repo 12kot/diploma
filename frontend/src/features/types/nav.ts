@@ -36,6 +36,14 @@ export const NavItems = (t: TFunction<['menuHolder'], undefined>): INavItem[] =>
     icon: SVGDashboard,
   },
   {
+    id: 10,
+    name: t('menuHolder:links.addresses'),
+    path: APP_ROUTES.ADDRESSES,
+    icon: SVGReceipt,
+    sees: [EUserRole.Admin, EUserRole.Forwarder],
+    count: 31,
+  },
+  {
     id: 2,
     name: t('menuHolder:links.orders'),
     path: APP_ROUTES.ORDERS,

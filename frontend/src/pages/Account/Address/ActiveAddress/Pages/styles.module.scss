@@ -1,0 +1,44 @@
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  ::-webkit-scrollbar {
+    width: 6px !important;
+    height: 6px !important;
+  }
+
+  .list {
+    display: flex;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+
+    .page {
+      width: 100%;
+      gap: var(--gap-mini);
+    
+      color: var(--font-color-second);
+  
+      svg {
+        width: 20px;
+      }
+  
+      &:active {
+        scale: 1;
+      }
+
+      .name {
+        font-size: var(--font-size);
+      }
+    }
+
+    .active {
+      background-color: var(--main-color-second) !important;
+      color: var(--main-color);
+      svg {
+        fill: var(--main-color);
+      }
+    }
+  }
+}
