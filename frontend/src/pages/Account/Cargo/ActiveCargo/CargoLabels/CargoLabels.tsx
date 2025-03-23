@@ -8,10 +8,10 @@ interface Props {
   title: string;
   isCreate: boolean;
   onDelete: () => void;
-  closeActiveAddress: () => void;
+  closeActiveCargo: () => void;
 }
 
-export const AddressLabels = ({ isCreate, title, closeActiveAddress, onDelete }: Props) => {
+export const CargoLabels = ({ title, isCreate, closeActiveCargo, onDelete }: Props) => {
   return (
     <section className={styles.container}>
       <b>{title}</b>
@@ -21,7 +21,7 @@ export const AddressLabels = ({ isCreate, title, closeActiveAddress, onDelete }:
             <SVGTrash />
           </Button>
         )}
-        <Button buttonType="transparent" className={styles.back} onClick={closeActiveAddress}>
+        <Button buttonType="transparent" className={styles.back} onClick={closeActiveCargo}>
           <SVGClose />
         </Button>
       </div>

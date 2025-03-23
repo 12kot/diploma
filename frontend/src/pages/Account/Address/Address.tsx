@@ -28,7 +28,7 @@ export const Address = () => {
   }, [searchParams]);
 
   const handleCreateAddressStatus = () => {
-    setIsCreate(true);
+    setIsCreate((v) => !v);
   };
 
   const onCreateAddress = (id: IAddress['id']) => {
@@ -39,6 +39,7 @@ export const Address = () => {
   const handleOpenAddress = useCallback(
     (id: number) => {
       setOpenAddress(id);
+      setIsCreate(false);
 
       const updatedParams = new URLSearchParams(searchParams);
       updatedParams.set('a', String(id));
@@ -53,14 +54,14 @@ export const Address = () => {
   return (
     <div className={cx(styles.container, openAddress && styles.grid)}>
       <div className={styles.list}>
-        <Filters handleCreateAddress={handleCreateAddressStatus} />
+        <Filters handleCreate={handleCreateAddressStatus} />
         <AddressesList addresses={addresses || []} activeAddressId={openAddress} setOpenAddress={handleOpenAddress} />
       </div>
-      {openAddress && activeAddress && (
+      {((openAddress && activeAddress) || isCreate) && (
         <ActiveAddress
           onCreate={onCreateAddress}
           isCreate={isCreate}
-          address={isCreate ? AddressInit : activeAddress}
+          address={isCreate ? AddressInit : activeAddress || AddressInit}
           closeActiveAddress={() => setOpenAddress(undefined)}
         />
       )}

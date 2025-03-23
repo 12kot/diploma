@@ -15,7 +15,7 @@ import {
   SVGReceipt,
   SVGInfo,
   SVGPrivacy,
-  SVGCreate,
+  SVGCargo,
 } from 'assets';
 
 export interface INavItem {
@@ -34,6 +34,13 @@ export const NavItems = (t: TFunction<['menuHolder'], undefined>): INavItem[] =>
     path: APP_ROUTES.DASHBOARD,
     sees: [EUserRole.Admin, EUserRole.Forwarder, EUserRole.Driver, EUserRole.Owner],
     icon: SVGDashboard,
+  },
+  {
+    id: 8,
+    name: t('menuHolder:links.cargo'),
+    path: APP_ROUTES.CARGO,
+    icon: SVGCargo,
+    sees: [EUserRole.Owner],
   },
   {
     id: 10,
@@ -88,13 +95,6 @@ export const NavItems = (t: TFunction<['menuHolder'], undefined>): INavItem[] =>
     path: APP_ROUTES.SETTINGS,
     icon: SVGSettings,
     sees: [EUserRole.Admin, EUserRole.Forwarder, EUserRole.Driver, EUserRole.Owner],
-  },
-  {
-    id: 8,
-    name: t('menuHolder:links.createOrder'),
-    path: APP_ROUTES.CREATE_ORDER,
-    icon: SVGCreate,
-    sees: [EUserRole.Owner],
   },
   {
     id: 9,

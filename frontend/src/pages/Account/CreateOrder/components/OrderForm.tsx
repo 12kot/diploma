@@ -33,7 +33,7 @@ export const OrderForm = ({ openDownloadModal, setModalType }: Props) => {
       </section>
       <section className={styles.item}>
         <input type="text" placeholder={t('common:placeholders.width')} />
-        <input type="text" placeholder={t('common:placeholders.heigth')} />
+        <input type="text" placeholder={t('common:placeholders.height')} />
         <input type="text" placeholder={t('common:placeholders.depth')} />
         <input type="text" placeholder={t('common:placeholders.weight')} />
       </section>

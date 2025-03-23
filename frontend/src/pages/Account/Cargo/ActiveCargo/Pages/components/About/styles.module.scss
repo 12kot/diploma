@@ -1,0 +1,14 @@
+.container {
+  height: 100%;
+  overflow-y: auto;
+
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+  gap: var(--gap-xl);
+
+  ::-webkit-scrollbar {
+    width: 6px !important;
+    height: 6px !important;
+  }
+}

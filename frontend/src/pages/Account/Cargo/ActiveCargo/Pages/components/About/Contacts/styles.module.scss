@@ -1,0 +1,13 @@
+@use 'src/scss/button';
+
+.container {
+  display: flex;
+  gap: var(--gap-mini);
+
+  .link {
+    font-size: var(--font-size-xs);
+
+    @extend .button;
+    @extend .transparent;
+  }
+}

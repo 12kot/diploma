@@ -6,3 +6,4 @@ export * from "./Profile";
 export * from "./Address";
 export * from "./Settings";
 export * from "./Users";
+export * from "./Cargo";

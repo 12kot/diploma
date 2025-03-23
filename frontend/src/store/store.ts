@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import { addressApi, usersApi } from './api';
+import { addressApi, cargoApi, usersApi } from './api';
 import { authApi } from './api/authApi';
 import userSlice from './slices/userSlice';
 
@@ -12,9 +12,10 @@ export const store = configureStore({
     [authApi.reducerPath]: authApi.reducer,
     [usersApi.reducerPath]: usersApi.reducer,
     [addressApi.reducerPath]: addressApi.reducer,
+    [cargoApi.reducerPath]: cargoApi.reducer,
   },
   middleware: (getDefaultMiddleware) => {
-    return getDefaultMiddleware().concat(authApi.middleware).concat(addressApi.middleware).concat(usersApi.middleware);
+    return getDefaultMiddleware().concat(authApi.middleware).concat(addressApi.middleware).concat(cargoApi.middleware).concat(usersApi.middleware);
   },
 });
 

@@ -1,3 +1,18 @@
+export interface ICargo {
+  id: number;
+  loadApproach: 'FTL' | 'LTL';
+  loadMethod: 'ABOVE' | 'BEHIND' | 'SIDE';
+  name: string;
+  packaging: 'BAG' | 'BOX' | 'PALLET' | 'TAPE';
+  size: {
+    depth: number | null;
+    height: number | null;
+    id: number | null;
+    weight: number | null;
+    width: number | null;
+  };
+}
+
 export interface IAddress {
   apartment: number;
   cityName: string;

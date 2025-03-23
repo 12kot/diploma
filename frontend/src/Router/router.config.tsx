@@ -4,6 +4,7 @@ import { Navigate } from 'react-router-dom';
 import {
   AddressLazy,
   ApplicationsLazy,
+  CargoLazy,
   CreateOrderLazy,
   DashboardLazy,
   HomeLazy,
@@ -41,6 +42,7 @@ export enum APP_ROUTES {
 
   DASHBOARD = '/dashboard',
   ADDRESSES = '/dashboard/addresses',
+  CARGO = '/dashboard/cargo',
   FORWARDERS = '/dashboard/users/forwarder',
   DRIVERS = '/dashboard/users/driver',
   OWNERS = '/dashboard/users/owner',
@@ -113,6 +115,10 @@ export const routes: TRoutes = {
   [APP_ROUTES.ADDRESSES]: {
     element: <AddressLazy />,
     permissions: [EPermissions.AUTH_REQUIRED, EPermissions.AUTH_ADMIN, EPermissions.AUTH_FORWARDER],
+  },
+  [APP_ROUTES.CARGO]: {
+    element: <CargoLazy />,
+    permissions: [EPermissions.AUTH_REQUIRED, EPermissions.AUTH_ADMIN, EPermissions.AUTH_OWNER],
   },
   [APP_ROUTES.PROFILE]: {
     element: <ProfileLazy />,

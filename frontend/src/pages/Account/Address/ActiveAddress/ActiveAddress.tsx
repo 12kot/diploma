@@ -58,6 +58,7 @@ export const ActiveAddress = ({ address, isCreate, onCreate, closeActiveAddress 
     <div className={styles.container}>
       <div className={styles.content}>
         <AddressLabels
+          isCreate={isCreate}
           title={`${address.countryName}, ${address.cityName}, ${address.street}, ${address.apartment}`}
           onDelete={handleDelete}
           closeActiveAddress={closeActiveAddress}
