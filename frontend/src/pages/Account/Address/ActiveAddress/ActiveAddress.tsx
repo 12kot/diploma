@@ -8,7 +8,7 @@ import styles from './styles.module.scss';
 import { AddressLabels } from './AddressLabels';
 import { useTranslation } from 'react-i18next';
 import { useFormik } from 'formik';
-import { useCreateAddressMutation, useDeleteAddressMutation, useEditAddressMutation } from 'store';
+import { useCreateAddressMutation, useEditAddressMutation } from 'store';
 
 interface Props {
   address: IAddress;
@@ -22,12 +22,6 @@ export const ActiveAddress = ({ address, isCreate, onCreate, closeActiveAddress 
 
   const [ediAddress] = useEditAddressMutation();
   const [createAddress] = useCreateAddressMutation();
-  const [deleteAddress] = useDeleteAddressMutation();
-
-  const handleDelete = () => {
-    deleteAddress({ id: address.id });
-    closeActiveAddress();
-  };
 
   const validationSchema = Yup.object({
     apartment: Yup.number().required(),
@@ -58,9 +52,7 @@ export const ActiveAddress = ({ address, isCreate, onCreate, closeActiveAddress 
     <div className={styles.container}>
       <div className={styles.content}>
         <AddressLabels
-          isCreate={isCreate}
           title={`${address.countryName}, ${address.cityName}, ${address.street}, ${address.apartment}`}
-          onDelete={handleDelete}
           closeActiveAddress={closeActiveAddress}
         />
         <form className={styles.form} onSubmit={formik.handleSubmit}>

@@ -32,15 +32,7 @@ export const cargoApi = createApi({
       }),
       invalidatesTags: ['cargo'],
     }),
-
-    deleteCargo: builder.mutation<ICargo, { id: ICargo['id'] }>({
-      query: ({ id }) => ({
-        url: `/api/cargos/${id}`,
-        method: 'DELETE',
-      }),
-      invalidatesTags: ['cargo'],
-    }),
   }),
 });
 
-export const { useGetCargosQuery, useEditCargoMutation, useCreateCargoMutation, useDeleteCargoMutation} = cargoApi;
+export const { useGetCargosQuery, useEditCargoMutation, useCreateCargoMutation} = cargoApi;

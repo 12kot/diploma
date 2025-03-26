@@ -32,15 +32,7 @@ export const addressApi = createApi({
       }),
       invalidatesTags: ['addresses'],
     }),
-
-    deleteAddress: builder.mutation<IAddress, { id: IAddress['id'] }>({
-      query: ({ id }) => ({
-        url: `/api/addresses/${id}`,
-        method: 'DELETE',
-      }),
-      invalidatesTags: ['addresses'],
-    }),
   }),
 });
 
-export const { useGetAddressesQuery, useEditAddressMutation, useCreateAddressMutation, useDeleteAddressMutation } = addressApi;
+export const { useGetAddressesQuery, useEditAddressMutation, useCreateAddressMutation } = addressApi;

@@ -8,7 +8,7 @@ import styles from './styles.module.scss';
 import { CargoLabels } from './CargoLabels';
 import { useTranslation } from 'react-i18next';
 import { useFormik } from 'formik';
-import { useCreateCargoMutation, useDeleteCargoMutation, useEditCargoMutation } from 'store';
+import { useCreateCargoMutation, useEditCargoMutation } from 'store';
 import { SVGCargo } from 'assets';
 
 interface IFormCargo {
@@ -38,12 +38,6 @@ export const ActiveCargo = ({ cargo, isCreate, onCreate, closeActiveCargo }: Pro
 
   const [ediCargo] = useEditCargoMutation();
   const [createCargo] = useCreateCargoMutation();
-  const [deleteCargo] = useDeleteCargoMutation();
-
-  const handleDelete = () => {
-    deleteCargo({ id: cargo.id });
-    closeActiveCargo();
-  };
 
   const validationSchema = Yup.object({
     loadApproach: Yup.mixed<'FTL' | 'LTL'>().oneOf(['FTL', 'LTL']).required(),
@@ -100,8 +94,6 @@ export const ActiveCargo = ({ cargo, isCreate, onCreate, closeActiveCargo }: Pro
       <div className={styles.content}>
         <CargoLabels
           title={`${cargo.name}, ${t('common:gramm', { value: cargo.size.weight })}`}
-          onDelete={handleDelete}
-          isCreate={isCreate}
           closeActiveCargo={closeActiveCargo}
         />
         <form className={styles.form} onSubmit={formik.handleSubmit}>
