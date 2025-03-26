@@ -13,7 +13,7 @@ export const Applications = () => {
   return (
     <div className={styles.container}>
       <ApplicationModal isOpen={modalOpen} setIsOpen={() => setModalOpen((v) => !v)} />
-      <Filters />
+      <Filters handleCreate={() => {}} />
       <section className={styles.list}>
         {Array(5)
           .fill(0)

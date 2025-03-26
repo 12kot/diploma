@@ -43,7 +43,7 @@ export const Users = () => {
   return (
     <div className={cx(styles.container, openUser && styles.grid)}>
       <div className={styles.list}>
-        <Filters />
+        <Filters handleCreate={() => {}} />
         <UsersList users={users} activeUserId={openUser} setOpenUser={handleOpenUser} />
       </div>
       {openUser && (

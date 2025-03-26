@@ -13,7 +13,7 @@ export const Orders = () => {
   return (
     <div className={styles.container}>
       <div className={cx(styles.content, !!activeOrder && styles.none)}>
-        <Filters />
+        <Filters handleCreate={() => {}} />
         <OrdersList orders={orders} activeUserId={activeOrder} setOpenUser={(v) => setActiveOrder(v)} />
       </div>
       {activeOrder && <FullOrder setActiveOrder={(v) => setActiveOrder(v)} />}
