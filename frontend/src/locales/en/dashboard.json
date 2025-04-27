@@ -57,6 +57,8 @@
 
     "orders": {
       "cargoOwner": "Cargo Owner",
+      "landingInfo": "Landing Info",
+      "loadingInfo": "Loading Info",
       "cargoInfo": "Cargo Info",
       "driverInfo": "Driver Info",
       "id": "Id",

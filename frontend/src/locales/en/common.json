@@ -29,6 +29,8 @@
   "placeholders": {
     "findDriver": "Find Driver",
     "name": "Name",
+    "landingDate": "Landing date",
+    "loadingDate": "Loading date",
     "street": "Street",
     "type": "Type",
     "house": "House",
