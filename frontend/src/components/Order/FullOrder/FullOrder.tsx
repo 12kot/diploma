@@ -9,6 +9,7 @@ import { SVGCargo, SVGMapMarker, tilesImg } from 'assets';
 import styles from './style.module.scss';
 import { useCreateTransportationsMutation, useEditTransportationsMutation } from 'store';
 import { useFormik } from 'formik';
+import toast from 'react-hot-toast';
 
 interface Props {
   transportation?: ITransportation;
@@ -191,8 +192,10 @@ export const FullOrder = ({ transportation, onSumbit }: Props) => {
         if (res.data) {
           resetForm();
           onSumbit();
+          toast.success(t('common:transportationSuccess'));
         }
       } else {
+        toast.error(t('common:transportationError'));
         ediCargo(newData as ITransportation);
       }
     },

@@ -1,5 +1,17 @@
 {
   "or": "ИЛИ",
+  "userCreateSuccess": "Пользователь успешно создан",
+  "userCreateError": "Ошибка при создании пользователя",
+  "transportationSuccess": "Поездка успешно создана",
+  "transportationError": "Ошибка при создании поездки",
+  "addressSuccess": "Адрес успешно создан",
+  "addressError": "Ошибка при создании адреса",
+  "cargoSuccess": "Адрес успешно создан",
+  "cargoError": "Ошибка при создании груза",
+  "profileSuccess": "Информация о профиле была успешно изменена",
+  "profileError": "Ошибка при изменении профиля",
+  "authError": "Ошибка авторизации. Проверьте логин и пароль",
+
   "gramm": "{{ value }}г",
   "buttons": {
     "cancel": "Отмена",

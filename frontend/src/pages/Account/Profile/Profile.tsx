@@ -6,8 +6,11 @@ import { GeneralProfilePage, ProfileHeader, ProfileOrders, ProfilePages } from '
 
 import styles from './styles.module.scss';
 import { useAppSelector, useEditUserMutation } from 'store';
+import toast from 'react-hot-toast';
+import { useTranslation } from 'react-i18next';
 
 export const Profile = () => {
+  const { t } = useTranslation('common');
   const [editUser, { isLoading }] = useEditUserMutation();
   const { id, firstName, lastName, email, phoneNumber, about } = useAppSelector((state) => state.user);
   const [activePage, setActivePage] = useState<IProfilePageType>('general');
@@ -24,8 +27,10 @@ export const Profile = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = () => {
-    editUser({ id, ...formData });
+  const handleSubmit = async () => {
+    const res = await editUser({ id, ...formData });
+    if (res.data) toast.success(t('profileSuccess'));
+    else toast.error(t('profileError'));
   };
 
   return (

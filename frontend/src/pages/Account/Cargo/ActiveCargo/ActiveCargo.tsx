@@ -10,6 +10,7 @@ import { useTranslation } from 'react-i18next';
 import { useFormik } from 'formik';
 import { useCreateCargoMutation, useEditCargoMutation } from 'store';
 import { SVGCargo } from 'assets';
+import toast from 'react-hot-toast';
 
 interface IFormCargo {
   loadApproach: 'FTL' | 'LTL';
@@ -81,7 +82,10 @@ export const ActiveCargo = ({ cargo, isCreate, onCreate, closeActiveCargo }: Pro
       if (isCreate) {
         const res = await createCargo(newData);
         if (res.data) {
+          toast.success(t('cargoSuccess'));
           onCreate(res.data.id);
+        } else {
+          toast.error(t('cargoError'));
         }
       } else {
         ediCargo(newData);

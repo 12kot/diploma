@@ -9,6 +9,7 @@ import { AddressLabels } from './AddressLabels';
 import { useTranslation } from 'react-i18next';
 import { useFormik } from 'formik';
 import { useCreateAddressMutation, useEditAddressMutation } from 'store';
+import toast from 'react-hot-toast';
 
 interface Props {
   address: IAddress;
@@ -40,7 +41,10 @@ export const ActiveAddress = ({ address, isCreate, onCreate, closeActiveAddress 
       if (isCreate) {
         const res = await createAddress(data);
         if (res.data) {
+          toast.success(t('addressSuccess'));
           onCreate(res.data.id);
+        } else {
+          toast.error(t('addressError'));
         }
       } else {
         ediAddress(data);

@@ -4,6 +4,7 @@ import { AuthProvider, EditUserModalProvider } from 'features';
 import './scss/App.scss';
 
 import i18n from './locales/config';
+import { Toaster } from 'react-hot-toast';
 i18n.init();
 
 const App = () => {
@@ -11,6 +12,7 @@ const App = () => {
     <AuthProvider>
       <EditUserModalProvider>
         <Routes />
+        <Toaster position="bottom-right" />
       </EditUserModalProvider>
     </AuthProvider>
   );

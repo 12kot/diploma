@@ -6,6 +6,7 @@ import { useUserAuthMutation } from 'store';
 import { Button, H1 } from 'components';
 
 import styles from '../../form.module.scss';
+import toast from 'react-hot-toast';
 
 export const LoginForm = () => {
   const { login } = useAuth();
@@ -20,7 +21,10 @@ export const LoginForm = () => {
     const password = formData.get('password') as string;
 
     const result = await authUser({ name, password });
-    if (result.error) return;
+    if (result.error) {
+      toast.error(t('common:authError'))
+      return;
+    }
     login({ token: result.data, name });
   };
 

@@ -9,6 +9,7 @@ import { Button, H2, Modal } from 'components';
 
 import styles from './styles.module.scss';
 import { useAppSelector, useRegisterUserMutation } from 'store';
+import toast from 'react-hot-toast';
 
 interface ModalProps {
   isOpen: boolean;
@@ -59,11 +60,11 @@ export const EditUserModal = ({ isOpen, setIsOpen, isCreate }: ModalProps) => {
       }
 
       if (isError) {
-        alert('Error');
+        toast.error(t('common:userCreateError'));
       } else {
+        toast.success(t('common:userCreateSuccess'));
         setIsOpen();
         resetForm();
-        alert('Done');
       }
     },
   });
