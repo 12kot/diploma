@@ -1,5 +1,3 @@
-import { useTranslation } from 'react-i18next';
-
 import { GeneralNavItems } from 'features';
 
 import { ProfileSection } from './ProfileSection';
@@ -13,13 +11,12 @@ import { useAppSelector } from 'store';
 
 export const Content = ({ setIsOpen }: { setIsOpen: () => void }) => {
   const user = useAppSelector(state => state.user);
-  const { t } = useTranslation(['menuHolder']);
 
   return (
     <ul className={styles.container}>
       {!!user.name && <ProfileSection setIsOpen={setIsOpen} />}
       {user?.role && <MainSection setIsOpen={setIsOpen} userRole={user.role} />}
-      <MenuListContainer navItems={GeneralNavItems(t)} setIsOpen={setIsOpen} />
+      <MenuListContainer navItems={GeneralNavItems()} setIsOpen={setIsOpen} />
       <LanguageSection />
       {!user.name && <LoginSection setIsOpen={setIsOpen} />}
     </ul>

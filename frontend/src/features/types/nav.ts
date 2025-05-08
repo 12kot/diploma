@@ -46,4 +46,4 @@ export const NavItems = (t: TFunction<['menuHolder'], undefined>): INavItem[] =>
   },
 ];
 
-export const GeneralNavItems = (t: TFunction<['menuHolder'], undefined>): INavItem[] => [];
+export const GeneralNavItems = (): INavItem[] => [];
