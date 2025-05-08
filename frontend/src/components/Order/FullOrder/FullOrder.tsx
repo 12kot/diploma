@@ -1,16 +1,18 @@
 import * as Yup from 'yup';
 import { useTranslation } from 'react-i18next';
 
-import { BgImage, Button, MapWithRoute } from 'components';
-import { useEscapeKey, getOrderStatusText, EUserRole, cx } from 'features';
+import { BgImage, Button } from 'components';
+import { useEscapeKey, cx, ITransportation } from 'features';
 
-import { SVGBack, SVGCargo, SVGMapMarker, tilesImg } from 'assets';
+import { SVGCargo, SVGMapMarker, tilesImg } from 'assets';
 
 import styles from './style.module.scss';
-import { useAppSelector, useCreateCargoMutation, useEditCargoMutation } from 'store';
+import { useCreateTransportationsMutation, useEditTransportationsMutation } from 'store';
 import { useFormik } from 'formik';
 
 interface Props {
+  transportation?: ITransportation;
+  onSumbit: () => void;
   setActiveOrder: (v: number | null) => void;
 }
 
@@ -24,7 +26,7 @@ interface IFormOrder {
   weight: string | number | null;
   width: string | number | null;
 
-  distance: number | null;
+  distance: string | number | null;
 
   landingApartment: number | null;
   landingHouse: number | null;
@@ -32,7 +34,7 @@ interface IFormOrder {
   landingCountryName: string;
   landingPhoneNumber: string;
   landingStreet: string;
-  landingDate: string;
+  landingDate: number;
   landingDateLoadType: 'AUTOMATED' | 'MANUAL';
 
   loadingApartment: number | null;
@@ -41,10 +43,10 @@ interface IFormOrder {
   loadingCountryName: string;
   loadingPhoneNumber: string;
   loadingStreet: string;
-  loadingDate: string;
+  loadingDate: number;
   loadingDateLoadType: 'AUTOMATED' | 'MANUAL';
 
-  paymentDate: string;
+  paymentDate: number;
   paymentDeadline: string;
   paymentStatus: 'LATE' | 'ON_TIME' | 'OWE';
   price: number | null;
@@ -52,14 +54,15 @@ interface IFormOrder {
 
 const LoadApproachValues = ['FTL', 'LTL'];
 const LandingDateLoadValues = ['AUTOMATED', 'MANUAL'];
+const PaymentLoadValues = ['LATE', 'ON_TIME', 'OWE'];
 const LoadMethodValues = ['ABOVE', 'BEHIND', 'SIDE'];
 const PackagingValues = ['BAG', 'BOX', 'PALLET', 'TAPE'];
 
-export const FullOrder = ({ setActiveOrder }: Props) => {
+export const FullOrder = ({ transportation, onSumbit }: Props) => {
   const { t } = useTranslation(['common', 'dashboard']);
 
-  const [ediCargo] = useEditCargoMutation();
-  const [createCargo] = useCreateCargoMutation();
+  const [ediCargo] = useEditTransportationsMutation();
+  const [createTransportation] = useCreateTransportationsMutation();
 
   const validationSchema = Yup.object({
     loadApproach: Yup.mixed<'FTL' | 'LTL'>().oneOf(['FTL', 'LTL']).required(),
@@ -96,46 +99,106 @@ export const FullOrder = ({ setActiveOrder }: Props) => {
     price: Yup.number().min(1).required(),
   });
 
-  const formik = useFormik<IFormOrder>({
+  const formik = useFormik<Partial<IFormOrder>>({
     initialValues: {
-      // loadApproach: cargo.loadApproach,
-      // loadMethod: cargo.loadMethod,
-      // name: cargo.name,
-      // packaging: cargo.packaging,
-      // depth: cargo.size.depth ?? '',
-      // height: cargo.size.height ?? '',
-      // weight: cargo.size.weight ?? '',
-      // width: cargo.size.width ?? '',
+      loadApproach: transportation?.cargo.loadApproach || 'FTL',
+      loadMethod: transportation?.cargo.loadMethod || 'ABOVE',
+      name: transportation?.cargo.name,
+      packaging: transportation?.cargo.packaging || 'BAG',
+      depth: transportation?.cargo.packaging ?? '',
+      height: transportation?.cargo.size.height ?? '',
+      weight: transportation?.cargo.size.weight ?? '',
+      width: transportation?.cargo.size.width ?? '',
+      distance: transportation?.distance ?? '',
+      landingApartment: transportation?.landing.address.apartment,
+      landingHouse: transportation?.landing.address.house,
+      landingCityName: transportation?.landing.address.cityName,
+      landingCountryName: transportation?.landing.address.countryName,
+      landingPhoneNumber: transportation?.landing.address.phoneNumber,
+      landingStreet: transportation?.landing.address.street,
+      landingDate: transportation?.landing.date,
+      landingDateLoadType: transportation?.landing.loadType || 'AUTOMATED',
+      loadingApartment: transportation?.loading.address.apartment,
+      loadingHouse: transportation?.loading.address.house,
+      loadingCityName: transportation?.loading.address.cityName,
+      loadingCountryName: transportation?.loading.address.countryName,
+      loadingPhoneNumber: transportation?.loading.address.phoneNumber,
+      loadingStreet: transportation?.loading.address.street,
+      loadingDate: transportation?.loading.date,
+      loadingDateLoadType: transportation?.loading.loadType || 'AUTOMATED',
+      paymentDate: transportation?.payment.date,
+      paymentDeadline: transportation?.payment.deadline,
+      paymentStatus: transportation?.payment.paymentStatus || 'LATE',
+      price: transportation?.payment.price,
     },
     enableReinitialize: true,
     validationSchema,
-    onSubmit: async (data) => {
-      // const newData = {
-      //   id: cargo.id,
-      //   loadApproach: data.loadApproach,
-      //   loadMethod: data.loadMethod,
-      //   name: data.name,
-      //   packaging: data.packaging,
-      //   size: {
-      //     id: cargo.size.id,
-      //     depth: Number(data.depth),
-      //     height: Number(data.height),
-      //     weight: Number(data.weight),
-      //     width: Number(data.width),
-      //   },
-      // };
-      // if (isCreate) {
-      //   const res = await createCargo(newData);
-      //   if (res.data) {
-      //     onCreate(res.data.id);
-      //   }
-      // } else {
-      //   ediCargo(newData);
-      // }
+    onSubmit: async (data, { resetForm }) => {
+      const newData = {
+        cargo: {
+          id: transportation?.cargo.id,
+          loadApproach: data.loadApproach,
+          loadMethod: data.loadMethod,
+          name: data.name,
+          packaging: data.packaging,
+          size: {
+            depth: data.depth,
+            height: data.height,
+            weight: data.weight,
+            width: data.width,
+          },
+        },
+        distance: data.distance,
+        id: transportation?.id,
+        landing: {
+          address: {
+            apartment: data.landingApartment,
+            cityName: data.landingCityName,
+            countryName: data.landingCountryName,
+            house: data.landingHouse,
+            id: transportation?.landing.address.id,
+            phoneNumber: data.landingPhoneNumber,
+            street: data.landingStreet,
+          },
+          date: new Date(data.landingDate as number).getTime(),
+          id: transportation?.landing.id,
+          loadType: transportation?.landing.loadType,
+        },
+        loading: {
+          address: {
+            apartment: data.loadingApartment,
+            cityName: data.loadingCityName,
+            countryName: data.loadingCountryName,
+            house: data.loadingHouse,
+            id: transportation?.loading.address.id,
+            phoneNumber: data.loadingPhoneNumber,
+            street: data.loadingStreet,
+          },
+          date: new Date(data.loadingDate as number).getTime(),
+          id: transportation?.loading.id,
+          loadType: transportation?.loading.loadType,
+        },
+        payment: {
+          date: new Date(data.paymentDate as number).getTime(),
+          deadline: data.paymentDeadline,
+          id: transportation?.payment.id,
+          paymentStatus: data.paymentStatus,
+          price: data.price,
+        },
+      };
+      if (typeof transportation?.id !== 'number') {
+        const res = await createTransportation(newData as ITransportation);
+        if (res.data) {
+          resetForm();
+          onSumbit();
+        }
+      } else {
+        ediCargo(newData as ITransportation);
+      }
     },
   });
 
-  useEscapeKey(() => setActiveOrder(null));
+  useEscapeKey(() => onSumbit());
 
   return (
     <div className={styles.container}>
@@ -153,6 +216,17 @@ export const FullOrder = ({ setActiveOrder }: Props) => {
             placeholder={t('common:placeholders.name')}
             value={formik.values.name}
             className={cx(formik.touched.name && formik.errors.name && styles.error)}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+        </section>
+        <section className={styles.item}>
+          <input
+            type="number"
+            name="distance"
+            placeholder={t('common:placeholders.distance')}
+            value={formik.values.distance as number}
+            className={cx(formik.touched.distance && formik.errors.distance && styles.error)}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
           />
@@ -274,7 +348,7 @@ export const FullOrder = ({ setActiveOrder }: Props) => {
             onBlur={formik.handleBlur}
           />
           <input
-            type="text"
+            type="number"
             name="landingApartment"
             placeholder={t('placeholders.apartment')}
             className={cx(formik.touched.landingApartment && formik.errors.landingApartment && styles.error)}
@@ -342,7 +416,7 @@ export const FullOrder = ({ setActiveOrder }: Props) => {
             onBlur={formik.handleBlur}
           />
           <input
-            type="text"
+            type="number"
             name="loadingHouse"
             placeholder={t('placeholders.house')}
             className={cx(formik.touched.loadingHouse && formik.errors.loadingHouse && styles.error)}
@@ -362,7 +436,7 @@ export const FullOrder = ({ setActiveOrder }: Props) => {
             onBlur={formik.handleBlur}
           />
           <input
-            type="text"
+            type="number"
             name="loadingApartment"
             placeholder={t('placeholders.apartment')}
             className={cx(formik.touched.loadingApartment && formik.errors.loadingApartment && styles.error)}
@@ -391,7 +465,56 @@ export const FullOrder = ({ setActiveOrder }: Props) => {
             onBlur={formik.handleBlur}
           />
         </div>
-        <Button type="submit" className={styles.save}>
+
+        <div className={styles.info}>
+          <SVGMapMarker />
+          <p>
+            <b>{t('dashboard:pages.orders.paymentInfo')}</b>
+          </p>
+        </div>
+
+        <div className={styles.item}>
+          <input
+            type="text"
+            name="paymentDate"
+            placeholder={t('placeholders.paymentDate')}
+            className={cx(formik.touched.paymentDate && formik.errors.paymentDate && styles.error)}
+            value={formik.values.paymentDate}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+          <input
+            type="text"
+            name="paymentDeadline"
+            placeholder={t('placeholders.paymentDeadline')}
+            className={cx(formik.touched.paymentDeadline && formik.errors.paymentDeadline && styles.error)}
+            value={formik.values.paymentDeadline}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+        </div>
+        <div className={styles.item}>
+          <select
+            {...formik.getFieldProps('paymentStatus')}
+            className={cx(formik.touched.paymentStatus && formik.errors.paymentStatus && styles.error)}>
+            {PaymentLoadValues.map((value) => (
+              <option value={value} key={value}>
+                {value}
+              </option>
+            ))}
+          </select>
+          <input
+            type="number"
+            name="price"
+            placeholder={t('placeholders.price')}
+            className={cx(formik.touched.price && formik.errors.price && styles.error)}
+            value={formik.values.price as number}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+        </div>
+
+        <Button type="submit" onClick={() => console.log(formik.errors)} className={styles.save}>
           {t('placeholders.save')}
         </Button>
       </form>

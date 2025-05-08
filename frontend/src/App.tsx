@@ -1,5 +1,5 @@
 import { Routes } from 'Router';
-import { AuthProvider, ContactUsModalProvider, EditUserModalProvider } from 'features';
+import { AuthProvider, EditUserModalProvider } from 'features';
 
 import './scss/App.scss';
 
@@ -9,11 +9,9 @@ i18n.init();
 const App = () => {
   return (
     <AuthProvider>
-      <ContactUsModalProvider>
-        <EditUserModalProvider>
-          <Routes />
-        </EditUserModalProvider>
-      </ContactUsModalProvider>
+      <EditUserModalProvider>
+        <Routes />
+      </EditUserModalProvider>
     </AuthProvider>
   );
 };

@@ -3,7 +3,7 @@
   flex-direction: column;
   gap: var(--gap-xl);
 
-  width: 440px;
+  width: 500px;
   overflow: hidden;
 
   ::-webkit-scrollbar {
@@ -36,7 +36,10 @@
 
   .roles {
     display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
     width: 100%;
+    min-height: 40px;
 
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
@@ -45,6 +48,7 @@
       flex-grow: 1;
       border-radius: 0;
       text-wrap: nowrap;
+      min-height: 40px;
 
       &:active {
         scale: 1;

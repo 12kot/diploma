@@ -4,19 +4,7 @@ import { APP_ROUTES } from 'Router';
 
 import { EUserRole } from './user';
 
-import {
-  SVGCar,
-  SVGCargoOwner,
-  SVGCompany,
-  SVGDashboard,
-  SVGInbox,
-  SVGSettings,
-  SVGUser,
-  SVGReceipt,
-  SVGInfo,
-  SVGPrivacy,
-  SVGCargo,
-} from 'assets';
+import { SVGUser, SVGReceipt, SVGCargo } from 'assets';
 
 export interface INavItem {
   id: number;
@@ -28,13 +16,6 @@ export interface INavItem {
 }
 
 export const NavItems = (t: TFunction<['menuHolder'], undefined>): INavItem[] => [
-  {
-    id: 1,
-    name: t('menuHolder:links.dashboard'),
-    path: APP_ROUTES.DASHBOARD,
-    sees: [EUserRole.Admin, EUserRole.Forwarder, EUserRole.Driver, EUserRole.Owner],
-    icon: SVGDashboard,
-  },
   {
     id: 8,
     name: t('menuHolder:links.cargo'),
@@ -48,7 +29,6 @@ export const NavItems = (t: TFunction<['menuHolder'], undefined>): INavItem[] =>
     path: APP_ROUTES.ADDRESSES,
     icon: SVGReceipt,
     sees: [EUserRole.Admin, EUserRole.Forwarder],
-    count: 31,
   },
   {
     id: 2,
@@ -56,31 +36,6 @@ export const NavItems = (t: TFunction<['menuHolder'], undefined>): INavItem[] =>
     path: APP_ROUTES.ORDERS,
     icon: SVGReceipt,
     sees: [EUserRole.Admin, EUserRole.Forwarder, EUserRole.Driver, EUserRole.Owner],
-    count: 31,
-  },
-  {
-    id: 3,
-    name: t('menuHolder:links.forwarders'),
-    path: APP_ROUTES.FORWARDERS,
-    icon: SVGCompany,
-    sees: [EUserRole.Admin],
-    count: 255,
-  },
-  {
-    id: 4,
-    name: t('menuHolder:links.drivers'),
-    path: APP_ROUTES.DRIVERS,
-    icon: SVGCar,
-    sees: [EUserRole.Admin, EUserRole.Forwarder],
-    count: 8,
-  },
-  {
-    id: 5,
-    name: t('menuHolder:links.cargoOwners'),
-    path: APP_ROUTES.OWNERS,
-    icon: SVGCargoOwner,
-    sees: [EUserRole.Admin, EUserRole.Forwarder],
-    count: 31,
   },
   {
     id: 6,
@@ -89,34 +44,6 @@ export const NavItems = (t: TFunction<['menuHolder'], undefined>): INavItem[] =>
     icon: SVGUser,
     sees: [EUserRole.Admin, EUserRole.Forwarder, EUserRole.Driver, EUserRole.Owner],
   },
-  {
-    id: 7,
-    name: t('menuHolder:links.settings'),
-    path: APP_ROUTES.SETTINGS,
-    icon: SVGSettings,
-    sees: [EUserRole.Admin, EUserRole.Forwarder, EUserRole.Driver, EUserRole.Owner],
-  },
-  {
-    id: 9,
-    name: t('menuHolder:links.applications'),
-    path: APP_ROUTES.APPLICATIONS,
-    icon: SVGInbox,
-    sees: [EUserRole.Admin],
-    count: 31,
-  },
 ];
 
-export const GeneralNavItems = (t: TFunction<['menuHolder'], undefined>): INavItem[] => [
-  {
-    id: 1,
-    name: t('menuHolder:links.aboutUs'),
-    path: APP_ROUTES.ABOUT_US,
-    icon: SVGInfo,
-  },
-  {
-    id: 2,
-    name: t('menuHolder:links.privacy'),
-    path: APP_ROUTES.PRIVACY,
-    icon: SVGPrivacy,
-  },
-];
+export const GeneralNavItems = (t: TFunction<['menuHolder'], undefined>): INavItem[] => [];

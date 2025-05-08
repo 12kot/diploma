@@ -10,8 +10,8 @@ interface Props {
 export const HeaderLng = ({ className }: Props) => {
   return (
     <Button buttonType="transparent" className={cx(styles.container, className)} aria-label="Switch to Russian">
-      <img src="https://flagsapi.com/US/flat/64.png" alt="en" loading="lazy" />
-      <p>EN</p>
+      <img src="https://flagsapi.com/RU/flat/64.png" alt="en" loading="lazy" />
+      <p>RU</p>
     </Button>
   );
 };

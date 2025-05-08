@@ -57,7 +57,7 @@ export const Address = () => {
         <Filters handleCreate={handleCreateAddressStatus} />
         <AddressesList addresses={addresses || []} activeAddressId={openAddress} setOpenAddress={handleOpenAddress} />
       </div>
-      {((openAddress && activeAddress) || isCreate) && (
+      {((openAddress) || isCreate) && (
         <ActiveAddress
           onCreate={onCreateAddress}
           isCreate={isCreate}

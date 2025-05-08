@@ -9,7 +9,7 @@ export const transportationApi = createApi({
   endpoints: (builder) => ({
     getTransportations: builder.query<ITransportation[], void>({
       query: () => ({
-        url: '/api/getTransportations',
+        url: '/api/transportations',
         method: 'GET',
       }),
       providesTags: ['transportations'],
@@ -17,16 +17,16 @@ export const transportationApi = createApi({
 
     editTransportations: builder.mutation<ITransportation, Partial<ITransportation>>({
       query: ({ id, ...body }) => ({
-        url: `/api/getTransportations/${id}`,
+        url: `/api/transportations/${id}`,
         method: 'PUT',
         body,
       }),
       invalidatesTags: ['transportations'],
     }),
 
-    createTransportations: builder.mutation<ITransportation, Omit<ITransportation, 'id'>>({
+    createTransportations: builder.mutation<ITransportation, Partial<ITransportation>>({
       query: (body) => ({
-        url: `/api/getTransportations`,
+        url: `/api/transportations`,
         method: 'POST',
         body,
       }),
@@ -35,4 +35,4 @@ export const transportationApi = createApi({
   }),
 });
 
-export const { useCreateTransportationsMutation, useEditTransportationsMutation, useGetTransportationsQuery } = transportationApi;
+export const { useCreateTransportationsMutation, useEditTransportationsMutation, useLazyGetTransportationsQuery } = transportationApi;

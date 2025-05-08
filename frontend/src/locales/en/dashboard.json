@@ -1,112 +1,113 @@
 {
   "common": {
-    "banned": "Banned: {{date}}"
+    "banned": "Заблокирован: {{date}}"
   },
 
   "greeting": {
-    "hello": "Welcome Back, {{name}}",
-    "traffic": "Measure your advertising ROI and track and report website traffic",
-    "generateReport": "Generate Report"
+    "hello": "С возвращением, {{name}}",
+    "traffic": "Оценивайте рентабельность рекламы и отслеживайте трафик на сайте",
+    "generateReport": "Сформировать отчет"
   },
 
   "profile": {
     "pages": {
-      "general": "General Information",
-      "orders": "My orders"
+      "general": "Общая информация",
+      "orders": "Мои заказы"
     },
-    "personalInfo": "Personal Information",
-    "professionalInfo": "Professional Information",
-    "whyIsImportant": "Why is it important to fill out information about yourself",
+    "personalInfo": "Личная информация",
+    "professionalInfo": "Профессиональная информация",
+    "whyIsImportant": "Почему важно заполнить информацию о себе",
     "whyIsImportantText": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem neque nihil sapiente corrupti exercitationem officia, tenetur sequi ut. Accusantium incidunt corrupti totam facilis eveniet perferendis, iusto iste ducimus quos facere."
   },
 
   "settings": {
-    "changePassword": "Change Password",
-    "note": "Please enter your current password to change your password"
+    "changePassword": "Сменить пароль",
+    "note": "Пожалуйста, введите текущий пароль для его смены"
   },
 
   "total": {
-    "totalForwarders": "Total forwarders",
-    "activeForwarders": "Active forwarders",
-    "totalOrders": "Total orders",
-    "LastMonthOrders": "Last month orders",
-    "earned": "Earned",
-    "paidOut": "Paid out"
+    "totalForwarders": "Всего экспедиторов",
+    "activeForwarders": "Активных экспедиторов",
+    "totalOrders": "Всего заказов",
+    "LastMonthOrders": "Заказы за последний месяц",
+    "earned": "Заработано",
+    "paidOut": "Выплачено"
   },
 
   "charts": {
-    "dailyActiveUsers": "Daily Active Users",
-    "dailyOrders": "Daily orders",
-    "loaderPreview": "Loader Preview",
-    "earned": "Earned"
+    "dailyActiveUsers": "Ежедневные активные пользователи",
+    "dailyOrders": "Ежедневные заказы",
+    "loaderPreview": "Превью загрузчика",
+    "earned": "Заработано"
   },
 
   "pages": {
     "list": {
-      "chat": "Chat",
-      "about": "About",
-      "analitics": "Analitics",
-      "orders": "Orders"
+      "chat": "Чат",
+      "about": "О нас",
+      "analitics": "Аналитика",
+      "orders": "Заказы"
     },
 
     "about": {
-      "carrier": "Carrier",
-      "personal": "Personal",
-      "about": "About"
+      "carrier": "Перевозчик",
+      "personal": "Личное",
+      "about": "О нас"
     },
 
     "orders": {
-      "cargoOwner": "Cargo Owner",
-      "landingInfo": "Landing Info",
-      "loadingInfo": "Loading Info",
-      "cargoInfo": "Cargo Info",
-      "driverInfo": "Driver Info",
-      "id": "Id",
-      "name": "Name",
-      "email": "Email",
-      "phone": "Phone",
-      "status": "Status",
-      "typeOfPackaging": "Type of packaging",
-      "receivingAddress": "Receiving address",
-      "unloadingAddress": "Unloading address",
-      "price": "Price",
+      "cargoOwner": "Грузовладелец",
+      "paymentInfo": "Информация об оплате",
+      "landingInfo": "Информация о прибытии",
+      "loadingInfo": "Информация о погрузке",
+      "cargoInfo": "Информация о грузе",
+      "driverInfo": "Информация о водителе",
+      "id": "ID",
+      "name": "Имя",
+      "email": "Электронная почта",
+      "phone": "Телефон",
+      "status": "Статус",
+      "typeOfPackaging": "Тип упаковки",
+      "receivingAddress": "Адрес получения",
+      "unloadingAddress": "Адрес разгрузки",
+      "price": "Цена",
 
       "indicator": {
-        "waiting": "Waiting",
-        "closed": "Closed",
-        "way": "In the way"
+        "waiting": "Ожидает",
+        "closed": "Закрыт",
+        "way": "В пути"
       }
     }
   },
 
   "editProfile": {
-    "edit": "Edit {{name}} Profile",
-    "create": "Create User"
+    "edit": "Редактировать профиль {{name}}",
+    "create": "Создать пользователя"
   },
 
   "actions": {
     "forwarders": {
-      "suspend": "Suspend the forwarder's activity",
-      "continue": "Continue the forwarder's activity"
+      "suspend": "Приостановить деятельность экспедитора",
+      "continue": "Возобновить деятельность экспедитора"
     },
     "drivers": {
-      "suspend": "Suspend the driver's activity",
-      "continue": "Continue the driver's activity"
+      "suspend": "Приостановить деятельность водителя",
+      "continue": "Возобновить деятельность водителя"
     }
   },
 
   "order": {
-    "addDriverToOrder": "Add Driver To Order"
+    "addDriverToOrder": "Добавить водителя к заказу"
   },
 
   "createOrder": {
-    "index": "Create Order",
-    "cargoInfo": "Cargo Information",
-    "deliveryInfo": "Delivery Information",
+    "index": "Создать заказ",
+    "cargoInfo": "Информация о грузе",
+    "deliveryInfo": "Информация о доставке",
 
     "modal": {
-      "addDownloadAddress": "Add a download address",
-    "addUploadAddress": "Add an upload address"
+      "addDownloadAddress": "Добавить адрес погрузки",
+      "addUploadAddress": "Добавить адрес разгрузки"
     }
   }
 }

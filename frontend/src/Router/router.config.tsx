@@ -1,22 +1,7 @@
 import { ReactElement } from 'react';
 import { Navigate } from 'react-router-dom';
 
-import {
-  AddressLazy,
-  ApplicationsLazy,
-  CargoLazy,
-  CreateOrderLazy,
-  DashboardLazy,
-  HomeLazy,
-  Login,
-  NotFoundLazy,
-  OrdersLazy,
-  ProfileLazy,
-  Recovery,
-  Registration,
-  SettingsLazy,
-  UsersLazy,
-} from 'pages';
+import { AddressLazy, CargoLazy, HomeLazy, Login, NotFoundLazy, OrdersLazy, ProfileLazy } from 'pages';
 
 export enum EPermissions {
   AUTH_NOT_REQUIRED = 'no_auth',
@@ -36,21 +21,13 @@ export enum APP_ROUTES {
   PRIVACY = '/privacy',
 
   LOGIN = '/login',
-  REGISTRATION = '/registration',
-  RECOVERY = '/recovery',
   NOT_FOUND = '/404',
 
   DASHBOARD = '/dashboard',
   ADDRESSES = '/dashboard/addresses',
   CARGO = '/dashboard/cargo',
-  FORWARDERS = '/dashboard/users/forwarder',
-  DRIVERS = '/dashboard/users/driver',
-  OWNERS = '/dashboard/users/owner',
   PROFILE = '/dashboard/profile',
-  SETTINGS = '/dashboard/settings',
-  APPLICATIONS = '/dashboard/applications',
   ORDERS = '/dashboard/orders',
-  CREATE_ORDER = '/dashboard/order/create',
   ALL = '*',
 }
 
@@ -70,28 +47,12 @@ export const routes: TRoutes = {
     element: <HomeLazy />,
     permissions: [EPermissions.AUTH_NOT_REQUIRED],
   },
-  [APP_ROUTES.ABOUT_US]: {
-    element: <>About</>,
-    permissions: [EPermissions.AUTH_NOT_REQUIRED],
-  },
-  [APP_ROUTES.PRIVACY]: {
-    element: <>Privacy</>,
-    permissions: [EPermissions.AUTH_NOT_REQUIRED],
-  },
   [APP_ROUTES.LOGIN]: {
     element: <Login />,
     permissions: [EPermissions.AUTH_LOGIN],
   },
-  [APP_ROUTES.REGISTRATION]: {
-    element: <Registration />,
-    permissions: [EPermissions.AUTH_LOGIN],
-  },
-  [APP_ROUTES.RECOVERY]: {
-    element: <Recovery />,
-    permissions: [EPermissions.AUTH_LOGIN],
-  },
   [APP_ROUTES.DASHBOARD]: {
-    element: <DashboardLazy />,
+    element: <ProfileLazy />,
     permissions: [
       EPermissions.AUTH_REQUIRED,
       EPermissions.AUTH_ADMIN,
@@ -99,18 +60,6 @@ export const routes: TRoutes = {
       EPermissions.AUTH_DRIVER,
       EPermissions.AUTH_OWNER,
     ],
-  },
-  [APP_ROUTES.FORWARDERS]: {
-    element: <UsersLazy />,
-    permissions: [EPermissions.AUTH_REQUIRED, EPermissions.AUTH_ADMIN],
-  },
-  [APP_ROUTES.DRIVERS]: {
-    element: <UsersLazy />,
-    permissions: [EPermissions.AUTH_REQUIRED, EPermissions.AUTH_ADMIN, EPermissions.AUTH_FORWARDER],
-  },
-  [APP_ROUTES.OWNERS]: {
-    element: <UsersLazy />,
-    permissions: [EPermissions.AUTH_REQUIRED, EPermissions.AUTH_ADMIN, EPermissions.AUTH_FORWARDER],
   },
   [APP_ROUTES.ADDRESSES]: {
     element: <AddressLazy />,
@@ -130,20 +79,6 @@ export const routes: TRoutes = {
       EPermissions.AUTH_OWNER,
     ],
   },
-  [APP_ROUTES.SETTINGS]: {
-    element: <SettingsLazy />,
-    permissions: [
-      EPermissions.AUTH_REQUIRED,
-      EPermissions.AUTH_ADMIN,
-      EPermissions.AUTH_FORWARDER,
-      EPermissions.AUTH_DRIVER,
-      EPermissions.AUTH_OWNER,
-    ],
-  },
-  [APP_ROUTES.APPLICATIONS]: {
-    element: <ApplicationsLazy />,
-    permissions: [EPermissions.AUTH_REQUIRED, EPermissions.AUTH_ADMIN],
-  },
   [APP_ROUTES.ORDERS]: {
     element: <OrdersLazy />,
     permissions: [
@@ -153,10 +88,6 @@ export const routes: TRoutes = {
       EPermissions.AUTH_DRIVER,
       EPermissions.AUTH_OWNER,
     ],
-  },
-  [APP_ROUTES.CREATE_ORDER]: {
-    element: <CreateOrderLazy />,
-    permissions: [EPermissions.AUTH_REQUIRED, EPermissions.AUTH_OWNER],
   },
 
   [APP_ROUTES.NOT_FOUND]: {

@@ -4,7 +4,6 @@ import { GeneralNavItems } from 'features';
 
 import { ProfileSection } from './ProfileSection';
 import { MainSection } from './MainSection';
-import { AboutSection } from './AboutSection';
 import { MenuListContainer } from './components';
 import { LanguageSection } from './LanguageSection';
 import { LoginSection } from './LoginSection';
@@ -20,7 +19,6 @@ export const Content = ({ setIsOpen }: { setIsOpen: () => void }) => {
     <ul className={styles.container}>
       {!!user.name && <ProfileSection setIsOpen={setIsOpen} />}
       {user?.role && <MainSection setIsOpen={setIsOpen} userRole={user.role} />}
-      <AboutSection setIsOpen={setIsOpen} />
       <MenuListContainer navItems={GeneralNavItems(t)} setIsOpen={setIsOpen} />
       <LanguageSection />
       {!user.name && <LoginSection setIsOpen={setIsOpen} />}

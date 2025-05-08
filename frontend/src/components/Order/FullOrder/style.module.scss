@@ -6,7 +6,7 @@
 
   border-left: 1px solid var(--border-color);
 
-  overflow: hidden;
+  overflow-y: auto;
   height: calc(100vh - var(--header-height));
   min-height: calc(100vh - var(--header-height));
 

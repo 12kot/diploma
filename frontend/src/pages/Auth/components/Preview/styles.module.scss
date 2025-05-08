@@ -47,3 +47,9 @@
     border: 10px solid var(--main-color);
   }
 }
+
+@media screen and (max-width: 900px) {
+  .container {
+    display: none;
+  }
+}

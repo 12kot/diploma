@@ -1,10 +1,10 @@
 export interface ITransportation {
   cargo: {
     id: number;
-    loadApproach: string;
-    loadMethod: string;
+    loadApproach: 'FTL' | 'LTL';
+    loadMethod: 'ABOVE' | 'BEHIND' | 'SIDE';
     name: string;
-    packaging: string;
+    packaging: 'BAG' | 'BOX' | 'PALLET' | 'TAPE';
     size: {
       depth: number;
       height: number;
@@ -24,9 +24,9 @@ export interface ITransportation {
       phoneNumber: string;
       street: string;
     };
-    date: string;
+    date: number;
     id: number;
-    loadType: string;
+    loadType: 'AUTOMATED' | 'MANUAL';
   };
   loading: {
     address: {
@@ -38,15 +38,15 @@ export interface ITransportation {
       phoneNumber: string;
       street: string;
     };
-    date: string;
+    date: number;
     id: number;
-    loadType: string;
+    loadType: 'AUTOMATED' | 'MANUAL';
   };
   payment: {
-    date: string;
+    date: number;
     deadline: string;
     id: number;
-    paymentStatus: string;
+    paymentStatus: 'LATE' | 'ON_TIME' | 'OWE';
     price: number;
     user: {
       email: string;

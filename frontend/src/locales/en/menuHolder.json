@@ -1,37 +1,37 @@
 {
   "links": {
-    "dashboard": "Dashboard",
-    "forwarders": "Forwarders",
-    "drivers": "Drivers",
-    "addresses": "Addresses",
-    "savedForwarders": "Saved forwarders",
-    "profile": "Profile",
-    "settings": "Settings",
-    "applications": "Applications",
-    "cargoOwners": "Cargo owners",
-    "orders": "Orders",
-    "cargo": "Cargo",
-    "aboutUs": "About Us",
-    "privacy": "Privacy Terms",
-    "createOrder": "Create Order"
+    "dashboard": "Панель управления",
+    "forwarders": "Экспедиторы",
+    "drivers": "Водители",
+    "addresses": "Адреса",
+    "savedForwarders": "Сохранённые экспедиторы",
+    "profile": "Профиль",
+    "settings": "Настройки",
+    "applications": "Заявки",
+    "cargoOwners": "Грузовладельцы",
+    "orders": "Заказы",
+    "cargo": "Грузы",
+    "aboutUs": "О нас",
+    "privacy": "Политика конфиденциальности",
+    "createOrder": "Создать заказ"
   },
 
   "sections": {
-    "main": "MAIN",
-    "about": "ABOUT"
+    "main": "ОСНОВНОЕ",
+    "about": "О НАС"
   },
   
-  "logOut": "Log Out",
+  "logOut": "Выйти",
 
   "support": {
-    "customerSupport": "Customer Support",
-    "troubles": "Have any troubles wile using our system",
-    "contactUs": "Contact Us",
+    "customerSupport": "Служба поддержки",
+    "troubles": "Возникли проблемы при использовании нашей системы?",
+    "contactUs": "Связаться с нами",
 
     "modal": {
-      "whatHappened": "What happened",
-      "describeProblem": "Describe your problem in detail here",
-      "sendSuccessText": "Your request has been successfully sent. Our manager will process it in the near future and will return to you with an answer"
+      "whatHappened": "Что произошло",
+      "describeProblem": "Опишите свою проблему подробно здесь",
+      "sendSuccessText": "Ваш запрос успешно отправлен. Наш менеджер скоро его обработает и свяжется с вами с ответом."
     }
   }
 }

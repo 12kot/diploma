@@ -54,14 +54,6 @@ export const Header = () => {
                 {t('common:buttons.createUser')}
               </Button>
             )}
-            {user?.role === EUserRole.Owner && (
-              <Button
-                onClick={() => navigate(APP_ROUTES.CREATE_ORDER)}
-                buttonType="transparent"
-                aria-label={t('common:buttons.createOrder')}>
-                {t('common:buttons.createOrder')}
-              </Button>
-            )}
             {!!user.name && <ProfileCard />}
             {!user.name && <Button onClick={() => navigate(APP_ROUTES.LOGIN)}>{t('common:buttons.signIn')}</Button>}
           </div>

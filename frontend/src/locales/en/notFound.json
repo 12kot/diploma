@@ -1,10 +1,10 @@
 {
-  "header": "We’ve lost this page",
-  "text": "Sorry, the page you are looking for doesn’t exist or has been moved.",
+  "header": "Мы потеряли эту страницу",
+  "text": "Извините, страница, которую вы ищете, не существует или была перемещена.",
 
   "actions": {
-    "homePage": "Home Page",
-    "dashboard": "Dashboard",
-    "singIn": "Sing In"
+    "homePage": "На главную",
+    "dashboard": "Панель управления",
+    "singIn": "Войти"
   }
 }

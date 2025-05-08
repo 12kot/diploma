@@ -1,7 +1,5 @@
 import { useTranslation } from 'react-i18next';
 
-import { useContactUsModal } from 'features';
-
 import { SVGContactUs } from 'assets';
 
 import { NavButton } from '../components';
@@ -12,12 +10,10 @@ interface Props {
 }
 
 export const AboutSection = ({ setIsOpen }: Props) => {
-  const { setContactUsModalOpen } = useContactUsModal();
   const { t } = useTranslation(['menuHolder', 'common']);
 
   const handleOpenContactUsModal = () => {
     setIsOpen();
-    setContactUsModalOpen();
   };
 
   return (

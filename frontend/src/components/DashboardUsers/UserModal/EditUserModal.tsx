@@ -37,13 +37,13 @@ export const EditUserModal = ({ isOpen, setIsOpen, isCreate }: ModalProps) => {
     validationSchema,
     onSubmit: async (data, { resetForm }) => {
       const userData = {
-        about: data.self,
-        email: data.email,
-        firstName: data.name,
-        lastName: data.surname,
-        name: data.username,
-        password: data.password,
-        phoneNumber: data.phone,
+        about: data.self.trim(),
+        email: data.email.trim(),
+        firstName: data.name.trim(),
+        lastName: data.surname.trim(),
+        name: data.username.trim(),
+        password: data.password.trim(),
+        phoneNumber: data.phone.trim(),
         roles: [
           {
             role: activeRole,
@@ -84,7 +84,7 @@ export const EditUserModal = ({ isOpen, setIsOpen, isCreate }: ModalProps) => {
             name="username"
             placeholder={t('common:placeholders.username')}
             className={cx(formik.touched.username && formik.errors.username && styles.error)}
-            value={formik.values.username}
+            value={formik.values.username.trim()}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
           />
@@ -93,7 +93,7 @@ export const EditUserModal = ({ isOpen, setIsOpen, isCreate }: ModalProps) => {
             name="password"
             placeholder={t('common:placeholders.password')}
             className={cx(formik.touched.password && formik.errors.password && styles.error)}
-            value={formik.values.password}
+            value={formik.values.password.trim()}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
           />
@@ -104,7 +104,7 @@ export const EditUserModal = ({ isOpen, setIsOpen, isCreate }: ModalProps) => {
             name="name"
             placeholder={t('common:placeholders.name')}
             className={cx(formik.touched.name && formik.errors.name && styles.error)}
-            value={formik.values.name}
+            value={formik.values.name.trim()}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
           />
@@ -113,7 +113,7 @@ export const EditUserModal = ({ isOpen, setIsOpen, isCreate }: ModalProps) => {
             name="surname"
             placeholder={t('common:placeholders.surname')}
             className={cx(formik.touched.surname && formik.errors.surname && styles.error)}
-            value={formik.values.surname}
+            value={formik.values.surname.trim()}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
           />
@@ -135,7 +135,7 @@ export const EditUserModal = ({ isOpen, setIsOpen, isCreate }: ModalProps) => {
           name="email"
           placeholder={t('common:placeholders.email')}
           className={cx(formik.touched.email && formik.errors.email && styles.error)}
-          value={formik.values.email}
+          value={formik.values.email.trim()}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
         />
