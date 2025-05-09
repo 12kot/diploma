@@ -1,29 +1,11 @@
+import { IAddress, ICargo } from "./order";
+
 export interface ITransportation {
-  cargo: {
-    id: number;
-    loadApproach: 'FTL' | 'LTL';
-    loadMethod: 'ABOVE' | 'BEHIND' | 'SIDE';
-    name: string;
-    packaging: 'BAG' | 'BOX' | 'PALLET' | 'TAPE';
-    size: {
-      depth: number;
-      height: number;
-      weight: number;
-      width: number;
-    };
-  };
+  cargo: ICargo;
   distance: number;
   id: number;
   landing: {
-    address: {
-      apartment: number;
-      cityName: string;
-      countryName: string;
-      house: number;
-      id: number;
-      phoneNumber: string;
-      street: string;
-    };
+    address: IAddress,
     date: number;
     id: number;
     loadType: 'AUTOMATED' | 'MANUAL';
@@ -44,7 +26,7 @@ export interface ITransportation {
   };
   payment: {
     date: number;
-    deadline: string;
+    deadline: number;
     id: number;
     paymentStatus: 'LATE' | 'ON_TIME' | 'OWE';
     price: number;

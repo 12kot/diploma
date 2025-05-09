@@ -52,11 +52,15 @@ export const ActiveAddress = ({ address, isCreate, onCreate, closeActiveAddress 
     },
   });
 
+  const addressTitle = [address.countryName, address.cityName, address.street, address.apartment]
+    .filter(Boolean)
+    .join(', ');
+
   return (
     <div className={styles.container}>
       <div className={styles.content}>
         <AddressLabels
-          title={`${address.countryName}, ${address.cityName}, ${address.street}, ${address.apartment}`}
+          title={addressTitle || t('newAddress')}
           closeActiveAddress={closeActiveAddress}
         />
         <form className={styles.form} onSubmit={formik.handleSubmit}>

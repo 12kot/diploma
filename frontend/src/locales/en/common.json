@@ -1,5 +1,7 @@
 {
   "or": "ИЛИ",
+  "newAddress": "Новый адрес",
+  "newCargo": "Новый товар",
   "userCreateSuccess": "Пользователь успешно создан",
   "userCreateError": "Ошибка при создании пользователя",
   "transportationSuccess": "Поездка успешно создана",

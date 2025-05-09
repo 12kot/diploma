@@ -52,17 +52,20 @@ export const Cargo = () => {
   const activeCargo = (cargos || []).find((cargo) => cargo.id === openCargo);
 
   return (
-    <div className={cx(styles.container, openCargo && styles.grid)}>
+    <div className={cx(styles.container, (isCreate || openCargo !== undefined) && styles.grid)}>
       <div className={styles.list}>
         <Filters handleCreate={handleCreateCargoStatus} />
         <CargoList cargos={cargos || []} activeCargoId={openCargo} setOpenCargo={handleOpenCargo} />
       </div>
-      {((openCargo && activeCargo) || isCreate) && (
+      {(isCreate || openCargo !== undefined) && (
         <ActiveCargo
           onCreate={onCreateCargo}
           isCreate={isCreate}
           cargo={isCreate ? CargoInit : (activeCargo || CargoInit)}
-          closeActiveCargo={() => setOpenCargo(undefined)}
+          closeActiveCargo={() => {
+            setIsCreate(false);
+            setOpenCargo(undefined);
+          }}
         />
       )}
     </div>

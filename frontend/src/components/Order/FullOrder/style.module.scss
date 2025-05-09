@@ -10,6 +10,16 @@
   height: calc(100vh - var(--header-height));
   min-height: calc(100vh - var(--header-height));
 
+  .cards {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .full {
+    width: 100%;
+  }
+
   @media (max-width: 950px) {
     overflow-y: scroll;
 

@@ -92,12 +92,12 @@ export const ActiveCargo = ({ cargo, isCreate, onCreate, closeActiveCargo }: Pro
       }
     },
   });
-
+  
   return (
     <div className={styles.container}>
       <div className={styles.content}>
         <CargoLabels
-          title={`${cargo.name}, ${t('common:gramm', { value: cargo.size.weight })}`}
+          title={cargo.name ? `${cargo.name}, ${t('common:gramm', { value: cargo.size.weight })}` : t('newCargo')}
           closeActiveCargo={closeActiveCargo}
         />
         <form className={styles.form} onSubmit={formik.handleSubmit}>

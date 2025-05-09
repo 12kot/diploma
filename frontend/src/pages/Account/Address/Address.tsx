@@ -52,17 +52,20 @@ export const Address = () => {
   const activeAddress = (addresses || []).find((address) => address.id === openAddress);
 
   return (
-    <div className={cx(styles.container, openAddress && styles.grid)}>
+    <div className={cx(styles.container, (isCreate || openAddress !== undefined) && styles.grid)}>
       <div className={styles.list}>
         <Filters handleCreate={handleCreateAddressStatus} />
         <AddressesList addresses={addresses || []} activeAddressId={openAddress} setOpenAddress={handleOpenAddress} />
       </div>
-      {((openAddress) || isCreate) && (
+      {(isCreate || openAddress !== undefined) && (
         <ActiveAddress
           onCreate={onCreateAddress}
           isCreate={isCreate}
           address={isCreate ? AddressInit : activeAddress || AddressInit}
-          closeActiveAddress={() => setOpenAddress(undefined)}
+          closeActiveAddress={() => {
+            setIsCreate(false);
+            setOpenAddress(undefined);
+          }}
         />
       )}
     </div>

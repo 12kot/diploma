@@ -49,6 +49,11 @@
   img {
     fill: var(--font-color);
   }
+
+  &:disabled {
+    opacity: 0.5;
+    background-color: #ffffff;
+  }
 }
 
 .default {

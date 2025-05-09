@@ -24,8 +24,8 @@ export const cargoApi = createApi({
       invalidatesTags: ['cargo'],
     }),
 
-    createCargo: builder.mutation<ICargo, Omit<ICargo, 'id'>>({
-      query: (body) => ({
+    createCargo: builder.mutation<ICargo, ICargo>({
+      query: ({id, ...body}) => ({
         url: `/api/cargos`,
         method: 'POST',
         body,
