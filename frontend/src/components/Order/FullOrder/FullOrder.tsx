@@ -128,6 +128,7 @@ export const FullOrder = ({ transportation, onSumbit, cargos, addresses, canOnCh
             className={cx(formik.touched.distance && formik.errors.distance && styles.error)}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
+            disabled={!canOnChange}
           />
         </section>
 
@@ -149,6 +150,7 @@ export const FullOrder = ({ transportation, onSumbit, cargos, addresses, canOnCh
               value={formik.values.paymentDate}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
+              disabled={!canOnChange}
             />
           </div>
           <div className={styles.full}>
@@ -161,6 +163,7 @@ export const FullOrder = ({ transportation, onSumbit, cargos, addresses, canOnCh
               value={formik.values.paymentDeadline}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
+              disabled={!canOnChange}
             />
           </div>
           <div className={styles.full}>
@@ -173,6 +176,7 @@ export const FullOrder = ({ transportation, onSumbit, cargos, addresses, canOnCh
               value={formik.values.price as number}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
+              disabled={!canOnChange}
             />
           </div>
         </div>
@@ -192,6 +196,7 @@ export const FullOrder = ({ transportation, onSumbit, cargos, addresses, canOnCh
                   type="button"
                   buttonType={activeCrago?.id !== cargo.id ? 'transparent' : undefined}
                   onClick={() => setActiveCargo(cargo)}
+                  disabled={!canOnChange}
                   key={cargo.id}>
                   {cargo.name}
                 </Button>
@@ -213,7 +218,7 @@ export const FullOrder = ({ transportation, onSumbit, cargos, addresses, canOnCh
                 <Button
                   type="button"
                   buttonType={activeLanding?.id !== cargo.id ? 'transparent' : undefined}
-                  disabled={activeLoading?.id === cargo.id}
+                  disabled={activeLoading?.id === cargo.id || !canOnChange}
                   onClick={() => setActiveLanding(cargo)}
                   key={cargo.id}>
                   {`${cargo.countryName ? `${cargo.countryName}, ` : ''}${cargo.cityName ? `${cargo.cityName}, ` : ''}${
@@ -238,7 +243,7 @@ export const FullOrder = ({ transportation, onSumbit, cargos, addresses, canOnCh
                 <Button
                   type="button"
                   buttonType={activeLoading?.id !== cargo.id ? 'transparent' : undefined}
-                  disabled={activeLanding?.id === cargo.id}
+                  disabled={activeLanding?.id === cargo.id || !canOnChange}
                   onClick={() => setActiveLoading(cargo)}
                   key={cargo.id}>
                   {`${cargo.countryName ? `${cargo.countryName}, ` : ''}${cargo.cityName ? `${cargo.cityName}, ` : ''}${
