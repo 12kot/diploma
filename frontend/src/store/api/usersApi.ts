@@ -10,6 +10,10 @@ export const usersApi = createApi({
   reducerPath: 'usersApi',
   baseQuery: BaseQuery,
   endpoints: (builder) => ({
+    getAllUsers: builder.query<IGetUser[], void>({
+      query: () => '/api/users',
+    }),
+
     findUserInfo: builder.mutation<IGetUser, { name: string }>({
       query: (params) => ({
         url: '/api/users/find',
@@ -19,13 +23,13 @@ export const usersApi = createApi({
     }),
 
     editUser: builder.mutation<IUser, Partial<IUser>>({
-      query: ({id, ...body}) => ({
+      query: ({ id, ...body }) => ({
         url: `/api/users/${id}`,
         method: 'PUT',
         body,
       }),
     }),
-   
+
     registerUser: builder.mutation<IUser, Partial<IRegisterUser>>({
       query: (body) => ({
         url: `/api/users/register`,
@@ -36,4 +40,4 @@ export const usersApi = createApi({
   }),
 });
 
-export const { useFindUserInfoMutation, useEditUserMutation, useRegisterUserMutation } = usersApi;
+export const { useFindUserInfoMutation, useEditUserMutation, useRegisterUserMutation, useGetAllUsersQuery } = usersApi;

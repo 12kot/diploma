@@ -11,6 +11,7 @@ export const cargoApi = createApi({
       query: () => ({
         url: '/api/cargos',
         method: 'GET',
+        params: { pageSize: 9999 },
       }),
       providesTags: ['cargo'],
     }),

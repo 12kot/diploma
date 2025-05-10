@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 
 import { cx, ICargo } from 'features';
-import { Filters } from 'components';
+import { Filters, Loader } from 'components';
 
 import styles from './styles.module.scss';
 import { useGetCargosQuery } from 'store/api';
@@ -11,7 +11,7 @@ import { ActiveCargo } from './ActiveCargo';
 
 export const Cargo = () => {
   const location = useLocation();
-  const { data: cargos } = useGetCargosQuery();
+  const { data: cargos, isLoading } = useGetCargosQuery();
   const [isCreate, setIsCreate] = useState<boolean>(false);
   const [openCargo, setOpenCargo] = useState<number>();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -28,7 +28,7 @@ export const Cargo = () => {
   }, [searchParams]);
 
   const handleCreateCargoStatus = () => {
-    setIsCreate(v => !v);
+    setIsCreate((v) => !v);
   };
 
   const onCreateCargo = (id: ICargo['id']) => {
@@ -51,6 +51,13 @@ export const Cargo = () => {
 
   const activeCargo = (cargos || []).find((cargo) => cargo.id === openCargo);
 
+  if (isLoading)
+    return (
+      <div className={styles.loader}>
+        <Loader />
+      </div>
+    );
+
   return (
     <div className={cx(styles.container, (isCreate || openCargo !== undefined) && styles.grid)}>
       <div className={styles.list}>
@@ -61,7 +68,7 @@ export const Cargo = () => {
         <ActiveCargo
           onCreate={onCreateCargo}
           isCreate={isCreate}
-          cargo={isCreate ? CargoInit : (activeCargo || CargoInit)}
+          cargo={isCreate ? CargoInit : activeCargo || CargoInit}
           closeActiveCargo={() => {
             setIsCreate(false);
             setOpenCargo(undefined);

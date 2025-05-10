@@ -11,6 +11,7 @@ export const addressApi = createApi({
       query: () => ({
         url: '/api/addresses',
         method: 'GET',
+        params: { pageSize: 9999 },
       }),
       providesTags: ['addresses'],
     }),

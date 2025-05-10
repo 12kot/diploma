@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 
-import { cx, IAddress } from 'features';
-import { Filters } from 'components';
+import { cx } from 'features';
+import { Filters, Loader } from 'components';
 
 import styles from './styles.module.scss';
 import { useGetAddressesQuery } from 'store/api/addressApi';
@@ -11,7 +11,7 @@ import { ActiveAddress } from './ActiveAddress';
 
 export const Address = () => {
   const location = useLocation();
-  const { data: addresses } = useGetAddressesQuery();
+  const { data: addresses, isLoading } = useGetAddressesQuery();
   const [isCreate, setIsCreate] = useState<boolean>(false);
   const [openAddress, setOpenAddress] = useState<number>();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -31,9 +31,8 @@ export const Address = () => {
     setIsCreate((v) => !v);
   };
 
-  const onCreateAddress = (id: IAddress['id']) => {
+  const onCreateAddress = () => {
     handleCreateAddressStatus();
-    handleOpenAddress(id);
   };
 
   const handleOpenAddress = useCallback(
@@ -51,6 +50,13 @@ export const Address = () => {
 
   const activeAddress = (addresses || []).find((address) => address.id === openAddress);
 
+  if (isLoading)
+    return (
+      <div className={styles.loader}>
+        <Loader />
+      </div>
+    );
+
   return (
     <div className={cx(styles.container, (isCreate || openAddress !== undefined) && styles.grid)}>
       <div className={styles.list}>
@@ -61,7 +67,7 @@ export const Address = () => {
         <ActiveAddress
           onCreate={onCreateAddress}
           isCreate={isCreate}
-          address={isCreate ? AddressInit : activeAddress || AddressInit}
+          address={isCreate ? undefined : activeAddress}
           closeActiveAddress={() => {
             setIsCreate(false);
             setOpenAddress(undefined);
@@ -70,14 +76,4 @@ export const Address = () => {
       )}
     </div>
   );
-};
-
-const AddressInit = {
-  apartment: 0,
-  cityName: '',
-  countryName: '',
-  house: 0,
-  id: 0,
-  phoneNumber: '',
-  street: '',
 };

@@ -29,3 +29,12 @@
     }
   }
 }
+
+.loader {
+  grid-area: 1 / 2 / 6 / 7;
+
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-self: center;
+}

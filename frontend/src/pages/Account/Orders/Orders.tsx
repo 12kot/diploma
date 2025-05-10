@@ -1,33 +1,51 @@
 import { useEffect, useState } from 'react';
 
 import { cx, EUserRole } from 'features';
-import { FullOrder, Filters } from 'components';
-import { useAppSelector, useGetAddressesQuery, useGetCargosQuery, useLazyGetTransportationsQuery } from 'store';
+import { FullOrder, Filters, Loader } from 'components';
+import {
+  useAppSelector,
+  useGetAddressesQuery,
+  useGetAllUsersQuery,
+  useGetCargosQuery,
+  useLazyGetTransportationsCurrentQuery,
+  useLazyGetTransportationsQuery,
+} from 'store';
 
 import { OrdersList } from './Order';
 
 import styles from './styles.module.scss';
 
 export const Orders = () => {
-  const user = useAppSelector(state => state.user);
+  const user = useAppSelector((state) => state.user);
 
   const [create, setIsCreate] = useState<boolean>(false);
   const [activeOrder, setActiveOrder] = useState<number | null>(null);
 
   const { data: cargos = [] } = useGetCargosQuery();
+  const { data: users = [] } = useGetAllUsersQuery();
   const { data: addresses = [] } = useGetAddressesQuery();
-  const [getTransportations, { data = [] }] = useLazyGetTransportationsQuery();
+  const [getTransportations, { data = [], isLoading }] = useLazyGetTransportationsQuery();
+  const [getTransportationsCurent, { data: transCurrent = [] }] = useLazyGetTransportationsCurrentQuery();
 
   useEffect(() => {
     getTransportations();
-  }, []);
+    if (user.role === EUserRole.Driver) getTransportationsCurent();
+  }, [user.role]);
 
   const onSumbit = () => {
     setIsCreate(false);
     setActiveOrder(null);
   };
 
-  const active = data.find((item) => item.id === activeOrder);
+  const needOrders = user.role === EUserRole.Driver ? transCurrent : data;
+  const active = needOrders.find((item) => item.id === activeOrder);
+
+  if (isLoading)
+    return (
+      <div className={styles.loader}>
+        <Loader />
+      </div>
+    );
 
   return (
     <div className={styles.container}>
@@ -35,15 +53,16 @@ export const Orders = () => {
         <FullOrder
           transportation={active}
           onSumbit={onSumbit}
+          users={users}
           setActiveOrder={(v) => setActiveOrder(v)}
           cargos={cargos}
           addresses={addresses}
-          canOnChange={user.role !== EUserRole.Owner}
+          canOnChange={user.role !== EUserRole.Driver}
         />
       ) : (
         <div className={cx(styles.content, !!activeOrder && styles.none)}>
-          <Filters handleCreate={user.role === EUserRole.Owner ? undefined : () => setIsCreate(true)} />
-          <OrdersList orders={data || []} activeUserId={activeOrder} setOpenUser={(v) => setActiveOrder(v)} />
+          <Filters handleCreate={user.role === EUserRole.Driver ? undefined : () => setIsCreate(true)} />
+          <OrdersList orders={needOrders || []} activeUserId={activeOrder} setOpenUser={(v) => setActiveOrder(v)} />
         </div>
       )}
     </div>

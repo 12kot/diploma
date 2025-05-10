@@ -6,12 +6,12 @@ import toast from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
 
 import { BgImage, Button } from 'components';
-import { useEscapeKey, cx, ITransportation, ICargo, IAddress } from 'features';
+import { useEscapeKey, cx, ITransportation, ICargo, IAddress, IUser, EUserRole } from 'features';
 
 import { SVGCargo, SVGMapMarker, tilesImg } from 'assets';
 
 import styles from './style.module.scss';
-import { useCreateTransportationsMutation, useEditTransportationsMutation } from 'store';
+import { useAppSelector, useCreateTransportationsMutation, useEditTransportationsMutation } from 'store';
 
 const formatDate = (timestamp: number) => {
   const date = new Date(timestamp);
@@ -23,6 +23,7 @@ const formatDate = (timestamp: number) => {
 
 interface Props {
   transportation?: ITransportation;
+  users: IUser[];
   cargos: ICargo[];
   canOnChange: boolean;
   addresses: IAddress[];
@@ -38,9 +39,12 @@ interface IFormOrder {
   paymentDeadline: string;
 }
 
-export const FullOrder = ({ transportation, onSumbit, cargos, addresses, canOnChange }: Props) => {
+export const FullOrder = ({ transportation, users, onSumbit, cargos, addresses, canOnChange }: Props) => {
   const { t } = useTranslation(['common', 'dashboard']);
+  const user = useAppSelector(state => state.user);
 
+  const [activeUser, setActiveUser] = useState(transportation?.user);
+  const [activeOwner, setActiveOwner] = useState(transportation?.payment.user);
   const [activeCrago, setActiveCargo] = useState(transportation?.cargo);
   const [activeLanding, setActiveLanding] = useState(transportation?.landing.address);
   const [activeLoading, setActiveLoading] = useState(transportation?.loading.address);
@@ -51,7 +55,7 @@ export const FullOrder = ({ transportation, onSumbit, cargos, addresses, canOnCh
   const validationSchema = Yup.object({
     distance: Yup.number().min(1).required(),
 
-    paymentDate: Yup.string().required(),
+    paymentDate: Yup.string().optional(),
     paymentDeadline: Yup.string().required(),
     price: Yup.number().min(1).required(),
   });
@@ -66,7 +70,7 @@ export const FullOrder = ({ transportation, onSumbit, cargos, addresses, canOnCh
     enableReinitialize: true,
     validationSchema,
     onSubmit: async (data, { resetForm }) => {
-      if (!activeCrago || !activeLanding || !activeLoading || !canOnChange) return;
+      if (!activeCrago || !activeLanding || !activeLoading || !canOnChange || !activeUser || !activeOwner) return;
 
       const newData = {
         cargo: {
@@ -85,26 +89,27 @@ export const FullOrder = ({ transportation, onSumbit, cargos, addresses, canOnCh
           date: new Date(data.paymentDate as string).getTime(),
           deadline: data.paymentDeadline,
           user: {
-            id: 3,
+            id: activeOwner.id,
           },
         },
         user: {
-          id: 3,
+          id: activeUser.id,
         },
       };
       if (typeof transportation?.id !== 'number') {
         //@ts-ignore
         const res = await createTransportation(newData as ITransportation);
-        if (res.data) {
+        if (!res.error) {
           resetForm();
-          onSumbit();
           toast.success(t('common:transportationSuccess'));
+        } else {
+          toast.error(t('common:transportationError'));
         }
       } else {
-        toast.error(t('common:transportationError'));
         //@ts-ignore
         ediCargo(newData as ITransportation);
       }
+      onSumbit();
     },
   });
 
@@ -132,128 +137,201 @@ export const FullOrder = ({ transportation, onSumbit, cargos, addresses, canOnCh
           />
         </section>
 
+        {canOnChange && (
+          <>
+            <div className={styles.info}>
+              <SVGMapMarker />
+              <p>
+                <b>{t('dashboard:pages.orders.paymentInfo')}</b>
+              </p>
+            </div>
+
+            <div className={styles.item}>
+              <div className={styles.full}>
+                <span>{t('placeholders.paymentDate')}</span>
+                <input
+                  type="date"
+                  name="paymentDate"
+                  placeholder={t('placeholders.paymentDate')}
+                  className={cx(formik.touched.paymentDate && formik.errors.paymentDate && styles.error)}
+                  value={formik.values.paymentDate}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  disabled={!canOnChange}
+                />
+              </div>
+              <div className={styles.full}>
+                <span>{t('placeholders.paymentDeadline')}</span>
+                <input
+                  type="date"
+                  name="paymentDeadline"
+                  placeholder={t('placeholders.paymentDeadline')}
+                  className={cx(formik.touched.paymentDeadline && formik.errors.paymentDeadline && styles.error)}
+                  value={formik.values.paymentDeadline}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  disabled={!canOnChange}
+                />
+              </div>
+              <div className={styles.full}>
+                <span>{t('placeholders.price')}</span>
+                <input
+                  type="number"
+                  name="price"
+                  placeholder={t('placeholders.price')}
+                  className={cx(formik.touched.price && formik.errors.price && styles.error)}
+                  value={formik.values.price as number}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  disabled={!canOnChange}
+                />
+              </div>
+            </div>
+          </>
+        )}
+
+        {canOnChange && (
+          <>
+            <div className={styles.info}>
+              <SVGMapMarker />
+              <p>
+                <b>{t('dashboard:pages.orders.paymentUserInfo')}</b>
+              </p>
+            </div>
+            <div className={styles.cards}>
+              {users
+                .filter((user) => user.roles.find((role) => role.role === EUserRole.Owner))
+                .map((user) => (
+                  <Button
+                    type="button"
+                    buttonType={activeOwner?.id !== user.id ? 'transparent' : undefined}
+                    onClick={() => setActiveOwner(user)}
+                    key={user.id}>
+                    {user.firstName + ' ' + user.lastName}
+                  </Button>
+                ))}
+            </div>
+          </>
+        )}
+
         <div className={styles.info}>
-          <SVGMapMarker />
+          <SVGCargo />
           <p>
-            <b>{t('dashboard:pages.orders.paymentInfo')}</b>
+            <b>{t('dashboard:pages.orders.cargoInfo')}</b>
           </p>
         </div>
 
-        <div className={styles.item}>
-          <div className={styles.full}>
-            <span>{t('placeholders.paymentDate')}</span>
-            <input
-              type="date"
-              name="paymentDate"
-              placeholder={t('placeholders.paymentDate')}
-              className={cx(formik.touched.paymentDate && formik.errors.paymentDate && styles.error)}
-              value={formik.values.paymentDate}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              disabled={!canOnChange}
-            />
-          </div>
-          <div className={styles.full}>
-            <span>{t('placeholders.paymentDeadline')}</span>
-            <input
-              type="date"
-              name="paymentDeadline"
-              placeholder={t('placeholders.paymentDeadline')}
-              className={cx(formik.touched.paymentDeadline && formik.errors.paymentDeadline && styles.error)}
-              value={formik.values.paymentDeadline}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              disabled={!canOnChange}
-            />
-          </div>
-          <div className={styles.full}>
-            <span>{t('placeholders.price')}</span>
-            <input
-              type="number"
-              name="price"
-              placeholder={t('placeholders.price')}
-              className={cx(formik.touched.price && formik.errors.price && styles.error)}
-              value={formik.values.price as number}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              disabled={!canOnChange}
-            />
-          </div>
+        <div className={styles.cards}>
+          {!canOnChange && (
+            <Button buttonType={['border', 'transparent']} type="button">
+              {activeCrago?.name +
+                ', ' +
+                activeCrago?.loadApproach +
+                ', ' +
+                activeCrago?.loadMethod +
+                ', ' +
+                activeCrago?.packaging +
+                ', ' +
+                `${activeCrago?.size.depth}x${activeCrago?.size.height}x${activeCrago?.size.weight}x${activeCrago?.size.width}`}
+            </Button>
+          )}
+          {canOnChange &&
+            cargos.map((cargo) => (
+              <Button
+                type="button"
+                buttonType={activeCrago?.id !== cargo.id ? 'transparent' : undefined}
+                onClick={() => setActiveCargo(cargo)}
+                disabled={!canOnChange}
+                key={cargo.id}>
+                {cargo.name}
+              </Button>
+            ))}
         </div>
 
-        {cargos.length !== 0 && (
-          <>
-            <div className={styles.info}>
-              <SVGCargo />
-              <p>
-                <b>{t('dashboard:pages.orders.cargoInfo')}</b>
-              </p>
-            </div>
+        <div className={styles.info}>
+          <SVGMapMarker />
+          <p>
+            <b>{t('dashboard:pages.orders.landingInfo')}</b>
+          </p>
+        </div>
+        <div className={styles.cards}>
+          {!canOnChange && (
+            <Button buttonType={['border', 'transparent']} type="button">
+              {`${activeLanding?.countryName ? `${activeLanding?.countryName}, ` : ''}${
+                activeLanding?.cityName ? `${activeLanding?.cityName}, ` : ''
+              }${activeLanding?.street ? `${activeLanding?.street}` : ''}${
+                activeLanding?.phoneNumber ? `, ${activeLanding.phoneNumber}` : ''
+              }`}
+            </Button>
+          )}
+          {addresses.map((cargo) => (
+            <Button
+              type="button"
+              buttonType={activeLanding?.id !== cargo.id ? 'transparent' : undefined}
+              disabled={activeLoading?.id === cargo.id || !canOnChange}
+              onClick={() => setActiveLanding(cargo)}
+              key={cargo.id}>
+              {`${cargo?.countryName ? `${cargo?.countryName}, ` : ''}${cargo?.cityName ? `${cargo?.cityName}, ` : ''}${
+                cargo?.street ? `${cargo?.street}` : ''
+              }`}
+            </Button>
+          ))}
+        </div>
 
-            <div className={styles.cards}>
-              {cargos.map((cargo) => (
+        <div className={styles.info}>
+          <SVGMapMarker />
+          <p>
+            <b>{t('dashboard:pages.orders.loadingInfo')}</b>
+          </p>
+        </div>
+        <div className={styles.cards}>
+          {!canOnChange && (
+            <Button buttonType={['border', 'transparent']} type="button">
+              {`${activeLanding?.countryName ? `${activeLanding?.countryName}, ` : ''}${
+                activeLanding?.cityName ? `${activeLanding?.cityName}, ` : ''
+              }${activeLanding?.street ? `${activeLanding?.street}` : ''}${
+                activeLanding?.phoneNumber ? `, ${activeLanding.phoneNumber}` : ''
+              }`}
+            </Button>
+          )}
+          {canOnChange &&
+            addresses.map((cargo) => (
+              <Button
+                type="button"
+                buttonType={activeLoading?.id !== cargo.id ? 'transparent' : undefined}
+                disabled={activeLanding?.id === cargo.id || !canOnChange}
+                onClick={() => setActiveLoading(cargo)}
+                key={cargo.id}>
+                {`${cargo.countryName ? `${cargo.countryName}, ` : ''}${cargo.cityName ? `${cargo.cityName}, ` : ''}${
+                  cargo?.street ? `${cargo.street}` : ''
+                }`}
+              </Button>
+            ))}
+        </div>
+
+        <div className={styles.info}>
+          <SVGMapMarker />
+          <p>
+            <b>{t('dashboard:pages.orders.driversInfo')}</b>
+          </p>
+        </div>
+        <div className={styles.cards}>
+          {!canOnChange && (
+            <Button buttonType={['border', 'transparent']} type="button">{user.firstName + ' ' + user.lastName}</Button>
+          )}
+          {canOnChange &&
+            users
+              .filter((user) => user.roles.find((role) => role.role === EUserRole.Driver))
+              .map((user) => (
                 <Button
                   type="button"
-                  buttonType={activeCrago?.id !== cargo.id ? 'transparent' : undefined}
-                  onClick={() => setActiveCargo(cargo)}
-                  disabled={!canOnChange}
-                  key={cargo.id}>
-                  {cargo.name}
+                  buttonType={activeUser?.id !== user.id ? 'transparent' : undefined}
+                  onClick={() => setActiveUser(user)}
+                  key={user.id}>
+                  {user.firstName + ' ' + user.lastName}
                 </Button>
               ))}
-            </div>
-          </>
-        )}
-
-        {addresses.length !== 0 && (
-          <>
-            <div className={styles.info}>
-              <SVGMapMarker />
-              <p>
-                <b>{t('dashboard:pages.orders.landingInfo')}</b>
-              </p>
-            </div>
-            <div className={styles.cards}>
-              {addresses.map((cargo) => (
-                <Button
-                  type="button"
-                  buttonType={activeLanding?.id !== cargo.id ? 'transparent' : undefined}
-                  disabled={activeLoading?.id === cargo.id || !canOnChange}
-                  onClick={() => setActiveLanding(cargo)}
-                  key={cargo.id}>
-                  {`${cargo.countryName ? `${cargo.countryName}, ` : ''}${cargo.cityName ? `${cargo.cityName}, ` : ''}${
-                    cargo.street ? `${cargo.street}` : ''
-                  }`}
-                </Button>
-              ))}
-            </div>
-          </>
-        )}
-
-        {addresses.length !== 0 && (
-          <>
-            <div className={styles.info}>
-              <SVGMapMarker />
-              <p>
-                <b>{t('dashboard:pages.orders.loadingInfo')}</b>
-              </p>
-            </div>
-            <div className={styles.cards}>
-              {addresses.map((cargo) => (
-                <Button
-                  type="button"
-                  buttonType={activeLoading?.id !== cargo.id ? 'transparent' : undefined}
-                  disabled={activeLanding?.id === cargo.id || !canOnChange}
-                  onClick={() => setActiveLoading(cargo)}
-                  key={cargo.id}>
-                  {`${cargo.countryName ? `${cargo.countryName}, ` : ''}${cargo.cityName ? `${cargo.cityName}, ` : ''}${
-                    cargo.street ? `${cargo.street}` : ''
-                  }`}
-                </Button>
-              ))}
-            </div>
-          </>
-        )}
+        </div>
 
         {canOnChange && (
           <Button type="submit" onClick={() => console.log(formik.errors)} className={styles.save}>

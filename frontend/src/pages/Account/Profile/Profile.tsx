@@ -29,7 +29,7 @@ export const Profile = () => {
 
   const handleSubmit = async () => {
     const res = await editUser({ id, ...formData });
-    if (res.data) toast.success(t('profileSuccess'));
+    if (!res.error) toast.success(t('profileSuccess'));
     else toast.error(t('profileError'));
   };
 

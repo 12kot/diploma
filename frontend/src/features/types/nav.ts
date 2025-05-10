@@ -21,14 +21,14 @@ export const NavItems = (t: TFunction<['menuHolder'], undefined>): INavItem[] =>
     name: t('menuHolder:links.cargo'),
     path: APP_ROUTES.CARGO,
     icon: SVGCargo,
-    sees: [EUserRole.Owner],
+    sees: [EUserRole.Admin, EUserRole.Owner],
   },
   {
     id: 10,
     name: t('menuHolder:links.addresses'),
     path: APP_ROUTES.ADDRESSES,
     icon: SVGReceipt,
-    sees: [EUserRole.Forwarder],
+    sees: [EUserRole.Admin, EUserRole.Forwarder],
   },
   {
     id: 2,

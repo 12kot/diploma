@@ -81,7 +81,7 @@ export const ActiveCargo = ({ cargo, isCreate, onCreate, closeActiveCargo }: Pro
       };
       if (isCreate) {
         const res = await createCargo(newData);
-        if (res.data) {
+        if (!res.error) {
           toast.success(t('cargoSuccess'));
           onCreate(res.data.id);
         } else {

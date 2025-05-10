@@ -12,9 +12,9 @@ import { useCreateAddressMutation, useEditAddressMutation } from 'store';
 import toast from 'react-hot-toast';
 
 interface Props {
-  address: IAddress;
+  address?: IAddress;
   isCreate: boolean;
-  onCreate: (id: IAddress['id']) => void;
+  onCreate: () => void;
   closeActiveAddress: () => void;
 }
 
@@ -33,36 +33,41 @@ export const ActiveAddress = ({ address, isCreate, onCreate, closeActiveAddress 
     street: Yup.string().required(),
   });
 
-  const formik = useFormik<Omit<IAddress, 'id'>>({
-    initialValues: address,
+  const formik = useFormik<Partial<IAddress>>({
+    initialValues: {
+      apartment: Number(address?.apartment),
+      cityName: address?.cityName || '',
+      countryName: address?.countryName || '',
+      house: Number(address?.house),
+      phoneNumber: address?.phoneNumber || '',
+      street: address?.street || '',
+    },
     enableReinitialize: true,
     validationSchema,
     onSubmit: async (data) => {
       if (isCreate) {
-        const res = await createAddress(data);
-        if (res.data) {
+        const res = await createAddress(data as IAddress);
+        if (!res.error) {
           toast.success(t('addressSuccess'));
-          onCreate(res.data.id);
+          onCreate();
         } else {
           toast.error(t('addressError'));
         }
       } else {
-        ediAddress(data);
+        ediAddress({id: address?.id, ...data});
       }
+      closeActiveAddress();
     },
   });
 
-  const addressTitle = [address.countryName, address.cityName, address.street, address.apartment]
+  const addressTitle = [address?.countryName, address?.cityName, address?.street, address?.apartment]
     .filter(Boolean)
     .join(', ');
 
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        <AddressLabels
-          title={addressTitle || t('newAddress')}
-          closeActiveAddress={closeActiveAddress}
-        />
+        <AddressLabels title={addressTitle || t('newAddress')} closeActiveAddress={closeActiveAddress} />
         <form className={styles.form} onSubmit={formik.handleSubmit}>
           <div className={styles.block}>
             <input
@@ -95,7 +100,7 @@ export const ActiveAddress = ({ address, isCreate, onCreate, closeActiveAddress 
               onBlur={formik.handleBlur}
             />
             <input
-              type="text"
+              type="number"
               name="house"
               placeholder={t('placeholders.house')}
               className={cx(formik.touched.house && formik.errors.house && styles.error)}
@@ -115,7 +120,7 @@ export const ActiveAddress = ({ address, isCreate, onCreate, closeActiveAddress 
               onBlur={formik.handleBlur}
             />
             <input
-              type="text"
+              type="number"
               name="apartment"
               placeholder={t('placeholders.apartment')}
               className={cx(formik.touched.apartment && formik.errors.apartment && styles.error)}

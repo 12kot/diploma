@@ -13,6 +13,7 @@ export interface IUser {
   transportations?: null;
   payments?: null;
   role: EUserRole;
+  roles: {role: EUserRole}[];
 }
 
 export interface IRegisterUser {

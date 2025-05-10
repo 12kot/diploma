@@ -60,6 +60,8 @@
       "paymentInfo": "Информация об оплате",
       "landingInfo": "Информация о прибытии",
       "loadingInfo": "Информация о погрузке",
+      "paymentUserInfo": "Плательщик",
+      "driversInfo": "Водитель",
       "cargoInfo": "Информация о грузе",
       "driverInfo": "Информация о водителе",
       "id": "ID",

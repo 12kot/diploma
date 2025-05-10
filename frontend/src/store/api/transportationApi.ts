@@ -11,6 +11,15 @@ export const transportationApi = createApi({
       query: () => ({
         url: '/api/transportations',
         method: 'GET',
+        params: { pageSize: 9999 },
+      }),
+      providesTags: ['transportations'],
+    }),
+    
+    getTransportationsCurrent: builder.query<ITransportation[], void>({
+      query: () => ({
+        url: '/api/transportations/current',
+        method: 'GET',
       }),
       providesTags: ['transportations'],
     }),
@@ -35,4 +44,4 @@ export const transportationApi = createApi({
   }),
 });
 
-export const { useCreateTransportationsMutation, useEditTransportationsMutation, useLazyGetTransportationsQuery } = transportationApi;
+export const { useCreateTransportationsMutation, useEditTransportationsMutation, useLazyGetTransportationsQuery, useLazyGetTransportationsCurrentQuery } = transportationApi;
