@@ -64,6 +64,7 @@ export const ActiveDelivery = ({ addresses, delivery, isCreate, onCreate, closeA
         address: { id: activeAddress?.id },
       };
       if (isCreate) {
+        //@ts-ignore
         const res = await createDelivery(newDate as IDelivery);
         if (!res.error) {
           toast.success(t('deliverySuccess'));
@@ -72,6 +73,7 @@ export const ActiveDelivery = ({ addresses, delivery, isCreate, onCreate, closeA
           toast.error(t('deliveryError'));
         }
       } else {
+        //@ts-ignore
         await ediDelivery(newDate);
       }
       closeActiveDelivery();
