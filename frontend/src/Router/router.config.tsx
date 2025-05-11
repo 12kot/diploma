@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import { Navigate } from 'react-router-dom';
 
-import { AddressLazy, CargoLazy, HomeLazy, Login, NotFoundLazy, OrdersLazy, ProfileLazy } from 'pages';
+import { AddressLazy, CargoLazy, DeliveryLazy, HomeLazy, Login, NotFoundLazy, OrdersLazy, ProfileLazy } from 'pages';
 
 export enum EPermissions {
   AUTH_NOT_REQUIRED = 'no_auth',
@@ -28,6 +28,7 @@ export enum APP_ROUTES {
   CARGO = '/dashboard/cargo',
   PROFILE = '/dashboard/profile',
   ORDERS = '/dashboard/orders',
+  DELIVERY = '/dashboard/delivery',
   ALL = '*',
 }
 
@@ -68,6 +69,10 @@ export const routes: TRoutes = {
   [APP_ROUTES.CARGO]: {
     element: <CargoLazy />,
     permissions: [EPermissions.AUTH_REQUIRED, EPermissions.AUTH_ADMIN, EPermissions.AUTH_OWNER],
+  },
+  [APP_ROUTES.DELIVERY]: {
+    element: <DeliveryLazy />,
+    permissions: [EPermissions.AUTH_REQUIRED, EPermissions.AUTH_ADMIN, EPermissions.AUTH_FORWARDER],
   },
   [APP_ROUTES.PROFILE]: {
     element: <ProfileLazy />,

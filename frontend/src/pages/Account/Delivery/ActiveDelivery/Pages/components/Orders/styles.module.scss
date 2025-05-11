@@ -1,0 +1,28 @@
+.container {
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  flex-wrap: wrap;
+  margin-top: 16px;
+  
+  display: grid;
+  grid-template-columns: repeat(2, minmax(100px, 1fr));
+  grid-gap: calc(var(--gap) * 2);
+  
+  @media screen and (max-width: 1260px) {
+    grid-template-columns: repeat(1, minmax(100px, 1fr));
+  }
+  
+  @media screen and (max-width: 1200px) {
+    grid-template-columns: repeat(2, minmax(100px, 1fr));
+  }
+  
+  @media screen and (max-width: 500px) {
+    grid-template-columns: repeat(1, minmax(100px, 1fr));
+  }
+}
+
+.order__container {
+  margin-top: 16px;
+  overflow-y: auto;
+}

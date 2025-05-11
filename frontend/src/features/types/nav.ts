@@ -4,7 +4,7 @@ import { APP_ROUTES } from 'Router';
 
 import { EUserRole } from './user';
 
-import { SVGUser, SVGReceipt, SVGCargo } from 'assets';
+import { SVGUser, SVGReceipt, SVGCargo, SVGDelivery } from 'assets';
 
 export interface INavItem {
   id: number;
@@ -28,6 +28,13 @@ export const NavItems = (t: TFunction<['menuHolder'], undefined>): INavItem[] =>
     name: t('menuHolder:links.addresses'),
     path: APP_ROUTES.ADDRESSES,
     icon: SVGReceipt,
+    sees: [EUserRole.Admin, EUserRole.Forwarder],
+  },
+  {
+    id: 10,
+    name: t('menuHolder:links.delivery'),
+    path: APP_ROUTES.DELIVERY,
+    icon: SVGDelivery,
     sees: [EUserRole.Admin, EUserRole.Forwarder],
   },
   {

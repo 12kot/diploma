@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--gap-xl);
+
+  .nameContainer {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-xl);
+
+    .img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+    }
+
+    .name {
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap-mini);
+
+      .indicators {
+        display: flex;
+        gap: var(--gap-mini);
+      }
+    }
+  }
+
+  .editUser {
+    min-width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    padding: 0;
+  }
+}

@@ -1,5 +1,6 @@
 export * from "./SVGAnalitics";
 export * from "./SVGArrowDown";
+export * from "./SVGDelivery";
 export * from "./SVGArrowUp";
 export * from "./SVGBack";
 export * from "./SVGCar";

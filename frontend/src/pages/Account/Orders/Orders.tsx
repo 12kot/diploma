@@ -4,9 +4,9 @@ import { cx, EUserRole } from 'features';
 import { FullOrder, Filters, Loader } from 'components';
 import {
   useAppSelector,
-  useGetAddressesQuery,
   useGetAllUsersQuery,
   useGetCargosQuery,
+  useGetDeliveryQuery,
   useLazyGetTransportationsCurrentQuery,
   useLazyGetTransportationsQuery,
 } from 'store';
@@ -23,7 +23,7 @@ export const Orders = () => {
 
   const { data: cargos = [] } = useGetCargosQuery();
   const { data: users = [] } = useGetAllUsersQuery();
-  const { data: addresses = [] } = useGetAddressesQuery();
+  const { data: addresses = [] } = useGetDeliveryQuery();
   const [getTransportations, { data = [], isLoading }] = useLazyGetTransportationsQuery();
   const [getTransportationsCurent, { data: transCurrent = [] }] = useLazyGetTransportationsCurrentQuery();
 

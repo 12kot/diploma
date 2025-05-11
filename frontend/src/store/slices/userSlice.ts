@@ -17,6 +17,7 @@ const initialState: IUserSlice = {
   transportations: null,
   payments: null,
   role: EUserRole?.Driver,
+  roles: []
 };
 
 const userSlice = createSlice({

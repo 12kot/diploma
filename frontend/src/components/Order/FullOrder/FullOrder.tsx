@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
 
 import { BgImage, Button } from 'components';
-import { useEscapeKey, cx, ITransportation, ICargo, IAddress, IUser, EUserRole } from 'features';
+import { useEscapeKey, cx, ITransportation, ICargo, IUser, EUserRole, IDelivery } from 'features';
 
 import { SVGCargo, SVGMapMarker, tilesImg } from 'assets';
 
@@ -26,7 +26,7 @@ interface Props {
   users: IUser[];
   cargos: ICargo[];
   canOnChange: boolean;
-  addresses: IAddress[];
+  addresses: IDelivery[];
   onSumbit: () => void;
   setActiveOrder: (v: number | null) => void;
 }
@@ -41,16 +41,16 @@ interface IFormOrder {
 
 export const FullOrder = ({ transportation, users, onSumbit, cargos, addresses, canOnChange }: Props) => {
   const { t } = useTranslation(['common', 'dashboard']);
-  const user = useAppSelector(state => state.user);
+  const user = useAppSelector((state) => state.user);
 
   const [activeUser, setActiveUser] = useState(transportation?.user);
   const [activeOwner, setActiveOwner] = useState(transportation?.payment.user);
   const [activeCrago, setActiveCargo] = useState(transportation?.cargo);
-  const [activeLanding, setActiveLanding] = useState(transportation?.landing.address);
-  const [activeLoading, setActiveLoading] = useState(transportation?.loading.address);
+  const [activeLanding, setActiveLanding] = useState(transportation?.landing);
+  const [activeLoading, setActiveLoading] = useState(transportation?.loading);
 
-  const [ediCargo] = useEditTransportationsMutation();
-  const [createTransportation] = useCreateTransportationsMutation();
+  const [ediCargo, { isLoading: isLoading }] = useEditTransportationsMutation();
+  const [createTransportation, { isLoading: isLoading1 }] = useCreateTransportationsMutation();
 
   const validationSchema = Yup.object({
     distance: Yup.number().min(1).required(),
@@ -107,7 +107,7 @@ export const FullOrder = ({ transportation, users, onSumbit, cargos, addresses, 
         }
       } else {
         //@ts-ignore
-        ediCargo(newData as ITransportation);
+        await ediCargo(newData as ITransportation);
       }
       onSumbit();
     },
@@ -158,6 +158,7 @@ export const FullOrder = ({ transportation, users, onSumbit, cargos, addresses, 
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   disabled={!canOnChange}
+                  min={new Date().toISOString().split('T')[0]}
                 />
               </div>
               <div className={styles.full}>
@@ -171,6 +172,7 @@ export const FullOrder = ({ transportation, users, onSumbit, cargos, addresses, 
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   disabled={!canOnChange}
+                  min={new Date().toISOString().split('T')[0]}
                 />
               </div>
               <div className={styles.full}>
@@ -257,10 +259,10 @@ export const FullOrder = ({ transportation, users, onSumbit, cargos, addresses, 
         <div className={styles.cards}>
           {!canOnChange && (
             <Button buttonType={['border', 'transparent']} type="button">
-              {`${activeLanding?.countryName ? `${activeLanding?.countryName}, ` : ''}${
-                activeLanding?.cityName ? `${activeLanding?.cityName}, ` : ''
-              }${activeLanding?.street ? `${activeLanding?.street}` : ''}${
-                activeLanding?.phoneNumber ? `, ${activeLanding.phoneNumber}` : ''
+              {`${activeLanding?.address.countryName ? `${activeLanding?.address.countryName}, ` : ''}${
+                activeLanding?.address.cityName ? `${activeLanding?.address.cityName}, ` : ''
+              }${activeLanding?.address.street ? `${activeLanding?.address.street}` : ''}${
+                activeLanding?.address.phoneNumber ? `, ${activeLanding.address.phoneNumber}` : ''
               }`}
             </Button>
           )}
@@ -271,9 +273,9 @@ export const FullOrder = ({ transportation, users, onSumbit, cargos, addresses, 
               disabled={activeLoading?.id === cargo.id || !canOnChange}
               onClick={() => setActiveLanding(cargo)}
               key={cargo.id}>
-              {`${cargo?.countryName ? `${cargo?.countryName}, ` : ''}${cargo?.cityName ? `${cargo?.cityName}, ` : ''}${
-                cargo?.street ? `${cargo?.street}` : ''
-              }`}
+              {`${cargo?.address.countryName ? `${cargo?.address.countryName}, ` : ''}${
+                cargo?.address.cityName ? `${cargo?.address.cityName}, ` : ''
+              }${cargo?.address.street ? `${cargo?.address.street}` : ''}`}
             </Button>
           ))}
         </div>
@@ -287,10 +289,10 @@ export const FullOrder = ({ transportation, users, onSumbit, cargos, addresses, 
         <div className={styles.cards}>
           {!canOnChange && (
             <Button buttonType={['border', 'transparent']} type="button">
-              {`${activeLanding?.countryName ? `${activeLanding?.countryName}, ` : ''}${
-                activeLanding?.cityName ? `${activeLanding?.cityName}, ` : ''
-              }${activeLanding?.street ? `${activeLanding?.street}` : ''}${
-                activeLanding?.phoneNumber ? `, ${activeLanding.phoneNumber}` : ''
+              {`${activeLanding?.address.countryName ? `${activeLanding?.address.countryName}, ` : ''}${
+                activeLanding?.address.cityName ? `${activeLanding?.address.cityName}, ` : ''
+              }${activeLanding?.address.street ? `${activeLanding?.address.street}` : ''}${
+                activeLanding?.address.phoneNumber ? `, ${activeLanding.address.phoneNumber}` : ''
               }`}
             </Button>
           )}
@@ -302,9 +304,9 @@ export const FullOrder = ({ transportation, users, onSumbit, cargos, addresses, 
                 disabled={activeLanding?.id === cargo.id || !canOnChange}
                 onClick={() => setActiveLoading(cargo)}
                 key={cargo.id}>
-                {`${cargo.countryName ? `${cargo.countryName}, ` : ''}${cargo.cityName ? `${cargo.cityName}, ` : ''}${
-                  cargo?.street ? `${cargo.street}` : ''
-                }`}
+                {`${cargo.address.countryName ? `${cargo.address.countryName}, ` : ''}${
+                  cargo.address.cityName ? `${cargo.address.cityName}, ` : ''
+                }${cargo?.address.street ? `${cargo.address.street}` : ''}`}
               </Button>
             ))}
         </div>
@@ -317,7 +319,9 @@ export const FullOrder = ({ transportation, users, onSumbit, cargos, addresses, 
         </div>
         <div className={styles.cards}>
           {!canOnChange && (
-            <Button buttonType={['border', 'transparent']} type="button">{user.firstName + ' ' + user.lastName}</Button>
+            <Button buttonType={['border', 'transparent']} type="button">
+              {user.firstName + ' ' + user.lastName}
+            </Button>
           )}
           {canOnChange &&
             users
@@ -334,7 +338,11 @@ export const FullOrder = ({ transportation, users, onSumbit, cargos, addresses, 
         </div>
 
         {canOnChange && (
-          <Button type="submit" onClick={() => console.log(formik.errors)} className={styles.save}>
+          <Button
+            type="submit"
+            onClick={() => console.log(formik.errors)}
+            disabled={isLoading || isLoading1}
+            className={styles.save}>
             {t('placeholders.save')}
           </Button>
         )}

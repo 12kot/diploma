@@ -1,29 +1,12 @@
-import { IAddress, ICargo } from "./order";
+import { IDelivery } from "./delivery";
+import { ICargo } from "./order";
 
 export interface ITransportation {
   cargo: ICargo;
   distance: number;
   id: number;
-  landing: {
-    address: IAddress,
-    date: number;
-    id: number;
-    loadType: 'AUTOMATED' | 'MANUAL';
-  };
-  loading: {
-    address: {
-      apartment: number;
-      cityName: string;
-      countryName: string;
-      house: number;
-      id: number;
-      phoneNumber: string;
-      street: string;
-    };
-    date: number;
-    id: number;
-    loadType: 'AUTOMATED' | 'MANUAL';
-  };
+  landing: IDelivery;
+  loading: IDelivery;
   payment: {
     date: number;
     deadline: number;

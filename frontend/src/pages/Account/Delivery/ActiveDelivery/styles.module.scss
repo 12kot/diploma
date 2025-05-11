@@ -1,0 +1,51 @@
+.container {
+  grid-area: 1 / 2 / 6 / 7;
+
+  flex-grow: 2;
+
+  padding: 32px;
+  border-left: 1px solid var(--border-color);
+
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow: auto;
+  
+  .content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: var(--gap-2xl);
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: var(--gap-xl);
+
+    .block {
+      display: flex;
+      gap: 8px;
+
+      input {
+        width: 100%;
+      }
+
+      .error {
+        border-color: var(--red);
+        background-color: var(--red-second);
+      }
+    }
+
+    .save {
+      margin-top: auto;
+    }
+  }
+
+  .cards {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+}
