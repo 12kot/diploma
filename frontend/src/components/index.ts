@@ -1,6 +1,7 @@
 export * from './UI';
 export * from './ProfileMenu';
 export * from './Modal';
+export * from './Logo';
 export * from './Map';
 export * from './Charts';
 export * from './Labels';

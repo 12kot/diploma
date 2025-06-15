@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
 import { APP_ROUTES } from 'Router';
-import { Button, H1 } from 'components';
+import { Button, Logo } from 'components';
 import { cx, useEscapeKey, useHandleNavigation } from 'features';
 
 import { SVGClose } from 'assets';
@@ -24,7 +24,7 @@ export const RigthModal = ({ children, isOpen, setIsOpen, className }: Props) =>
       <div className={cx(styles.content, className)} onClick={(e) => e.stopPropagation()}>
         <header className={styles.header}>
           <Button buttonType="default" className={styles.logo} onClick={() => handleNavigate(APP_ROUTES.HOME)}>
-            <H1>Logo</H1>
+            <Logo />
           </Button>
           <Button buttonType="default" className={styles.close} onClick={setIsOpen}>
             <SVGClose />

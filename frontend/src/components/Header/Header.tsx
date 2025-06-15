@@ -4,7 +4,7 @@ import { TFunction } from 'i18next';
 import { useTranslation } from 'react-i18next';
 
 import { APP_ROUTES } from 'Router';
-import { Button, H1 } from 'components';
+import { Button, Logo } from 'components';
 import { EUserRole, getNavLinksByUserRole, useEditUserModal } from 'features';
 
 import { HeaderLng } from './Lng';
@@ -30,7 +30,7 @@ export const Header = () => {
       <header className={styles.container}>
         <section className={styles.logo}>
           <NavLink to={APP_ROUTES.HOME} className={styles.td_none}>
-            <H1>Logo</H1>
+            <Logo />
           </NavLink>
           <HeaderLng />
         </section>
